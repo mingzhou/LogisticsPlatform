@@ -5,6 +5,7 @@ import com.mz.astroboy.entity.IAstroboy;
 import com.mz.astroboy.entity.internal.Astroboy;
 import com.mz.astroboy.service.IAstroboyRemoteControl;
 import com.mz.astroboy.service.internal.AstroboyRemoteControl;
+import com.mz.astroboy.utils.DatabaseHelper;
 
 /**
  * 模块化安装各个组件
@@ -13,7 +14,7 @@ import com.mz.astroboy.service.internal.AstroboyRemoteControl;
  *
  */
 public class AstoboyModule extends AbstractModule {
-
+	
 	@Override
 	protected void configure() {
 		//	指定要使用的interface是由哪个具体的service实现的
@@ -21,6 +22,8 @@ public class AstoboyModule extends AbstractModule {
 		bind(IAstroboyRemoteControl.class).to(AstroboyRemoteControl.class);
 		
 		//	如果直接使用具体的service，当然就不需要再绑定了，比如这里的com.mz.astroboy.entity.internal.ContextInfo
+		
+		requestStaticInjection(DatabaseHelper.class);
 	}
 
 }

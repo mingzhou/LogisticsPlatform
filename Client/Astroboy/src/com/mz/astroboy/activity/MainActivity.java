@@ -19,7 +19,6 @@ import android.widget.TextView.OnEditorActionListener;
 import android.widget.Toast;
 
 import com.google.inject.Inject;
-import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.RuntimeExceptionDao;
 import com.mz.astroboy.R;
 import com.mz.astroboy.entity.Account;
@@ -55,15 +54,9 @@ public class MainActivity extends RoboActivity {
 	@Inject
 	private ContextInfo contextInfo;
 	
-	private DatabaseHelper databaseHelper = null;
-	
-	private DatabaseHelper getHelper() {
-		if (databaseHelper == null) {
-			databaseHelper = OpenHelperManager.getHelper(contextInfo.getContext(), DatabaseHelper.class);
-		}
-		return databaseHelper;
-	}
-		
+	@Inject
+	private DatabaseHelper databaseHelper;		//	数据库
+			
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -107,10 +100,10 @@ public class MainActivity extends RoboActivity {
 	}
 	
 	private void testDatabase() {
-		DatabaseHelper helper = getHelper();
-		RuntimeExceptionDao<Account, Long> accountDao = helper.getRuntimeExceptionDao(Account.class);
+		//	Data Access Object (DAO) 进行增删改查操作。
+		RuntimeExceptionDao<Account, Long> accountDao = databaseHelper.getRuntimeExceptionDao(Account.class);
 		
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < 3; i++) {
 			Account account = new Account();
 			account.setUsername("user_" + i);
 			account.setPassword("pwd_" + i);
@@ -119,17 +112,14 @@ public class MainActivity extends RoboActivity {
 		}
 		
 		List<Account> list = accountDao.queryForAll();
-		for (Account account : list) {
+		for (int i = 0; i < list.size(); i++) {
+			Account account = list.get(i);
 			Toast.makeText(this, account.toString(), Toast.LENGTH_LONG).show();
+			if (i != 0) {
+				//	第一个元素不删除，检查是否真的存入了数据库
+				accountDao.delete(account);
+			}			
 		}
-	}
-	
-	@Override
-	protected void onDestroy() {
-		super.onDestroy();
-		if (databaseHelper != null) {
-			OpenHelperManager.releaseHelper();
-			databaseHelper = null;
-		}
+		
 	}
 }
