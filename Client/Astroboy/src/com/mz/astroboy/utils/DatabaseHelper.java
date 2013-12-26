@@ -2,43 +2,40 @@ package com.mz.astroboy.utils;
 
 import java.sql.SQLException;
 
+import roboguice.inject.ContextSingleton;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.google.inject.Inject;
-import com.google.inject.Singleton;
+import com.google.inject.Provider;
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 import com.mz.astroboy.entity.Account;
-import com.mz.astroboy.entity.internal.ContextInfo;
 
 /**
  * 数据库
  * @author Mingzhou Zhuang (mingzhou.zhuang@gmail.com)
  *
  */
-@Singleton
+@ContextSingleton
 public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
 	private static final String DATABASE_NAME = "astroboy.db";
 	
 	/**
-	 * 数据库的版本
+	 * 数据库的版本，更新一次数据库，会把原来的是数据都删掉（TODO 修改成升级策略）
+	 * 更新的做法，是把DATABASE_VERSION加1
 	 */
 	private static final int DATABASE_VERSION = 1;
 	
 	@Inject
-	private static ContextInfo contextInfo;
+	private static Provider<Context> contextProvider;
 	
 	public DatabaseHelper() {
-		super(contextInfo.getContext(), DATABASE_NAME, null, DATABASE_VERSION);
+		super(contextProvider.get(), DATABASE_NAME, null, DATABASE_VERSION);
 	}
 	
-	public DatabaseHelper(Context context) {
-		super(context, DATABASE_NAME, null, DATABASE_VERSION);
-	}
-
 	/**
 	 * 第一次安装的时候创建数据库
 	 */
