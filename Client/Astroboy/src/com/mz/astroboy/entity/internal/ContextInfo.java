@@ -16,4 +16,8 @@ public class ContextInfo {
 	public String getPackageName() {
 		return context.getApplicationInfo().packageName;
 	}
+	
+	public Context getContext() {
+		return context;
+	}
 }
