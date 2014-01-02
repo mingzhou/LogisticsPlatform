@@ -1,16 +1,12 @@
 package com.logistics.activity;
 
-import java.io.IOException;
-
-import org.apache.http.client.ClientProtocolException;
 import com.logistics.utils.HttpHelper;
 
 import roboguice.activity.RoboActivity;
 import roboguice.inject.ContentView;
 import roboguice.inject.InjectView;
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.KeyEvent;
 //import android.app.Activity;
 import android.view.Menu;
 import android.view.View;
@@ -18,7 +14,6 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
 
 /*
 *测试客户端和服务器的收发
@@ -35,55 +30,24 @@ public class SearchActivity extends RoboActivity {
 	@InjectView(R.id.result)
 	private TextView result;
 	
-	private HttpHelper hh = new HttpHelper("1.txt"); 
-	private String reply =null;
+//	private HttpHelper hh = new HttpHelper("1.txt"); 
+//	private String reply =null;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
+		//query.setOnEditorActionListener(new );
+		
 		send.setOnClickListener(new OnClickListener(){
 		
 			@Override
 			public void onClick(View v) {
-				
-					
-					doNetworkCompuationThread( );
-					result.setText(reply);
-				
-				
+				new AsyncTest().execute();
 			}});
 		
 		
 	}
-	
-	
-	public void  doNetworkCompuationThread( ){
-		//String reply = null;
-		new Thread(new Runnable(){
-			public void run() {
-			
-				try {
-					 reply = hh.getMessage();
-				} catch (ClientProtocolException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				
-
-					
-			
-			
-			
-		}}).start();
-		
-			
-	}
-	   
-	//
 	
 	
 	@Override
@@ -93,4 +57,29 @@ public class SearchActivity extends RoboActivity {
 		return true;
 	}
 
+	private class AsyncTest extends AsyncTask<String, Void, String> {
+
+		@Override
+		protected String doInBackground(String... uri) {
+			// TODO Auto-generated method stub
+			if(query.getText().toString().equals("1.txt")){
+			HttpHelper hh = new HttpHelper("1.txt");
+			return hh.getMessage();}
+			else return "wrong";
+			
+			
+		}
+
+		@Override
+		protected void onPostExecute(String reply) {
+			// TODO Auto-generated method stub
+			result.setText(reply);
+		}
+
+
+	}
+	
 }
+
+
+

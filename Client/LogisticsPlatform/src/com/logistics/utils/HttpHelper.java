@@ -3,6 +3,7 @@ package com.logistics.utils;
 import java.io.IOException;
 
 import org.apache.http.HttpResponse;
+import org.apache.http.ParseException;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
@@ -38,10 +39,28 @@ public class HttpHelper {
 		client.getConnectionManager().shutdown();
 	}
 	
-	public String getMessage() throws ClientProtocolException, IOException{
+	public String getMessage(){
 		HttpGet get = this.getGet();
-		HttpResponse response = this.getClient().execute(get);
-		String reply = EntityUtils.toString(response.getEntity());
+		HttpResponse response = null;
+		try {
+			response = this.getClient().execute(get);
+		} catch (ClientProtocolException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		String reply = null;
+		try {
+			reply = EntityUtils.toString(response.getEntity());
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return reply;
 	}
 	
