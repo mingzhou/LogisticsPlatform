@@ -8,6 +8,7 @@ import roboguice.inject.ContentView;
 import roboguice.inject.InjectView;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.os.Vibrator;
 import android.view.KeyEvent;
 import android.view.View;
@@ -25,6 +26,7 @@ import com.mz.astroboy.entity.Account;
 import com.mz.astroboy.entity.internal.ContextInfo;
 import com.mz.astroboy.service.IAstroboyRemoteControl;
 import com.mz.astroboy.utils.DatabaseHelper;
+import com.mz.astroboy.utils.HttpHelper;
 
 /**
  * 主界面
@@ -56,12 +58,19 @@ public class MainActivity extends RoboActivity {
 	
 	@Inject
 	private DatabaseHelper databaseHelper;		//	数据库
+	
+	@Inject
+	private HttpHelper httpHelper;
 			
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+		StrictMode.setThreadPolicy(policy);
 		
 		sayText.setText(contextInfo.getPackageName());
+		
+		testHttpHelper();
 
 		testDatabase();
 		
@@ -97,6 +106,12 @@ public class MainActivity extends RoboActivity {
 				startActivity(new Intent(MainActivity.this, FightActivity.class));
 			}
 		});
+	}
+	
+	private void testHttpHelper() {
+		String result = "html:\t" + httpHelper.sendHttpGet("http://219.223.168.97/file/1.json", "UTF-8");
+		Toast.makeText(this, result, Toast.LENGTH_LONG).show();
+		sayText.setText(result);
 	}
 	
 	private void testDatabase() {

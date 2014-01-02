@@ -6,6 +6,7 @@ import com.mz.astroboy.entity.internal.Astroboy;
 import com.mz.astroboy.service.IAstroboyRemoteControl;
 import com.mz.astroboy.service.internal.AstroboyRemoteControl;
 import com.mz.astroboy.utils.DatabaseHelper;
+import com.mz.astroboy.utils.HttpHelper;
 
 /**
  * 模块化安装各个组件
@@ -24,6 +25,7 @@ public class AstoboyModule extends AbstractModule {
 		//	如果直接使用具体的service，当然就不需要再绑定了，比如这里的com.mz.astroboy.entity.internal.ContextInfo
 		
 		requestStaticInjection(DatabaseHelper.class);
+		requestStaticInjection(HttpHelper.class);
 	}
 
 }
