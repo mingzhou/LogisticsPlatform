@@ -35,8 +35,8 @@ public class SearchActivity extends RoboActivity {
 	@InjectView(R.id.result)
 	private TextView result;
 	
-	//private HttpHelper hh = new HttpHelper("1.txt"); 
-	//private String reply =null;
+	private HttpHelper hh = new HttpHelper("1.txt"); 
+	private String reply =null;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +49,7 @@ public class SearchActivity extends RoboActivity {
 				
 					
 					doNetworkCompuationThread( );
-					
+					result.setText(reply);
 				
 				
 			}});
@@ -64,7 +64,7 @@ public class SearchActivity extends RoboActivity {
 			public void run() {
 			
 				try {
-					final String reply = new HttpHelper("1.txt").getMessage();
+					 reply = hh.getMessage();
 				} catch (ClientProtocolException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -72,15 +72,10 @@ public class SearchActivity extends RoboActivity {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				result.post(new  Runnable() {
-
-					public void run() {
-						// TODO Auto-generated method stub
-						result.setText(reply);
-					}});
+				
 
 					
-			//	result.setText(reply);
+			
 			
 			
 		}}).start();
