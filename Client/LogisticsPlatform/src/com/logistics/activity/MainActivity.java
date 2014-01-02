@@ -15,13 +15,15 @@ import android.widget.TextView;
 @ContentView(R.layout.activity_main)	//	绑定了activity_main.xml
 public class MainActivity extends RoboActivity {
 	@InjectView(R.id.helloTextView)
-	TextView helloTextView;
+	private TextView helloTextView;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
 		helloTextView.setText("物流平台");
+		
+		
 	}
 
 	@Override
