@@ -26,7 +26,7 @@ import com.google.inject.Provider;
  */
 
 /**
- * HTTP
+ * 同步线程处理HTTP请求
  * @author zhuangmz
  *
  */

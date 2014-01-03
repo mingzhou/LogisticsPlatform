@@ -3,6 +3,9 @@ package com.mz.astroboy.activity;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.http.Header;
+import org.json.JSONObject;
+
 import roboguice.activity.RoboActivity;
 import roboguice.inject.ContentView;
 import roboguice.inject.InjectView;
@@ -21,12 +24,14 @@ import android.widget.Toast;
 
 import com.google.inject.Inject;
 import com.j256.ormlite.dao.RuntimeExceptionDao;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.JsonHttpResponseHandler;
 import com.mz.astroboy.R;
 import com.mz.astroboy.entity.Account;
 import com.mz.astroboy.entity.internal.ContextInfo;
 import com.mz.astroboy.service.IAstroboyRemoteControl;
+import com.mz.astroboy.utils.AsyncHttpHelper;
 import com.mz.astroboy.utils.DatabaseHelper;
-import com.mz.astroboy.utils.HttpHelper;
 
 /**
  * 主界面
@@ -59,8 +64,11 @@ public class MainActivity extends RoboActivity {
 	@Inject
 	private DatabaseHelper databaseHelper;		//	数据库
 	
+//	@Inject
+//	private HttpHelper httpHelper;
+	
 	@Inject
-	private HttpHelper httpHelper;
+	private AsyncHttpHelper httpHelper;
 			
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -70,8 +78,6 @@ public class MainActivity extends RoboActivity {
 		
 		sayText.setText(contextInfo.getPackageName());
 		
-		testHttpHelper();
-
 		testDatabase();
 		
 		sayText.setOnEditorActionListener(new OnEditorActionListener() {
@@ -87,7 +93,19 @@ public class MainActivity extends RoboActivity {
 			@Override
 			public void onClick(View view) {
 				remoteControl.brushTeeth();
-
+				httpHelper.get("/file/1.json", new JsonHttpResponseHandler("UTF-8") {
+					@Override
+					public void onSuccess(JSONObject response) {
+						Toast.makeText(contextInfo.getContext(), response.toString(), Toast.LENGTH_LONG).show();
+						sayText.setText(response.toString());
+					}
+					@Override
+					public void onFailure(int statusCode, Header[] headers,
+							String responseBody, Throwable e) {
+						Toast.makeText(contextInfo.getContext(), statusCode + "\t" + responseBody, Toast.LENGTH_LONG).show();
+						sayText.setText(statusCode + "\t" + responseBody);
+					}
+				});
 			}
 		});
 		
@@ -102,16 +120,18 @@ public class MainActivity extends RoboActivity {
 		fightEvilButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View view) {
+				httpHelper.get("/file/1.txt", new AsyncHttpResponseHandler() {
+					@Override
+					public void onSuccess(int statusCode, Header[] headers,
+							String content) {
+						Toast.makeText(contextInfo.getContext(), statusCode + "\t" + content, Toast.LENGTH_LONG).show();
+					}
+				});
+				
 				//	Activity之间通过Intent机制实现跳转
 				startActivity(new Intent(MainActivity.this, FightActivity.class));
 			}
 		});
-	}
-	
-	private void testHttpHelper() {
-		String result = "html:\t" + httpHelper.sendHttpGet("http://219.223.168.97/file/1.json", "UTF-8");
-		Toast.makeText(this, result, Toast.LENGTH_LONG).show();
-		sayText.setText(result);
 	}
 	
 	private void testDatabase() {
