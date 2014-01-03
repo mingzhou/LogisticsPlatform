@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+    <LinearLayout android:orientation="horizontal"
+        android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"
+        android:background="#191919" >
+        <ImageButton
+            android:id="@+id/trunk_return"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/search_return"
+            
+            android:src="@android:drawable/ic_menu_revert" />
+    </LinearLayout>
+    
+	<ScrollView android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"
+    	android:orientation="vertical" >
+
+    	<LinearLayout android:layout_width="match_parent"
+        	android:layout_height="wrap_content"
+        	android:orientation="vertical" >
+        	<TableLayout android:id="@+id/trunk_top"
+          		android:layout_width="fill_parent"
+	        	android:layout_height="wrap_content"
+	        	android:layout_marginLeft="5dp"
+	        	android:layout_marginRight="5dp"
+	        	android:layout_marginTop="10dp" >
+	        	<TableRow>
+	            	<TextView
+	                	android:layout_width="wrap_content"
+	                	android:layout_height="wrap_content"
+	                	android:text="@string/departure"
+	                	android:textSize="20sp" />
+	            	<Spinner
+	                	android:id="@+id/trunk_departure"
+	                	android:layout_width="150dp"
+	                	android:layout_height="wrap_content" />
+	        	</TableRow>
+	        	<TableRow>
+	            	<TextView
+	                	android:layout_width="wrap_content"
+	                	android:layout_height="fill_parent"
+	                	android:text="@string/destination"
+	                	android:textSize="20sp" />
+	            	<Spinner android:id="@+id/trunk_destination"
+	                	android:layout_width="150dp"
+	                	android:layout_height="wrap_content" />
+	        	</TableRow>
+        	</TableLayout>
+        
+       		<TextView
+	        	android:layout_width="wrap_content"
+	        	android:layout_height="wrap_content"
+	        	android:text="@string/trunk_type"
+	        	android:textSize="20sp" />
+        	<Spinner
+	        	android:id="@+id/trunk_type"
+	        	android:layout_width="wrap_content"
+	        	android:layout_height="wrap_content" />
+        	<TextView
+	        	android:layout_width="wrap_content"
+	        	android:layout_height="wrap_content"
+	        	android:text="@string/trunk_weight"
+	        	android:textSize="20sp" />
+        	<EditText
+				android:id="@+id/trunk_weight"
+				android:layout_width="100dp"
+				android:layout_height="wrap_content"
+				android:inputType="numberDecimal"
+				android:text=""
+				android:textSize="20sp"/>
+        	<Button
+				android:id="@+id/trunk_searchButton"
+				android:layout_width="wrap_content"
+				android:layout_height="0dip"
+				android:layout_weight="1"
+				android:layout_gravity="center_horizontal"
+				android:text="@string/search"
+				android:textSize="20sp">
+	    	</Button>
+        
+    	</LinearLayout>
+
+	</ScrollView>
+</LinearLayout>

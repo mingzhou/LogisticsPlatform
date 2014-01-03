@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">AppLogin</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_choose">Trunk and Goods</string>
+    <string name="button_goods">goods</string>
+    <string name="button_trunk">trunks</string>
+    <string name="title_activity_trunk">TrunkActivity</string>
+    <string name="title_activity_goods">GoodsActivity</string>
+    
+    
+    <string name="goods_type">Goods type</string>
+    <string name="goods_weight">Goods weight</string>
+    <string name="search">search</string>
+    
+    
+    <string name="trunk_type">Trunk type</string>
+    <string name="trunk_weight">Trunk weight</string>
+    
+    
+    <string name="departure">Departure</string>
+    <string name="destination">Destination</string>
+    
+    
+    <string name="title_activity_login">Sign in</string>
+    <string name="search_return">return</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in_register"><b>Sign in</b> or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="action_forgot_password">Recover lost password</string>
+    <string name="login_progress_signing_in">Signing in&#8230;</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+
+</resources>
