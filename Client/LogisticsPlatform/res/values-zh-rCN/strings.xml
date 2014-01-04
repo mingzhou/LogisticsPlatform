@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+* Copyright (C) 2013 FMSoft (http://www.fmsoft.cn)
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*      http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+-->
+
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">物流</string>
+    
+    <string name="register">注册</string>
+    
+    <string name="cancel">取消</string>
+    <string name="iphone_dlg_btn_ok_str">确 定</string>
+    <string name="iphone_dlg_btn_cancel_str">取 消</string>
+    <string name="promot_download_error_title">错误</string>
+    <string name="promot_download_error_msg">下载失败，请检查网络连接或存储卡</string>
+
+    <string name="operator_ch_unicom">中国联通</string>
+    <string name="operator_ch_mobile">中国移动</string>
+    <string name="operator_ch_telecom">中国电信</string>
+    
+    <string name="world_clock">世界时钟</string>
+    <string name="alarm">闹钟</string>
+    <string name="stopwatch">秒表</string>
+    <string name="timer">计时器</string>
+    <string name="sound">声音</string>
+    <string name="start">启动</string>
+    <string name="stop">暂停</string>
+    <string name="reset">复位</string>
+    <string name="lap">计次</string>
+    <string name="continues">继续</string>
+    <string name="lap_prefix">"计次 "</string>
+    <string name="hour">小时</string>
+    <string name="minutes">分钟</string>
+    <string name="dialog_message">计时结束!</string>
+    <string name="save">存储</string>
+    <string name="repeat">重复</string>
+    <string name="monday">每周一</string>
+    <string name="tuesday">每周二</string>
+    <string name="wendesday">每周三</string>
+    <string name="thursday">每周四</string>
+    <string name="friday">每周五</string>
+    <string name="staturday">每周六</string>
+    <string name="sunday">每周日</string>
+    <string name="returns">返回</string>
+    <string name="default_label" msgid="5590025289805630372">"闹钟"</string>
+    <string name="every_day" msgid="1058994798884544691">"每天"</string>
+    <string name="never" msgid="54104287800571769">"一律不"</string>
+    <string name="day_concat" msgid="971998564991636532">", "</string>
+    <string name="alarm_alert_dismiss_text" msgid="4942914605480888820">"取消"</string>
+    <string name="alarm_alert_snooze_text" msgid="1774416052207651584">"小睡"</string>
+    <string name="yesterday">昨天</string>
+    <string name="today">今天</string>
+    <string name="tomorrow">明天</string>
+    <string name="download">下载</string>
+    <string name="edit">编辑</string>
+    <string name="finish">完成</string>
+    <string name="delete">删除</string>
+    <string name="title">标签</string>
+    <string name="net_message">您没有网络链接！</string>
+    <string name="download_finish">下载完成！</string>
+    <string name="downlaoding">正在下载！</string>
+    <string name="time_over">计时结束时，启用</string>
+    <string name="default_alarm">默认</string>
+    <string name="add_alarm">添加闹钟</string>
+    <string name="label">标签</string>
+    <string name="snooze">小睡</string>
+    <string name="search_title">搜索城市以添加到世界时钟上。</string>
+    <string name="message">想体验一把iphone4S？使用领航桌面，多种手势操作，流畅滑动，让你的手机一秒钟变Iphone！</string>
+    <string name="alarm_notify_text" msgid="4891014685945904766">"暂停或关闭闹钟。"</string>
+    <string name="alarm_notify_snooze_label"> (小憩)</string>
+    <string name="alarm_notify_snooze_text">触摸取消报警</string>
+    <string name="no_world_clock">无世界时钟</string>
+    <string name="time_zone_name">北京</string>
+    <string name="time_zone_name_id">Beijing</string>
+    <string name="timezone">Asia/Shanghai</string>
+    <string name="am_text">上午</string>
+    <string name="pm_text">下午</string>
+    <string name="no_sdcard">当前sd卡不可用</string>
+</resources>

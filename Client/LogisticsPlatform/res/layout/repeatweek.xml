@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+* Copyright (C) 2013 FMSoft (http://www.fmsoft.cn)
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*      http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+-->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center_horizontal"
+    android:background="@drawable/add_alarm_bg"
+    >
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/title_tool_bar_title"
+        >
+<!--         <Button
+            android:id="@+id/return_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/returns"
+            android:textSize="18sp"
+            android:layout_marginLeft="5dip"
+            android:layout_centerVertical="true"
+            android:background="@drawable/gl_buttom_press"
+            style="@style/button_style"
+            /> -->
+        <Button
+            android:id="@+id/return_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dip"
+            android:background="@drawable/ioslike_arrow_left_btn"
+            android:gravity="center"
+            android:paddingLeft="15dip"
+            android:paddingRight="10dip"
+            android:shadowColor="@color/ios_navigation_bar_text_shadow_color"
+            android:shadowDy="-2"
+            android:shadowRadius="1"
+            android:text="@string/return_button"
+            android:textColor="@color/ios_navigation_bar_text_color"
+            android:textSize="@dimen/ios_activity_reture_btn_title_size"
+            android:textStyle="bold"
+            android:layout_centerVertical="true"
+            />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/repeat"
+                style="@style/titleTextStyle"
+                />
+    </RelativeLayout>
+
+   <ScrollView
+       android:layout_width="fill_parent"
+       android:layout_height="fill_parent"
+       >
+        <LinearLayout
+            android:id="@+id/LinearLayout"
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/first_layout"
+                android:clickable="true"
+                android:layout_marginLeft="4dip"
+                android:layout_marginRight="4dip"
+                android:background="@drawable/preferencelayoutbackgroundmainviewhead"
+                >
+                <RelativeLayout
+                    android:id="@+id/relativeLayout1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="10dip"
+
+                    >
+                    <TextView
+                        android:id="@+id/first_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/monday"
+                        android:textSize="18sp"
+                        android:textColor="@android:color/black"
+                        android:fadingEdge="horizontal"
+                        android:layout_centerVertical="true"
+                        />
+                    <ImageView
+                        android:id="@+id/first_arrow"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/ic_delivery"
+                        android:layout_alignParentRight="true"
+                        android:visibility="invisible"
+                        />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:clickable="true"
+                android:layout_marginLeft="4dip"
+                android:layout_marginRight="4dip"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/second_layout"
+                android:background="@drawable/preferencelayoutbackgroundmainviewbody"
+                >
+                <RelativeLayout
+                    android:id="@+id/relativeLayout1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="10dip"
+
+                    >
+                    <TextView
+                        android:id="@+id/second_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tuesday"
+                        android:textSize="18sp"
+                        android:textColor="@android:color/black"
+                        android:fadingEdge="horizontal"
+                        android:layout_centerVertical="true"
+
+                        />
+                    <ImageView
+                        android:id="@+id/second_arrow"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:background="@drawable/ic_delivery"
+                        android:layout_alignParentRight="true"
+                         android:layout_centerVertical="true"
+                          android:visibility="invisible"
+                        />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:clickable="true"
+                android:layout_marginLeft="4dip"
+                android:layout_marginRight="4dip"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/third_layout"
+                android:background="@drawable/preferencelayoutbackgroundmainviewbody"
+                >
+                <RelativeLayout
+                    android:id="@+id/relativeLayout1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="10dip"
+                    >
+                    <TextView
+                        android:id="@+id/third_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/wendesday"
+                        android:textSize="18sp"
+                        android:textColor="@android:color/black"
+                        android:fadingEdge="horizontal"
+                        android:layout_centerVertical="true"
+
+                        />
+                    <ImageView
+                        android:id="@+id/third_arrow"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:background="@drawable/ic_delivery"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:visibility="invisible"
+                        />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:clickable="true"
+                android:layout_marginLeft="4dip"
+                android:layout_marginRight="4dip"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/four_layout"
+                android:background="@drawable/preferencelayoutbackgroundmainviewbody"
+                >
+                <RelativeLayout
+                    android:id="@+id/relativeLayout1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="10dip"
+                    >
+                    <TextView
+                        android:id="@+id/four_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/thursday"
+                        android:textSize="18sp"
+                        android:textColor="@android:color/black"
+                        android:fadingEdge="horizontal"
+                        android:layout_centerVertical="true"
+                        />
+                    <ImageView
+                        android:id="@+id/four_arrow"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:background="@drawable/ic_delivery"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:visibility="invisible"
+                        />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:clickable="true"
+                android:layout_marginLeft="4dip"
+                android:layout_marginRight="4dip"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/five_layout"
+                android:background="@drawable/preferencelayoutbackgroundmainviewbody"
+                >
+                <RelativeLayout
+                    android:id="@+id/relativeLayout1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="10dip"
+                    >
+                    <TextView
+                        android:id="@+id/five_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/friday"
+                        android:textSize="18sp"
+                        android:textColor="@android:color/black"
+                        android:fadingEdge="horizontal"
+                        android:layout_centerVertical="true"
+
+                        />
+                    <ImageView
+                        android:id="@+id/five_arrow"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:background="@drawable/ic_delivery"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:visibility="invisible"
+                        />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:clickable="true"
+                android:layout_marginLeft="4dip"
+                android:layout_marginRight="4dip"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/six_layout"
+                android:background="@drawable/preferencelayoutbackgroundmainviewbody"
+                >
+                <RelativeLayout
+                    android:id="@+id/relativeLayout1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="10dip"
+                    >
+                    <TextView
+                        android:id="@+id/six_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/staturday"
+                        android:textSize="18sp"
+                        android:textColor="@android:color/black"
+                        android:fadingEdge="horizontal"
+                        android:layout_centerVertical="true"
+                        />
+                    <ImageView
+                        android:id="@+id/six_arrow"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:background="@drawable/ic_delivery"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                         android:visibility="invisible"
+                        />
+                </RelativeLayout>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:layout_marginLeft="4dip"
+                android:layout_marginRight="4dip"
+                android:id="@+id/seven_layout"
+                android:background="@drawable/preferencelayoutbackgroundmainviewfoot"
+                >
+                <RelativeLayout
+                    android:id="@+id/relativeLayout1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                       android:padding="10dip"
+                    >
+                        <TextView
+                            android:id="@+id/seven_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/sunday"
+                            android:textSize="18sp"
+                            android:textColor="@android:color/black"
+                            android:fadingEdge="horizontal"
+                            android:layout_centerVertical="true"
+                        />
+                    <ImageView
+                        android:id="@+id/seven_arrow"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:background="@drawable/ic_delivery"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                         android:visibility="invisible"
+                        />
+                </RelativeLayout>
+            </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+</LinearLayout>
