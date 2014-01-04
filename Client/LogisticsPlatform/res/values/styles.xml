@@ -1,5 +1,61 @@
 <resources>
 
+    <drawable name="translucent_background">#00ffffff</drawable>
+
+    <style name="WorkspaceIcon">
+
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">middle</item>
+        <item name="android:shadowColor">#FF000000</item>
+        <item name="android:shadowDx">0.0</item>
+        <item name="android:shadowDy">1.5</item>
+        <item name="android:shadowRadius">0.5</item>
+        <item name="android:textColor">#FFFFFFFF</item>
+
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+
+        <item name="android:paddingLeft">0dip</item>
+        <item name="android:paddingRight">0dip</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
+    <style name="WorkspaceIcon.Portrait">
+        <item name="android:drawablePadding">0dip</item>
+        <item name="android:paddingTop">@dimen/icon_paddingTop</item>
+        <item name="android:layout_marginLeft">2dip</item>
+        <item name="android:layout_marginRight">2dip</item>
+        <item name="android:layout_marginTop">0dip</item>
+        <item name="android:layout_marginBottom">0dip</item>
+    </style>
+
+    <style name="IPhoneDialog" parent="@android:Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@drawable/translucent_background</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="IPhoneAlertDialogWindowAnim" parent="android:Animation" mce_bogus="1">
+        <item name="android:windowEnterAnimation">@anim/fade_in_overshoot</item>
+    </style>
+
+    <style name="custom_dialog" parent="@android:style/Theme.Dialog">
+    <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
+    </style>
+
+    <style name="rotation_load_dialog" parent="@style/custom_dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
     <!--
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
@@ -17,4 +73,71 @@
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
 
+    
+     <style name="clock">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+    </style>
+
+    <!-- This theme is similar to the Theme.Dialog.Alert but does not rely on a
+         non-public resource. -->
+    <style name="alarm_alert" parent="android:Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+
+
+
+    <style name="alarm_list_left_column">
+        <item name="android:layout_width">68dip</item>
+        <item name="android:layout_height">68dip</item>
+    </style>
+
+    <style name="title_btn_style">
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/ios_navigation_bar_title_color</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:background">@drawable/ioslike_right_btn</item>
+        <item name="android:shadowRadius">1</item>
+        <item name="android:shadowDy">-2</item>
+        <item name="android:shadowColor">@color/ios_navigation_bar_title_shadow_color</item>
+        <item name="android:paddingLeft">10dip</item>
+        <item name="android:paddingRight">10dip</item>
+    </style>
+
+     <style name="titleTextStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/ios_navigation_bar_title_color</item>
+        <item name="android:textSize">@dimen/ios_activity_title_size</item>
+        <item name="android:shadowRadius">1</item>
+        <item name="android:shadowDy">-2</item>
+        <item name="android:shadowColor">@color/ios_navigation_bar_title_shadow_color</item>
+    </style>
+
+     <style name="button_style">
+        <item name="android:textColor">@color/ios_navigation_bar_title_color</item>
+        <item name="android:shadowRadius">1</item>
+        <item name="android:shadowDy">-2</item>
+        <item name="android:shadowColor">@color/ios_navigation_bar_title_shadow_color</item>
+     </style>
+
+      <style name="world_item_style">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:shadowRadius">1</item>
+        <item name="android:shadowDy">2</item>
+        <item name="android:shadowColor">@color/ios_navigation_bar_title_color</item>
+     </style>
+
+      <style name="world_item_style_1">
+        <item name="android:textColor">@color/world_item_tody</item>
+        <item name="android:shadowRadius">1</item>
+        <item name="android:shadowDy">2</item>
+        <item name="android:shadowColor">@color/ios_navigation_bar_title_color</item>
+     </style>
 </resources>

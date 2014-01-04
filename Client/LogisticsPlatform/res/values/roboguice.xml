@@ -2,6 +2,6 @@
 <resources>
     <!-- 绑定要注入的接口是谁实现的 -->
     <string-array name="roboguice_modules">
-        <item>com.mz.astroboy.module.AstoboyModule</item>
+        <item>com.logistics.module.LogisticsModule</item>
     </string-array>
 </resources>

@@ -1,7 +1,26 @@
 <resources>
+    <!-- roughly a status bar (for vertically centering the all apps
+         home icon in landscape) -->
+    <dimen name="status_bar_height">25dip</dimen>
 
+    <!-- roughly half a status bar (for vertically centering the right-hand
+         button cluster in landscape) -->
+    <dimen name="half_status_bar_height">12dip</dimen>
+
+    <dimen name="iphone_dlg_promot_btn_size">10sp</dimen>
+    <dimen name="espier_browser_promot_msg_height">200dip</dimen>
+
+    <dimen name="icon_paddingTop">10dip</dimen>
+    
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
+    <dimen name="data_text_size_1">22dp</dimen>
+    <dimen name="data_text_size_2">25dp</dimen>
+    <dimen name="am_pm_text_size">20dp</dimen>
+    <dimen name="world_bottom_padding">50dip</dimen>
+    <dimen name="world_time_text_size">16sp</dimen>
+    <dimen name="clock_margin">50dip</dimen>
+    <dimen name="alarm_padding_top">30dip</dimen>
 </resources>

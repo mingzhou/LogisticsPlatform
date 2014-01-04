@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+* Copyright (C) 2013 FMSoft (http://www.fmsoft.cn)
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*      http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+-->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    >
+     <RelativeLayout
+         android:id="@+id/relayout"
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+         android:paddingLeft="10dip"
+         android:paddingRight="10dip"
+         android:layout_centerVertical="true"
+         android:background="@drawable/bg_bar_clock"
+         >
+    <ImageView
+        android:id="@+id/clock_item_img_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="5dip"
+        android:background="@drawable/ic_edit_landscape"
+        android:layout_centerVertical="true"
+        android:visibility="gone"
+        />
+
+    <LinearLayout
+        android:id="@+id/clock_item_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_toRightOf="@id/clock_item_img_edit"
+        android:layout_marginLeft="5dip"
+        android:layout_centerVertical="true"
+        >
+            <TextView
+                android:id="@+id/clock_item_city"
+                android:layout_width="70dip"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                style="@style/world_item_style"
+                />
+    </LinearLayout>
+
+   <!--  <org.espier.clock.widget.AnalogClock
+        android:id="@+id/clock_item_img_clock"
+        android:layout_width="117dip"
+        android:layout_height="117dip"
+        android:layout_centerInParent="true"
+        /> -->
+   <!--  <ImageView
+        android:id="@+id/clock_item_img_clock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_checkon"
+        android:layout_centerInParent="true"
+        /> -->
+        <LinearLayout
+            android:id="@+id/clock_item_time_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:gravity="right"
+            android:orientation="vertical"
+            >
+           <!--  <org.espier.clock.widget.TimeView
+                android:id="@+id/clock_item_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                /> -->
+        </LinearLayout>
+
+
+     <ImageView
+        android:id="@+id/alarm_item_img_arrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:visibility="gone"
+        />
+     <Button
+         android:id="@+id/alarm_item_img_delete"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:background="@drawable/ic_button_delete"
+         android:text="@string/delete"
+         android:layout_centerVertical="true"
+         android:layout_alignParentRight="true"
+         android:textColor="@android:color/white"
+         android:visibility="invisible"
+         />
+
+       <org.espier.clock.widget.AnalogClock
+          android:id="@+id/analogClock"
+          android:layout_width="90dip"
+          android:layout_height="90dip"
+          android:layout_centerInParent="true"
+          >
+
+      </org.espier.clock.widget.AnalogClock>
+   </RelativeLayout>
+      <LinearLayout
+         android:id="@+id/lineLayout"
+         android:layout_width="fill_parent"
+         android:layout_height="1px"
+         android:background="#ff666666"
+         android:layout_alignParentBottom="true"
+         />
+</RelativeLayout>
