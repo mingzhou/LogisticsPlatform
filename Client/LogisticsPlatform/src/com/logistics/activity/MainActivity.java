@@ -43,7 +43,7 @@ public class MainActivity extends RoboActivity {
 		
 		TabSpec spec = null;
 		
-		spec = createTabSpec(tabHost, GoodActivity.TAG, res, R.string.world_clock, R.drawable.ic_tab_worldclock, GoodActivity.class);
+		spec = createTabSpec(tabHost, GoodActivity.TAG, res, R.string.goods_title, R.drawable.ic_tab_worldclock, GoodActivity.class);
 		tabHost.addTab(spec);
 		
 		spec = createTabSpec(tabHost, ProfileActivity.TAG, res, R.string.alarm, R.drawable.ic_tab_alarm, ProfileActivity.class);
