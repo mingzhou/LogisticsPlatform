@@ -37,9 +37,9 @@ public class GoodActivity extends RoboActivity {
     private ArrayAdapter<String> desAdapter;
     private ArrayAdapter<String> typeAdapter;
     
-    private String[] depStrings = { "江", "浙", "沪" };
-    private String[] desStrings = { "粤", "豫", "湘", "闽" };
-    private String[] typeStrings = { "食品", "建材" };
+    private String[] depStrings = { "Jiangsu", "Zhejiang", "Shanghai" };
+    private String[] desStrings = { "Guangdong", "Henan", "Hunan", "Fujian" };
+    private String[] typeStrings = { "food", "fruit" };
 	
 	public static final String TAG = GoodActivity.class.getSimpleName();
 	

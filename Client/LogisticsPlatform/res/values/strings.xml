@@ -98,5 +98,6 @@
     <string name="goods_weight">Goods weight</string>
     <string name="search">search</string>
     <string name="title_activity_good_result">GoodResultActivity</string>
+    <string name="no_data">No data</string>
 
 </resources>
