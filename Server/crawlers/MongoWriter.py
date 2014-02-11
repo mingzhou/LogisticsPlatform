@@ -1,6 +1,8 @@
 #/usr/bin/env/python2.7
 #encoding=utf-8
 
+from pymongo import MongoClient
+
 """
 Write data crawled from website to Mongodb
 Data Format as json:
@@ -34,5 +36,15 @@ Data Format as json:
 """
 
 class MongoWriter():
+
+    DB_NAME = "tsinghua"
+    COLLECTION = "goods"
+
     def __init__(self):
-        pass
+        c = MongoClient()
+        db = c[self.DB_NAME]
+        self.collection = db[self.COLLECTION]
+
+    def insert(self,data):
+        self.collection.insert(data) 
+

@@ -12,17 +12,14 @@ from MongoWriter import MongoWriter
 
 class Crawler():
 
-    DB_NAME = "tsinghua"
-
     def __init__(self):
         self.cookiejar = cookielib.CookieJar()
         self.opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(self.cookiejar),urllib2.HTTPHandler(debuglevel = 0))
         self.opener.addheaders = [('User-agent','Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1)')]
-        self.opener.addheaders = [('content-type','application/json')]
+        self.opener.addheaders.append(('content-type','application/json'))
 
         # connect to mongodb
-        #dbclient = MongoWriter()
-        #self.db = dbclient[self.DB_NAME]
+        self.db = MongoWriter()
 
     def print_cookies(self):
         for cookie in self.cookiejar:
@@ -48,7 +45,8 @@ class Crawler():
         pass
 
     def write_to_mongo(self, data):
-        pass
+        self.db.insert(data)
 
     def crawl(self,latest = True):
+        #虚函数
         pass

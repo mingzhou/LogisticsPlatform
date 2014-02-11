@@ -3,7 +3,11 @@
 
 def print_dict(d):
     for k,v in d.items():
-        print k,":",v
+        if type(v) is dict:
+            for k1,v1 in v.items():
+                print k1,":",v1
+        else:
+            print k,":",v
 
 def strip_dict(d):
     for k,v in d.items():
