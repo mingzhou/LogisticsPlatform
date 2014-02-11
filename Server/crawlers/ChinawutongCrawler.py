@@ -44,6 +44,7 @@ class ChinawutongCrawler(Crawler):
 
             strip_dict(d)
             print_dict(d)
+            print "#################"
 
     def get_details(self, page, d):
         soup = BeautifulSoup(page, fromEncoding="gb18030")
@@ -63,12 +64,9 @@ class ChinawutongCrawler(Crawler):
         d["tran_type"] = trs[4].findAll("td")[1].text
         d["contact"]["name"] = trs[4].findAll("td")[3].text
         d["validity"] = trs[5].findAll("td")[1].text
-        d["contact"]["name"] = trs[5].findAll("td")[3].text
+        d["contact"]["phone"] = trs[5].findAll("td")[3].text
         d["note"] = trs[6].findAll("td")[1].text
 
         return d
-
-
-
 
 
