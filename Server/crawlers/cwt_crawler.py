@@ -3,7 +3,7 @@
 
 from bs4 import BeautifulSoup
 
-from Crawler import Crawler
+from crawler import Crawler
 from utils import *
 
 class ChinawutongCrawler(Crawler):

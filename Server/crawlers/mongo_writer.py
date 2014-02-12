@@ -40,10 +40,10 @@ class MongoWriter():
     DB_NAME = "tsinghua"
     COLLECTION = "goods"
 
-    def __init__(self):
+    def __init__(self, collection = "goods"):
         c = MongoClient()
         db = c[self.DB_NAME]
-        self.collection = db[self.COLLECTION]
+        self.collection = db[collection]
 
     def insert(self,data):
         self.collection.insert(data) 
