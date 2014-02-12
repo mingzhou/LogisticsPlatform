@@ -16,7 +16,7 @@ class Crawler():
         self.cookiejar = cookielib.CookieJar()
         self.opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(self.cookiejar),urllib2.HTTPHandler(debuglevel = 0))
         self.opener.addheaders = [('User-agent','Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1)')]
-        self.opener.addheaders = [('content-type','application/json')]
+        self.opener.addheaders.append(('content-type','application/json'))
 
         # connect to mongodb
         self.db = MongoWriter()
