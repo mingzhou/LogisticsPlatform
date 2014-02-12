@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+* Copyright (C) 2013 FMSoft (http://www.fmsoft.cn)
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*      http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+-->
+
+<timezones>
+    <timezone countryid="Marshall Islands" id="Pacific/Majuro">马朱罗</timezone>
+    <timezone countryid="Midway Island" id="Pacific/Midway">中途岛</timezone>
+    <timezone countryid="Hawaii" id="Pacific/Honolulu">檀香山</timezone>
+    <timezone countryid="Alaska" id="America/Anchorage">安克雷奇</timezone>
+    <timezone countryid="Pacific Time" id="America/Los_Angeles">美国太平洋时间 (洛杉矶)</timezone>
+    <timezone countryid="Tijuana" id="America/Tijuana">美国太平洋时间 (提华纳)</timezone>
+    <timezone countryid="Arizona" id="America/Phoenix">美国山区时间 (凤凰城)</timezone>
+    <timezone countryid="Chihuahua" id="America/Chihuahua">奇瓦瓦</timezone>
+    <timezone countryid="Mountain Time" id="America/Denver">美国山区时间 (丹佛)</timezone>
+    <timezone countryid="Central America" id="America/Costa_Rica">美国中部时间 (哥斯达黎加)</timezone>
+    <timezone countryid="Central Time" id="America/Chicago">美国中部时间 (芝加哥)</timezone>
+    <timezone countryid="Mexico City" id="America/Mexico_City">墨西哥城</timezone>
+    <timezone countryid="Saskatchewan" id="America/Regina">美国中部时间 (里贾纳)</timezone>
+    <timezone countryid="Bogota" id="America/Bogota">哥伦比亚时间 (波哥大)</timezone>
+    <timezone countryid="Eastern Time" id="America/New_York">美国东部时间 (纽约)</timezone>
+    <timezone countryid="Venezuela" id="America/Caracas">委内瑞拉时间 (加拉加斯)</timezone>
+    <timezone countryid="Atlantic Time (Barbados)" id="America/Barbados">大西洋时间 (巴巴多斯)</timezone>
+    <timezone countryid="Manaus" id="America/Manaus">亚马逊标准时间 (马瑙斯)</timezone>
+    <timezone countryid="Santiago" id="America/Santiago">圣地亚哥</timezone>
+    <timezone countryid="Newfoundland" id="America/St_Johns">纽芬兰时间 (圣约翰)</timezone>
+    <timezone countryid="Brasilia" id="America/Sao_Paulo">巴西 (巴西利亚)</timezone>
+    <timezone countryid="Buenos Aires" id="America/Argentina/Buenos_Aires">布宜诺斯艾利斯</timezone>
+    <timezone countryid="Greenland" id="America/Godthab">戈特霍布</timezone>
+    <timezone countryid="Montevideo" id="America/Montevideo">乌拉圭时间 (蒙得维的亚)</timezone>
+    <timezone countryid="Mid-Atlantic" id="Atlantic/South_Georgia">南乔治亚</timezone>
+    <timezone countryid="Azores" id="Atlantic/Azores">亚述尔群岛</timezone>
+    <timezone countryid="Cape Verde Islands" id="Atlantic/Cape_Verde">佛得角</timezone>
+    <timezone countryid="Casablanca" id="Africa/Casablanca">卡萨布兰卡</timezone>
+    <timezone countryid="London, Dublin" id="Europe/London">格林尼治标准时间 (伦敦)</timezone>
+    <timezone countryid="Amsterdam, Berlin" id="Europe/Amsterdam">中欧标准时间 (阿姆斯特丹)</timezone>
+    <timezone countryid="Belgrade" id="Europe/Belgrade">中欧标准时间 (贝尔格莱德)</timezone>
+    <timezone countryid="Brussels" id="Europe/Brussels">中欧标准时间 (布鲁塞尔)</timezone>
+    <timezone countryid="Sarajevo" id="Europe/Sarajevo">中欧标准时间 (萨拉热窝)</timezone>
+    <timezone countryid="Windhoek" id="Africa/Windhoek">温得和克</timezone>
+    <timezone countryid="W. Africa Time" id="Africa/Brazzaville">西部非洲标准时间 (布拉扎维)</timezone>
+    <timezone countryid="Amman, Jordan" id="Asia/Amman">东欧标准时间 (安曼)</timezone>
+    <timezone countryid="Athens, Istanbul" id="Europe/Athens">东欧标准时间 (伊斯坦布尔)</timezone>
+    <timezone countryid="Beirut, Lebanon" id="Asia/Beirut">东欧标准时间 (贝鲁特)</timezone>
+    <timezone countryid="Cairo" id="Africa/Cairo">东欧标准时间 (开罗)</timezone>
+    <timezone countryid="Helsinki" id="Europe/Helsinki">东欧标准时间 (赫尔辛基)</timezone>
+    <timezone countryid="Jerusalem" id="Asia/Jerusalem">以色列时间 (耶路撒冷)</timezone>
+    <timezone countryid="Minsk" id="Europe/Minsk">明斯克</timezone>
+    <timezone countryid="Harare" id="Africa/Harare">中部非洲标准时间 (哈拉雷)</timezone>
+    <timezone countryid="Baghdad" id="Asia/Baghdad">巴格达</timezone>
+    <timezone countryid="Moscow" id="Europe/Moscow">莫斯科</timezone>
+    <timezone countryid="Kuwait" id="Asia/Kuwait">科威特</timezone>
+    <timezone countryid="Nairobi" id="Africa/Nairobi">东部非洲标准时间 (内罗毕)</timezone>
+    <timezone countryid="Tehran" id="Asia/Tehran">伊朗标准时间 (德黑兰)</timezone>
+    <timezone countryid="Baku" id="Asia/Baku">巴库</timezone>
+    <timezone countryid="Tbilisi" id="Asia/Tbilisi">第比利斯</timezone>
+    <timezone countryid="Yerevan" id="Asia/Yerevan">埃里温</timezone>
+    <timezone countryid="Dubai" id="Asia/Dubai">迪拜</timezone>
+    <timezone countryid="Kabul" id="Asia/Kabul">阿富汗时间 (喀布尔)</timezone>
+    <timezone countryid="Islamabad, Karachi" id="Asia/Karachi">卡拉奇</timezone>
+    <timezone countryid="Ural'sk" id="Asia/Oral">乌拉尔</timezone>
+    <timezone countryid="Yekaterinburg" id="Asia/Yekaterinburg">叶卡捷林堡</timezone>
+    <timezone countryid="Kolkata" id="Asia/Calcutta">加尔各答</timezone>
+    <timezone countryid="Sri Lanka" id="Asia/Colombo">科伦坡</timezone>
+    <timezone countryid="Kathmandu" id="Asia/Katmandu">尼泊尔时间 (加德满都)</timezone>
+    <timezone countryid="Astana" id="Asia/Almaty">阿拉木图</timezone>
+    <timezone countryid="Yangon" id="Asia/Rangoon">缅甸时间 (仰光)</timezone>
+    <timezone countryid="Krasnoyarsk" id="Asia/Krasnoyarsk">克拉斯诺亚尔斯克</timezone>
+    <timezone countryid="Bangkok" id="Asia/Bangkok">曼谷</timezone>
+    <timezone countryid="Beijing" id="Asia/Shanghai">中国标准时间 (北京)</timezone>
+    <timezone countryid="Hong Kong" id="Asia/Hong_Kong">香港时间 (香港)</timezone>
+    <timezone countryid="Irkutsk" id="Asia/Irkutsk">伊尔库茨克时间 (伊尔库茨克)</timezone>
+    <timezone countryid="Kuala Lumpur" id="Asia/Kuala_Lumpur">吉隆坡</timezone>
+    <timezone countryid="Perth" id="Australia/Perth">佩思</timezone>
+    <timezone countryid="Taipei" id="Asia/Taipei">台北时间 (台北)</timezone>
+    <timezone countryid="Seoul" id="Asia/Seoul">首尔</timezone>
+    <timezone countryid="Tokyo, Osaka" id="Asia/Tokyo">日本时间 (东京)</timezone>
+    <timezone countryid="Yakutsk" id="Asia/Yakutsk">雅库茨克时间 (雅库茨克)</timezone>
+    <timezone countryid="Adelaide" id="Australia/Adelaide">阿德莱德</timezone>
+    <timezone countryid="Darwin" id="Australia/Darwin">达尔文</timezone>
+    <timezone countryid="Brisbane" id="Australia/Brisbane">布里斯班</timezone>
+    <timezone countryid="Hobart" id="Australia/Hobart">霍巴特</timezone>
+    <timezone countryid="Sydney, Canberra" id="Australia/Sydney">悉尼</timezone>
+    <timezone countryid="Vladivostok" id="Asia/Vladivostok">海参崴时间 (符拉迪沃斯托克)</timezone>
+    <timezone countryid="Guam" id="Pacific/Guam">关岛</timezone>
+    <timezone countryid="Magadan" id="Asia/Magadan">马加丹时间 (马加丹)</timezone>
+    <timezone countryid="Auckland" id="Pacific/Auckland">奥克兰</timezone>
+    <timezone countryid="Fiji" id="Pacific/Fiji">斐济</timezone>
+    <timezone countryid="Tonga" id="Pacific/Tongatapu">东加塔布</timezone>
+    <timezone countryid="Wellington" id="Pacific/Fiji">惠灵顿</timezone>
+    <timezone countryid="Anadyr" id="Pacific/Fiji">阿纳德尔</timezone>
+    <timezone countryid="Canberra" id="Australia/Sydney">堪培拉</timezone>
+    <timezone countryid="Melbourne" id="Australia/Sydney">墨尔本</timezone>
+    <timezone countryid="Manila" id="Asia/Kuala_Lumpur">马尼拉</timezone>
+    <timezone countryid="Perth" id="Asia/Kuala_Lumpur">珀斯</timezone>
+    <timezone countryid="Jakarta" id="Asia/Bangkok">印尼 (雅加达)</timezone>
+    <timezone countryid="Hanoi" id="Asia/Bangkok">越南 (河内)</timezone>
+    <timezone countryid="Dhaka" id="Asia/Almaty">孟加拉国 (达卡)</timezone>
+    <timezone countryid="New Delhi" id="Asia/Calcutta">新德里</timezone>
+    <timezone countryid="Mumbai" id="Asia/Calcutta">孟买</timezone>
+    <timezone countryid="Islamabad" id="Asia/Oral">巴基斯斯坦 (伊斯兰堡)</timezone>
+    <timezone countryid="Lahore" id="Asia/Oral">巴基斯斯坦 (拉合尔)</timezone>
+    <timezone countryid="Tashkent" id="Asia/Oral">乌兹别克斯坦 (塔什干)</timezone>
+    <timezone countryid="Abu Dhabi" id="Asia/Dubai">阿拉伯联合酋长国 (阿布扎比)</timezone>
+    <timezone countryid="Antananarivo" id="Asia/Kuwait">马达加斯加 (安塔那那利佛)</timezone>
+    <timezone countryid="Riyadh" id="Asia/Kuwait">沙特阿拉伯 (利雅得)</timezone>
+    <timezone countryid="Sana'a" id="Asia/Kuwait">也门 (萨那)</timezone>
+    <timezone countryid="Addis Ababa" id="Asia/Kuwait">埃塞俄比亚 (亚的斯亚贝巴)</timezone>
+    <timezone countryid="Khartoum" id="Asia/Kuwait">苏丹 (喀土穆)</timezone>
+    <timezone countryid="Vancouver" id="America/Los_Angeles">温哥华</timezone>
+    <timezone countryid="San Francisco" id="America/Los_Angeles">旧金山</timezone>
+    <timezone countryid="Seattle" id="America/Los_Angeles">美国太平洋时间 (西雅图)</timezone>
+    <timezone countryid="Houston" id="America/Mexico_City">美国中部时间 (休斯敦)</timezone>
+    <timezone countryid="Minneapolis" id="America/Mexico_City">明尼亚波利斯</timezone>
+    <timezone countryid="New Orleans" id="America/Mexico_City">新奥尔良</timezone>
+    <timezone countryid="Winnipeg" id="America/Mexico_City">温尼伯</timezone>
+    <timezone countryid="Montgomery" id="America/Chicago">美国中部时间 (蒙哥马利)</timezone>
+    <timezone countryid="Nassau" id="America/New_York">巴哈马 (拿骚)</timezone>
+    <timezone countryid="Lima" id="America/New_York">秘鲁 (利马)</timezone>
+    <timezone countryid="Kingston" id="America/New_York">牙买加 (金斯敦)</timezone>
+    <timezone countryid="Boston" id="America/Caracas">美国 (波士顿)</timezone>
+    <timezone countryid="Detroit" id="America/Caracas">美国 (底特律)</timezone>
+    <timezone countryid="Atlanta" id="America/Caracas">美国 (亚特兰大)</timezone>
+    <timezone countryid="Indianapolis" id="America/Caracas">美国 (印地安纳波利斯)</timezone>
+    <timezone countryid="Havana" id="America/Caracas">古巴 (哈瓦那)</timezone>
+    <timezone countryid="Washington" id="America/Caracas">美国 (DC 华盛顿哥伦比亚特区)</timezone>
+    <timezone countryid="Philadelphia" id="America/Caracas">美国 (费城)</timezone>
+    <timezone countryid="Toronto" id="America/Caracas">加拿大 (多伦多)</timezone>
+    <timezone countryid="Ottawa" id="America/Caracas">加拿大 (渥太华)</timezone>
+    <timezone countryid="Montreal" id="America/Caracas">加拿大 (蒙特利尔)</timezone>
+    <timezone countryid="La Paz" id="America/Caracas">玻利维亚 (拉巴斯)</timezone>
+    <timezone countryid="Santo Domingo" id="America/Caracas">多米尼加 (圣多明各)</timezone>
+    <timezone countryid="San Juan" id="America/Caracas">波多黎各 (圣胡安)</timezone>
+    <timezone countryid="Asuncion" id="America/Caracas">巴拉圭 (亚松森)</timezone>
+    <timezone countryid="Rio de Janeiro" id="America/Sao_Paulo">巴西 (里约热内卢)</timezone>
+    <timezone countryid="Dublin" id="Europe/London">格林尼治标准时间 (都柏林)</timezone>
+    <timezone countryid="Lagos" id="Europe/London">尼日利亚 (拉各斯)</timezone>
+    <timezone countryid="Algiers" id="Europe/London">阿尔及利亚 (阿尔及尔)</timezone>
+    <timezone countryid="Johannesburg" id="Europe/Brussels">中欧标准时间 (约翰内斯堡)</timezone>
+    <timezone countryid="Madrid" id="Europe/Brussels">西班牙 (马德里)</timezone>
+    <timezone countryid="Barcelona" id="Europe/Brussels">西班牙 (巴塞罗那)</timezone>
+    <timezone countryid="Paris" id="Europe/Brussels">法国 (巴黎)</timezone>
+    <timezone countryid="Geneva" id="Europe/Brussels">瑞士 (日内瓦)</timezone>
+    <timezone countryid="Zurich" id="Europe/Brussels">瑞士 (苏黎世)</timezone>
+    <timezone countryid="Frankfurt" id="Europe/Brussels">德国 (法兰克福)</timezone>
+    <timezone countryid="Oslo" id="Europe/Brussels">挪威 (奥斯陆)</timezone>
+    <timezone countryid="Copenhagen" id="Europe/Brussels">丹麦 (哥本哈根)</timezone>
+    <timezone countryid="Rome" id="Europe/Brussels">意大利 (罗马)</timezone>
+    <timezone countryid="Berlin" id="Europe/Brussels">德国 (柏林)</timezone>
+    <timezone countryid="Prague" id="Europe/Brussels">捷克 (布拉格)</timezone>
+    <timezone countryid="Zagreb" id="Europe/Brussels">克罗地亚 (萨格勒布)</timezone>
+    <timezone countryid="Vienna" id="Europe/Brussels">奥地利 (维也纳)</timezone>
+    <timezone countryid="Stockholm" id="Europe/Brussels">瑞典 (斯德哥尔摩)</timezone>
+    <timezone countryid="Budapest" id="Europe/Sarajevo">匈牙利 (布达佩斯)</timezone>
+    <timezone countryid="Warsaw" id="Europe/Sarajevo">波兰 (华沙)</timezone>
+    <timezone countryid="Cape Town" id="Europe/Sarajevo">南非 (开普敦)</timezone>
+    <timezone countryid="Sofia" id="Europe/Athens">东欧标准时间 (索非亚)</timezone>
+    <timezone countryid="Tallinn" id="Europe/Athens">东欧标准时间 (塔林)</timezone>
+    <timezone countryid="Kyiv" id="Europe/Athens">乌克兰 (基辅)</timezone>
+    <timezone countryid="Odesa" id="Europe/Athens">乌克兰 (敖德萨)</timezone>
+    <timezone countryid="Ankara" id="Europe/Athens">土耳其 (安卡拉)</timezone>
+    <timezone countryid="Halifax" id="America/Sao_Paulo">加拿大 (哈里法克斯)</timezone>
+</timezones>

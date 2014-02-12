@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!--
+/*
+* Copyright (C) 2013 FMSoft (http://www.fmsoft.cn)
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*      http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+-->
+
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- for about dialog -->
+    <string name="menu_about">关于</string>
+    <string name="version_name">版本</string>
+    <string name="share_name">分享给朋友</string>
+    <string name="share_description" />
+    <string name="feedback_name">评论此软件</string>
+    <string name="feedback_description" />
+    <string name="check_update">检查新版本</string>
+    <string name="check_update_desc" />
+    <string name="check_update_noupdate">没有新版本，请稍后再来。</string>
+    <string name="check_update_timeout">检查超时！</string>
+    <string name="copyright_name">版权</string>
+    <string name="copyright_description">© 2013 飞漫软件</string>
+    <string name="more_espier_apps">更多领航应用</string>
+
+    <!-- General -->
+    <string name="am">上午</string>
+    <string name="pm">下午</string>
+    <string name="no_sim_card">无 SIM 卡</string>
+    <string name="no_service">无服务</string>
+
+    <string name="return_button">返回</string>
+    <string name="ok">确定</string>
+
+    <string name="local_wallpaper">系统壁纸</string>
+    <string name="menu_wallpaper_online">在线图库</string>
+    <string name="select_widget">小部件选择</string>
+    <string name="widget">小部件</string>
+    <string name="widget_taskbar">任务栏小部件</string>
+    <string name="widget_desc1">请选择“4×1”或者“5×1”的小部件。\n对锁屏插件，点击锁屏上的日期区域即可显示小部件。\n对通知插件，小部件将显示在通知页顶部。</string>
+    <string name="widget_desc2">请选择“4×1”或者“5×1”的小部件。\n该小部件将替换领航桌面任务栏左侧的快捷工具栏。</string>
+    <string name="widget_prompt">小部件大小不合适，请重新选择。</string>
+
+    <string-array name="share_contents">
+        <item>我正在使用最好的 iOS 风格——<xliff:g>%1$s</xliff:g>。这款应用具有丰富的功能和简洁的用户体验，现推荐给您。在软件市场上搜索“<xliff:g>%2$s</xliff:g>”或者点击http://m.espier.org 可免费下载并安装。</item>
+    </string-array>
+
+    <string name="no_network_connect">没有可用的网络连接，请设置好您的网络后再试！</string>
+    <string name="download_espier_launcher">立即下载</string>
+    <string name="launcher_ad_msg">这是一个专门针对领航桌面的插件软件包。领航桌面是一款流行的第三方免费 Android 桌面软件。要使用该插件，请首先下载并安装领航桌面。</string>
+
+    <string name="fix_button">确定</string>
+    <string name="ok_button">确定</string>
+    <string name="cancel_button">取消</string>
+</resources>

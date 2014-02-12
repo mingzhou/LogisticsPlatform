@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+* Copyright (C) 2013 FMSoft (http://www.fmsoft.cn)
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*      http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+-->
+
+<resources>
+
+    <!-- dimen -->
+    <dimen name="ios_setting_line_custom_margin_left">20dip</dimen>
+    <dimen name="ios_setting_line_custom_margin_right">20dip</dimen>
+
+    <dimen name="ios_activity_title_size">20sp</dimen>
+    <dimen name="ios_activity_reture_btn_title_size">13sp</dimen>
+
+    <dimen name="ios_container_header_size">16sp</dimen>
+    <dimen name="ios_container_descliption_size">15sp</dimen>
+
+    <dimen name="ios_list_line_header_text_size">17sp</dimen>
+    <dimen name="ios_list_line_body_text_size">24sp</dimen>
+
+
+    <!-- color -->
+    <color name="ios_navigation_bar_text_color">#ffffffff</color>
+    <color name="ios_navigation_bar_text_shadow_color">#ff364457</color>
+    <color name="ios_navigation_bar_title_color">#ffffffff</color>
+    <color name="ios_navigation_bar_title_shadow_color">#ff000000</color>
+
+    <color name="ios_setting_label_color">#ff000000</color>
+    <color name="ios_setting_text_hint_color">#ff4c566c</color>
+    <color name="ios_setting_text_edit_color">#ff385487</color>
+    <color name="ios_setting_text_shadow_color">#ffffffff</color>
+
+    <dimen name="setting_line_header_margin_left">5dip</dimen>
+    <dimen name="setting_line_footer_margin_right">5dip</dimen>
+    <dimen name="setting_line_drawable_padding">3dip</dimen>
+    <dimen name="setting_line_padding_h">10dip</dimen>
+    <dimen name="setting_line_padding_v">8dip</dimen>
+
+</resources>
