@@ -8,7 +8,7 @@ import pymongo
 
 from bs4 import BeautifulSoup
 
-from MongoWriter import MongoWriter
+from mongo_writer import MongoWriter
 
 class Crawler():
 
@@ -19,7 +19,10 @@ class Crawler():
         self.opener.addheaders.append(('content-type','application/json'))
 
         # connect to mongodb
-        self.db = MongoWriter()
+        self.db = None
+
+    def set_db(self, db):
+        self.db = db
 
     def print_cookies(self):
         for cookie in self.cookiejar:

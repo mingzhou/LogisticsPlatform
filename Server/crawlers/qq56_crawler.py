@@ -3,7 +3,7 @@
 
 from bs4 import BeautifulSoup
 
-from Crawler import Crawler
+from crawler import Crawler
 from utils import *
 
 null = "null"
@@ -47,6 +47,15 @@ class QQ56Crawler(Crawler):
     def parse_response(self,res):
         return eval(res)
 
+    def record_latestid(self,newid,fname):
+        if long(newid)>long(self.latestid):
+            print "newid:",newid
+            print "latestid",self.latestid
+            print "id changed"
+            self.latestid = newid
+            with open(fname,'w') as f:
+                f.write(str(newid))
+
 
 class QQ56CarCrawler(QQ56Crawler):
     def __init__(self):
@@ -76,12 +85,14 @@ class QQ56CarCrawler(QQ56Crawler):
             if result:
                 self.record_latestid(result["content"]["max"],self.fname)
             while result:
-                self.record_to_db(result,self.collection)
+                self.write_to_mongo(self.info_format(result))
                 time.sleep(10)
                 self.more_params["pid"] = p
                 self.more_params["idx"] = result["content"]["min"]
                 result = self.each_crawl(self.MORE_URL,self.more_params)
 
+    def info_format(self, data):
+        pass
 
 class QQ56GoodCrawler(QQ56Crawler):
 
@@ -111,11 +122,14 @@ class QQ56GoodCrawler(QQ56Crawler):
             if result:
                 self.record_latestid(result["content"]["max"],self.fname)
             while result:
-                self.record_to_db(result,self.collection)
+                self.write_to_mongo(self.info_format(result))
                 time.sleep(6)
                 self.more_params["pid"] = p
                 self.more_params["idx"] = result["content"]["min"]
                 result = self.each_crawl(self.MORE_URL,self.more_params)
+
+    def info_format(self, data):
+        pass
 
 class LatestCrawler(QQ56Crawler):
 
@@ -181,4 +195,3 @@ class LatestCrawler(QQ56Crawler):
             with open(fname,'w') as f:
                 f.write(str(newid))
     
-
