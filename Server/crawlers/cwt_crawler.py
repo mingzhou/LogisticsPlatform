@@ -7,13 +7,13 @@ from crawler import Crawler
 from utils import *
 
 class ChinawutongCrawler(Crawler):
-"""
-Goods crawler for Chinawutong web 
-中国物通网的货源信息在http://www.chinawutong.com/103.html
-每页有8条货源信息，点击会有此货源的其他信息
-对一条货源信息的提取既要从信息列表的粗略信息(get_item方法)，也要从此信息的详细页面中提取（get_details）
-这两个方法都是对页面中静态信息的提取，如果页面有变化，两个方法也要进行修改
-"""
+    """
+    Goods crawler for Chinawutong web 
+    中国物通网的货源信息在http://www.chinawutong.com/103.html
+    每页有8条货源信息，点击会有此货源的其他信息
+    对一条货源信息的提取既要从信息列表的粗略信息(get_item方法)，也要从此信息的详细页面中提取（get_details）
+    这两个方法都是对页面中静态信息的提取，如果页面有变化，两个方法也要进行修改
+    """
 
     HOME_URL = "http://www.chinawutong.com/"
     HOST = "http://www.chinawutong.com/"
@@ -33,8 +33,8 @@ Goods crawler for Chinawutong web
                 self.write_to_mongo(d)
 
     def get_items(self, page):
-    """
-    """
+        """
+        """
         soup = BeautifulSoup(page, fromEncoding="gb18030")
         table = soup.find(class_="mainall")
         data = []

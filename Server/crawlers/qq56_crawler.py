@@ -11,8 +11,8 @@ true = "true"
 false = "false"
 
 class QQ56Crawler(Crawler):
-"""
-"""
+    """
+    """
 
     HOME_URL = 'http://www.56qq.cn'
     HOST = 'http://www.56qq.cn'
@@ -23,6 +23,12 @@ class QQ56Crawler(Crawler):
  
     def __init__(self):
         Crawler.__init__(self)
+        self.latestid = 0
+        self.regions = self.get_regions()
+
+    def get_regions(self):
+        url = "http://www.56qq.cn/pagelet/common/regions?v=20110513"
+        return self.parse_response(self.get(url))
 
     def get_pids(self,page):
         pids = []
@@ -34,8 +40,7 @@ class QQ56Crawler(Crawler):
         return pids
 
     def each_crawl(self,url,params):
-        request = urllib2.Request(url,urllib.urlencode(params))
-        res = self.opener.open(request).read()
+        res = self.post(url,params)
         result = self.parse_response(res)
         if self.no_more(result):
             return None
@@ -86,13 +91,16 @@ class QQ56CarCrawler(QQ56Crawler):
                 self.record_latestid(result["content"]["max"],self.fname)
             while result:
                 self.write_to_mongo(self.info_format(result))
-                time.sleep(10)
+                time.sleep(self.T)
                 self.more_params["pid"] = p
                 self.more_params["idx"] = result["content"]["min"]
                 result = self.each_crawl(self.MORE_URL,self.more_params)
 
     def info_format(self, data):
-        pass
+        print_dict(data)
+
+        return
+
 
 class QQ56GoodCrawler(QQ56Crawler):
 
@@ -123,13 +131,18 @@ class QQ56GoodCrawler(QQ56Crawler):
                 self.record_latestid(result["content"]["max"],self.fname)
             while result:
                 self.write_to_mongo(self.info_format(result))
-                time.sleep(6)
+                time.sleep(self.T)
                 self.more_params["pid"] = p
                 self.more_params["idx"] = result["content"]["min"]
                 result = self.each_crawl(self.MORE_URL,self.more_params)
 
     def info_format(self, data):
-        pass
+        """
+        Format json data to our data format
+        """
+        print_dict(data)
+
+        return 
 
 class LatestCrawler(QQ56Crawler):
 
@@ -164,7 +177,7 @@ class LatestCrawler(QQ56Crawler):
             print "car new data..."
             self.record_latestid(result["content"]["max"],self.car_fname)
             #self.record(result)
-            self.record_to_db(result,self.car_col)
+            self.write_to_mongo(result,self.car_col)
 
     def good_crawl(self):
         self.latestid = self.read_latestid(self.car_fname)
@@ -183,7 +196,7 @@ class LatestCrawler(QQ56Crawler):
             self.car_crawl()
             time.sleep(120)
 
-    def info_format(self):
+    def info_format(self, data):
         pass
 
     def record_latestid(self,newid,fname):

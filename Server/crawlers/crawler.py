@@ -11,6 +11,8 @@ from bs4 import BeautifulSoup
 from mongo_writer import MongoWriter
 
 class Crawler():
+    #time interval for each operation
+    T = 0
 
     def __init__(self):
         self.cookiejar = cookielib.CookieJar()
@@ -28,7 +30,10 @@ class Crawler():
         for cookie in self.cookiejar:
             print cookie.name
             print cookie.value
-    
+            
+    def open_home(self):
+        return self.get(self.HOME_URL)
+
     def get(self, url, params = {}):
         url+='?'
         if len(params) > 0:
@@ -44,7 +49,7 @@ class Crawler():
         response = self.opener.open(urllib2.Request(url, data))
         return response.read()
 
-    def info_format(self):
+    def info_format(self, data):
         pass
 
     def write_to_mongo(self, data):
