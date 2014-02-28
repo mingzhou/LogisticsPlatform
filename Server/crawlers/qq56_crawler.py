@@ -24,9 +24,12 @@ class QQ56Crawler(Crawler):
     def __init__(self):
         Crawler.__init__(self)
         self.latestid = 0
-        self.regions = self.get_regions()
+        self.regions = self.get_regions_dict()
 
-    def get_regions(self):
+    def get_regions_dict(self):
+        """
+        56qq自己有一个省市id对应表，获得这个对应关系
+        """
         url = "http://www.56qq.cn/pagelet/common/regions?v=20110513"
         return self.parse_response(self.get(url))
 
@@ -61,6 +64,27 @@ class QQ56Crawler(Crawler):
             with open(fname,'w') as f:
                 f.write(str(newid))
 
+     def region(self, s):
+         """
+         通过region编号获得地址汉字字符串
+         s:编号字符串
+         """
+         text = ""
+         prov = s[0:2]
+         city = s[0:4]
+         dist = s #区
+
+         for p in self.regions:
+             if p["id"] == prov:
+                 text += p["name"]
+                 text += "-"
+                 for c in p["children"]:
+                     if c["id"] == city:
+                         text += c["name"]
+                         text += "-"
+                         for d in c["children"]:
+                             text += d["name"]
+          return text
 
 class QQ56CarCrawler(QQ56Crawler):
     def __init__(self):
@@ -97,10 +121,7 @@ class QQ56CarCrawler(QQ56Crawler):
                 result = self.each_crawl(self.MORE_URL,self.more_params)
 
     def info_format(self, data):
-        print_dict(data)
-
-        return
-
+        pass
 
 class QQ56GoodCrawler(QQ56Crawler):
 
@@ -140,9 +161,33 @@ class QQ56GoodCrawler(QQ56Crawler):
         """
         Format json data to our data format
         """
+        #print_dict(data)
+        l = []
         print_dict(data)
+        for m in data["msgs"]:
+            d = {}
+            d["s_addr"] = self.region(m["dep"])
+            d["e_addr"] = self.region(m["dest"])
+            d["title"] = ""
+            d["provider"] = m["tpk"]
+            #d["goods"] = {} 
+            #d["goods"]["name"] = 
+            #d["goods"]["type"] = 
+            #d["goods"]["weight"] = 
+            d["publish_time"] = m["ct"]/1000 #timestamp
+            #timestamp to datetime
+            #print(datetime.datetime.fromtimestamp(int("1393137957")).strftime('%Y-%m-%d %H:%M:%S'))
+            d["validity"] = 
+            d["detail"] = m["c"]
+            d["contact"] = {}
+            d["contact"]["name"] = m["udn"]
+            d["contact"]["phone"] = m["un"]
+            d["source"] = "物流QQ"
+            d["source_link"] = "http://www.56qq.cn/"
+            l.append(d)
 
-        return 
+        return l 
+
 
 class LatestCrawler(QQ56Crawler):
 
