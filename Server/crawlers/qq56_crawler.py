@@ -2,6 +2,7 @@
 #encoding=utf-8
 
 from bs4 import BeautifulSoup
+import time
 
 from crawler import Crawler
 from utils import *
@@ -64,27 +65,28 @@ class QQ56Crawler(Crawler):
             with open(fname,'w') as f:
                 f.write(str(newid))
 
-     def region(self, s):
-         """
-         通过region编号获得地址汉字字符串
-         s:编号字符串
-         """
-         text = ""
-         prov = s[0:2]
-         city = s[0:4]
-         dist = s #区
+    def region(self, ID):
+        """
+        通过region编号获得地址汉字字符串
+        s:编号字符串
+        """
+        text = ""
+        prov = int(str(ID)[0:2])
+        city = int(str(ID)[0:4])
+        dist = ID #区
 
-         for p in self.regions:
-             if p["id"] == prov:
-                 text += p["name"]
-                 text += "-"
-                 for c in p["children"]:
-                     if c["id"] == city:
-                         text += c["name"]
-                         text += "-"
-                         for d in c["children"]:
-                             text += d["name"]
-          return text
+        for p in self.regions:
+            if p["id"] == prov:
+                text += p["name"]
+                for c in p["children"]:
+                    if c["id"] == city:
+                        text += "-"
+                        text += c["name"]
+                        for d in c["children"]:
+                            if d["id"] == ID:
+                                text += "-"
+                                text += d["name"]
+        return text
 
 class QQ56CarCrawler(QQ56Crawler):
     def __init__(self):
@@ -163,13 +165,12 @@ class QQ56GoodCrawler(QQ56Crawler):
         """
         #print_dict(data)
         l = []
-        print_dict(data)
-        for m in data["msgs"]:
+        for m in data["content"]["msgs"]:
             d = {}
             d["s_addr"] = self.region(m["dep"])
             d["e_addr"] = self.region(m["dest"])
             d["title"] = ""
-            d["provider"] = m["tpk"]
+            d["provider"] = m["tpk"] if m.has_key("tpk") else "" 
             #d["goods"] = {} 
             #d["goods"]["name"] = 
             #d["goods"]["type"] = 
@@ -177,13 +178,15 @@ class QQ56GoodCrawler(QQ56Crawler):
             d["publish_time"] = m["ct"]/1000 #timestamp
             #timestamp to datetime
             #print(datetime.datetime.fromtimestamp(int("1393137957")).strftime('%Y-%m-%d %H:%M:%S'))
-            d["validity"] = 
+            d["validity"] = ""
             d["detail"] = m["c"]
             d["contact"] = {}
             d["contact"]["name"] = m["udn"]
             d["contact"]["phone"] = m["un"]
             d["source"] = "物流QQ"
             d["source_link"] = "http://www.56qq.cn/"
+            d["status"] = m["s"]#可能有被删除的信息
+            print_dict(d)
             l.append(d)
 
         return l 
