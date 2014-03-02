@@ -89,6 +89,9 @@ class QQ56Crawler(Crawler):
         return text
 
 class QQ56CarCrawler(QQ56Crawler):
+    """
+    以前写的，还有错
+    """
     def __init__(self):
         QQ56Crawler.__init__(self)
         self.first_params = {
@@ -186,13 +189,16 @@ class QQ56GoodCrawler(QQ56Crawler):
             d["source"] = "物流QQ"
             d["source_link"] = "http://www.56qq.cn/"
             d["status"] = m["s"]#可能有被删除的信息
-            print_dict(d)
+            #print_dict(d)
             l.append(d)
 
         return l 
 
 
 class LatestCrawler(QQ56Crawler):
+    """
+    还有错
+    """
 
     def __init__(self):
         QQ56Crawler.__init__(self)
