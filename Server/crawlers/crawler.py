@@ -1,17 +1,10 @@
-#/usr/bin/env/python2.7
-#encoding=utf-8
-
 import urllib
-import urllib2
-import cookielib
+import cookiejar
 import pymongo
-
 from bs4 import BeautifulSoup
-
 from mongo_writer import MongoWriter
 
 class Crawler():
-
     def __init__(self):
         self.cookiejar = cookielib.CookieJar()
         self.opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(self.cookiejar),urllib2.HTTPHandler(debuglevel = 0))

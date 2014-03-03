@@ -1,6 +1,3 @@
-#/usr/bin/env/python2.7
-#encoding=utf-8
-
 from pymongo import MongoClient
 
 """
@@ -36,15 +33,13 @@ Data Format as json:
 """
 
 class MongoWriter():
-
     DB_NAME = "tsinghua"
     COLLECTION = "goods"
 
     def __init__(self, collection = "goods"):
-        c = MongoClient()
-        db = c[self.DB_NAME]
+        client = MongoClient()
+        db = client[self.DB_NAME]
         self.collection = db[collection]
 
-    def insert(self,data):
+    def insert(self, data):
         self.collection.insert(data) 
-
