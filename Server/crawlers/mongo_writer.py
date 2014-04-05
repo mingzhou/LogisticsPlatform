@@ -43,3 +43,6 @@ class MongoWriter():
 
     def insert(self, data):
         self.collection.insert(data) 
+
+    def find_sha512(self, sha512):
+        return self.collection.find({"sha512": sha512}).count()

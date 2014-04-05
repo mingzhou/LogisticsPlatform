@@ -1,16 +1,13 @@
-#/usr/bin/env/python2.7
-#encoding=utf-8
-
 def print_dict(d):
-    for k,v in d.items():
+    for k, v in d.items():
         if type(v) is dict:
-            for k1,v1 in v.items():
-                print k1,":",v1
+            for k1, v1 in v.items():
+                print(k1, v1)
         else:
-            print k,":",v
+            print(k, v)
 
 def strip_dict(d):
-    for k,v in d.items():
+    for k, v in d.items():
         if type(v) is dict:
             v = strip_dict(v)
             d[k] = v
@@ -18,3 +15,6 @@ def strip_dict(d):
             d[k] = v.strip()
     return d
 
+def debug_file(dst, obj):
+    with open(dst, "w") as f:
+        f.write(obj)
