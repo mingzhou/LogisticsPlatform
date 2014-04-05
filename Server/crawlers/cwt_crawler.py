@@ -22,7 +22,7 @@ class ChinawutongCrawler(Crawler):
     def crawl(self):
         url = self.HOST + "103.html"
         for i in range(7):                         #   取前10个列表，一个列表中有8个货源信息
-            page = self.get(url, {"pid" : i + 1})   #   获得一页中的信息列表
+            page = self.get(url + "?", {"pid" : i + 1})   #   获得一页中的信息列表
             data, ok = self.get_items(page)         #   分析此列表页面
             for d in data:
                 self.write_to_mongo(d)
@@ -124,9 +124,8 @@ class ChinawutongCrawler(Crawler):
             </div>
             '''
             d["others"] = divs[3].contents[4].strip()
-            d["sha512"] = sha512(str(d).encode('utf-8')).hexdigest()
 
-            if self.find_sha(d["sha512"]):
+            if self.find(d):
                 return data, True
             data.append(d)
         return data, False

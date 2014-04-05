@@ -22,15 +22,18 @@ class Crawler():
             print(cookie.name, cookie.value)
     
     def get(self, url, params = {}):
-        url += '?'
-        if len(params) > 0:
-            for k, v in params.items():
-                url += str(k) + '=' +str(v) + '&'
-            url = url[:-1]
+        url = url + urllib.parse.urlencode(params)
         print("GET:", url)
+
         request = urllib.request.urlopen(url)
-        return request.read().decode("gbk")
-#return self.opener.open(request).read()
+        page = request.read()
+
+        try:
+            page = page.decode("utf8")
+        except UnicodeDecodeError:
+            page = page.decode("gbk")
+
+        return page                 #   return self.opener.open(request).read()
 
     def post(self, url, params):
         data = urllib.urlencode(params)
@@ -46,5 +49,5 @@ class Crawler():
     def crawl(self):
         pass
 
-    def find_sha(self, sha):
-        return self.db.find_sha512(sha)
+    def find(self, obj):
+        return self.db.find(obj)

@@ -1,36 +1,5 @@
 from pymongo import MongoClient
 
-"""
-Write data crawled from website to Mongodb
-Data Format as json:
-{
-"p_s_id":int,
-"c_s_id":int,
-"p_e_id":int,
-"c_e_id":int,
-"title" :"value",
-"provider":"value",
-"goods":{
-    "name":"value",
-    "type":"",
-    "weight":"",
-    "vol":""
-    },
-"tran_type":"",
-"v_length" :"",
-"note"     :"",
-"publish_time":"",
-"validity" :"",
-"detail"   :"",
-"contact":{
-    "name":"",
-    "phone":"",
-    "email":""
-    },
-"source"   :"",
-"source_link":""
-}
-"""
 
 class MongoWriter():
     DB_NAME = "tsinghua"
@@ -44,5 +13,5 @@ class MongoWriter():
     def insert(self, data):
         self.collection.insert(data) 
 
-    def find_sha512(self, sha512):
-        return self.collection.find({"sha512": sha512}).count()
+    def find(self, obj):
+        return self.collection.find(obj).count()
