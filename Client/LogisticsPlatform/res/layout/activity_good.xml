@@ -29,6 +29,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
+        android:contentDescription="@string/goods_title"
         android:src="@drawable/map_clock"
         android:layout_marginBottom="@dimen/world_bottom_padding"
         android:layout_alignParentBottom="true"
@@ -39,53 +40,24 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/title_tool_bar_title"
-        >
-         <Button
-            android:id="@+id/edit_btn"
-            android:layout_width="50dip"
-            android:layout_height="30dip"
-            android:text="@string/returns"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="5dip"
-            android:background="@drawable/ic_button_1"
-            style="@style/button_style"
-            />
-
-            <!-- <Button
-            android:id="@+id/edit_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/edit"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="5dip"
-            android:textColor="#FFFFFF"
-            android:background="@drawable/ic_button_3"
-            /> -->
+        >        
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                 android:text="@string/world_clock"
+                 android:text="@string/goods_title"
                 style="@style/titleTextStyle"
                 />
-        <Button
-            android:id="@+id/add_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:textColor="@android:color/white"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="5dip"
-            android:background="@drawable/ic_button_add"
-            />
+        
     </RelativeLayout>
 
     <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_below="@id/title_layout"
+        android:orientation="vertical"
         >
-        <LinearLayout
+       <!-- <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
              android:orientation="vertical"
@@ -104,12 +76,91 @@
             android:layout_height="wrap_content"
             android:background="@drawable/bg_shadow_clock_top"
             />
-        </LinearLayout>
+        </LinearLayout>-->
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <TableLayout
+                    android:id="@+id/goods_top"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="10dp" >
+
+                    <TableRow android:layout_width="match_parent" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/departure"
+                            android:textSize="20sp" />
+
+                        <Spinner
+                            android:id="@+id/goods_departure"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content" />
+                    </TableRow>
+
+                    <TableRow>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="fill_parent"
+                            android:text="@string/destination"
+                            android:textSize="20sp" />
+
+                        <Spinner
+                            android:id="@+id/goods_destination"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content" />
+                           </TableRow>
+                </TableLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/goods_type"
+                    android:textSize="20sp" />
+
+                <Spinner
+                    android:id="@+id/goods_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/goods_weight"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/goods_weight"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:text=""
+                    android:textSize="20sp" />
+
+                <Button
+                    android:id="@+id/goods_searchButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dip"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:text="@string/search"
+                    android:textSize="20sp" >
+                </Button>
+            </LinearLayout>
+        
+        
     </ScrollView>
-        <ImageView
+        <!--  <ImageView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:background="@drawable/bg_shadow_clock"
-            />
+            />-->
 </RelativeLayout>

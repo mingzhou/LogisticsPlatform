@@ -29,6 +29,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
+        android:contentDescription="@string/content_description"
         android:src="@drawable/map_clock"
         android:layout_marginBottom="@dimen/world_bottom_padding"
         android:layout_alignParentBottom="true"
@@ -40,44 +41,14 @@
         android:layout_height="wrap_content"
         android:background="@drawable/title_tool_bar_title"
         >
-         <Button
-            android:id="@+id/edit_btn"
-            android:layout_width="50dip"
-            android:layout_height="30dip"
-            android:text="@string/returns"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="5dip"
-            android:background="@drawable/ic_button_1"
-            style="@style/button_style"
-            />
-
-            <!-- <Button
-            android:id="@+id/edit_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/edit"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="5dip"
-            android:textColor="#FFFFFF"
-            android:background="@drawable/ic_button_3"
-            /> -->
-
+         
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                 android:text="@string/alarm"
+                 android:text="@string/profile_title"
                 style="@style/titleTextStyle"
                 />
-        <Button
-            android:id="@+id/add_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:textColor="@android:color/white"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="5dip"
-            android:background="@drawable/ic_button_add"
-            />
+       
     </RelativeLayout>
 
     <ScrollView
@@ -88,22 +59,94 @@
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-             android:orientation="vertical"
-            >
-        <LinearLayout
-            android:id="@+id/contentLayout"
-            android:orientation="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:background="@android:color/white"
-            >
-        </LinearLayout>
-        <ImageView
-            android:id="@+id/top_bg"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_shadow_clock_top"
-            />
+            android:orientation="vertical">
+        	<TableLayout
+                    android:id="@+id/profile_top"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="10dp" >
+            	<TableRow android:layout_width="match_parent" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/usr_name"
+                            android:textSize="20sp" />
+
+                        <TextView
+                            android:id="@+id/usr_name"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content" />
+                </TableRow>
+                
+            	<TableRow android:layout_width="match_parent" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/phone"
+                            android:textSize="20sp" />
+
+                        <TextView
+                            android:id="@+id/phone"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content" />
+                </TableRow>
+                
+            	<TableRow android:layout_width="match_parent" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/role_id"
+                            android:textSize="20sp" />
+
+                        <TextView
+                            android:id="@+id/role_id"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content" />
+                </TableRow>
+            	
+            	<TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/seperator"
+                            android:textSize="20sp" />
+            	
+            	<Button
+            	    		android:id="@+id/cur_deal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/cur_deal"
+                            android:textSize="20sp" />
+            	<Button
+            	    		android:id="@+id/his_deal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/his_deal"
+                            android:textSize="20sp" />
+            	<TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/seperator"
+                            android:textSize="20sp" />
+            	<Button
+            	    		android:id="@+id/change_password"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/change_password"
+                            android:textSize="20sp" />
+            	<Button
+            	    		android:id="@+id/change_phone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/change_phone"
+                            android:textSize="20sp" />
+            	
+            	
+        	</TableLayout>
         </LinearLayout>
     </ScrollView>
 
