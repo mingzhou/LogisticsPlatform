@@ -1,14 +1,14 @@
 from pymongo import MongoClient
 
-
 class MongoWriter():
-    DB_NAME = "tsinghua"
-    COLLECTION = "goods"
-
-    def __init__(self, collection = "goods"):
-        client = MongoClient()
-        db = client[self.DB_NAME]
-        self.collection = db[collection]
+    DB_HOST = "spider"
+    DATABASE = "demo"
+    COLLECTION = "supply"
+    
+    def __init__(self):
+        client = MongoClient(self.DB_HOST)
+        db = client[self.DATABASE]
+        self.collection = db[self.COLLECTION]
 
     def insert(self, data):
         self.collection.insert(data) 
