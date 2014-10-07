@@ -1,12 +1,13 @@
-from mongo_writer import MongoWriter
-from cwt_crawler import ChinawutongCrawler
-from qq56_crawler import QQ56Crawler
+import datetime
+from chinawutongcom import CrawlerChinawutong
+from mongodb import MongoDB
 
-db = MongoWriter()
+database = MongoDB()
 cs = []
-cs.append(ChinawutongCrawler())
-cs.append(QQ56Crawler())
+cs.append(CrawlerChinawutong())
 
 for c in cs:
-    c.set_db(db)
-    c.crawl()
+    data = c.crawl()
+    for item in reversed(data):
+        item["datetime"] = datetime.datetime.now()
+        database.insert(item)
