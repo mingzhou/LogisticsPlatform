@@ -5,7 +5,9 @@ from mongodb import MongoDB
 class Crawler():
     def __init__(self):
         self.database = MongoDB()
-    
+        self.data = []
+        self.goon = True
+
     def get(self, url, params = {}):
         url += urllib.parse.urlencode(params)
         response = urllib.request.urlopen(url)

@@ -5,8 +5,6 @@ class CrawlerChinawutong(Crawler):
     def __init__(self):
         Crawler.__init__(self)
         self.URL = "http://www.chinawutong.com/103.html"
-        self.data = []
-        self.goon = True
 
     def crawl(self):
         count = 1
@@ -18,7 +16,7 @@ class CrawlerChinawutong(Crawler):
 
     def uniform(self, page):
         soup = BeautifulSoup(page, "html.parser")   # lxml
-        table = soup.find(attrs={"class":"mainall"})
+        table = soup.find(attrs={"class": "mainall"})
         for tr in table.find_all("tr"):
             item = {"site": "chinawutong"}
             td = tr.find("td")

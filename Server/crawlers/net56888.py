@@ -6,8 +6,6 @@ class Crawler56888(Crawler):
     def __init__(self):
         Crawler.__init__(self)
         self.URL = "http://wb.56888.net/OutSourceList.aspx?tendertype=4&"
-        self.data = []
-        self.goon = True
 
     def crawl(self):
         count = 1
