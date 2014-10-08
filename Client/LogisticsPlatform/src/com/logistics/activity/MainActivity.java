@@ -46,10 +46,13 @@ public class MainActivity extends RoboActivity {
 		spec = createTabSpec(tabHost, GoodActivity.TAG, res, R.string.goods_title, R.drawable.ic_tab_worldclock, GoodActivity.class);
 		tabHost.addTab(spec);
 		
-		spec = createTabSpec(tabHost, ProfileActivity.TAG, res, R.string.alarm, R.drawable.ic_tab_alarm, ProfileActivity.class);
+		spec = createTabSpec(tabHost, ProfileActivity.TAG, res, R.string.profile_title, R.drawable.ic_tab_alarm, ProfileActivity.class);
 		tabHost.addTab(spec);
 		
-		spec = createTabSpec(tabHost, MapActivity.TAG, res, R.string.goods_title, R.drawable.ic_tab_more, MapActivity.class);
+		spec = createTabSpec(tabHost, MapActivity.TAG, res, R.string.map_title, R.drawable.ic_tab_more, MapActivity.class);
+		tabHost.addTab(spec);
+		
+		spec = createTabSpec(tabHost, SettingsActivity.TAG, res, R.string.settings_title, R.drawable.ic_tab_timer, SettingsActivity.class);
 		tabHost.addTab(spec);
 		
 		tabHost.setCurrentTab(0);

@@ -100,6 +100,8 @@ public class ProfileActivity extends RoboActivity {
                 onPause();
 			}});
 		
+		usr_name.setText("test");
+		
 	}
 	
 }

@@ -27,13 +27,7 @@ public class GoodActivity extends RoboActivity {
 	@InjectView(R.id.goods_weight)
     private EditText goods_weight;
 	
-<<<<<<< HEAD
 		
-=======
-	@InjectView(R.id.edit_btn)
-    private Button edit_btn;
-	
->>>>>>> 46e79dbfff10edcb7bc82719de58462ce8d62a61
 	@InjectView(R.id.goods_searchButton)
 	private Button goods_searchButton;
     
@@ -83,22 +77,7 @@ public class GoodActivity extends RoboActivity {
         //weight
         
         
-<<<<<<< HEAD
                 
-=======
-        //return 
-        edit_btn.setOnClickListener(new Button.OnClickListener(){
-
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Intent intent = new Intent();
-                intent.setClass(GoodActivity.this,MainActivity.class);
-                startActivity(intent);
-                finish();
-			}});
-        
->>>>>>> 46e79dbfff10edcb7bc82719de58462ce8d62a61
         goods_searchButton.setOnClickListener(new Button.OnClickListener(){
 
 			@Override
