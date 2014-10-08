@@ -6,13 +6,13 @@ class CrawlerChinawutong(Crawler):
         Crawler.__init__(self)
         self.URL = "http://www.chinawutong.com/103.html"
         self.data = []
-        self.ok = True
+        self.goon = True
 
     def crawl(self):
         count = 1
-        while self.ok:
+        while self.goon:
             page = self.get(self.URL + "?", {"pid" : count})
-            self.ok = self.uniform(page)
+            self.goon = self.uniform(page)
             count += 1
         return self.data
 
