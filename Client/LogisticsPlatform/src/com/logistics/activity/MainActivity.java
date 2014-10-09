@@ -52,6 +52,9 @@ public class MainActivity extends RoboActivity {
 		spec = createTabSpec(tabHost, MapActivity.TAG, res, R.string.map_title, R.drawable.ic_tab_more, MapActivity.class);
 		tabHost.addTab(spec);
 		
+		spec = createTabSpec(tabHost, SettingsActivity.TAG, res, R.string.settings_title, R.drawable.ic_tab_timer, SettingsActivity.class);
+		tabHost.addTab(spec);
+		
 		tabHost.setCurrentTab(0);
 	}
 	
