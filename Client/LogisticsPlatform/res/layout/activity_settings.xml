@@ -61,25 +61,27 @@
         
     </RelativeLayout>
 
-    <ScrollView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_below="@id/title_layout"
-        >
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-             android:orientation="vertical"
-            >
-        
-        
-        </LinearLayout>
-    </ScrollView>
+    <LinearLayout
+		    android:layout_width="fill_parent"
+		    android:layout_height="fill_parent"
+		    android:layout_below="@+id/title_layout"
+		    android:orientation="vertical" >
 
-        <ImageView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:background="@drawable/bg_shadow_clock"
-            />
+			<TextView
+				android:id="@+id/result_show"
+				android:text="@string/result_show"
+				android:layout_width="fill_parent"
+				android:layout_height="30dip"/>
+			<ListView
+				android:id="@+id/list_goodresult"
+				android:layout_width="fill_parent" 
+				android:layout_height="fill_parent"
+				android:drawSelectorOnTop="false"
+				/>
+			<TextView android:id="@android:id/empty"
+              	 	android:layout_width="match_parent"
+              		android:layout_height="match_parent"
+               		android:background="#FF0000"
+               		android:text="@string/no_data"/>
+		</LinearLayout>
 </RelativeLayout>
