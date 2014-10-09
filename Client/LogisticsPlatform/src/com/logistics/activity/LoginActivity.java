@@ -20,6 +20,7 @@ public class LoginActivity extends RoboActivity {
 	@InjectView(R.id.welcome_register)
 	private Button registerButton;
 	
+		
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -27,7 +28,14 @@ public class LoginActivity extends RoboActivity {
 		loginButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				startActivity(new Intent(LoginActivity.this, MainActivity.class));
+				startActivity(new Intent(LoginActivity.this, LoginDetailActivity.class));
+			}
+		});
+		
+		registerButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
 			}
 		});
 	}

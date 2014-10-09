@@ -5,7 +5,6 @@ import roboguice.inject.ContentView;
 
 import com.logistics.R;
 import android.os.Bundle;
-import android.view.Menu;
 
 @ContentView(R.layout.activity_map)
 public class MapActivity extends RoboActivity {

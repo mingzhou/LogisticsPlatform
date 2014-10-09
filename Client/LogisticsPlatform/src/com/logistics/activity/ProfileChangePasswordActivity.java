@@ -6,7 +6,6 @@ import roboguice.inject.InjectView;
 
 import com.logistics.R;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -45,10 +44,8 @@ public class ProfileChangePasswordActivity extends RoboActivity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent intent = new Intent();
-                intent.setClass(ProfileChangePasswordActivity.this,ProfileActivity.class);
-                startActivity(intent);
                 finish();
+                onDestroy();
 			}});
         
         submit.setOnClickListener(new Button.OnClickListener(){
@@ -56,10 +53,8 @@ public class ProfileChangePasswordActivity extends RoboActivity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent intent = new Intent();
-                intent.setClass(ProfileChangePasswordActivity.this,ProfileActivity.class);
-                startActivity(intent);
-                finish();
+				finish();
+				onDestroy();
 			}});
 	}
 

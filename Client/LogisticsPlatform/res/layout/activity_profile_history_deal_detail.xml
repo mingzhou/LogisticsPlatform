@@ -29,10 +29,10 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:contentDescription="@string/content_description"
         android:src="@drawable/map_clock"
         android:layout_marginBottom="@dimen/world_bottom_padding"
         android:layout_alignParentBottom="true"
+        android:contentDescription="@string/content_description"
         />
 
     <RelativeLayout
@@ -66,7 +66,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                 android:text="@string/change_phone"
+                 android:text="@string/his_deal_detail"
                 style="@style/titleTextStyle"
                 />
         <Button
@@ -80,96 +80,62 @@
             android:background="@drawable/ic_button_add"
             />
     </RelativeLayout>
-
-    <ScrollView
+	<ScrollView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_below="@id/title_layout"
         >
+   
         <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="fill_parent"
              android:orientation="vertical"
-            >
+              >
+                <TextView
+				android:id="@+id/goods_detail_title"
+				android:layout_width="fill_parent"
+				android:layout_height="30dip"/>    
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/seperator"
+                android:textSize="20sp" />
+            <TextView
+				android:id="@+id/goods_detail_info"
+				android:layout_width="fill_parent"
+				android:layout_height="30dip"/> 
+				
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/seperator"
+                android:textSize="20sp" />
             
-           <TableLayout
-                    android:id="@+id/profile_top"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginTop="10dp" >
-            	<TableRow android:layout_width="match_parent" >
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/old_phone"
-                            android:textSize="20sp" />
-
-                        <EditText
-                            android:id="@+id/old_phone"
-                            android:layout_width="150dp"
-                            android:layout_height="wrap_content"
-                            android:ems="10"
-                            android:inputType="phone" />
-
-                </TableRow>
-                
-            	<TableRow android:layout_width="match_parent" >
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/new_phone"
-                            android:textSize="20sp" />
-
-                        <EditText
-                            android:id="@+id/new_phone"
-                            android:layout_width="150dp"
-                            android:layout_height="wrap_content"
-                            android:ems="10"
-                            android:inputType="phone"/>
-                </TableRow>
-                
-            	<TableRow android:layout_width="match_parent" >
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/confirm"
-                            android:textSize="20sp" />
-
-                        <EditText
-                            android:id="@+id/confirm"
-                            android:layout_width="150dp"
-                            android:layout_height="wrap_content"
-                            android:ems="10"
-                            android:inputType="phone" />
-                </TableRow>
-            	
-            	            	
-            	<Button
-            	    		android:id="@+id/submit"
-                            android:layout_width="wrap_content"
-                            android:text="@string/submit"
-                            android:layout_height="0dip"
-                    		android:layout_gravity="center_horizontal"
-                    		android:layout_weight="1"
-                            android:textSize="20sp" />
-            	
-            	
-        	</TableLayout>
+            <TextView
+				android:id="@+id/source_detail_info"
+				android:layout_width="fill_parent"
+				android:layout_height="30dip"/> 
+			
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/seperator"
+                android:textSize="20sp" />
             
-                
+            <TextView
+				android:id="@+id/source_remark_info"
+				android:layout_width="fill_parent"
+				android:layout_height="30dip"/> 
+				
+            
         </LinearLayout>
     </ScrollView>
 
         <ImageView
-            android:contentDescription="@string/content_description"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:background="@drawable/bg_shadow_clock"
+            android:contentDescription="@string/content_description"
             />
 </RelativeLayout>

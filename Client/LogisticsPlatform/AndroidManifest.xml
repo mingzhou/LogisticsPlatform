@@ -67,6 +67,30 @@
             android:name="com.logistics.activity.ProfileChangePhoneActivity"
             android:label="@string/title_activity_profile_change_phone" >
         </activity>
+        <activity
+            android:name="com.logistics.activity.GoodResultDetailActivity"
+            android:label="@string/title_activity_good_result_detail" >
+        </activity>
+        <activity
+            android:name="com.logistics.activity.ProfileCurrentDealDetailActivity"
+            android:label="@string/title_activity_profile_current_deal_detail" >
+        </activity>
+        <activity
+            android:name="com.logistics.activity.ProfileHistoryDealDetailActivity"
+            android:label="@string/title_activity_profile_history_deal_detail" >
+        </activity>
+        <activity
+            android:name="com.logistics.activity.RegisterActivity"
+            android:label="@string/title_activity_register" >
+        </activity>
+        <activity
+            android:name="com.logistics.activity.LoginDetailActivity"
+            android:label="@string/title_activity_login_detail" >
+        </activity>
+        <activity
+            android:name="com.logistics.activity.ForgetActivity"
+            android:label="@string/title_activity_forget" >
+        </activity>
     </application>
 
 </manifest>
