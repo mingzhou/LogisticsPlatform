@@ -140,5 +140,13 @@
     <string name="title_activity_login_detail">LoginDetailActivity</string>
     <string name="title_activity_forget">ForgetActivity</string>
     <string name="title_activity_settings">SettingsActivity</string>
+    
+    
+    <string name="note_pull_down">下拉可以刷新&#8230;</string>
+    <string name="note_pull_refresh">松开即可刷新&#8230;</string>
+    <string name="note_pull_loading">加载中&#8230;</string>
+    <string name="note_update_at">更新于：%1$s</string>
+    <string name="note_not_update">尚未更新</string>
+    
 
 </resources>
