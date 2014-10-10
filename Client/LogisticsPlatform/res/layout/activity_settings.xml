@@ -22,39 +22,44 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:gravity="center_horizontal"
+    android:gravity="center_horizontal"     
     >
-
+	
+    <TextView
+        style="@style/titleTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/title_tool_bar_title"
+        android:text="@string/map_title" />
     
-
-    <com.logistics.utils.PullRefreshLayout
+    <LinearLayout android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center_horizontal">
+           
+	<com.logistics.utils.PullRefreshLayout
         android:id="@+id/pull_container"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:background="@drawable/add_alarm_bg"
         logistics:actionViewId="@+id/action_view"
-        logistics:toolViewId="@+id/tool_view" 
+        logistics:toolViewId="@+id/tool_view"
         android:scrollbars="vertical"
-        >
-        
-      
-        <include
-            android:id="@+id/tool_view"
-            layout="@layout/tool_layout" />
-
+        >       
+       
         <include
             android:id="@+id/action_view"
             layout="@layout/refresh_layout" />
-        
+        <include
+            android:id="@+id/tool_view"
+            layout="@layout/tool_layout" />
 
         <ListView
             android:id="@+id/list"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"/>
-        
-        
+                
     </com.logistics.utils.PullRefreshLayout>
-    
+    </LinearLayout>
     
     
 </LinearLayout>

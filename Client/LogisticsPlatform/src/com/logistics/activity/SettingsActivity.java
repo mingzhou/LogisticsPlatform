@@ -1,6 +1,5 @@
 package com.logistics.activity;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedList;
 
@@ -56,6 +55,7 @@ OnPullStateListener, OnItemClickListener{
 	private PullRefreshLayout mPullLayout;
 	private TextView mActionText;
 	private TextView mTimeText;
+	private TextView mSettingsTitle;
 	private View mProgress;
 	private View mActionImage;
 	
@@ -96,6 +96,9 @@ OnPullStateListener, OnItemClickListener{
 
 		mTimeText.setText(R.string.note_not_update);
 		mActionText.setText(R.string.note_pull_down);
+		
+//		mSettingsTitle = (TextView) findViewById(R.id.settings_title);
+//		mSettingsTitle.setText(R.string.settings_title);
 
 		mListView = (ListView) findViewById(R.id.list);
 		mListView.setOnItemClickListener(this);

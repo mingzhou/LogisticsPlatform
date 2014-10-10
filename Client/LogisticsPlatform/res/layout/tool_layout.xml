@@ -1,30 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="?android:attr/listPreferredItemHeight"
+    android:orientation="horizontal"
+    android:visibility="gone" >
 
-
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/title_layout"
-        android:layout_width="fill_parent"
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/title_tool_bar_title"
-        >
-        
-            <!-- <Button
-            android:id="@+id/edit_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/edit"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="5dip"
-            android:textColor="#FFFFFF"
-            android:background="@drawable/ic_button_3"
-            /> -->
+        android:layout_gravity="center"
+        android:text="Tool View"
+        android:textAppearance="@android:style/TextAppearance.Large" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                 android:text="@string/settings_title"
-                style="@style/titleTextStyle"
-                />
-        
-    </RelativeLayout>
-
+</LinearLayout>
