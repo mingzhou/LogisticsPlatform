@@ -1,6 +1,7 @@
 package com.logistics.activity;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import me.maxwin.view.XListView;
 import me.maxwin.view.XListView.IXListViewListener;
@@ -11,6 +12,7 @@ import com.logistics.R;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.format.DateFormat;
 import android.widget.ArrayAdapter;
 
 @ContentView(R.layout.activity_map)
@@ -49,7 +51,7 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 	private void onLoad() {
 		mListView.stopRefresh();
 		mListView.stopLoadMore();
-		mListView.setRefreshTime("刚刚");
+		mListView.setRefreshTime(DateFormat.getTimeFormat(this).format(new Date(System.currentTimeMillis())));
 	}
 	
 	@Override
