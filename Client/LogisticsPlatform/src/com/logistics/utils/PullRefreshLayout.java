@@ -516,7 +516,8 @@ public class PullRefreshLayout extends FrameLayout {
 	public void setOnPullStateChangeListener(OnPullStateListener listener) {
 		mPullStateListener = listener;
 	}
-
+	
+	
 	private boolean isOnTargetTop() {
 		if (mTargetView != null) {
 			return mTargetView.getScrollY() <= 0;
@@ -678,4 +679,6 @@ public class PullRefreshLayout extends FrameLayout {
 
 		public abstract void onPullIn();
 	}
+	
+	
 }
