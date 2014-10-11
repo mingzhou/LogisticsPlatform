@@ -1,0 +1,176 @@
+<timezones>
+<!--
+/*
+* Copyright (C) 2013 FMSoft (http://www.fmsoft.cn)
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*      http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+-->
+
+    <timezone countryid="Marshall Islands" id="Pacific/Majuro">Marshall Islands</timezone>
+    <timezone countryid="Midway Island" id="Pacific/Midway">Midway Island</timezone>
+    <timezone countryid="Hawaii" id="Pacific/Honolulu">Hawaii</timezone>
+    <timezone countryid="Alaska" id="America/Anchorage">Alaska</timezone>
+    <timezone countryid="Pacific Time" id="America/Los_Angeles">Pacific Time</timezone>
+    <timezone countryid="Tijuana" id="America/Tijuana">Tijuana</timezone>
+    <timezone countryid="Arizona" id="America/Phoenix">Arizona</timezone>
+    <timezone countryid="Chihuahua" id="America/Chihuahua">Chihuahua</timezone>
+    <timezone countryid="Mountain Time" id="America/Denver">Mountain Time</timezone>
+    <timezone countryid="Central America" id="America/Costa_Rica">Central America</timezone>
+    <timezone countryid="Central Time" id="America/Chicago">Central Time</timezone>
+    <timezone countryid="Mexico City" id="America/Mexico_City">Mexico City</timezone>
+    <timezone countryid="Saskatchewan" id="America/Regina">Saskatchewan</timezone>
+    <timezone countryid="Bogota" id="America/Bogota">Bogota</timezone>
+    <timezone countryid="Eastern Time" id="America/New_York">Eastern Time</timezone>
+    <timezone countryid="Venezuela" id="America/Caracas">Venezuela</timezone>
+    <timezone countryid="Atlantic Time (Barbados)" id="America/Barbados">Atlantic Time (Barbados)</timezone>
+    <timezone countryid="Manaus" id="America/Manaus">Manaus</timezone>
+    <timezone countryid="Santiago" id="America/Santiago">Santiago</timezone>
+    <timezone countryid="Newfoundland" id="America/St_Johns">Newfoundland</timezone>
+    <timezone countryid="Brasilia" id="America/Sao_Paulo">Brasilia</timezone>
+    <timezone countryid="Buenos Aires" id="America/Argentina/Buenos_Aires">Buenos Aires</timezone>
+    <timezone countryid="Greenland" id="America/Godthab">Greenland</timezone>
+    <timezone countryid="Montevideo" id="America/Montevideo">Montevideo</timezone>
+    <timezone countryid="Mid-Atlantic" id="Atlantic/South_Georgia">Mid-Atlantic</timezone>
+    <timezone countryid="Azores" id="Atlantic/Azores">Azores</timezone>
+    <timezone countryid="Cape Verde Islands" id="Atlantic/Cape_Verde">Cape Verde Islands</timezone>
+    <timezone countryid="Casablanca" id="Africa/Casablanca">Casablanca</timezone>
+    <timezone countryid="London, Dublin" id="Europe/London">London, Dublin</timezone>
+    <timezone countryid="Amsterdam, Berlin" id="Europe/Amsterdam">Amsterdam, Berlin</timezone>
+    <timezone countryid="Belgrade" id="Europe/Belgrade">Belgrade</timezone>
+    <timezone countryid="Brussels" id="Europe/Brussels">Brussels</timezone>
+    <timezone countryid="Sarajevo" id="Europe/Sarajevo">Sarajevo</timezone>
+    <timezone countryid="Windhoek" id="Africa/Windhoek">Windhoek</timezone>
+    <timezone countryid="W. Africa Time" id="Africa/Brazzaville">W. Africa Time</timezone>
+    <timezone countryid="Amman, Jordan" id="Asia/Amman">Amman, Jordan</timezone>
+    <timezone countryid="Athens, Istanbul" id="Europe/Athens">Athens, Istanbul</timezone>
+    <timezone countryid="Beirut, Lebanon" id="Asia/Beirut">Beirut, Lebanon</timezone>
+    <timezone countryid="Cairo" id="Africa/Cairo">Cairo</timezone>
+    <timezone countryid="Helsinki" id="Europe/Helsinki">Helsinki</timezone>
+    <timezone countryid="Jerusalem" id="Asia/Jerusalem">Jerusalem</timezone>
+    <timezone countryid="Minsk" id="Europe/Minsk">Minsk</timezone>
+    <timezone countryid="Harare" id="Africa/Harare">Harare</timezone>
+    <timezone countryid="Baghdad" id="Asia/Baghdad">Baghdad</timezone>
+    <timezone countryid="Moscow" id="Europe/Moscow">Moscow</timezone>
+    <timezone countryid="Kuwait" id="Asia/Kuwait">Kuwait</timezone>
+    <timezone countryid="Nairobi" id="Africa/Nairobi">Nairobi</timezone>
+    <timezone countryid="Tehran" id="Asia/Tehran">Tehran</timezone>
+    <timezone countryid="Baku" id="Asia/Baku">Baku</timezone>
+    <timezone countryid="Tbilisi" id="Asia/Tbilisi">Tbilisi</timezone>
+    <timezone countryid="Yerevan" id="Asia/Yerevan">Yerevan</timezone>
+    <timezone countryid="Dubai" id="Asia/Dubai">Dubai</timezone>
+    <timezone countryid="Kabul" id="Asia/Kabul">Kabul</timezone>
+    <timezone countryid="Islamabad, Karachi" id="Asia/Karachi">Islamabad, Karachi</timezone>
+    <timezone countryid="Ural'sk" id="Asia/Oral">Ural'sk</timezone>
+    <timezone countryid="Yekaterinburg" id="Asia/Yekaterinburg">Yekaterinburg</timezone>
+    <timezone countryid="Kolkata" id="Asia/Calcutta">Kolkata</timezone>
+    <timezone countryid="Sri Lanka" id="Asia/Colombo">Sri Lanka</timezone>
+    <timezone countryid="Kathmandu" id="Asia/Katmandu">Kathmandu</timezone>
+    <timezone countryid="Astana" id="Asia/Almaty">Astana</timezone>
+    <timezone countryid="Yangon" id="Asia/Rangoon">Yangon</timezone>
+    <timezone countryid="Krasnoyarsk" id="Asia/Krasnoyarsk">Krasnoyarsk</timezone>
+    <timezone countryid="Bangkok" id="Asia/Bangkok">Bangkok</timezone>
+    <timezone countryid="Beijing" id="Asia/Shanghai">Beijing</timezone>
+    <timezone countryid="Hong Kong" id="Asia/Hong_Kong">Hong Kong</timezone>
+    <timezone countryid="Irkutsk" id="Asia/Irkutsk">Irkutsk</timezone>
+    <timezone countryid="Kuala Lumpur" id="Asia/Kuala_Lumpur">Kuala Lumpur</timezone>
+    <timezone countryid="Perth" id="Australia/Perth">Perth</timezone>
+    <timezone countryid="Taipei" id="Asia/Taipei">Taipei</timezone>
+    <timezone countryid="Seoul" id="Asia/Seoul">Seoul</timezone>
+    <timezone countryid="Tokyo, Osaka" id="Asia/Tokyo">Tokyo, Osaka</timezone>
+    <timezone countryid="Yakutsk" id="Asia/Yakutsk">Yakutsk</timezone>
+    <timezone countryid="Adelaide" id="Australia/Adelaide">Adelaide</timezone>
+    <timezone countryid="Darwin" id="Australia/Darwin">Darwin</timezone>
+    <timezone countryid="Brisbane" id="Australia/Brisbane">Brisbane</timezone>
+    <timezone countryid="Hobart" id="Australia/Hobart">Hobart</timezone>
+    <timezone countryid="Sydney, Canberra" id="Australia/Sydney">Sydney, Canberra</timezone>
+    <timezone countryid="Vladivostok" id="Asia/Vladivostok">Vladivostok</timezone>
+    <timezone countryid="Guam" id="Pacific/Guam">Guam</timezone>
+    <timezone countryid="Magadan" id="Asia/Magadan">Magadan</timezone>
+    <timezone countryid="Auckland" id="Pacific/Auckland">Auckland</timezone>
+    <timezone countryid="Fiji" id="Pacific/Fiji">Fiji</timezone>
+    <timezone countryid="Tonga" id="Pacific/Tongatapu">Tonga</timezone>
+    <timezone countryid="Wellington" id="Pacific/Fiji">Wellington</timezone>
+    <timezone countryid="Anadyr" id="Pacific/Fiji">Anadyr</timezone>
+    <timezone countryid="Canberra" id="Australia/Sydney">Canberra</timezone>
+    <timezone countryid="Melbourne" id="Australia/Sydney">Melbourne</timezone>
+    <timezone countryid="Manila" id="Asia/Kuala_Lumpur">Manila</timezone>
+    <timezone countryid="Perth" id="Asia/Kuala_Lumpur">Perth</timezone>
+    <timezone countryid="Jakarta" id="Asia/Bangkok">Jakarta</timezone>
+    <timezone countryid="Hanoi" id="Asia/Bangkok">Hanoi</timezone>
+    <timezone countryid="Dhaka" id="Asia/Almaty">Dhaka</timezone>
+    <timezone countryid="New Delhi" id="Asia/Calcutta">New Delhi</timezone>
+    <timezone countryid="Mumbai" id="Asia/Calcutta">Mumbai</timezone>
+    <timezone countryid="Islamabad" id="Asia/Oral">Islamabad</timezone>
+    <timezone countryid="Lahore" id="Asia/Oral">Lahore</timezone>
+    <timezone countryid="Tashkent" id="Asia/Oral">Tashkent</timezone>
+    <timezone countryid="Abu Dhabi" id="Asia/Dubai">Abu Dhabi</timezone>
+    <timezone countryid="Antananarivo" id="Asia/Kuwait">Antananarivo</timezone>
+    <timezone countryid="Riyadh" id="Asia/Kuwait">Riyadh</timezone>
+    <timezone countryid="Sana'a" id="Asia/Kuwait">Sana'a</timezone>
+    <timezone countryid="Addis Ababa" id="Asia/Kuwait">Addis Ababa</timezone>
+    <timezone countryid="Khartoum" id="Asia/Kuwait">Khartoum</timezone>
+    <timezone countryid="Vancouver" id="America/Los_Angeles">Vancouver</timezone>
+    <timezone countryid="San Francisco" id="America/Los_Angeles">San Francisco</timezone>
+    <timezone countryid="Seattle" id="America/Los_Angeles">Seattle</timezone>
+    <timezone countryid="Houston" id="America/Mexico_City">Houston</timezone>
+    <timezone countryid="Minneapolis" id="America/Mexico_City">Minneapolis</timezone>
+    <timezone countryid="New Orleans" id="America/Mexico_City">New Orleans</timezone>
+    <timezone countryid="Winnipeg" id="America/Mexico_City">Winnipeg</timezone>
+    <timezone countryid="Montgomery" id="America/Chicago">Montgomery</timezone>
+    <timezone countryid="Nassau" id="America/New_York">Nassau</timezone>
+    <timezone countryid="Lima" id="America/New_York">Lima</timezone>
+    <timezone countryid="Kingston" id="America/New_York">Kingston</timezone>
+    <timezone countryid="Boston" id="America/Caracas">Boston</timezone>
+    <timezone countryid="Detroit" id="America/Caracas">Detroit</timezone>
+    <timezone countryid="Atlanta" id="America/Caracas">Atlanta</timezone>
+    <timezone countryid="Indianapolis" id="America/Caracas">Indianapolis</timezone>
+    <timezone countryid="Havana" id="America/Caracas">Havana</timezone>
+    <timezone countryid="Washington" id="America/Caracas">Washington</timezone>
+    <timezone countryid="Philadelphia" id="America/Caracas">Philadelphia</timezone>
+    <timezone countryid="Toronto" id="America/Caracas">Toronto</timezone>
+    <timezone countryid="Ottawa" id="America/Caracas">Ottawa</timezone>
+    <timezone countryid="Montreal" id="America/Caracas">Montreal</timezone>
+    <timezone countryid="La Paz" id="America/Caracas">La Paz</timezone>
+    <timezone countryid="Santo Domingo" id="America/Caracas">Santo Domingo</timezone>
+    <timezone countryid="San Juan" id="America/Caracas">San Juan</timezone>
+    <timezone countryid="Asuncion" id="America/Caracas">Asuncion</timezone>
+    <timezone countryid="Rio de Janeiro" id="America/Sao_Paulo">Rio de Janeiro</timezone>
+    <timezone countryid="Dublin" id="Europe/London">Dublin</timezone>
+    <timezone countryid="Lagos" id="Europe/London">Lagos</timezone>
+    <timezone countryid="Algiers" id="Europe/London">Algiers</timezone>
+    <timezone countryid="Johannesburg" id="Europe/Brussels">Johannesburg</timezone>
+    <timezone countryid="Madrid" id="Europe/Brussels">Madrid</timezone>
+    <timezone countryid="Barcelona" id="Europe/Brussels">Barcelona</timezone>
+    <timezone countryid="Paris" id="Europe/Brussels">Paris</timezone>
+    <timezone countryid="Geneva" id="Europe/Brussels">Geneva</timezone>
+    <timezone countryid="Zurich" id="Europe/Brussels">Zurich</timezone>
+    <timezone countryid="Frankfurt" id="Europe/Brussels">Frankfurt</timezone>
+    <timezone countryid="Oslo" id="Europe/Brussels">Oslo</timezone>
+    <timezone countryid="Copenhagen" id="Europe/Brussels">Copenhagen</timezone>
+    <timezone countryid="Rome" id="Europe/Brussels">Rome</timezone>
+    <timezone countryid="Berlin" id="Europe/Brussels">Berlin</timezone>
+    <timezone countryid="Prague" id="Europe/Brussels">Prague</timezone>
+    <timezone countryid="Zagreb" id="Europe/Brussels">Zagreb</timezone>
+    <timezone countryid="Vienna" id="Europe/Brussels">Vienna</timezone>
+    <timezone countryid="Stockholm" id="Europe/Brussels">Stockholm</timezone>
+    <timezone countryid="Budapest" id="Europe/Sarajevo">Budapest</timezone>
+    <timezone countryid="Warsaw" id="Europe/Sarajevo">Warsaw</timezone>
+    <timezone countryid="Cape Town" id="Europe/Sarajevo">Cape Town</timezone>
+    <timezone countryid="Sofia" id="Europe/Athens">Sofia</timezone>
+    <timezone countryid="Tallinn" id="Europe/Athens">Tallinn</timezone>
+    <timezone countryid="Kyiv" id="Europe/Athens">Kyiv</timezone>
+    <timezone countryid="Odesa" id="Europe/Athens">Odesa</timezone>
+    <timezone countryid="Ankara" id="Europe/Athens">Ankara</timezone>
+    <timezone countryid="Halifax" id="America/Sao_Paulo">Halifax</timezone>
+</timezones>

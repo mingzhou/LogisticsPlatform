@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">LogisticsPlatform</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="welcome">Welcome</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="forget">Forget</string>
+    <string name="cancel">Cancel</string>
+    <string name="iphone_dlg_btn_ok_str">Confirm</string>
+    <string name="iphone_dlg_btn_cancel_str">Cancel</string>
+    <string name="promot_download_error_title">Error</string>
+    <string name="promot_download_error_msg">Download failed, please check network connection or SD card</string>
+    <string name="operator_ch_unicom">CUCC</string>
+    <string name="operator_ch_mobile">CMCC</string>
+    <string name="operator_ch_telecom">CTCC</string>
+    <string name="world_clock">World Clock</string>
+    <string name="alarm">Alarm</string>
+    <string name="stopwatch">Stopwatch</string>
+    <string name="timer">Timer</string>
+    <string name="start">Start</string>
+    <string name="stop">Stop</string>
+    <string name="reset">Reset</string>
+    <string name="lap">Lap</string>
+    <string name="lap_prefix">"lap "</string>
+    <string name="continues">continue</string>
+    <string name="hour">hours</string>
+    <string name="minutes">mins</string>
+    <string name="save">Save</string>
+    <string name="repeat">Repeat</string>
+    <string name="monday">Every Monday</string>
+    <string name="tuesday">Every TuesDay</string>
+    <string name="wendesday">Every Wendesday</string>
+    <string name="thursday">Every Thursday</string>
+    <string name="friday">Every Friday</string>
+    <string name="staturday">Every Saturday</string>
+    <string name="sunday">Every Sunday</string>
+    <string name="returns">Back</string>
+    <string name="every_day">every day</string>
+    <string name="alarm_alert_snooze_text">Caulk Off</string>
+    <string name="alarm_alert_dismiss_text">Dismiss</string>
+    <!--
+         Repeat options that appear under an alarm on main Alarm Clock
+         screen to identify repetition schedule: special case for when
+         the alarm is set to never repeat
+    -->
+    <string name="never">Never</string>
+
+    <!--
+         Repeat options that appear under an alarm on main Alarm Clock
+         screen to identify repetition schedule: concatenate days with
+         this character, i.e. "Mon, Tue, Wed"
+    -->
+    <string name="day_concat">", "</string>
+    <!-- Default label to display for an alarm -->
+    <string name="default_label">Alarm</string>
+    <string name="yesterday">Yesterday</string>
+    <string name="today">Today</string>
+    <string name="tomorrow">Tomorrow</string>
+    <string name="download">Download</string>
+    <string name="edit">Edit</string>
+    <string name="finish">Done</string>
+    <string name="delete">Delete</string>
+    <string name="title">Label</string>
+    <string name="net_message">You have no network links ！</string>
+    <string name="download_finish">Download the complete </string>
+    <string name="downlaoding">Is being downloaded</string>
+    <string name="default_alarm">Default</string>
+    <string name="time_over">When Timer Ends</string>
+    <string name="add_alarm">Add Alarm</string>
+    <string name="sound">Sound</string>
+    <string name="snooze">Snooze</string>
+    <string name="label">Label</string>
+    <string name="dialog_message">Timer Done</string>
+    <string name="search_title">Search for a city to add to world clock.</string>
+    <string name="message">Do you want to experience a iphone4S?Please use the Espier Launcher,and a variety of gestures,smooth sliding,A second make your phone change to iphone!</string>
+    <string name="alarm_notify_text">Snooze or dismiss alarm.</string>
+    <!-- Text to display in the notification ticker and label -->
+    <!-- Text to display in the notification ticker and label -->
+    <string name="alarm_notify_snooze_label"> (snoozed)</string>
+
+    <!-- Text to display in the notification when the alarm has been snoozed -->
+    <string name="alarm_notify_snooze_text">Alarm set for Touch to cancel.</string>
+    <string name="no_world_clock">No world clock</string>
+    <string name="time_zone_name">Beijing</string>
+    <string name="time_zone_name_id">Beijing</string>
+    <string name="timezone">Asia/Shanghai</string>
+    <string name="am_text">AM</string>
+    <string name="pm_text">PM</string>
+    <string name="no_sdcard">The current sd card, not with </string>
+    <string name="content_description">the background of world clock </string>
+
+    <!-- Text to display in actual title of GoodActivity -->
+    <string name="goods_title">Good Search </string>
+    <string name="map_title">Map</string>
+    <string name="profile_title">Profile</string>
+    <string name="departure">Departure</string>
+    <string name="destination">Destination</string>
+    <string name="goods_type">Goods type</string>
+    <string name="goods_weight">Goods weight</string>
+    <string name="search">search</string>
+    <string name="title_activity_good_result">GoodResultActivity</string>
+    <string name="no_data">No data</string>
+    <string name="title_activity_map">MapActivity</string>
+    <string name="usr_name">Username:</string>
+    <string name="phone">Phone no.:</string>
+    <string name="password">Password:</string>
+    <string name="role_id">identity:</string>
+    <string name="seperator">===========================</string>
+    <string name="cur_deal">Current Deal</string>
+    <string name="his_deal">History Deal</string>
+    <string name="change_password">Change Password</string>
+    <string name="change_phone">Change Phone No.</string>
+    <string name="title_activity_profile_current_deal">ProfileCurrentDealActivity</string>
+    <string name="title_activity_profile_history_deal">ProfileHistoryDealActivity</string>
+    <string name="title_activity_profile_change_password">ProfileChangePasswordActivity</string>
+    <string name="title_activity_profile_change_phone">ProfileChangePhoneActivity</string>
+    <string name="old_password">Old Password:</string>
+    <string name="new_password">New Password:</string>
+    <string name="old_phone">Old Phone No.:</string>
+    <string name="new_phone">New Phone No.:</string>
+    <string name="set_password">Set Password:</string>
+    <string name="confirm">Confirm :</string>
+    <string name="submit">Submit</string>
+    <string name="result_show">Result Show</string>
+    <string name="title_activity_good_result_detail">GoodResultDetailActivity</string>
+    <string name="title_activity_profile_current_deal_detail">ProfileCurrentDealDetailActivity</string>
+    <string name="title_activity_profile_history_deal_detail">ProfileHistoryDealDetailActivity</string>
+    <string name="cur_deal_detail">Current Deal Detail</string>
+    <string name="his_deal_detail">History Deal Detail</string>
+    <string name="goods_search_detail">Good Search Detail</string>
+    <string name="submit_order">Order Submit</string>
+    <string name="notify_source">cancel or notify</string>
+    <string name="current_deal">Current Deal</string>
+    <string name="history_deal">History Deal</string>
+    <string name="title_activity_register">RegisterActivity</string>
+    <string name="title_activity_login_detail">LoginDetailActivity</string>
+    <string name="title_activity_forget">ForgetActivity</string>
+
+</resources>
