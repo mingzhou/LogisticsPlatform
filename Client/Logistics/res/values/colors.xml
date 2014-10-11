@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+* Copyright (C) 2013 FMSoft (http://www.fmsoft.cn)
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*      http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+-->
+
+<resources>
+    <color name="new_status_bar_shadow_color">#7f000000</color>
+    
+    <color name="username_text">#ffffffff</color>
+    <color name="username_edit">#ff000000</color>
+
+    <color name="password_text">#ffffffff</color>
+    <color name="password_edit">#ff000000</color>
+
+    <color name="ssl_text_label">#ffffffff</color>
+    <color name="ssl_text_value">#ffffffff</color>
+
+    <color name="white">#ffffffff</color>
+    <color name="black">#ff000000</color>
+
+    <color name="iphone_gray">#ff666666</color>
+    <color name="transparent">#00000000</color>
+
+    <color name="geolocation_permissions_prompt_background">#ffdddddd</color>
+
+    <color name="gesture_color">#ff0563c1</color>
+    <color name="uncertain_gesture_color">#ff848484</color>
+    <color name="search_hint">#ffb4b3b4</color>
+    <drawable name="suggestion_background_default">#FFFFFF</drawable>
+    <drawable name="search_clear_default_icon">#00000000</drawable>
+    <color name="app_list_text">#f8f8f8</color>
+    <color name="app_list_toolbar_bk">#EAEAEA</color>
+    <color name="app_list_toolbar_text">#272727</color>
+    <color name="text_disable">#ffa0a0a0</color>
+    <color name="text_normal">#ffffffff</color>
+    <color name="text_press">#ffa0a0a0</color>
+    <color name="titlebar_text_highlight">#ffccdded</color>
+    <color name="preferencegray">#4d576b</color>
+    <color name="preferenceblue">#385487</color>
+
+    <color name="gray_background">#ececec</color>
+    <color name="divider_item_background">#ECECEC</color>
+    <color name="world_item_tody">#56565b</color>
+</resources>

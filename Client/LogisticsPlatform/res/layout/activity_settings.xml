@@ -30,7 +30,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/title_tool_bar_title"
-        android:text="@string/map_title" />
+        android:text="@string/settings_title" />
     
     <LinearLayout android:layout_width="fill_parent"
     android:layout_height="fill_parent"
@@ -49,15 +49,20 @@
         <include
             android:id="@+id/action_view"
             layout="@layout/refresh_layout" />
+        
         <include
             android:id="@+id/tool_view"
             layout="@layout/tool_layout" />
+        
 
         <ListView
             android:id="@+id/list"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"/>
-                
+        
+        
+               
+        
     </com.logistics.utils.PullRefreshLayout>
     </LinearLayout>
     
