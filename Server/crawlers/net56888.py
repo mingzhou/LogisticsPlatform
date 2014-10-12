@@ -1,4 +1,3 @@
-import datetime
 from bs4 import BeautifulSoup
 from crawler import Crawler
 
@@ -19,13 +18,8 @@ class Crawler56888(Crawler):
             s = table.find_all("td")[4].text    # 10-08至11-07
             pos = s.find("至")
             date = s[:pos].strip().split('-')
-            today = datetime.datetime.combine(
-                    datetime.date.today(), datetime.time())
-            item["date"] = today.replace(
-                    today.year, int(date[0]), int(date[-1]))
-            date = s[pos+1:].strip().split('-')
-            item["deadline"] = today.replace(
-                    today.year, int(date[0]), int(date[-1]))
+            deadline = s[pos+1:].strip().split('-')
+            item["date"], item["deadline"] = self.lifetime(date, deadline)
             item["description"] = table.text
             if item in self.data or self.find(item):
                 return False

@@ -1,6 +1,9 @@
+import datetime
 import urllib
 import urllib.request
 from mongodb import MongoDB
+
+LIFETIME = 27
 
 class Crawler():
     def __init__(self):
@@ -32,6 +35,22 @@ class Crawler():
 
     def uniform(self, page):
         pass
+
+    def lifetime(self, begin, end = LIFETIME):
+        today = datetime.datetime.combine(
+                datetime.date.today(), datetime.time())
+        if len(begin) == 2:
+            begin.insert(0, today.year)
+        date = today.replace(int(begin[0]), int(begin[1]), int(begin[-1]))
+        if type(end) is int or len(end) < 2:
+            deadline = date + datetime.timedelta(LIFETIME)
+        else:
+            if len(end) == 2:
+                end.insert(0, today.year)
+            deadline = today.replace(int(end[0]), int(end[1]), int(end[-1]))
+            if deadline <= date:
+                deadline = date + datetime.timedelta(LIFETIME)
+        return date, deadline
 
     def find(self, obj):
         return self.database.find(obj)
