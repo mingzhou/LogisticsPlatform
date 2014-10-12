@@ -6,17 +6,7 @@ class Crawler51yunli(Crawler):
     def __init__(self):
         Crawler.__init__(self)
         self.URL = "http://www.51yunli.com/goods/0/0/"
-
-    def generate_url(self, num_page):
-        return self.URL + str(num_page) + "/0"
-
-    def crawl(self):
-        count = 1
-        while self.goon:
-            page = self.get(self.generate_url(count))
-            self.goon = self.uniform(page)
-            count += 1
-        return self.data
+        self.suffix = "/0"
 
     def uniform(self, page):
         soup = BeautifulSoup(page, "html.parser")   # lxml

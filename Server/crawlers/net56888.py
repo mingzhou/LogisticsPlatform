@@ -5,15 +5,7 @@ from crawler import Crawler
 class Crawler56888(Crawler):
     def __init__(self):
         Crawler.__init__(self)
-        self.URL = "http://wb.56888.net/OutSourceList.aspx?tendertype=4&"
-
-    def crawl(self):
-        count = 1
-        while self.goon:
-            page = self.get(self.URL,  {"p" : count})
-            self.goon = self.uniform(page)
-            count += 1
-        return self.data
+        self.URL = "http://wb.56888.net/OutSourceList.aspx?tendertype=4&p="
 
     def uniform(self, page):
         soup = BeautifulSoup(page, "html.parser")
@@ -34,8 +26,8 @@ class Crawler56888(Crawler):
             date = s[pos+1:].strip().split('-')
             item["deadline"] = today.replace(
                     today.year, int(date[0]), int(date[-1]))
-            if self.find(item):
-                return False
             item["description"] = table.text
+            if item in self.data or self.find(item):
+                return False
             self.data.append(item)
         return True

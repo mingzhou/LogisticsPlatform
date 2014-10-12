@@ -4,15 +4,7 @@ from crawler import Crawler
 class CrawlerChinawutong(Crawler):
     def __init__(self):
         Crawler.__init__(self)
-        self.URL = "http://www.chinawutong.com/103.html"
-
-    def crawl(self):
-        count = 1
-        while self.goon:
-            page = self.get(self.URL + "?", {"pid" : count})
-            self.goon = self.uniform(page)
-            count += 1
-        return self.data
+        self.URL = "http://www.chinawutong.com/103.html?pid="
 
     def uniform(self, page):
         soup = BeautifulSoup(page, "html.parser")   # lxml
@@ -26,12 +18,12 @@ class CrawlerChinawutong(Crawler):
             pos = s.find('→ ')
             item["from"] = s[:pos].strip()
             item["to"] = s[pos+1:].strip()
-# contents = ls[-1].contents
-# item["deadline"] = contents[-1].strip()    # 2014-09-30
             ls = divs[2].find_all("li")
             item["date"] = ls[0].contents[-1].strip()  # 10-07
-            if self.find(item):
-                return False
+# contents = ls[-1].contents
+# item["deadline"] = contents[-1].strip()    # 2014-09-30
             item["description"] = td.text
+            if item in self.data or self.find(item):
+                return False
             self.data.append(item)
         return True
