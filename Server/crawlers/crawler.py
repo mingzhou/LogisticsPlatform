@@ -43,7 +43,9 @@ class Crawler():
             begin.insert(0, today.year)
         date = today.replace(int(begin[0]), int(begin[1]), int(begin[-1]))
         if type(end) is int or len(end) < 2:
-            deadline = date + datetime.timedelta(LIFETIME)
+            if type(end) is not int:
+                end = LIFETIME
+            deadline = date + datetime.timedelta(end)
         else:
             if len(end) == 2:
                 end.insert(0, today.year)

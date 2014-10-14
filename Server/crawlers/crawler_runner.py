@@ -1,4 +1,5 @@
 import datetime
+from cn0256 import Crawler0256
 from com51yunli import Crawler51yunli
 from comchinawutong import CrawlerChinawutong
 from net56888 import Crawler56888
@@ -6,6 +7,7 @@ from mongodb import MongoDB
 
 database = MongoDB()
 cs = []
+cs.append(Crawler0256())
 cs.append(Crawler51yunli())
 cs.append(CrawlerChinawutong())
 cs.append(Crawler56888())
