@@ -19,11 +19,13 @@ class MongoDB():
         return self.collection.find(obj).count()
 
     def last(self):
-        top = self.collection.find().sort("_id", pymongo.DESCENDING).limit(1)
+        data = []
+        top = self.collection.find().sort("_id", pymongo.DESCENDING).limit(4)
         for item in top:
             del item["description"]
             del item["_id"]
 # del item["datetime"]
             del item["date"]
             del item["deadline"]
-            return json.dumps(item, default = json_util.default)
+            data.append(item)
+        return json.dumps(data, default = json_util.default)
