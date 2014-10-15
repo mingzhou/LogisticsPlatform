@@ -6,14 +6,16 @@ from net56888 import Crawler56888
 from mongodb import MongoDB
 
 database = MongoDB()
-cs = []
-cs.append(Crawler0256())
-cs.append(Crawler51yunli())
-cs.append(CrawlerChinawutong())
-cs.append(Crawler56888())
+crawlers = []
+crawlers.append(Crawler0256())
+crawlers.append(Crawler51yunli())
+crawlers.append(Crawler56888())
+crawlers.append(CrawlerChinawutong())
+crawlers.append(Crawler51yunli())
+N = len(crawlers)
+minute = datetime.datetime.now().minute
 
-for c in cs:
-    data = c.crawl()
-    for item in reversed(data):
-        item["datetime"] = datetime.datetime.now()
-        database.insert(item)
+data = crawlers[minute % N].crawl()
+for item in reversed(data):
+    item["datetime"] = datetime.datetime.now()
+    database.insert(item)

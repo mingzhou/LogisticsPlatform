@@ -34,7 +34,7 @@ class Crawler():
         return page
 
     def uniform(self, page):
-        pass
+        return False
 
     def lifetime(self, begin, end = LIFETIME):
         today = datetime.datetime.combine(

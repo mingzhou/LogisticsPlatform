@@ -1,0 +1,2 @@
+ # m h  dom mon dow   command
+ * * * * * python3 /home/brilliant/Documents/admin/LogisticsPlatform/Server/crawlers/crawler_runner.py

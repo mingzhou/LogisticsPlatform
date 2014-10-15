@@ -10,7 +10,7 @@ class Crawler0256(Crawler):
         soup = BeautifulSoup(page, "html.parser")   # lxml
         table = soup.find(attrs = {"class": "yuan_lbk"}).table
         for tr in table.find_all("tr")[1:]:
-            item = {"site": "0526"}
+            item = {"site": "0256"}
             td = tr.find_all("td")
             s = td[0].a.text.strip()    # 广东省佛山市→湖南省株洲市
             pos = s.find("→")
