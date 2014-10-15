@@ -18,6 +18,7 @@ import com.logistics.R;
 import com.logistics.utils.AsyncHttpHelper;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
+import com.loopj.android.http.TextHttpResponseHandler;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -116,9 +117,15 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 			public void onSuccess(JSONObject response) {
 					Toast.makeText(MapActivity.this, response.toString(), Toast.LENGTH_LONG).show();
 					
+					//items.add(response.getString("k1"));
+					//items.add(response.getString("k2"));
 					try {
-						items.add(response.getString("k1"));
-						items.add(response.getString("k2"));
+						items.add(response.getString("from"));
+						items.add(response.getString("site"));
+						items.add(response.getString("to"));
+//						long t = response.getJSONObject("datetime").getLong("$date");
+//						items.add(new Date(t).toString());
+						
 					} catch (JSONException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -134,7 +141,7 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 				
 			}
 		};
-		httpHelper.get("/json/", rp,jrh);
+		httpHelper.get("221:8000/", rp,jrh);
 	}
 	
 
