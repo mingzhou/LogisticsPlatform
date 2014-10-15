@@ -3,8 +3,8 @@ package com.logistics.activity;
 import java.util.ArrayList;
 import java.util.Date;
 
+import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 import org.apache.http.Header;
 
 import me.maxwin.view.XListView;
@@ -18,7 +18,6 @@ import com.logistics.R;
 import com.logistics.utils.AsyncHttpHelper;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
-
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.StrictMode;
@@ -41,7 +40,7 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 	private ArrayList<String> items = new ArrayList<String>();
 	private Handler mHandler;
 	private int start = 0;
-	private static int refreshCnt = 0;
+	
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -50,29 +49,23 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 		StrictMode.setThreadPolicy(policy);
 		
-		geneItems1();
+		//geneItems();
 
-		mListView.setPullLoadEnable(true);
+		
+		mListView.setPullLoadEnable(false);
 		mAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, items);
 		mListView.setAdapter(mAdapter);
 //		mListView.setPullLoadEnable(false);
-//		mListView.setPullRefreshEnable(false);
+		//mListView.setPullRefreshEnable(true);
 		mListView.setXListViewListener(this);
 		mHandler = new Handler();
+		//onRefresh();
 	}
 	
-	private void geneItems1() {
-		//getHttpResponse();
-		for (int i = 0; i != 6; ++i) {
-			items.add("refresh cnt " + (++start));
-		}
-	}
+	
 
 	private void geneItems() {
 		getHttpResponse();
-//		for (int i = 0; i != 20; ++i) {
-//			items.add("refresh cnt " + (++start));
-//		}
 	}
 
 	private void onLoad() {
@@ -86,8 +79,9 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 		mHandler.postDelayed(new Runnable() {
 			@Override
 			public void run() {
-				start = ++refreshCnt;
+				//start = ++refreshCnt;
 				items.clear();
+				start = 0;
 				geneItems();
 				// mAdapter.notifyDataSetChanged();
 				mAdapter = new ArrayAdapter<String>(MapActivity.this, android.R.layout.simple_expandable_list_item_1, items);
@@ -102,6 +96,8 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 		mHandler.postDelayed(new Runnable() {
 			@Override
 			public void run() {
+				items.clear();
+				start = 2;
 				geneItems();
 				mAdapter.notifyDataSetChanged();
 				onLoad();
@@ -113,19 +109,21 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 		RequestParams rp = new RequestParams();
 		JsonHttpResponseHandler jrh = new JsonHttpResponseHandler("UTF-8") {
 			@Override
-			public void onSuccess(JSONObject response) {
-					Toast.makeText(MapActivity.this, response.toString(), Toast.LENGTH_LONG).show();
+			public void onSuccess(JSONArray response) {
+					//Toast.makeText(MapActivity.this, response.toString(), Toast.LENGTH_LONG).show();
 					
 					try {
-						items.add(response.getString("k1"));
-						items.add(response.getString("k2"));
+						
+						for (int i =start; i<start+4;i++){
+							//r[i] = 
+							items.add(response.getJSONObject(i).getString("from")+" -> " + response.getJSONObject(i).getString("to"));
+						}
+						
 					} catch (JSONException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-					
-					
-					//test.setText("车牌"+chepai+"\n"+"电话"+dianhual;
+										
 			}
 			@Override
 			public void onFailure(int statusCode, Header[] headers,
@@ -134,7 +132,7 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 				
 			}
 		};
-		httpHelper.get("/json/", rp,jrh);
+		httpHelper.get("227:8000/", rp,jrh);
 	}
 	
 
