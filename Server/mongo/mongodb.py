@@ -16,14 +16,17 @@ class MongoDB():
         self.collection.insert(data) 
 
     def find(self, obj):
-        return self.collection.find(obj).count()
+        return self.collection.find(obj)
 
-    def last(self):
+    def remove(self, obj):
+        return self.collection.remove(obj)
+
+    def last(self, count = 10):
         data = []
-        top = self.collection.find().sort("_id", pymongo.DESCENDING).limit(4)
+        top = self.find(None).sort("_id", pymongo.DESCENDING).limit(count)
         for item in top:
-            del item["description"]
             del item["_id"]
+            del item["description"]
 # del item["datetime"]
             del item["date"]
             del item["deadline"]

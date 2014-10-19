@@ -55,4 +55,4 @@ class Crawler():
         return date, deadline
 
     def find(self, obj):
-        return self.database.find(obj)
+        return self.database.find(obj).count() > 0

@@ -1,2 +1,3 @@
  # m h  dom mon dow   command
  * * * * * python3 /home/brilliant/Documents/admin/LogisticsPlatform/Server/crawlers/crawler_runner.py
+ 0 0 * * * mongodump -h spider:27017 -d demo -o /home/crawler
