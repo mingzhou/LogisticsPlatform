@@ -18,6 +18,9 @@ class MongoDB():
     def find(self, obj):
         return self.collection.find(obj)
 
+    def find_one(self, obj):
+        return self.collection.find_one(obj)
+
     def remove(self, obj):
         return self.collection.remove(obj)
 

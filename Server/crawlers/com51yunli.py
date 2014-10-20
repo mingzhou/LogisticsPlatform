@@ -18,7 +18,7 @@ class Crawler51yunli(Crawler):
             date = ul.find_all("span")[-1].text.strip().split('-')  # 2014-10-12
             item["date"], item["deadline"] = self.lifetime(date)
             item["description"] = ul.text
-            if item in self.data or self.find(item):
+            if item in self.data or self.exist(item):
                 return False
             self.data.append(item)
         return True
