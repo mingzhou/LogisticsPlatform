@@ -25,7 +25,7 @@ class MongoDB():
         data = []
         top = self.find(None).sort("_id", pymongo.DESCENDING).limit(count)
         for item in top:
-            del item["_id"]
+# del item["_id"]
             del item["description"]
 # del item["datetime"]
             del item["date"]
