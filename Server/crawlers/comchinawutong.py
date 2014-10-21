@@ -24,7 +24,7 @@ class CrawlerChinawutong(Crawler):
             date = ls[0].contents[-1].strip().split('-')  # 10-07
             item["date"], item["deadline"] = self.lifetime(date, deadline)
             item["description"] = td.text
-            if item in self.data or self.find(item):
+            if item in self.data or self.exist(item):
                 return False
             self.data.append(item)
         return True

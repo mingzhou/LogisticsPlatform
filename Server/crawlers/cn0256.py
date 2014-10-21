@@ -20,7 +20,7 @@ class Crawler0256(Crawler):
             date = s[0].split('-')
             item["date"], item["deadline"] = self.lifetime(date, 3)
             item["description"] = tr.text
-            if item in self.data or self.find(item):
+            if item in self.data or self.exist(item):
                 return False
             self.data.append(item)
         return True

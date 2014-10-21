@@ -22,7 +22,7 @@ class Crawler8glw(Crawler):
             begin = tds[-3].td.text.strip().split('-')
             end = tds[-4].td.text.strip().split('-')
             item["date"], item["deadline"] = self.lifetime(begin, end)
-            if item in self.data or self.find(item):
+            if item in self.data or self.exist(item):
                 return False
             self.data.append(item)
         return True

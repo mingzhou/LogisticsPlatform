@@ -54,5 +54,5 @@ class Crawler():
                 deadline = date + datetime.timedelta(LIFETIME)
         return date, deadline
 
-    def find(self, obj):
-        return self.database.find(obj).count() > 0
+    def exist(self, obj):
+        return self.database.find_one(obj) is not None
