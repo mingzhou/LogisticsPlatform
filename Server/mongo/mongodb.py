@@ -1,6 +1,7 @@
 import json
 import pymongo
 from bson import json_util
+from bson.objectid import ObjectId
 
 class MongoDB():
     DB_HOST = "spider"
@@ -24,9 +25,20 @@ class MongoDB():
     def remove(self, obj):
         return self.collection.remove(obj)
 
-    def last(self, count = 10):
+    def latest(self):
+        return self.find_descending(None)
+
+    def previous(self, obj_id):
+        obj = {"_id": {"$lt": ObjectId(obj_id)}}
+        return self.find_descending(obj)
+
+    def newer(self, obj_id):
+        obj = {"_id": {"$gt": ObjectId(obj_id)}}
+        return self.find(obj)
+
+    def find_descending(self, obj = None, count = 10):
         data = []
-        top = self.find(None).sort("_id", pymongo.DESCENDING).limit(count)
+        top = self.find(obj).sort("_id", pymongo.DESCENDING).limit(count)
         for item in top:
 # del item["_id"]
             del item["description"]
