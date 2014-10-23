@@ -91,6 +91,11 @@
             android:name="com.logistics.activity.ForgetActivity"
             android:label="@string/title_activity_forget" >
         </activity>
+        
+        <service android:name="com.logistics.service.PushAndPull" >
+        </service>
+        <service android:name="com.logistics.service.NotifyCenter" >
+        </service>
     </application>
 
 </manifest>

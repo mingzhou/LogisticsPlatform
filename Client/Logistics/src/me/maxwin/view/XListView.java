@@ -131,6 +131,7 @@ public class XListView extends ListView implements OnScrollListener {
 			mHeaderViewContent.setVisibility(View.INVISIBLE);
 		} else {
 			mHeaderViewContent.setVisibility(View.VISIBLE);
+			
 		}
 	}
 

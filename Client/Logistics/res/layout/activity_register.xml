@@ -107,7 +107,16 @@
                     		android:layout_gravity="center_horizontal"
                     		android:layout_weight="1"
                             android:textSize="20sp" />
-            	
+            <!--
+            	<Button
+            	    		android:id="@+id/test"
+                            android:layout_width="wrap_content"
+                            android:text="test"
+                            android:layout_height="0dip"
+                    		android:layout_gravity="center_horizontal"
+                    		android:layout_weight="1"
+                            android:textSize="20sp" />
+            -->	
             	
         	</TableLayout>
 

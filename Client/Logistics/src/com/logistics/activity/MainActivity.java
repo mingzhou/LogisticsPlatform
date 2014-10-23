@@ -56,7 +56,7 @@ public class MainActivity extends RoboActivity {
 	}
 	
 	private TabSpec createTabSpec(TabHost tabHost, String tag,
-            Resources res, int labelId, int iconId, Class<?> cls) {
+        Resources res, int labelId, int iconId, Class<?> cls) {
 		TabSpec spec = tabHost.newTabSpec(tag);
 		String label = res.getString(labelId);
 		Drawable icon = res.getDrawable(iconId);
@@ -66,7 +66,7 @@ public class MainActivity extends RoboActivity {
 		((TextView) linearLayout.findViewById(R.id.tab_label)).setText(label);
 		spec.setIndicator(linearLayout);
 		spec.setContent(new Intent().setClass(this, cls));
-
+		
 		return spec;
 
 	}

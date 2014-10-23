@@ -18,7 +18,7 @@
 -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_name">物流</string>
+    <string name="app_name">物流平台</string>
     
     <string name="register">注册</string>
     
