@@ -11,7 +11,7 @@ class Crawler8glw(Crawler):
         soup = BeautifulSoup(page, "html.parser")   # lxml
         for li in soup.find(attrs = {"class": "list"}).find_all("li"):
             item = {"site": "8glw"}
-            item["url"] = self.host + li.a.get('href')
+            item["url"] = self.host + li.a.get("href")
             page = self.get(item["url"])
             soup = BeautifulSoup(page, "html.parser")   # lxml
             table = soup.find(attrs = {"class": "box"}).table

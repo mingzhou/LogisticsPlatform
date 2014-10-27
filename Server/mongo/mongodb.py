@@ -40,10 +40,5 @@ class MongoDB():
         data = []
         top = self.find(obj).sort("_id", pymongo.DESCENDING).limit(count)
         for item in top:
-# del item["_id"]
-            del item["description"]
-# del item["datetime"]
-            del item["date"]
-            del item["deadline"]
             data.append(item)
         return json.dumps(data, default = json_util.default)
