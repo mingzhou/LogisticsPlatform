@@ -4,20 +4,22 @@ import urllib.request
 from mongodb import MongoDB
 
 LIFETIME = 27
+MAX_PAGE = 77
+WINDOW_SIZE = 7
 
 class Crawler():
     def __init__(self):
         self.database = MongoDB()
         self.data = []
-        self.goon = True
+        self.window = WINDOW_SIZE
         self.URL = ""
         self.suffix = ""
 
     def crawl(self):
         count = 1
-        while self.goon and count < 77:
+        while self.window > 0 and count < MAX_PAGE:
             page = self.get(self.generate_url(count))
-            self.goon = self.uniform(page)
+            self.uniform(page)
             count += 1
         return self.data
 
@@ -34,7 +36,7 @@ class Crawler():
         return page
 
     def uniform(self, page):
-        return False
+        pass
 
     def lifetime(self, begin, end = LIFETIME):
         today = datetime.datetime.combine(

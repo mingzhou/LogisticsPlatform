@@ -25,6 +25,6 @@ class CrawlerChinawutong(Crawler):
             item["date"], item["deadline"] = self.lifetime(date, deadline)
             item["description"] = td.text
             if item in self.data or self.exist(item):
-                return False
+                self.window -= 1
+                continue
             self.data.append(item)
-        return True

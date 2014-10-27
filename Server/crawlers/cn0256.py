@@ -21,6 +21,6 @@ class Crawler0256(Crawler):
             item["date"], item["deadline"] = self.lifetime(date, 3)
             item["description"] = tr.text
             if item in self.data or self.exist(item):
-                return False
+                self.window -= 1
+                continue
             self.data.append(item)
-        return True
