@@ -10,7 +10,6 @@ import java.util.Date;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 import org.apache.http.Header;
 
 import me.maxwin.view.XListView;
@@ -21,9 +20,7 @@ import roboguice.inject.InjectView;
 
 import com.google.inject.Inject;
 import com.logistics.R;
-import com.logistics.service.NotifyCenter;
 import com.logistics.service.PushAndPull;
-import com.logistics.utils.AsyncHttpHelper;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -47,6 +44,9 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 	public static final int MODE_PRIVATE = 0;
 	public final static int MODE_WORLD_READABLE = 1; 
 	public static final int MODE_APPEND = 32768;
+	private final String BASE_URL = "http://219.223.190.211";
+	
+	public boolean firsttime = false;
 	
 	@Inject
 	//private AsyncHttpHelper httpHelper;
@@ -100,23 +100,36 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 		mListView.setPullLoadEnable(true);
 		mAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, items);
 		mListView.setAdapter(mAdapter);
-
+		mListView.setRefreshTime(DateFormat.getTimeFormat(this).format(new Date(System.currentTimeMillis())));
 		mListView.setXListViewListener(this);
 		mHandler = new Handler();
-		
+				
+		downFile();
 		loadFile();
+		Log.d(TAG,"initial");
+		if(jArray.length()==0){
+			firsttime = true;
+		}
+		else if(jArray.length()>0){
 		for (int i =0; i<jArray.length();i++){
         	//r[i] =
         	items.add(jArray.getJSONObject(i).getString("from")+" -> " + jArray.getJSONObject(i).getString("to"));
         	}
-		mAdapter.notifyDataSetChanged();
+		mAdapter.notifyDataSetChanged();}
 	}
 	
 
 	private void onLoad() {
 		mListView.stopRefresh();
-		mListView.stopLoadMore();
+		//mListView.stopLoadMore();
 		mListView.setRefreshTime(DateFormat.getTimeFormat(this).format(new Date(System.currentTimeMillis())));
+	}
+	
+	private void onLoad2() {
+		mListView.stopLoadMore();
+		//mListView.stopRefresh();
+		//mListView.setRefreshTime(SimpleDateFormat.getDateTimeInstance().format(new Date(System.currentTimeMillis())));
+		//mListView.setRefreshTime(DateFormat.getTimeFormat(this).format(new Date(System.currentTimeMillis())));
 	}
 	
 	@Override
@@ -126,7 +139,10 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 			public void run() {
 				//start = ++refreshCnt;
 				items.clear();
-				
+				if(firsttime){
+					getHttpResponse1();
+					firsttime = false;
+				}else {
 				Log.d(TAG,"refresh begin");
 				try {
 					getHttpResponse();
@@ -136,7 +152,7 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				}
+				}}
 				mAdapter.notifyDataSetChanged();
 //				mAdapter = new ArrayAdapter<String>(MapActivity.this, android.R.layout.simple_expandable_list_item_1, items);
 //				mListView.setAdapter(mAdapter);
@@ -150,8 +166,11 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 		mHandler.postDelayed(new Runnable() {
 			@Override
 			public void run() {
-				items.clear();
-				
+				//items.clear();
+				if(firsttime){
+					getHttpResponse1();
+					firsttime = false;
+				}else {
 				try {
 					getHttpResponse2();
 				} catch (IOException e) {
@@ -160,9 +179,10 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				}
+				}}
 				mAdapter.notifyDataSetChanged();
-				onLoad();
+				
+				onLoad2();
 			}
 		}, 2500);
 	}
@@ -170,9 +190,10 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 	public void getHttpResponse() throws IOException, JSONException{
 		RequestParams rp = new RequestParams();
 		loadFile();
+		Log.d(TAG+"nihao","now jArray"+Integer.toString(jArray.length()));
+		
 		String jOS = jArray.getJSONObject(0).toString();
 		rp.put("data", jOS);
-		
 		JsonHttpResponseHandler jrh = new JsonHttpResponseHandler("UTF-8") {
 			@Override
 			public void onSuccess(int statusCode, Header[] headers,
@@ -184,14 +205,16 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 					 	for(int i=0;i<headers.length;i++){
 					 	Log.d(TAG+"nihao",headers[i].toString());
 					 	}
+					 	Toast.makeText(MapActivity.this, "更新 "+headers[headers.length-3].getValue(), Toast.LENGTH_LONG).show();
 					 	//newnum = Integer.parseInt(headers[3].getValue());
 					 	loadFile();
 				        Log.d(TAG+"nihao","read done");
 				        Log.d(TAG+"nihao",jArray.toString());
 				        for (int i =0; i<jArray.length();i++){
 				        	//r[i] =
-				        	items.add(jArray.getJSONObject(i).getString("from")+" -> " + jArray.getJSONObject(i).getString("to"));
+				        	mAdapter.add(jArray.getJSONObject(i).getString("from")+" -> " + jArray.getJSONObject(i).getString("to"));
 				        	}
+				        
 				   	} catch (FileNotFoundException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -213,12 +236,45 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 			}
 						
 		};
-		httpHelper.post("http://219.223.190.211/latest",rp, jrh);
+		httpHelper.post(BASE_URL+"/latest",rp, jrh);
+	}
+	
+	public void getHttpResponse1(){
+		RequestParams rp = new RequestParams();
+		JsonHttpResponseHandler jrh = new JsonHttpResponseHandler("UTF-8"){
+			public void onSuccess(int statusCode, Header[] headers,
+					JSONArray response) {
+					//Toast.makeText(MapActivity.this, response.toString(), Toast.LENGTH_LONG).show();
+				 try {
+					 	downFile(response);
+					 	//Log.d(TAG+"nihao","header num"+Integer.toString(headers.length));
+					 	loadFile();
+				        Log.d(TAG+"nihao","read done");
+				        Log.d(TAG+"nihao",jArray.toString());
+				        for (int i =0; i<jArray.length();i++){
+				        	mAdapter.add(jArray.getJSONObject(i).getString("from")+" -> " + jArray.getJSONObject(i).getString("to"));
+				        	}
+				        
+				   	} catch (FileNotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (JSONException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+										
+			}
+		};
+		httpHelper.get(BASE_URL+"/latest",rp, jrh);
 	}
 	
 	public void getHttpResponse2() throws IOException, JSONException{
 		RequestParams rp = new RequestParams();
-		//loadFile(jArray);
+		//loadFile();
+		Log.d("nihao",Integer.toString(jArray.length()));
 		String jOS = jArray.getJSONObject(jArray.length()-1).toString();
 		rp.put("data", jOS);
 				
@@ -238,17 +294,14 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 				try {
 					//updateFile(response);
 				 	//loadFile(jArray);
+					int len = jArray.length();
+					Log.d("nihao-len",Integer.toString(len));
 					for(int i =0;i<response.length();i++){
 					jArray.put(jArray.length(), response.getJSONObject(i));
+					mAdapter.add(response.getJSONObject(i).getString("from")+" -> " + response.getJSONObject(i).getString("to"));
 					}
 			        Log.d(TAG,"update read done");
-			       
-			        Log.d(TAG,"response "+Integer.toString(response.length()) );
-			        Log.d(TAG,"jArray "+Integer.toString(jArray.length()) );
-			        for (int i =0; i<jArray.length();i++){
-			        	//r[i] =
-			        	items.add(jArray.getJSONObject(i).getString("from")+" -> " + jArray.getJSONObject(i).getString("to"));
-			        	}
+			       				        
 			   	} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -257,9 +310,9 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 			
 		};
 		//httpHelper.
-		httpHelper.post("http://219.223.190.211/previous",rp,jrh);
+		httpHelper.post(BASE_URL+"/previous",rp,jrh);
 	}
-	
+
 	public void loadFile() throws IOException, JSONException{
 		FileInputStream inStream=MapActivity.this.openFileInput("tmp.txt");
 		ByteArrayOutputStream stream=new ByteArrayOutputStream();
@@ -281,8 +334,14 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
         
 	}
 	
+	public void downFile() throws IOException{
+		FileOutputStream outStream=MapActivity.this.openFileOutput("tmp.txt",MODE_APPEND);
+		outStream.write(new JSONArray().toString().getBytes());
+		outStream.close();
+	}
+	
 	public void downFile(JSONArray response) throws IOException{
-		FileOutputStream outStream=MapActivity.this.openFileOutput("tmp.txt",MODE_WORLD_READABLE);
+		FileOutputStream outStream=MapActivity.this.openFileOutput("tmp.txt",MODE_PRIVATE);
 		outStream.write(response.toString().getBytes());
 		outStream.close();
 		 Log.d(TAG,"write done");

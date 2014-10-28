@@ -9,8 +9,10 @@
 package me.maxwin.view;
 
 import com.logistics.R;
+
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
@@ -26,6 +28,10 @@ import android.widget.TextView;
 public class XListView extends ListView implements OnScrollListener {
 
 	private float mLastY = -1; // save event y
+	
+	private int scrolledX ;
+	private int scrolledY ;
+	
 	private Scroller mScroller; // used for scroll back
 	private OnScrollListener mScrollListener; // user's scroll listener
 
@@ -176,7 +182,10 @@ public class XListView extends ListView implements OnScrollListener {
 		if (mPullLoading == true) {
 			mPullLoading = false;
 			mFooterView.setState(XListViewFooter.STATE_NORMAL);
-		}
+			resetFooterHeight();
+//			Log.d("nihao",Integer.toString(scrolledX)+' '+Integer.toString(scrolledY));
+//			scrollTo(scrolledX, scrolledY);
+			}
 	}
 
 	/**
@@ -243,7 +252,7 @@ public class XListView extends ListView implements OnScrollListener {
 		}
 		mFooterView.setBottomMargin(height);
 
-//		setSelection(mTotalItemCount - 1); // scroll to bottom
+		setSelection(mTotalItemCount - 1); // scroll to bottom
 	}
 
 	private void resetFooterHeight() {
@@ -308,7 +317,7 @@ public class XListView extends ListView implements OnScrollListener {
 				    && !mPullLoading) {
 					startLoadMore();
 				}
-				resetFooterHeight();
+				//resetFooterHeight();
 			}
 			break;
 		}
@@ -336,9 +345,14 @@ public class XListView extends ListView implements OnScrollListener {
 
 	@Override
 	public void onScrollStateChanged(AbsListView view, int scrollState) {
-		if (mScrollListener != null) {
-			mScrollListener.onScrollStateChanged(view, scrollState);
-		}
+//		if (mScrollListener != null) {
+//			mScrollListener.onScrollStateChanged(view, scrollState);
+//		}
+		if(scrollState==OnScrollListener.SCROLL_STATE_IDLE){  
+			scrolledX = getScrollX();   
+            scrolledY = getScrollY(); 
+		} 
+		
 	}
 
 	@Override
@@ -346,10 +360,10 @@ public class XListView extends ListView implements OnScrollListener {
 			int visibleItemCount, int totalItemCount) {
 		// send to user's listener
 		mTotalItemCount = totalItemCount;
-		if (mScrollListener != null) {
-			mScrollListener.onScroll(view, firstVisibleItem, visibleItemCount,
-					totalItemCount);
-		}
+//		if (mScrollListener != null) {
+//			mScrollListener.onScroll(view, firstVisibleItem, visibleItemCount,
+//					totalItemCount);
+//		}
 	}
 
 	public void setXListViewListener(IXListViewListener l) {
