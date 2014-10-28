@@ -4,7 +4,8 @@ from crawler import Crawler
 class CrawlerChinawutong(Crawler):
     def __init__(self):
         Crawler.__init__(self)
-        self.URL = "http://www.chinawutong.com/103.html?pid="
+        self.HOST = "http://www.chinawutong.com/"
+        self.prefix = "/103.html?pid="
 
     def uniform(self, page):
         soup = BeautifulSoup(page, "html.parser")   # lxml

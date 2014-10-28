@@ -1,33 +1,47 @@
 import datetime
+import logging
 import urllib
 import urllib.request
 from mongodb import MongoDB
 
 LIFETIME = 27
-MAX_PAGE = 77
+MAX_PAGE = 44
 WINDOW_SIZE = 7
+TIMEOUT = 17
+
+logging.basicConfig(filename = "crawler.log", filemode = "a", 
+        format = '%(asctime)s %(levelname)s: %(message)s', level = logging.INFO)
 
 class Crawler():
     def __init__(self):
         self.database = MongoDB()
         self.data = []
         self.window = WINDOW_SIZE
-        self.URL = ""
+        self.HOST = ""
+        self.prefix = ""
         self.suffix = ""
 
     def crawl(self):
         count = 1
         while self.window > 0 and count < MAX_PAGE:
             page = self.get(self.generate_url(count))
+            if page is None:
+                break
             self.uniform(page)
             count += 1
+        logging.info("Successful to fetch %d items from %s", 
+                len(self.data), self.HOST)
         return self.data
 
     def generate_url(self, num_page):
-        return self.URL +  str(num_page) + self.suffix
+        return self.HOST + self.prefix + str(num_page) + self.suffix
 
     def get(self, url):
-        response = urllib.request.urlopen(url)
+        try:
+            response = urllib.request.urlopen(url, timeout = TIMEOUT)
+        except urllib.error.URLError:
+            logging.warning("Failed to fetch: " + url)
+            return None
         page = response.read()
         try:
             page = page.decode("utf8")

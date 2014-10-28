@@ -4,11 +4,11 @@ from crawler import Crawler
 class Crawler56110(Crawler):
     def __init__(self):
         Crawler.__init__(self)
-        self.URL = "http://56110.cn"
+        self.HOST = "http://56110.cn/"
         self.suffix = "/Huo/list.html"
 
     def generate_url(self, num_page):
-        return self.URL + self.suffix
+        return self.HOST + self.suffix
 
     def uniform(self, page):
         soup = BeautifulSoup(page, "html.parser")   # lxml
@@ -20,7 +20,7 @@ class Crawler56110(Crawler):
             item = {"site": "56110"}
             li = ul.find_all("li")
             a = li[0].a
-            item["url"] = self.URL + a.get("href")
+            item["url"] = self.HOST + a.get("href")
             s = a.text  # 河南洛阳栾川县发货到山东淄博淄川区货源信息
             pos = s.find("发货到")
             item["from"] = s[ : pos].strip()

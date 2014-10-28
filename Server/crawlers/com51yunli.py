@@ -4,7 +4,8 @@ from crawler import Crawler
 class Crawler51yunli(Crawler):
     def __init__(self):
         Crawler.__init__(self)
-        self.URL = "http://www.51yunli.com/goods/0/0/"
+        self.HOST = "http://www.51yunli.com/"
+        self.prefix = "/goods/0/0/"
         self.suffix = "/0"
 
     def uniform(self, page):

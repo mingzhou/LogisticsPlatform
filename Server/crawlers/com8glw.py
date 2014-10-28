@@ -4,14 +4,14 @@ from crawler import Crawler
 class Crawler8glw(Crawler):
     def __init__(self):
         Crawler.__init__(self)
-        self.URL = "http://www.8glw.com/main_info.asp?id=1&page="
-        self.host = "http://www.8glw.com/"
+        self.HOST = "http://www.8glw.com/"
+        self.prefix = "/main_info.asp?id=1&page="
 
     def uniform(self, page):
         soup = BeautifulSoup(page, "html.parser")   # lxml
         for li in soup.find(attrs = {"class": "list"}).find_all("li"):
             item = {"site": "8glw"}
-            item["url"] = self.host + li.a.get("href")
+            item["url"] = self.HOST + li.a.get("href")
             page = self.get(item["url"])
             soup = BeautifulSoup(page, "html.parser")   # lxml
             table = soup.find(attrs = {"class": "box"}).table
