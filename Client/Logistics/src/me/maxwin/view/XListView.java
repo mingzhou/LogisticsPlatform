@@ -99,6 +99,7 @@ public class XListView extends ListView implements OnScrollListener {
 				.findViewById(R.id.xlistview_header_content);
 		mHeaderTimeView = (TextView) mHeaderView
 				.findViewById(R.id.xlistview_header_time);
+		
 		addHeaderView(mHeaderView);
 
 		// init footer view
@@ -196,6 +197,8 @@ public class XListView extends ListView implements OnScrollListener {
 	public void setRefreshTime(String time) {
 		mHeaderTimeView.setText(time);
 	}
+	
+	
 
 	private void invokeOnScrolling() {
 		if (mScrollListener instanceof OnXScrollListener) {

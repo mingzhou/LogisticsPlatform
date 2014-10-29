@@ -143,11 +143,12 @@ public class PushAndPull extends Service {
 						params.add(new BasicNameValuePair("data",jOS));
 						httpRequest.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
 						HttpResponse httpResponse=new DefaultHttpClient().execute(httpRequest);
-						Header[] headers = httpResponse.getAllHeaders();
-						for(int i=0;i<headers.length;i++){
-						 	Log.d(TAG+"nihao",headers[i].toString());
-						 	}
-						update_size = Integer.parseInt(headers[headers.length-1].getValue());
+						Header header = httpResponse.getLastHeader("new");
+						
+						 	Log.d(TAG+"nihao",header.toString());
+					
+						
+						update_size = Integer.parseInt(header.getValue());
 //						String strResult = EntityUtils.toString(httpResponse.getEntity());
 //						String temp = URLDecoder.decode(strResult, "UTF_8");
 						//Log.v(TAG, "++++++++PushContent : "+ 	temp + "+++++++++");
