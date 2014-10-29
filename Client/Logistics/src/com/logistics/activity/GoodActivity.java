@@ -7,11 +7,13 @@ import java.util.ArrayList;
 import org.apache.http.Header;
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import roboguice.activity.RoboActivity;
 import roboguice.inject.ContentView;
 import roboguice.inject.InjectView;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -22,6 +24,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.logistics.R;
+import com.logistics.utils.AsyncHttpHelper;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -31,7 +34,7 @@ public class GoodActivity extends RoboActivity {
 	public static final String TAG1 = GoodActivity.class.getSimpleName();
 	private final String BASE_URL = "http://219.223.190.211";
 	private AsyncHttpClient httpHelper = new AsyncHttpClient(80);
-	
+	//private AsyncHttpHelper httpHelper = new AsyncHttpHelper();
 	@InjectView(R.id.goods_departure)
 	private EditText goods_Departure;
 	
@@ -43,7 +46,8 @@ public class GoodActivity extends RoboActivity {
 //	
 //	@InjectView(R.id.goods_weight)
 //    private EditText goods_weight;
-	
+	@InjectView(R.id.http_progress)
+	private View mProgressView;
 		
 	@InjectView(R.id.goods_searchButton)
 	private Button goods_searchButton;
@@ -58,6 +62,8 @@ public class GoodActivity extends RoboActivity {
 	
 	//private ArrayAdapter<String> mAdapter;
 	private ArrayList<String> items = new ArrayList<String>();
+		
+	private Intent intent = new Intent();
 	private Handler mHandler;
 	
 	public static final String TAG = GoodActivity.class.getSimpleName();
@@ -96,75 +102,83 @@ public class GoodActivity extends RoboActivity {
 //        goods_Type.setAdapter(typeAdapter);
 //        
         //weight
-        
-		mHandler = new Handler();
+		
                 
         goods_searchButton.setOnClickListener(new Button.OnClickListener(){
 
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent intent = new Intent();
-				onSummit();
-				intent.setClass(GoodActivity.this,GoodResultActivity.class);
-								
-				startActivity(intent);
-			}});
+				showProgress(true);
+				//onRefresh();
+				try {
+					getHttpResponse();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+			}});        
+        
+	}
+	
+	public void onRefresh() {
+		mHandler.postDelayed(new Runnable() {
+			@Override
+			public void run() {
+				try {
+					getHttpResponse();
+					
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+			}
+		}, 2500);
 	}
 	
 	public void getHttpResponse() throws IOException, JSONException{
 		RequestParams rp = new RequestParams();
-		
-		String des = goods_Destination.getText().toString();
-		String dep = goods_Departure.getText().toString();
-		rp.put("destination", des);
-		rp.put("depature", dep);
+		String mTo = goods_Destination.getText().toString();
+		String mFrom = goods_Departure.getText().toString();	
+		JSONObject tmp = new JSONObject();
+		tmp.put("to", mTo);
+		tmp.put("from", mFrom);
+		Log.d("nihao",tmp.toString());
+		rp.put("data", tmp.toString());
 		JsonHttpResponseHandler jrh = new JsonHttpResponseHandler("UTF-8") {
 			@Override
 			public void onSuccess(int statusCode, Header[] headers,
 					JSONArray response) {
 					//Toast.makeText(MapActivity.this, response.toString(), Toast.LENGTH_LONG).show();
-				for(int i = 0;i<response.length();i++){
-				try {
-					items.add(response.getJSONObject(i).toString());
-				} catch (JSONException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				}
-										
+				
+				intent.setClass(GoodActivity.this,GoodResultActivity.class);
+				intent.putExtra("query", response.toString());
+				//Log.d("nihao",response.toString());
+				showProgress(false);
+				startActivity(intent);
 			}
 			
 			@Override
 			public void onFailure(int statusCode, Header[] headers,
 					String responseBody, Throwable e) {
 				Toast.makeText(GoodActivity.this, statusCode + "\t" + responseBody, Toast.LENGTH_LONG).show();
-				
+				showProgress(false);
 			}
 						
 		};
 		httpHelper.post(BASE_URL+"/query",rp, jrh);
 	}
 	
-	public void onSummit() {
-		mHandler.postDelayed(new Runnable() {
-			@Override
-			public void run() {
-				//start = ++refreshCnt;
-				items.clear();
-				try {
-						getHttpResponse();
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (JSONException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				
-			}
-		}, 500);
+	public void showProgress(final boolean show){
+		mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
 	}
-	
 		
 }

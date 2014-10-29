@@ -7,6 +7,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -66,6 +68,7 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 	private SharedPreferences.Editor editor;
 	
 	private JSONArray jArray = new JSONArray();
+	
 	
 	/** Called when the activity is first created. */
 	@Override
@@ -219,6 +222,11 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 		}, 2500);
 	}
 	
+	public static boolean isInteger(String input){  
+        Matcher mer = Pattern.compile("^[0-9]+$").matcher(input);  
+        return mer.find();  
+    }  
+	
 	public void getHttpResponse() throws IOException, JSONException{
 		RequestParams rp = new RequestParams();
 		loadFile();
@@ -226,6 +234,7 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 		
 		String jOS = jArray.getJSONObject(0).toString();
 		rp.put("data", jOS);
+		
 		JsonHttpResponseHandler jrh = new JsonHttpResponseHandler("UTF-8") {
 			@Override
 			public void onSuccess(int statusCode, Header[] headers,
@@ -234,15 +243,23 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 				 try {
 					 	downFile(response);
 					 	//Log.d(TAG+"nihao","header num"+Integer.toString(headers.length));
+					 	int updata_num =0;
 					 	for(int i=0;i<headers.length;i++){
-					 	Log.d(TAG+"nihao",headers[i].toString());
+						 	Log.d(TAG+"nihao",headers[i].toString());
+						 	if(isInteger(headers[i].getValue().toString())){
+						 		updata_num = Integer.parseInt(headers[i].getValue());
+						 		Log.d("nihao",headers[i].getValue());
+						 	}
+						 	}
+					 	//updata_num = statusCode;
+					 	Toast toast = Toast.makeText(MapActivity.this, "更新 "+updata_num, Toast.LENGTH_LONG);
+					 	toast.setGravity(0x00000030, 0, 55);
 					 	
-					 	}
-					 	Toast.makeText(MapActivity.this, "更新 "+headers[headers.length-2].getValue(), Toast.LENGTH_LONG).show();
-					 	//newnum = Integer.parseInt(headers[3].getValue());
+					 	toast.show();
+
 					 	loadFile();
 				        Log.d(TAG+"nihao","read done");
-				        Log.d(TAG+"nihao",jArray.toString());
+				        //Log.d(TAG+"nihao",jArray.toString());
 				        for (int i =0; i<jArray.length();i++){
 				        	//r[i] =
 				        	mAdapter.add(jArray.getJSONObject(i).getString("from")+" -> " + jArray.getJSONObject(i).getString("to"));

@@ -1,7 +1,10 @@
 package com.logistics.activity;
 
 import java.util.ArrayList;
+import java.util.Date;
+
 import org.apache.http.Header;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -18,6 +21,8 @@ import com.loopj.android.http.RequestParams;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -34,17 +39,15 @@ public class GoodResultActivity extends RoboActivity {
 	private TextView test;
 	
 	//private final String DUMMY = null;
-	
-	@Inject
-	private AsyncHttpHelper httpHelper;
-	
+		
 	@InjectView(R.id.return_btn)
 	private Button return_btn;
 	
 	@InjectView(R.id.list_goodresult)
 	private ListView listview;
-	
-	private ArrayList<String> list;
+	private JSONArray jArray = new JSONArray();
+	private ArrayAdapter<String> mAdapter;
+	private ArrayList<String> items = new ArrayList<String>();
 	
 	
 	@Override
@@ -69,15 +72,32 @@ public class GoodResultActivity extends RoboActivity {
 		listview.setOnItemClickListener(new OnItemClickListener(){
 
 			@Override
-			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
-					long arg3) {
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
 				// TODO Auto-generated method stub
 				Intent intent = new Intent();
 				intent.setClass(GoodResultActivity.this,GoodResultDetailActivity.class);
+				
+				try {
+					intent.putExtra("from", jArray.getJSONObject(position).getString("from"));
+					intent.putExtra("to", jArray.getJSONObject(position).getString("to"));
+					intent.putExtra("site", jArray.getJSONObject(position).getString("site"));
+					//intent.putExtra("url", jArray.getJSONObject(position-1).getString("url"));
+					long deadline = jArray.getJSONObject(position).getJSONObject("deadline").getLong("$date");
+					intent.putExtra("deadline", DateFormat.getDateFormat(GoodResultActivity.this).format(new Date(deadline)));
+					intent.putExtra("title","信息详情");
+					//Log.d(TAG+"data",jArray.getJSONObject(position).toString());
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				startActivity(intent);
 				onPause();
-				
-			}});
+			}
+			
+
+		});
+		
 		
 	}
 	
@@ -92,71 +112,26 @@ public class GoodResultActivity extends RoboActivity {
 				finish();
 				onDestroy();
 			}});
-		list = getData();
 		
-		listview.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1,list));
-		
+		mAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, items);
+		listview.setAdapter(mAdapter);
+		Intent intent =getIntent(); 
+		String jS = intent.getStringExtra("query");
+		Log.d("nihao-js",jS);
+		try {
+			jArray = new JSONArray(jS);
+			for (int i =0; i<jArray.length();i++){
+				//long datetime = jArray.getJSONObject(i).getLong("$date");
+	        mAdapter.add(jArray.getJSONObject(i).getString("from")+" -> " + jArray.getJSONObject(i).getString("to"));
+	        		//+DateFormat.getDateFormat(GoodResultActivity.this).format(new Date(jArray.getJSONObject(i).getLong("$date"))));
+	        }
+			mAdapter.notifyDataSetChanged();
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+				
 	}
 	
 	
-	
-	private ArrayList<String> getData() {
-		// TODO Auto-generated method stub
-		ArrayList<String> data = new ArrayList<String>();
-		data.add("测试数据1");
-        data.add("测试数据2");
-        data.add("测试数据3");
-        data.add("测试数据4");
-        data.add("测试数据5");
-        data.add("测试数据6");
-        data.add("测试数据7");
-        data.add("测试数据8");
-              
-         
-        return data;
-	}
-
-
-
-	private void getHttpResponse(Bundle b){
-		
-		RequestParams rp = new RequestParams();
-		rp.put("dep", b.getString("key_dep"));
-		rp.put("des", b.getString("key_des"));
-		rp.put("typ", b.getString("key_typ"));
-		
-		JsonHttpResponseHandler jrh = new JsonHttpResponseHandler("UTF-8") {
-			@Override
-			public void onSuccess(JSONObject response) {
-					Toast.makeText(GoodResultActivity.this, response.toString(), Toast.LENGTH_LONG).show();
-					
-					try {
-						String[] items = {response.getString("车牌"),response.getString("电话")};
-						
-						listview.setAdapter(new ArrayAdapter<String>(	GoodResultActivity.this ,android.R.layout.simple_list_item_1,
-								items));
-						listview.setOnItemClickListener(null);
-					} catch (JSONException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					
-					
-					//test.setText("车牌"+chepai+"\n"+"电话"+dianhual;
-			}
-			@Override
-			public void onFailure(int statusCode, Header[] headers,
-					String responseBody, Throwable e) {
-				Toast.makeText(GoodResultActivity.this, statusCode + "\t" + responseBody, Toast.LENGTH_LONG).show();
-				test.setText(statusCode + "\t" + responseBody);
-			}
-		};
-		httpHelper.get("/json/", rp,jrh);
-		
-	}
-
-	private Bundle getBundle(){
-		Bundle bundle = this.getIntent().getExtras();
-		return bundle;
-	}
 }
