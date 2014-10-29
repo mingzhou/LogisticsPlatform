@@ -16,7 +16,7 @@ public class AsyncHttpHelper {
 		client = new AsyncHttpClient(80);
 	}
 	
-	private final String BASE_URL = "http://219.223.168.97";
+	private final String BASE_URL = "http://219.223.168.66";
 
 	private AsyncHttpClient client;
 	

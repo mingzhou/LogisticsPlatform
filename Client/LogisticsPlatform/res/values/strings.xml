@@ -43,14 +43,22 @@
     <!--
          Repeat options that appear under an alarm on main Alarm Clock
          screen to identify repetition schedule: special case for when
+<<<<<<< HEAD
          the alarm is set to never repeat
+=======
+         the alarm is set to never repeat
+>>>>>>> 46e79dbfff10edcb7bc82719de58462ce8d62a61
     -->
     <string name="never">Never</string>
 
     <!--
          Repeat options that appear under an alarm on main Alarm Clock
          screen to identify repetition schedule: concatenate days with
+<<<<<<< HEAD
          this character, i.e. "Mon, Tue, Wed"
+=======
+         this character, i.e. "Mon, Tue, Wed"
+>>>>>>> 46e79dbfff10edcb7bc82719de58462ce8d62a61
     -->
     <string name="day_concat">", "</string>
     <!-- Default label to display for an alarm -->
@@ -89,6 +97,7 @@
     <string name="am_text">AM</string>
     <string name="pm_text">PM</string>
     <string name="no_sdcard">The current sd card, not with </string>
+<<<<<<< HEAD
     
     <string name="content_description">the background of world clock </string>
 
@@ -96,6 +105,11 @@
     <string name="goods_title">Good Search </string>
     <string name="map_title">Map</string>
     <string name="profile_title">Profile</string>
+=======
+
+    <!-- Text to display in actual title of GoodActivity -->
+    <string name="goods_title">Good Activity </string>
+>>>>>>> 46e79dbfff10edcb7bc82719de58462ce8d62a61
     <string name="departure">Departure</string>
     <string name="destination">Destination</string>
     <string name="goods_type">Goods type</string>
@@ -103,6 +117,7 @@
     <string name="search">search</string>
     <string name="title_activity_good_result">GoodResultActivity</string>
     <string name="no_data">No data</string>
+<<<<<<< HEAD
     <string name="title_activity_map">MapActivity</string>
     <string name="usr_name">Username:</string>
     <string name="phone">Phone no.:</string>
@@ -122,5 +137,7 @@
     <string name="new_phone">New Phone No.:</string>
     <string name="confirm">Confirm :</string>
     <string name="submit">Submit</string>
+=======
+>>>>>>> 46e79dbfff10edcb7bc82719de58462ce8d62a61
 
 </resources>

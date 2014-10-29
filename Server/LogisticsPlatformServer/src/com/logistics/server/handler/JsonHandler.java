@@ -26,14 +26,29 @@ public class JsonHandler implements HttpRequestHandler {
 	@Override
 	public void handle(HttpRequest request, HttpResponse response, HttpContext context) throws HttpException, IOException {
 		String method = request.getRequestLine().getMethod().toUpperCase(Locale.ENGLISH);
+		String s =request.getRequestLine().getUri().toLowerCase().substring(7);
+		String[] ss = s.split("&");
+		String dep,des,typ;
+		dep =ss[0].split("=")[1];
+		des =ss[1].split("=")[1];
+		typ =ss[2].split("=")[1];
+		
 		if (!method.equals("GET") && !method.equals("HEAD") && !method.equals("POST")) {
 			throw new MethodNotSupportedException(method + " method not supported");
 		}
 		
 		try {
 			JSONObject object = new JSONObject();
-			object.put("k1", "v1");
-			object.put("k2", "中文");
+			System.out.println(dep);
+			System.out.println(des);
+			System.out.println(typ);
+			if( dep.equals("shanghai")){
+			object.put("车牌", "豫B7998");
+			object.put("电话", "123214214");}
+			else{
+				object.put("车牌", "no result");
+				object.put("电话", "no result");
+			}
 			HttpEntity entity = new StringEntity(object.toString(), ContentType.APPLICATION_JSON);
 			response.setEntity(entity);
 			response.setStatusCode(HttpStatus.SC_OK);
