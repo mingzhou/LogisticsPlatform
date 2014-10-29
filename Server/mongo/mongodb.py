@@ -36,9 +36,13 @@ class MongoDB():
         obj = {"_id": {"$gt": ObjectId(obj_id)}}
         return self.find(obj)
 
+    def query(self, obj):
+        return self.find_descending(obj)
+
     def find_descending(self, obj = None, count = 10):
         data = []
         top = self.find(obj).sort("_id", pymongo.DESCENDING).limit(count)
         for item in top:
+            del item["description"]
             data.append(item)
         return json.dumps(data, default = json_util.default)
