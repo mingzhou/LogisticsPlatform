@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import org.apache.http.Header;
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import roboguice.activity.RoboActivity;
 import roboguice.inject.ContentView;
@@ -29,7 +30,7 @@ import com.loopj.android.http.RequestParams;
 @ContentView(R.layout.activity_good)
 public class GoodActivity extends RoboActivity {
 	public static final String TAG1 = GoodActivity.class.getSimpleName();
-	private final String BASE_URL = "http://219.223.190.211";
+	private final String BASE_URL = "http://219.223.190.211:8000/";
 	private AsyncHttpClient httpHelper = new AsyncHttpClient(80);
 	
 	@InjectView(R.id.goods_departure)
@@ -104,11 +105,15 @@ public class GoodActivity extends RoboActivity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent intent = new Intent();
-				onSummit();
-				intent.setClass(GoodActivity.this,GoodResultActivity.class);
-								
-				startActivity(intent);
+				try {
+					getHttpResponse();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}});
 	}
 	
@@ -117,21 +122,21 @@ public class GoodActivity extends RoboActivity {
 		
 		String des = goods_Destination.getText().toString();
 		String dep = goods_Departure.getText().toString();
-		rp.put("destination", des);
-		rp.put("depature", dep);
+		JSONObject tmp = new JSONObject();
+		tmp.put("to", des);
+		tmp.put("from", dep);
+		Log.d("nihao",tmp.toString());
+		rp.put("data", tmp.toString());
 		JsonHttpResponseHandler jrh = new JsonHttpResponseHandler("UTF-8") {
 			@Override
 			public void onSuccess(int statusCode, Header[] headers,
 					JSONArray response) {
 					//Toast.makeText(MapActivity.this, response.toString(), Toast.LENGTH_LONG).show();
-				for(int i = 0;i<response.length();i++){
-				try {
-					items.add(response.getJSONObject(i).toString());
-				} catch (JSONException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				}
+				Intent intent = new Intent();
+				intent.setClass(GoodActivity.this,GoodResultActivity.class);
+				intent.putExtra("query", response.toString());
+				//Log.d("nihao",response.toString());
+				startActivity(intent);
 										
 			}
 			
@@ -143,28 +148,10 @@ public class GoodActivity extends RoboActivity {
 			}
 						
 		};
-		httpHelper.post(BASE_URL+"/query",rp, jrh);
+		httpHelper.post(BASE_URL+"query",rp, jrh);
 	}
 	
-	public void onSummit() {
-		mHandler.postDelayed(new Runnable() {
-			@Override
-			public void run() {
-				//start = ++refreshCnt;
-				items.clear();
-				try {
-						getHttpResponse();
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (JSONException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				
-			}
-		}, 500);
-	}
+	
 	
 		
 }
