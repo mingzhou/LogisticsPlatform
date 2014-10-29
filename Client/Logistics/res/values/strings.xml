@@ -111,10 +111,10 @@
     <string name="title_activity_profile_change_phone">ProfileChangePhoneActivity</string>
     <string name="old_password">旧密码:</string>
     <string name="new_password">新密码:</string>
-    <string name="old_phone">旧手机好:</string>
+    <string name="old_phone">旧手机号:</string>
     <string name="new_phone">新手机号:</string>
     <string name="set_password">设置密码:</string>
-    <string name="confirm">确认密码:</string>
+    <string name="confirm">确认:</string>
     <string name="submit">提交</string>
     <string name="result_show">结果显示</string>
     <string name="title_activity_good_result_detail">GoodResultDetailActivity</string>

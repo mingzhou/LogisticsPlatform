@@ -8,6 +8,7 @@ import com.logistics.R;
 
 import android.os.Bundle;
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -41,6 +42,23 @@ public class ProfileCurrentDealDetailActivity extends RoboActivity {
 
 	private void initComponent() {
 		// TODO Auto-generated method stub
+		Bundle extras = getIntent().getExtras();
+		  if (extras != null) {
+		   String from= extras.getString("from");
+		   String to= extras.getString("to");
+		   String site= extras.getString("site");
+		   //String url= extras.getString("url");
+		   String deadline= extras.getString("deadline");
+		   String title = extras.getString("title");
+		   Log.d("nihao-time","deadline");
+		   goods_detail_title.setText(title);
+		   goods_detail_info.setText("出发地："+from+"\n"
+				   +"到达地："+to+"\n"
+				   +"截止时间:"+deadline+"\n");
+		   source_detail_info.setText("来源："+site+"\n");
+				  // +"URL:"+url);
+		  }        
+		
 		return_btn.setOnClickListener(new Button.OnClickListener(){
 
 			@Override
@@ -60,9 +78,7 @@ public class ProfileCurrentDealDetailActivity extends RoboActivity {
                 finish();
 				onDestroy();
 			}});
-		goods_detail_title.setText("foo");
-		goods_detail_info.setText("bar");
-		source_detail_info.setText("hwoo");
+		
 	}
 
 	

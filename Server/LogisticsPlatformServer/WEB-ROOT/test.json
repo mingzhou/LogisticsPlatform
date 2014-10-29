@@ -1,2 +1,0 @@
-{ "_id" : ObjectId("5433feed6a634314baa0822d"), "from" : "河北省 保定市 曲阳县", "to" : "山东省 潍坊市 安丘市", "name" ："瓷砖","type" ："物流公司","site" : "chinawutong", "date" : "2014-10-10" }
-{ "_id" : ObjectId("5433feed6a634314baa0822f"), "from" : "安徽省 滁州市 市辖区", "to" : "浙江省 杭州市 市辖区", "name" ："饮料","type" ："不限","site" : "chinawutong", "date" : "2014-10-10" }

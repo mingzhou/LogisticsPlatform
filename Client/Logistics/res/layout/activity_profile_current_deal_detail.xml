@@ -99,10 +99,12 @@
                 android:layout_height="wrap_content"
                 android:text="@string/seperator"
                 android:textSize="20sp" />
+
             	<TextView
-				android:id="@+id/goods_detail_info"
-				android:layout_width="fill_parent"
-				android:layout_height="30dip"/> 
+            	    android:id="@+id/goods_detail_info"
+            	    android:layout_width="fill_parent"
+            	    android:layout_height="108dp"
+            	    android:textSize="20sp" />
 				
             	<TextView
                 android:layout_width="wrap_content"
@@ -111,9 +113,10 @@
                 android:textSize="20sp" />
             
             	<TextView
-				android:id="@+id/source_detail_info"
-				android:layout_width="fill_parent"
-				android:layout_height="30dip"/> 
+            	    android:id="@+id/source_detail_info"
+            	    android:layout_width="fill_parent"
+            	    android:layout_height="119dp"
+            	    android:textSize="20sp" />
 				
             	<Button
             	android:id="@+id/notify_source"

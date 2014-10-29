@@ -53,7 +53,7 @@ public class LoginDetailActivity extends RoboActivity {
 				// TODO Auto-generated method stub
 				String phone_i = phone.getText().toString();
 				String pw_i = password.getText().toString();
-				if(phone_i.compareTo(phone_l)==0 && pw_i.compareTo(pw_l)==0){				
+				if(phone_i.equals(phone_l) && pw_i.equals(pw_l)){				
 				Intent intent = new Intent();
 				intent.setClass(LoginDetailActivity.this,MainActivity.class);
 				startActivity(intent);

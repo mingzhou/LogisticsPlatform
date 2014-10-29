@@ -33,8 +33,11 @@ import android.os.Handler;
 import android.os.StrictMode;
 import android.text.format.DateFormat;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
+import android.widget.AdapterView.OnItemClickListener;
 
 @SuppressLint("WorldReadableFiles")
 @ContentView(R.layout.activity_map)
@@ -116,6 +119,35 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
         	items.add(jArray.getJSONObject(i).getString("from")+" -> " + jArray.getJSONObject(i).getString("to"));
         	}
 		mAdapter.notifyDataSetChanged();}
+		
+		
+		mListView.setOnItemClickListener(new OnItemClickListener(){
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent();
+				intent.setClass(MapActivity.this,ProfileCurrentDealDetailActivity.class);
+				
+				try {
+					intent.putExtra("from", jArray.getJSONObject(position-1).getString("from"));
+					intent.putExtra("to", jArray.getJSONObject(position-1).getString("to"));
+					intent.putExtra("site", jArray.getJSONObject(position-1).getString("site"));
+					//intent.putExtra("url", jArray.getJSONObject(position-1).getString("url"));
+					long deadline = jArray.getJSONObject(position-1).getJSONObject("deadline").getLong("$date");
+					intent.putExtra("deadline", DateFormat.getDateFormat(MapActivity.this).format(new Date(deadline)));
+					intent.putExtra("title","信息详情");
+					//Log.d(TAG+"data",jArray.getJSONObject(position).toString());
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				startActivity(intent);
+				onPause();
+			}
+			
+		});
 	}
 	
 
@@ -204,8 +236,9 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 					 	//Log.d(TAG+"nihao","header num"+Integer.toString(headers.length));
 					 	for(int i=0;i<headers.length;i++){
 					 	Log.d(TAG+"nihao",headers[i].toString());
+					 	
 					 	}
-					 	Toast.makeText(MapActivity.this, "更新 "+headers[headers.length-3].getValue(), Toast.LENGTH_LONG).show();
+					 	Toast.makeText(MapActivity.this, "更新 "+headers[headers.length-2].getValue(), Toast.LENGTH_LONG).show();
 					 	//newnum = Integer.parseInt(headers[3].getValue());
 					 	loadFile();
 				        Log.d(TAG+"nihao","read done");

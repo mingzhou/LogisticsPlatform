@@ -39,7 +39,7 @@ public class RegisterActivity extends RoboActivity {
 //	private Button test;
 	
 	private ArrayAdapter<String> roleAdapter;
-	private String[] roleStrings = { "driver", "source"};
+	private String[] roleStrings = { "司机", "货主"};
 	
 	private SharedPreferences sharedPreferences;  
 	private SharedPreferences.Editor editor;  

@@ -19,14 +19,19 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 import com.logistics.R;
+import com.logistics.activity.MainActivity;
 import com.logistics.activity.MapActivity;
+
 import android.app.ActivityManager;
+import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
 import android.content.Intent;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
@@ -46,7 +51,7 @@ public class PushAndPull extends Service {
         
     private UpdateHandler updateHandler;
     //private AsyncHttpClient httpHelper = new AsyncHttpClient(80);
-        
+    Uri soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);    
     private JSONArray jArray = new JSONArray();
 
     private int update_size =0;
@@ -83,7 +88,8 @@ public class PushAndPull extends Service {
         packageName = this.getPackageName();
         
 		// TODO Auto-generated method stub
-		return super.onStartCommand(intent, flags, startId);
+		//return super.onStartCommand(intent, flags, startId);
+        return START_STICKY;
 	}
 
 	class UpdateHandler extends Handler {
@@ -96,7 +102,7 @@ public class PushAndPull extends Service {
 			// TODO Auto-generated method stub
 			if(msg.what!=0 && update_size > 0 && !isAppOnForeground()){
 				NotificationManager nm = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
-				Intent intent = new Intent(PushAndPull.this, MapActivity.class);
+				Intent intent = new Intent(PushAndPull.this, MainActivity.class);
 				intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK);		
 				PendingIntent contentIntent = PendingIntent.getActivity(
 						PushAndPull.this, 
@@ -109,9 +115,12 @@ public class PushAndPull extends Service {
 					    .setContentText("您新收到"+update_size+"条物流信息")
 					    .setAutoCancel(true)
 					    .setWhen(System.currentTimeMillis())
-					    
+					    .setSound(soundUri)
+					    .setLights(0xff00ff00, 1000, 2000)
 					    ;
 				mBuilder.setContentIntent(contentIntent);
+//				final Notification notification = mBuilder.build();
+//				startForeground(1, notification);
 				nm.notify(1,mBuilder.build());
 			}   
 			super.handleMessage(msg);
@@ -138,10 +147,14 @@ public class PushAndPull extends Service {
 						for(int i=0;i<headers.length;i++){
 						 	Log.d(TAG+"nihao",headers[i].toString());
 						 	}
-						update_size = Integer.parseInt(headers[headers.length-2].getValue());
+						update_size = Integer.parseInt(headers[headers.length-1].getValue());
 //						String strResult = EntityUtils.toString(httpResponse.getEntity());
 //						String temp = URLDecoder.decode(strResult, "UTF_8");
 						//Log.v(TAG, "++++++++PushContent : "+ 	temp + "+++++++++");
+						
+						Message msg1 = new Message();
+						msg1.what = 1;	
+						updateHandler.sendMessage(msg1);
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -152,9 +165,7 @@ public class PushAndPull extends Service {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-					Message msg1 = new Message();
-					msg1.what = 1;	
-					updateHandler.sendMessage(msg1);	
+						
 							
 			}		
 		}	

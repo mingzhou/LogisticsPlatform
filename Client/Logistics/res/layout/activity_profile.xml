@@ -78,7 +78,8 @@
                         <TextView
                             android:id="@+id/usr_name"
                             android:layout_width="150dp"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:textSize="20sp" />
                 </TableRow>
                 
             	<TableRow android:layout_width="match_parent" >
@@ -92,7 +93,8 @@
                         <TextView
                             android:id="@+id/phone"
                             android:layout_width="150dp"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:textSize="20sp" />
                 </TableRow>
                 
             	<TableRow android:layout_width="match_parent" >
@@ -106,7 +108,8 @@
                         <TextView
                             android:id="@+id/role_id"
                             android:layout_width="150dp"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:textSize="20sp" />
                 </TableRow>
             	
             	<TextView
@@ -114,7 +117,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/seperator"
                             android:textSize="20sp" />
-            	
+            	<!--  
             	<Button
             	    		android:id="@+id/cur_deal"
                             android:layout_width="wrap_content"
@@ -131,7 +134,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/seperator"
-                            android:textSize="20sp" />
+                            android:textSize="20sp" />	
+                -->
             	<Button
             	    		android:id="@+id/change_password"
                             android:layout_width="wrap_content"
