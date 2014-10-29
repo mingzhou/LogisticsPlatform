@@ -26,7 +26,7 @@ class Crawler56110(Crawler):
             item["from"] = s[ : pos].strip()
             item["to"] = s[pos + 3 : -4].strip()
             date = li[-1].text.strip().split('-')
-            item["date"], item["deadline"] = self.lifetime(date, 3)
+            item["date"], item["deadline"] = self.lifetime(date)
             item["description"] = ul.text
             if item in self.data or self.exist(item):
                 self.window -= 1

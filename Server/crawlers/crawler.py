@@ -5,7 +5,7 @@ import urllib.request
 from mongodb import MongoDB
 
 LIFETIME = 27
-MAX_PAGE = 44
+MAX_PAGE = 47
 WINDOW_SIZE = 7
 TIMEOUT = 17
 
