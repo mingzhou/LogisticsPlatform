@@ -32,6 +32,15 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="250dp"
         android:src="@drawable/map_clock" />
+    
+    <ProgressBar
+        android:id="@+id/login_progress"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="0dp"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone"/>
 
 	<TableLayout
                     android:id="@+id/profile_top"
@@ -57,7 +66,8 @@
 
                 </TableRow>
                 
-            	<TableRow android:layout_width="match_parent" >
+            	<TableRow android:layout_width="match_parent" 
+            	    android:layout_marginTop="45dp">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -84,7 +94,7 @@
          android:layout_marginLeft="5dp"
          android:gravity="center"
 	     android:padding="5dp"
-	     android:layout_marginTop="50dp"
+	     android:layout_marginTop="80dp"
 	     android:background="@drawable/ic_button_green"
 	     android:textSize="24sp"
 	     android:textColor="@android:color/white"
@@ -98,7 +108,7 @@
          android:layout_alignParentRight="true"
          android:layout_marginRight="5dp"
          android:gravity="center"
-         android:layout_marginTop="50dp"
+         android:layout_marginTop="80dp"
 	     android:padding="5dp"
 	     android:background="@drawable/ic_button_green"
 	     android:textSize="24sp"

@@ -28,9 +28,9 @@ public class ProfileActivity extends RoboActivity {
 	@InjectView(R.id.phone)
 	private TextView phone;
 	
-	@InjectView(R.id.role_id)
-	private TextView role_id;
-	
+//	@InjectView(R.id.role_id)
+//	private TextView role_id;
+		
 //	@InjectView(R.id.cur_deal)
 //	private Button cur_deal;
 //	
@@ -40,8 +40,11 @@ public class ProfileActivity extends RoboActivity {
 	@InjectView(R.id.change_password)
 	private Button cha_pa;
 	
-	@InjectView(R.id.change_phone)
-	private Button cha_ph;
+//	@InjectView(R.id.change_phone)
+//	private Button cha_ph;
+	
+	@InjectView(R.id.logout)
+	private Button logout;
 	
 	private SharedPreferences sharedPreferences;  
 	private SharedPreferences.Editor editor;  
@@ -62,7 +65,7 @@ public class ProfileActivity extends RoboActivity {
         String i = sharedPreferences.getString("role_id", null);
 		usr_name.setText(u);
 		phone.setText(p);
-		role_id.setText(i);
+	//	role_id.setText(i);
 		
 //		cur_deal.setOnClickListener(new Button.OnClickListener(){
 //
@@ -97,19 +100,29 @@ public class ProfileActivity extends RoboActivity {
                 onPause();
 			}});
 		
-		cha_ph.setOnClickListener(new Button.OnClickListener(){
+//		cha_ph.setOnClickListener(new Button.OnClickListener(){
+//
+//			@Override
+//			public void onClick(View v) {
+//				// TODO Auto-generated method stub
+//				Intent intent = new Intent();
+//                intent.setClass(ProfileActivity.this,ProfileChangePhoneActivity.class);
+//                startActivity(intent);
+//                onPause();
+//                //finish();
+//                //onDestroy();
+//			}});
+		logout.setOnClickListener(new Button.OnClickListener(){
 
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Intent intent = new Intent();
-                intent.setClass(ProfileActivity.this,ProfileChangePhoneActivity.class);
+                intent.setClass(ProfileActivity.this,LoginActivity.class);
                 startActivity(intent);
-                onPause();
-                //finish();
-                //onDestroy();
+                finish();
+                onDestroy();
 			}});
-		
 		
 		
 	}

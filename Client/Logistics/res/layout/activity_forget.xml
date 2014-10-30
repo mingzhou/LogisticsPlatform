@@ -62,6 +62,22 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:text="@string/usr_name"
+                            android:textSize="20sp" />
+
+                        <EditText
+                            android:id="@+id/usr_name"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:inputType="text"/>
+                </TableRow>
+            	
+            	<TableRow android:layout_width="match_parent" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:text="@string/set_password"
                             android:textSize="20sp" />
 

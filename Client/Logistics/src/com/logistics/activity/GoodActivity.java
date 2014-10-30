@@ -1,9 +1,6 @@
 package com.logistics.activity;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
-
 import org.apache.http.Header;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -13,18 +10,15 @@ import roboguice.activity.RoboActivity;
 import roboguice.inject.ContentView;
 import roboguice.inject.InjectView;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.logistics.R;
-import com.logistics.utils.AsyncHttpHelper;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -61,7 +55,7 @@ public class GoodActivity extends RoboActivity {
 //    private String[] typeStrings = { "food", "fruit" };
 	
 	//private ArrayAdapter<String> mAdapter;
-	private ArrayList<String> items = new ArrayList<String>();
+	//private ArrayList<String> items = new ArrayList<String>();
 		
 	private Intent intent = new Intent();
 	private Handler mHandler;
