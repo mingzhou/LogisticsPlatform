@@ -3,21 +3,13 @@ package com.logistics.activity;
 import java.util.ArrayList;
 import java.util.Date;
 
-import org.apache.http.Header;
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
-
 import roboguice.activity.RoboActivity;
 import roboguice.inject.ContentView;
 import roboguice.inject.InjectView;
 
-import com.google.inject.Inject;
 import com.logistics.R;
-import com.logistics.utils.AsyncHttpHelper;
-import com.loopj.android.http.JsonHttpResponseHandler;
-import com.loopj.android.http.RequestParams;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -30,7 +22,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 @ContentView(R.layout.activity_good_result)
 public class GoodResultActivity extends RoboActivity {

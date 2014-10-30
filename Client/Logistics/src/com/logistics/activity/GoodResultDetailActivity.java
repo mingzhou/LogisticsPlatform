@@ -6,7 +6,6 @@ import roboguice.inject.InjectView;
 
 import com.logistics.R;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -73,9 +72,9 @@ public class GoodResultDetailActivity extends RoboActivity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent intent = new Intent();
-                intent.setClass(GoodResultDetailActivity.this,MainActivity.class);
-                startActivity(intent);
+//				Intent intent = new Intent();
+//                intent.setClass(GoodResultDetailActivity.this,MainActivity.class);
+//                startActivity(intent);
                 finish();
 				onDestroy();
 			}});

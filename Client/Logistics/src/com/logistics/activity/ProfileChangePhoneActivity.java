@@ -8,6 +8,8 @@ import com.logistics.R;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.Html;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -60,20 +62,59 @@ public class ProfileChangePhoneActivity extends RoboActivity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				if(old_phone.getText().toString().equals(sharedPreferences.getString("phone", null))
-						&& (confirm.getText().toString().equals(new_phone.getText().toString()) ) ){
-					String m = confirm.getText().toString();
-					editor.putString("phone", m);
-					editor.commit();
-					finish();
-					onDestroy();
-				}else{
-					Toast.makeText(ProfileChangePhoneActivity.this, "sth goes wrong", Toast.LENGTH_LONG).show();
-				
-				}
+//				if(old_phone.getText().toString().equals(sharedPreferences.getString("phone", null))
+//						&& (confirm.getText().toString().equals(new_phone.getText().toString()) ) ){
+//					String m = confirm.getText().toString();
+//					editor.putString("phone", m);
+//					editor.commit();
+//					finish();
+//					onDestroy();
+//				}else{
+//					Toast.makeText(ProfileChangePhoneActivity.this, "sth goes wrong", Toast.LENGTH_LONG).show();
+//				
+//				}
+				attemptModify();
 			}});
 	}
 
+	public void attemptModify() {
+		String mOldP = old_phone.getText().toString();
+		String mNewP = new_phone.getText().toString();
+		String mConF = confirm.getText().toString();
+		String mPinSP = sharedPreferences.getString("phone", null);
+		boolean cancel = false;
+		View focusView = null;
+		if(!mOldP.equals(mPinSP)){
+			old_phone.setError(Html.fromHtml("<font color=#E10979>输入手机号错误</font>"));
+			focusView = old_phone;
+			cancel = true;
+		}
+		
+		if (TextUtils.isEmpty(mNewP) ) {
+			
+			new_phone.setError(Html.fromHtml("<font color=#E10979>手机号不能为空</font>"));
+			focusView = new_phone;
+			cancel = true;
+		}
+		if(!mConF.equals(mNewP)){
+			confirm.setError(Html.fromHtml("<font color=#E10979>两次手机号不一致</font>"));
+			focusView = confirm;
+			cancel = true;
+		}
+		
+		if (cancel) {
+			// There was an error; don't attempt login and focus the first
+			// form field with an error.
+			focusView.requestFocus();
+		} else {
+			// Show a progress spinner, and kick off a background task to
+			// perform the user login attempt.
+			
+			finish();
+			onDestroy();
+		}
+	}
+	
 	
 	
 }

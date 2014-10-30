@@ -96,7 +96,7 @@
                             android:layout_height="wrap_content"
                             android:textSize="20sp" />
                 </TableRow>
-                
+            <!--      
             	<TableRow android:layout_width="match_parent" >
 
                         <TextView
@@ -111,7 +111,7 @@
                             android:layout_height="wrap_content"
                             android:textSize="20sp" />
                 </TableRow>
-            	
+            	-->
             	<TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -142,11 +142,23 @@
                             android:layout_height="wrap_content"
                             android:text="@string/change_password"
                             android:textSize="20sp" />
-            	<Button
+      <!--       	<Button
             	    		android:id="@+id/change_phone"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/change_phone"
+                            android:textSize="20sp" />  -->
+            	<TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/seperator"
+                            android:textSize="20sp" />
+            	
+            	<Button
+            	    		android:id="@+id/logout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/logout"
                             android:textSize="20sp" />
             	
             	

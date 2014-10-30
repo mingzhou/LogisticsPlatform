@@ -80,7 +80,7 @@
                             android:ems="10"
                             android:inputType="textPersonName" />
                 </TableRow>
-                
+              <!--   
             	<TableRow android:layout_width="match_parent" >
 
                         <TextView
@@ -97,7 +97,7 @@
                             />
 
                 </TableRow>
-            	
+            	 -->
             	            	
             	<Button
             	    		android:id="@+id/register"
