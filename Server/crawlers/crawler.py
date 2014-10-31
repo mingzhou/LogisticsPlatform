@@ -2,7 +2,7 @@ import datetime
 import logging
 import urllib
 import urllib.request
-from mongodb import MongoDB
+from mongosupply import MongoSupply
 
 LIFETIME = 27
 MAX_PAGE = 47
@@ -14,7 +14,7 @@ logging.basicConfig(filename = "crawler.log", filemode = "a",
 
 class Crawler():
     def __init__(self):
-        self.database = MongoDB()
+        self.database = MongoSupply()
         self.data = []
         self.window = WINDOW_SIZE
         self.HOST = ""

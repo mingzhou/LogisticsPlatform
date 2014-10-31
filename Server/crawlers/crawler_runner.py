@@ -6,9 +6,9 @@ from com8glw import Crawler8glw
 from comchinawutong import CrawlerChinawutong
 from comfala56 import CrawlerFala56
 from net56888 import Crawler56888
-from mongodb import MongoDB
+from mongosupply import MongoSupply
 
-database = MongoDB()
+database = MongoSupply()
 frequency = [[Crawler0256, Crawler51yunli], [Crawler56888, CrawlerFala56, 
           CrawlerChinawutong, Crawler56888, Crawler8glw, Crawler56110]]
 minute = datetime.datetime.now().minute

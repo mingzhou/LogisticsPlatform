@@ -1,12 +1,9 @@
-import json
 import pymongo
-from bson import json_util
-from bson.objectid import ObjectId
 
 class MongoDB():
     DB_HOST = "spider"
     DATABASE = "demo"
-    COLLECTION = "supply"
+    COLLECTION = "NIL"
     
     def __init__(self):
         client = pymongo.MongoClient(self.DB_HOST)
@@ -25,24 +22,5 @@ class MongoDB():
     def remove(self, obj):
         return self.collection.remove(obj)
 
-    def latest(self):
-        return self.find_descending(None)
-
-    def previous(self, obj_id):
-        obj = {"_id": {"$lt": ObjectId(obj_id)}}
-        return self.find_descending(obj)
-
-    def newer(self, obj_id):
-        obj = {"_id": {"$gt": ObjectId(obj_id)}}
-        return self.find(obj)
-
-    def query(self, obj):
-        return self.find_descending(obj)
-
-    def find_descending(self, obj = None, count = 10):
-        data = []
-        top = self.find(obj).sort("_id", pymongo.DESCENDING).limit(count)
-        for item in top:
-            del item["description"]
-            data.append(item)
-        return json.dumps(data, default = json_util.default)
+    def update(self, spec, document):
+        return self.collection.update(spec, document)["updatedExisting"]

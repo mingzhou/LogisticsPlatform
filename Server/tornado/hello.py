@@ -2,10 +2,10 @@ import tornado.httpserver
 import tornado.ioloop
 import tornado.options
 import tornado.web
-from mongodb import MongoDB
+from mongosupply import MongoSupply
 from tornado.options import define, options
 
-database = MongoDB()
+database = MongoSupply()
 define("port", default = 8000, help = "run on the given port", type = int)
 
 class LatestHandler(tornado.web.RequestHandler):

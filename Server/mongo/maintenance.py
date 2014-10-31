@@ -1,7 +1,7 @@
 import datetime
-from mongodb import MongoDB
+from mongosupply import MongoSupply
 
-database = MongoDB()
+database = MongoSupply()
 today = datetime.datetime.combine(datetime.date.today(), datetime.time())
 obj = {"deadline": {"$lt": today}}
 database.remove(obj)
