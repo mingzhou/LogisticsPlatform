@@ -28,13 +28,19 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
 import android.annotation.SuppressLint;
+import android.content.ActivityNotFoundException;
+import android.content.ComponentName;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.StrictMode;
 import android.text.format.DateFormat;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -408,5 +414,33 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 		jArray = new JSONArray();
 		Log.d(TAG+"nihao",jArray.toString());
 	}
+	
+	public boolean onKeyDown(int keyCode, KeyEvent event) {    
+        PackageManager pm = getPackageManager();    
+        ResolveInfo homeInfo =   
+            pm.resolveActivity(new Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_HOME), 0);   
+        if (keyCode == KeyEvent.KEYCODE_BACK) {  
+            ActivityInfo ai = homeInfo.activityInfo;    
+            Intent startIntent = new Intent(Intent.ACTION_MAIN);    
+            startIntent.addCategory(Intent.CATEGORY_LAUNCHER);    
+            startIntent.setComponent(new ComponentName(ai.packageName, ai.name));    
+            startActivitySafely(startIntent);    
+            return true;    
+        } else    
+            return super.onKeyDown(keyCode, event);    
+    }  
+    private void startActivitySafely(Intent intent) {    
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);    
+        try {    
+            startActivity(intent);    
+        } catch (ActivityNotFoundException e) {    
+            Toast.makeText(this, "null",    
+                    Toast.LENGTH_SHORT).show();    
+        } catch (SecurityException e) {    
+            Toast.makeText(this, "null",    
+                    Toast.LENGTH_SHORT).show();     
+        }    
+    }  
+	
 
 }
