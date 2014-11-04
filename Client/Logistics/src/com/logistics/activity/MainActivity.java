@@ -4,16 +4,23 @@ import roboguice.activity.RoboActivity;
 import roboguice.inject.ContentView;
 import roboguice.inject.InjectView;
 import android.app.LocalActivityManager;
+import android.content.ActivityNotFoundException;
+import android.content.ComponentName;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.logistics.R;
 
@@ -43,16 +50,16 @@ public class MainActivity extends RoboActivity {
 		
 		TabSpec spec = null;
 		
+		spec = createTabSpec(tabHost, MapActivity.TAG, res, R.string.map_title, R.drawable.ic_tab_more, MapActivity.class);
+		tabHost.addTab(spec);
+		
 		spec = createTabSpec(tabHost, GoodActivity.TAG, res, R.string.goods_title, R.drawable.ic_tab_worldclock, GoodActivity.class);
 		tabHost.addTab(spec);
 		
 		spec = createTabSpec(tabHost, ProfileActivity.TAG, res, R.string.profile_title, R.drawable.ic_tab_alarm, ProfileActivity.class);
 		tabHost.addTab(spec);
-		
-		spec = createTabSpec(tabHost, MapActivity.TAG, res, R.string.map_title, R.drawable.ic_tab_more, MapActivity.class);
-		tabHost.addTab(spec);
-		
-		tabHost.setCurrentTab(2);
+						
+		tabHost.setCurrentTab(0);
 	}
 	
 	private TabSpec createTabSpec(TabHost tabHost, String tag,
@@ -82,4 +89,7 @@ public class MainActivity extends RoboActivity {
 		super.onPause();
 		mlam.dispatchPause(isFinishing());
 	}
+
+	
+	
 }

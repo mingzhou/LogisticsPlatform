@@ -1,6 +1,7 @@
 package com.logistics.activity;
 
 import java.io.IOException;
+
 import org.apache.http.Header;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -9,10 +10,16 @@ import org.json.JSONObject;
 import roboguice.activity.RoboActivity;
 import roboguice.inject.ContentView;
 import roboguice.inject.InjectView;
+import android.content.ActivityNotFoundException;
+import android.content.ComponentName;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -174,5 +181,33 @@ public class GoodActivity extends RoboActivity {
 	public void showProgress(final boolean show){
 		mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
 	}
+	
+	public boolean onKeyDown(int keyCode, KeyEvent event) {    
+        PackageManager pm = getPackageManager();    
+        ResolveInfo homeInfo =   
+            pm.resolveActivity(new Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_HOME), 0);   
+        if (keyCode == KeyEvent.KEYCODE_BACK) {  
+            ActivityInfo ai = homeInfo.activityInfo;    
+            Intent startIntent = new Intent(Intent.ACTION_MAIN);    
+            startIntent.addCategory(Intent.CATEGORY_LAUNCHER);    
+            startIntent.setComponent(new ComponentName(ai.packageName, ai.name));    
+            startActivitySafely(startIntent);    
+            return true;    
+        } else    
+            return super.onKeyDown(keyCode, event);    
+    }  
+    private void startActivitySafely(Intent intent) {    
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);    
+        try {    
+            startActivity(intent);    
+        } catch (ActivityNotFoundException e) {    
+            Toast.makeText(this, "null",    
+                    Toast.LENGTH_SHORT).show();    
+        } catch (SecurityException e) {    
+            Toast.makeText(this, "null",    
+                    Toast.LENGTH_SHORT).show();     
+        }    
+    }  
+	
 		
 }
