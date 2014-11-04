@@ -23,6 +23,8 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -45,6 +47,9 @@ public class LoginDetailActivity extends RoboActivity {
 	@InjectView(R.id.login_progress)
 	private View mProgressView;
 	
+	@InjectView(R.id.rememberpassword)
+	private CheckBox  mRemember;
+	
 	public final static int MODE_PRIVATE = 0;
 	public final static int MODE_WORLD_READABLE = 1;
 	private SharedPreferences sharedPreferences;  
@@ -61,9 +66,10 @@ public class LoginDetailActivity extends RoboActivity {
 	private void initComponent() {
 		sharedPreferences = this.getSharedPreferences("user_info",MODE_WORLD_READABLE);
 		editor = sharedPreferences.edit();
-//		final String phone_l = sharedPreferences.getString("phone", null);
-//		final String pw_l = sharedPreferences.getString("password", null);
-//		
+		final String phone_l = sharedPreferences.getString("phone", null);
+		final String pw_l = sharedPreferences.getString("password", null);
+		final Boolean checkState = sharedPreferences.getBoolean("remember", false);
+		
 		phone.setError(null);
 		password.setError(null);
 		
@@ -105,6 +111,31 @@ public class LoginDetailActivity extends RoboActivity {
 				finish();
 				onDestroy();
 			}});
+		if (checkState) {
+			mRemember.setChecked(true);
+			phone.setText(phone_l); 
+        	password.setText(pw_l);
+        	
+        }else{
+        	phone.setText(null); 
+        	password.setText(null);
+        }
+
+		
+//		mRemember.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){ 
+//            @Override 
+//            public void onCheckedChanged(CompoundButton buttonView, 
+//                    boolean isChecked) { 
+//                // TODO Auto-generated method stub 
+//                if(isChecked){ 
+//                	phone.setText(phone_l); 
+//                	password.setText(pw_l);
+//                }else{ 
+//                	phone.setText(null); 
+//                	password.setText(null);
+//                } 
+//            } 
+//        }); 
 	}
 	
 	private boolean isPasswordValid(String password) {
@@ -165,6 +196,7 @@ public class LoginDetailActivity extends RoboActivity {
 					editor.putString("phone", mPhone);
 					editor.putString("password", mPassword);
 					editor.putString("usr_name", response);
+					editor.putBoolean("remember", mRemember.isChecked());
 					
 					editor.commit();
 					Toast.makeText(LoginDetailActivity.this, "登陆成功", Toast.LENGTH_LONG).show();

@@ -132,6 +132,7 @@
     <string name="title_activity_register">RegisterActivity</string>
     <string name="title_activity_login_detail">LoginDetailActivity</string>
     <string name="title_activity_forget">ForgetActivity</string>
+    <string name="rememberpassword">记住密码</string>
     
     <string name="xlistview_header_hint_normal">下拉刷新</string>
     <string name="xlistview_header_hint_ready">松开刷新数据</string>

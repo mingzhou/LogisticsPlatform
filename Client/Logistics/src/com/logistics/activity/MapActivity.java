@@ -44,6 +44,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
@@ -65,6 +66,9 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 	
 	@InjectView(R.id.xListView)
 	private XListView mListView;
+	
+	@InjectView(R.id.refresh)
+	private Button mRefresh;
 	
 	private ArrayAdapter<String> mAdapter;
 	private ArrayList<String> items = new ArrayList<String>();
@@ -154,9 +158,19 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 				}
 				startActivity(intent);
 				onPause();
-			}
-			
+			}			
 		});
+		
+		mRefresh.setOnClickListener(new Button.OnClickListener(){
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				onRefresh();
+				//items.clear();
+				
+			}});        
+		
 	}
 	
 
@@ -199,7 +213,7 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 //				mListView.setAdapter(mAdapter);
 				onLoad();
 			}
-		}, 2500);
+		}, 750);
 	}
 
 	@Override
@@ -225,7 +239,7 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 				
 				onLoad2();
 			}
-		}, 2500);
+		}, 1000);
 	}
 	
 	public static boolean isInteger(String input){  
@@ -258,7 +272,7 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 						 	}
 						 	}
 					 	//updata_num = statusCode;
-					 	Toast toast = Toast.makeText(MapActivity.this, "更新 "+updata_num, Toast.LENGTH_LONG);
+					 	Toast toast = Toast.makeText(MapActivity.this, "更新 "+updata_num, Toast.LENGTH_SHORT);
 					 	toast.setGravity(0x00000030, 0, 55);
 					 	
 					 	toast.show();
