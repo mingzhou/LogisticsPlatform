@@ -10,6 +10,7 @@
     <string name="register">注册</string>
     <string name="forget">忘记密码</string>
     <string name="cancel">取消</string>
+    <string name="favorite">收藏</string>
     <string name="error_invalid_password">密码应大于4位</string>
     <string name="iphone_dlg_btn_ok_str">Confirm</string>
     <string name="iphone_dlg_btn_cancel_str">Cancel</string>

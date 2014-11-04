@@ -142,6 +142,13 @@
                             android:layout_height="wrap_content"
                             android:text="@string/change_password"
                             android:textSize="20sp" />
+            	
+            	<Button
+            	    		android:id="@+id/favorite"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/favorite"
+                            android:textSize="20sp" />
       <!--       	<Button
             	    		android:id="@+id/change_phone"
                             android:layout_width="wrap_content"

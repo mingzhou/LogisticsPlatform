@@ -31,7 +31,6 @@ import android.annotation.SuppressLint;
 import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
@@ -74,9 +73,6 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 	private ArrayList<String> items = new ArrayList<String>();
 	private Handler mHandler;
 	
-	private SharedPreferences sharedPreferences;  
-	private SharedPreferences.Editor editor;
-	
 	private JSONArray jArray = new JSONArray();
 	
 	
@@ -109,10 +105,7 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 		Intent intent2 = new Intent(MapActivity.this, PushAndPull.class);
 		startService(intent2);
 		
-		sharedPreferences = this.getSharedPreferences("user_info",MODE_WORLD_READABLE);  
-        editor = sharedPreferences.edit();
 		
-        
 		mListView.setPullLoadEnable(true);
 		mAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, items);
 		mListView.setAdapter(mAdapter);
@@ -144,13 +137,14 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 				intent.setClass(MapActivity.this,ProfileCurrentDealDetailActivity.class);
 				
 				try {
-					intent.putExtra("from", jArray.getJSONObject(position-1).getString("from"));
-					intent.putExtra("to", jArray.getJSONObject(position-1).getString("to"));
-					intent.putExtra("site", jArray.getJSONObject(position-1).getString("site"));
-					//intent.putExtra("url", jArray.getJSONObject(position-1).getString("url"));
-					long deadline = jArray.getJSONObject(position-1).getJSONObject("deadline").getLong("$date");
-					intent.putExtra("deadline", DateFormat.getDateFormat(MapActivity.this).format(new Date(deadline)));
+//					intent.putExtra("from", jArray.getJSONObject(position-1).getString("from"));
+//					intent.putExtra("to", jArray.getJSONObject(position-1).getString("to"));
+//					intent.putExtra("site", jArray.getJSONObject(position-1).getString("site"));
+//					//intent.putExtra("url", jArray.getJSONObject(position-1).getString("url"));
+//					long deadline = jArray.getJSONObject(position-1).getJSONObject("deadline").getLong("$date");
+//					intent.putExtra("deadline", DateFormat.getDateFormat(MapActivity.this).format(new Date(deadline)));
 					intent.putExtra("title","信息详情");
+					intent.putExtra("data", jArray.getJSONObject(position-1).toString());
 					//Log.d(TAG+"data",jArray.getJSONObject(position).toString());
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
@@ -246,7 +240,7 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
         Matcher mer = Pattern.compile("^[0-9]+$").matcher(input);  
         return mer.find();  
     }  
-	
+	//for refreshing not the first time
 	public void getHttpResponse() throws IOException, JSONException{
 		RequestParams rp = new RequestParams();
 		loadFile();
@@ -308,7 +302,7 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 		};
 		httpHelper.post(BASE_URL+"/latest",rp, jrh);
 	}
-	
+	//for loading for the first time
 	public void getHttpResponse1(){
 		RequestParams rp = new RequestParams();
 		JsonHttpResponseHandler jrh = new JsonHttpResponseHandler("UTF-8"){
@@ -340,7 +334,7 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 		};
 		httpHelper.get(BASE_URL+"/latest",rp, jrh);
 	}
-	
+	//for loading more
 	public void getHttpResponse2() throws IOException, JSONException{
 		RequestParams rp = new RequestParams();
 		//loadFile();

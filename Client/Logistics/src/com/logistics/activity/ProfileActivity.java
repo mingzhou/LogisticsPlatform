@@ -47,8 +47,8 @@ public class ProfileActivity extends RoboActivity {
 	@InjectView(R.id.change_password)
 	private Button cha_pa;
 	
-//	@InjectView(R.id.change_phone)
-//	private Button cha_ph;
+	@InjectView(R.id.favorite)
+	private Button favorite;
 	
 	@InjectView(R.id.logout)
 	private Button logout;
@@ -107,18 +107,20 @@ public class ProfileActivity extends RoboActivity {
                 onPause();
 			}});
 		
-//		cha_ph.setOnClickListener(new Button.OnClickListener(){
-//
-//			@Override
-//			public void onClick(View v) {
-//				// TODO Auto-generated method stub
-//				Intent intent = new Intent();
-//                intent.setClass(ProfileActivity.this,ProfileChangePhoneActivity.class);
-//                startActivity(intent);
-//                onPause();
-//                //finish();
-//                //onDestroy();
-//			}});
+		favorite.setOnClickListener(new Button.OnClickListener(){
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent();
+                intent.setClass(ProfileActivity.this,ProfileHistoryDealActivity.class);
+                startActivity(intent);
+                onPause();
+                //finish();
+                //onDestroy();
+			}});
+		
+		
 		logout.setOnClickListener(new Button.OnClickListener(){
 
 			@Override
