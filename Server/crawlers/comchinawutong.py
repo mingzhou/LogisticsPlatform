@@ -19,6 +19,7 @@ class CrawlerChinawutong(Crawler):
             pos = s.find('→ ')
             item["from"] = s[:pos].strip()
             item["to"] = s[pos+1:].strip()
+            item["url"] = self.HOST + ls[0].span.a.get("href")
             contents = ls[-1].contents
             deadline = contents[-1].strip().split('-')    # 2014-09-30
             ls = divs[2].find_all("li")

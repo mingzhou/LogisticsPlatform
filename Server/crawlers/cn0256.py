@@ -17,6 +17,7 @@ class Crawler0256(Crawler):
             pos = s.find("→")
             item["from"] = s[:pos]
             item["to"] = s[pos + 1:]
+            item["url"] = self.HOST + td[0].a.get("href")
             s = td[-1].text.strip().split() # 2014-10-14 21:20
             date = s[0].split('-')
             item["date"], item["deadline"] = self.lifetime(date, 3)

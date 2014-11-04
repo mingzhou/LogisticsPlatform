@@ -16,6 +16,7 @@ class Crawler56888(Crawler):
             pos = s.find("->")
             item["from"] = s[:pos].strip()
             item["to"] = s[pos+2:].strip()
+            item["url"] = self.HOST + table.find("a").get("href")
             s = table.find_all("td")[4].text    # 10-08至11-07
             pos = s.find("至")
             date = s[:pos].strip().split('-')

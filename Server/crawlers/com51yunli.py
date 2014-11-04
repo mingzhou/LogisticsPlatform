@@ -13,6 +13,7 @@ class Crawler51yunli(Crawler):
         div = soup.find(attrs={"class": "line_title1"})
         for ul in div.find_all("ul"):
             item = {"site": "51yunli"}
+            item["url"] = self.HOST + ul.find("li").a.get("href")
             s = ul.find_all("strong")
             item["from"] = s[0].text
             item["to"] = s[1].text
