@@ -18,6 +18,16 @@
                  android:text="@string/map_title"
                 style="@style/titleTextStyle"
                 />
+            <Button
+            android:id="@+id/refresh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:textColor="@android:color/white"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dip"
+            android:background="@drawable/ic_button_add"
+            />
        
     </RelativeLayout>
 
