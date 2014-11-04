@@ -14,16 +14,13 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.HTTP;
-import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 
 import com.logistics.R;
 import com.logistics.activity.MainActivity;
-import com.logistics.activity.MapActivity;
 
 import android.app.ActivityManager;
-import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
@@ -48,6 +45,7 @@ public class PushAndPull extends Service {
 	private ActivityManager activityManager; 
     private String packageName;
     private boolean isStop = false;
+    
         
     private UpdateHandler updateHandler;
     //private AsyncHttpClient httpHelper = new AsyncHttpClient(80);
@@ -66,24 +64,27 @@ public class PushAndPull extends Service {
 		// TODO Auto-generated method stub
 		super.onCreate();
 		Log.d(TAG, "onCreate() executed");
-		updateHandler = new UpdateHandler();
-		updateThread m1 = new updateThread();
-        new Thread(m1).start(); 
-		  
+		
+	  
 	}
 
 	@Override
 	public void onDestroy() {
 		// TODO Auto-generated method stub
-		super.onDestroy();
-		
 		Log.d(TAG, "onDestroy() executed");
 		isStop = true;
+		super.onDestroy();
 	}
 
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
 		Log.d(TAG, "onStartCommand() executed");
+		int refreshtime = intent.getIntExtra("refresh", 1);
+		Log.d(TAG, "refreshtime "+refreshtime);
+		updateHandler = new UpdateHandler();		
+		updateThread m1 = new updateThread(refreshtime);
+        new Thread(m1).start();
+		
 		activityManager = (ActivityManager) this.getSystemService(Context.ACTIVITY_SERVICE); 
         packageName = this.getPackageName();
         
@@ -129,13 +130,20 @@ public class PushAndPull extends Service {
 	}
 	
 	class updateThread implements Runnable {
+		
+		private int n;
+				
+		public updateThread(int n) {
+			super();
+			this.n = n;
+		}
 
 		@Override
 		public void run() {
 			// TODO Auto-generated method stub
 			while(!isStop){
 					try {
-						Thread.sleep(60000);
+						Thread.sleep(60000*n);
 						loadFile();
 						String jOS = jArray.getJSONObject(0).toString();
 						HttpPost httpRequest =new HttpPost(BASE_URL+"/latest");

@@ -116,13 +116,15 @@
             	    android:id="@+id/source_detail_info"
             	    android:layout_width="fill_parent"
             	    android:layout_height="110dp"
-            	    android:textSize="20sp" />
+            	    android:textSize="20sp"
+            	    android:clickable="true"
+            	    android:onClick="onClick" />
 				
             	<Button
             	android:id="@+id/notify_source"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/notify_source"
+                android:text="@string/favorite"
                 android:textSize="20sp"
                 android:layout_gravity="center_horizontal" />
         </LinearLayout>

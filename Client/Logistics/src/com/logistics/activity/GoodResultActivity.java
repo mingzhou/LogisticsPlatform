@@ -70,13 +70,8 @@ public class GoodResultActivity extends RoboActivity {
 				intent.setClass(GoodResultActivity.this,GoodResultDetailActivity.class);
 				
 				try {
-					intent.putExtra("from", jArray.getJSONObject(position).getString("from"));
-					intent.putExtra("to", jArray.getJSONObject(position).getString("to"));
-					intent.putExtra("site", jArray.getJSONObject(position).getString("site"));
-					//intent.putExtra("url", jArray.getJSONObject(position-1).getString("url"));
-					long deadline = jArray.getJSONObject(position).getJSONObject("deadline").getLong("$date");
-					intent.putExtra("deadline", DateFormat.getDateFormat(GoodResultActivity.this).format(new Date(deadline)));
 					intent.putExtra("title","信息详情");
+					intent.putExtra("data", jArray.getJSONObject(position).toString());
 					//Log.d(TAG+"data",jArray.getJSONObject(position).toString());
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
