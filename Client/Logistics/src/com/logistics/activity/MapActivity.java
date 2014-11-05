@@ -5,8 +5,10 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.TimeZone;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -22,7 +24,6 @@ import roboguice.inject.InjectView;
 
 import com.google.inject.Inject;
 import com.logistics.R;
-import com.logistics.service.PushAndPull;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -41,9 +42,11 @@ import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
@@ -59,6 +62,15 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 	
 	public boolean firsttime = false;
 	
+	/** 准备第一个模板，从字符串中提取出日期数字  */  
+    private static String pat1 = "yyyy-MM-dd HH:mm:ss" ;    
+    /** 准备第二个模板，将提取后的日期数字变为指定的格式*/    
+    private static String pat2 = "yyyy年MM月dd日 HH:mm:ss" ;  
+	@SuppressLint("SimpleDateFormat")
+	private static SimpleDateFormat sdf1 = new SimpleDateFormat(pat1) ;           
+    @SuppressLint("SimpleDateFormat")
+	private static SimpleDateFormat sdf2 = new SimpleDateFormat(pat2) ; 
+	
 	@Inject
 	//private AsyncHttpHelper httpHelper;
 	private AsyncHttpClient httpHelper = new AsyncHttpClient(80);
@@ -69,8 +81,8 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 	@InjectView(R.id.refresh)
 	private Button mRefresh;
 	
-	private ArrayAdapter<String> mAdapter;
-	private ArrayList<String> items = new ArrayList<String>();
+	private ArrayAdapter<String[]> mAdapter;
+	private ArrayList<String[]> items = new ArrayList<String[]>();
 	private Handler mHandler;
 	
 	private JSONArray jArray = new JSONArray();
@@ -107,7 +119,20 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 		
 		
 		mListView.setPullLoadEnable(true);
-		mAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, items);
+		mAdapter = new ArrayAdapter<String[]>(this, android.R.layout.simple_list_item_2, android.R.id.text1, items){
+
+			@Override
+			public View getView(int position, View convertView, ViewGroup parent) {
+				// TODO Auto-generated method stub
+				View view = super.getView(position, convertView, parent);
+				String[] entry = items.get(position);
+				TextView text1 = (TextView) view.findViewById(android.R.id.text1);
+			    TextView text2 = (TextView) view.findViewById(android.R.id.text2);
+			    text1.setText(entry[0]);
+			    text2.setText(entry[1]);
+				return view;
+			}
+		};
 		mListView.setAdapter(mAdapter);
 		mListView.setRefreshTime(DateFormat.getTimeFormat(this).format(new Date(System.currentTimeMillis())));
 		mListView.setXListViewListener(this);
@@ -120,11 +145,22 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 			firsttime = true;
 		}
 		else if(jArray.length()>0){
-		for (int i =0; i<jArray.length();i++){
-        	//r[i] =
-        	items.add(jArray.getJSONObject(i).getString("from")+" -> " + jArray.getJSONObject(i).getString("to"));
-        	}
-		mAdapter.notifyDataSetChanged();}
+			try {
+				for (int i =0; i<jArray.length();i++){
+					long dt = jArray.getJSONObject(i).getJSONObject("datetime").getLong("$date");
+					Date datetime = new Date(dt);
+					sdf1.setTimeZone(TimeZone.getTimeZone("GMT"));
+					String crawlTime = sdf1.format(datetime);
+					String time = getTime(crawlTime);
+		        items.add(new String[]{jArray.getJSONObject(i).getString("from")+" -> " + jArray.getJSONObject(i).getString("to"),
+		        		time});
+		        		//+DateFormat.getDateFormat(GoodResultActivity.this).format(new Date(jArray.getJSONObject(i).getLong("$date"))));
+		        }
+				mAdapter.notifyDataSetChanged();
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}}
 		
 		
 		mListView.setOnItemClickListener(new OnItemClickListener(){
@@ -195,6 +231,7 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 				Log.d(TAG,"refresh begin");
 				try {
 					getHttpResponse();
+					mAdapter.notifyDataSetChanged();
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -202,7 +239,7 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}}
-				mAdapter.notifyDataSetChanged();
+				
 //				mAdapter = new ArrayAdapter<String>(MapActivity.this, android.R.layout.simple_expandable_list_item_1, items);
 //				mListView.setAdapter(mAdapter);
 				onLoad();
@@ -275,10 +312,16 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 				        Log.d(TAG+"nihao","read done");
 				        //Log.d(TAG+"nihao",jArray.toString());
 				        for (int i =0; i<jArray.length();i++){
-				        	//r[i] =
-				        	mAdapter.add(jArray.getJSONObject(i).getString("from")+" -> " + jArray.getJSONObject(i).getString("to"));
-				        	}
-				        
+							long dt = jArray.getJSONObject(i).getJSONObject("datetime").getLong("$date");
+							Date datetime = new Date(dt);
+							sdf1.setTimeZone(TimeZone.getTimeZone("GMT"));
+							String crawlTime = sdf1.format(datetime);
+							String time = getTime(crawlTime);
+							mAdapter.add(new String[]{jArray.getJSONObject(i).getString("from")+" -> " + jArray.getJSONObject(i).getString("to"),
+				        		time});
+				        		//+DateFormat.getDateFormat(GoodResultActivity.this).format(new Date(jArray.getJSONObject(i).getLong("$date"))));
+				        }
+				       
 				   	} catch (FileNotFoundException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -313,11 +356,16 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 					 	downFile(response);
 					 	//Log.d(TAG+"nihao","header num"+Integer.toString(headers.length));
 					 	loadFile();
-				        Log.d(TAG+"nihao","read done");
-				        Log.d(TAG+"nihao",jArray.toString());
-				        for (int i =0; i<jArray.length();i++){
-				        	mAdapter.add(jArray.getJSONObject(i).getString("from")+" -> " + jArray.getJSONObject(i).getString("to"));
-				        	}
+					 	for (int i =0; i<jArray.length();i++){
+							long dt = jArray.getJSONObject(i).getJSONObject("datetime").getLong("$date");
+							Date datetime = new Date(dt);
+							sdf1.setTimeZone(TimeZone.getTimeZone("GMT"));
+							String crawlTime = sdf1.format(datetime);
+							String time = getTime(crawlTime);
+				        items.add(new String[]{jArray.getJSONObject(i).getString("from")+" -> " + jArray.getJSONObject(i).getString("to"),
+				        		time});
+				        		//+DateFormat.getDateFormat(GoodResultActivity.this).format(new Date(jArray.getJSONObject(i).getLong("$date"))));
+				        }
 				        
 				   	} catch (FileNotFoundException e) {
 						// TODO Auto-generated catch block
@@ -361,9 +409,16 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 					int len = jArray.length();
 					Log.d("nihao-len",Integer.toString(len));
 					for(int i =0;i<response.length();i++){
-					jArray.put(jArray.length(), response.getJSONObject(i));
-					mAdapter.add(response.getJSONObject(i).getString("from")+" -> " + response.getJSONObject(i).getString("to"));
+					jArray.put(jArray.length(), response.getJSONObject(i));					
+					long dt = response.getJSONObject(i).getJSONObject("datetime").getLong("$date");
+					Date datetime = new Date(dt);
+					sdf1.setTimeZone(TimeZone.getTimeZone("GMT"));
+					String crawlTime = sdf1.format(datetime);
+					String time = getTime(crawlTime);
+					items.add(new String[]{response.getJSONObject(i).getString("from")+" -> " + response.getJSONObject(i).getString("to"),
+			        		time});
 					}
+					
 			        Log.d(TAG,"update read done");
 			       				        
 			   	} catch (JSONException e) {
@@ -410,14 +465,7 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 		outStream.close();
 		 Log.d(TAG,"write done");
 	}
-	
-	public void updateFile(JSONArray response) throws IOException{
-		FileOutputStream outStream=MapActivity.this.openFileOutput("tmp.txt",MODE_APPEND);
-		outStream.write(response.toString().getBytes());
-		outStream.close();
-		 Log.d(TAG,"update done");
-	}
-	
+		
 	public void clearArray() throws JSONException{
 		jArray = new JSONArray();
 		Log.d(TAG+"nihao",jArray.toString());
@@ -449,6 +497,43 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
                     Toast.LENGTH_SHORT).show();     
         }    
     }  
-	
+    
+    private String getTime(String crawlTime) {
+		// TODO Auto-generated method stub
+		//yyyy-MM-dd HH:mm:ss
+		long nt = System.currentTimeMillis();
+		Date nowtime = new Date(nt);
+		sdf1.setTimeZone(TimeZone.getTimeZone("GMT+8"));
+		String curTime = sdf1.format(nowtime);
+		int yearC = Integer.valueOf(curTime.substring(0, 4));
+		int monthC = Integer.valueOf(curTime.substring(5, 7));
+		int dayC = Integer.valueOf(curTime.substring(8, 10));
+		int hourC = Integer.valueOf(curTime.substring(11, 13));
+		int minC = Integer.valueOf(curTime.substring(14, 16));
+		Log.d("time=cur",curTime);
+		Log.d("time",crawlTime);
+				
+		int yearT = Integer.valueOf(crawlTime.substring(0, 4));
+		int monthT = Integer.valueOf(crawlTime.substring(5, 7));
+		int dayT = Integer.valueOf(crawlTime.substring(8, 10));
+		int hourT = Integer.valueOf(crawlTime.substring(11, 13));
+		int minT = Integer.valueOf(crawlTime.substring(14, 16));
+		//int secT = Integer.valueOf(crawlTime.substring(8, 10));
+		
+		if(yearT != yearC || monthT!= monthC){
+			return crawlTime;
+		}else if(dayT != dayC){
+			if(dayC - dayT > 1){return crawlTime;}
+			else return "昨天";
+		}else if(hourC!=hourT){
+			if(hourC - hourT ==1 && minC< minT){
+			return  60+minC-minT+"分钟之前";
+		}
+			else return hourC-hourT-1+"小时之前";
+		}else if (minC-minT>1){
+			return minC-minT-1+"分钟之前";
+		}else return "刚刚";
+		
+	}
 
 }

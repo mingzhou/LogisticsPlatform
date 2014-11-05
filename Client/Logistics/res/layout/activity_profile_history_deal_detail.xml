@@ -103,7 +103,8 @@
             <TextView
 				android:id="@+id/goods_detail_info"
 				android:layout_width="fill_parent"
-				android:layout_height="30dip"/> 
+				android:layout_height="110dp"
+				android:textSize="20sp"/> 
 				
             <TextView
                 android:layout_width="wrap_content"
@@ -114,19 +115,19 @@
             <TextView
 				android:id="@+id/source_detail_info"
 				android:layout_width="fill_parent"
-				android:layout_height="30dip"/> 
+				android:layout_height="110dp"
+				android:textSize="20sp"
+            	android:clickable="true"
+            	android:onClick="onClick"
+				/> 
 			
-            <TextView
+           <Button
+            	android:id="@+id/quit_favorite"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/seperator"
-                android:textSize="20sp" />
-            
-            <TextView
-				android:id="@+id/source_remark_info"
-				android:layout_width="fill_parent"
-				android:layout_height="30dip"/> 
-				
+                android:text="@string/quit_favorite"
+                android:textSize="20sp"
+                android:layout_gravity="center_horizontal" />
             
         </LinearLayout>
     </ScrollView>
