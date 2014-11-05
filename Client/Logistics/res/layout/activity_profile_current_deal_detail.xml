@@ -124,7 +124,7 @@
             	android:id="@+id/notify_source"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/notify_source"
+                android:text="@string/favorite"
                 android:textSize="20sp"
                 android:layout_gravity="center_horizontal" />
         </LinearLayout>

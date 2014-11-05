@@ -13,11 +13,14 @@ import android.content.pm.ResolveInfo;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.logistics.R;
+import com.logistics.service.PushAndPull;
 
 /**
  * 个人中心
@@ -50,6 +53,11 @@ public class ProfileActivity extends RoboActivity {
 	@InjectView(R.id.favorite)
 	private Button favorite;
 	
+	@InjectView(R.id.refreshtime)
+	private Spinner refreshtime;
+	private ArrayAdapter<String> refreshAdapter;
+	private String[] refreshStrings = { "1分钟", "5分钟", "30分钟", "不推送" };
+	
 	@InjectView(R.id.logout)
 	private Button logout;
 	
@@ -69,32 +77,10 @@ public class ProfileActivity extends RoboActivity {
         editor = sharedPreferences.edit();
         String p = sharedPreferences.getString("phone", null);
         String u = sharedPreferences.getString("usr_name", null);
-        String i = sharedPreferences.getString("role_id", null);
+        int i = sharedPreferences.getInt("refresh", 0);
 		usr_name.setText(u);
 		phone.setText(p);
 	//	role_id.setText(i);
-		
-//		cur_deal.setOnClickListener(new Button.OnClickListener(){
-//
-//			@Override
-//			public void onClick(View v) {
-//				// TODO Auto-generated method stub
-//				Intent intent = new Intent();
-//                intent.setClass(ProfileActivity.this,ProfileCurrentDealActivity.class);
-//                startActivity(intent);
-//                onPause();
-//			}});
-//		
-//		his_deal.setOnClickListener(new Button.OnClickListener(){
-//
-//			@Override
-//			public void onClick(View v) {
-//				// TODO Auto-generated method stub
-//				Intent intent = new Intent();
-//                intent.setClass(ProfileActivity.this,ProfileHistoryDealActivity.class);
-//                startActivity(intent);
-//                onPause();
-//			}});
 		
 		cha_pa.setOnClickListener(new Button.OnClickListener(){
 
@@ -120,6 +106,36 @@ public class ProfileActivity extends RoboActivity {
                 //onDestroy();
 			}});
 		
+		refreshAdapter = new ArrayAdapter<String>(this,
+				android.R.layout.simple_spinner_item, refreshStrings);
+		refreshAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		refreshtime.setAdapter(refreshAdapter);
+		refreshtime.setSelection(i);
+		
+		switch (refreshtime.getSelectedItemPosition()){
+		case 0:
+			Intent startIntent0 = new Intent(ProfileActivity.this, PushAndPull.class); 
+			startIntent0.putExtra("refresh",1);
+			startService(startIntent0);  
+			break;  
+		case 1:
+			Intent startIntent1 = new Intent(ProfileActivity.this, PushAndPull.class); 
+			startIntent1.putExtra("refresh",5);
+			startService(startIntent1);
+			break;  
+		case 2:
+			Intent startIntent2 = new Intent(ProfileActivity.this, PushAndPull.class); 
+			startIntent2.putExtra("refresh",30);
+			startService(startIntent2); 
+			break;  
+		case 3:
+			Intent startIntent3 = new Intent(ProfileActivity.this, PushAndPull.class); 
+			stopService(startIntent3); 
+			break;  
+		default:
+			break;  
+		} 
+		
 		
 		logout.setOnClickListener(new Button.OnClickListener(){
 
@@ -129,6 +145,9 @@ public class ProfileActivity extends RoboActivity {
 				Intent intent = new Intent();
                 intent.setClass(ProfileActivity.this,LoginActivity.class);
                 startActivity(intent);
+                Intent stopIntent = new Intent(ProfileActivity.this, PushAndPull.class);  
+                stopService(stopIntent); 
+
                 finish();
                 onDestroy();
 			}});
@@ -160,7 +179,20 @@ public class ProfileActivity extends RoboActivity {
             Toast.makeText(this, "null",    
                     Toast.LENGTH_SHORT).show();     
         }    
-    }  
+    }
+
+
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		final int r_p = refreshtime.getSelectedItemPosition();
+		editor.putInt("refresh", r_p);
+		editor.commit();
+		
+		super.onDestroy();
+		
+		
+	}  
 	
 	
 }

@@ -142,5 +142,5 @@
     <string name="xlistview_header_last_numb">更新数目：</string>
     <string name="xlistview_footer_hint_normal">查看更多</string>
     <string name="xlistview_footer_hint_ready">松开载入更多</string>
-
+	<string name="refreshtime">推送时间</string>
 </resources>

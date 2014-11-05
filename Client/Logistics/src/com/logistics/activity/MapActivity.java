@@ -102,8 +102,8 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 //		Intent intent = new Intent(MapActivity.this, NotifyCenter.class);
 //		startService(intent);
 		
-		Intent intent2 = new Intent(MapActivity.this, PushAndPull.class);
-		startService(intent2);
+//		Intent intent2 = new Intent(MapActivity.this, PushAndPull.class);
+//		startService(intent2);
 		
 		
 		mListView.setPullLoadEnable(true);
