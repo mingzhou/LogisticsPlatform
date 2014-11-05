@@ -22,7 +22,6 @@ import roboguice.inject.InjectView;
 
 import com.google.inject.Inject;
 import com.logistics.R;
-import com.logistics.service.PushAndPull;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -410,14 +409,7 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 		outStream.close();
 		 Log.d(TAG,"write done");
 	}
-	
-	public void updateFile(JSONArray response) throws IOException{
-		FileOutputStream outStream=MapActivity.this.openFileOutput("tmp.txt",MODE_APPEND);
-		outStream.write(response.toString().getBytes());
-		outStream.close();
-		 Log.d(TAG,"update done");
-	}
-	
+		
 	public void clearArray() throws JSONException{
 		jArray = new JSONArray();
 		Log.d(TAG+"nihao",jArray.toString());
