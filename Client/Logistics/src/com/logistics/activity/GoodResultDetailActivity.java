@@ -46,7 +46,7 @@ public class GoodResultDetailActivity extends RoboActivity {
 
 	private String title = null;
 	private JSONObject jO = new JSONObject();
-	private JSONObject mFav = new JSONObject();	
+	private JSONArray mFav = new JSONArray();	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -116,7 +116,7 @@ public class GoodResultDetailActivity extends RoboActivity {
 		downFile();
 		loadFile();
 		Log.d("fav",Integer.toString(mFav.length()));
-		if(mFav.has(jO.getJSONObject("_id").getString("$oid"))){
+		if(has(mFav,jO)){
 			submit_order.setEnabled(false);
 			submit_order.setText("已收藏");
 			Log.d("fav-has",mFav.toString());
@@ -128,16 +128,13 @@ public class GoodResultDetailActivity extends RoboActivity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				try {
-					mFav.put(jO.getJSONObject("_id").getString("$oid"), jO.toString());
+					mFav.put(jO);
 					submit_order.setEnabled(false);
 					submit_order.setText("已收藏");
 					downFile(mFav);
 					 Log.d("fav",Integer.toString(mFav.length()));
 					 Log.d("fav",mFav.toString());
 					
-				} catch (JSONException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -145,7 +142,18 @@ public class GoodResultDetailActivity extends RoboActivity {
 			}});}
 	}
 		
-	public void downFile(JSONObject response) throws IOException{
+	private boolean has(JSONArray jAr, JSONObject jOb) throws JSONException {
+		// TODO Auto-generated method stub
+		for(int i=0 ;i<jAr.length();i++){
+			if(jOb.getJSONObject("_id").getString("$oid").
+					equals(jAr.getJSONObject(i).getJSONObject("_id").getString("$oid"))){
+				return true;
+				}
+		}
+		return false;
+	}
+
+	public void downFile(JSONArray response) throws IOException{
 		FileOutputStream outStream=GoodResultDetailActivity.this.openFileOutput("favorite.txt",MODE_PRIVATE);
 		outStream.write(response.toString().getBytes());
 		outStream.close();
@@ -168,7 +176,7 @@ public class GoodResultDetailActivity extends RoboActivity {
             stream.write(buffer,0,length);
         }
         
-        mFav = new JSONObject(stream.toString());
+        mFav = new JSONArray(stream.toString());
                 
         stream.close();
         inStream.close();

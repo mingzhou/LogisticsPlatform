@@ -47,7 +47,7 @@ public class ProfileCurrentDealDetailActivity extends RoboActivity {
 	private String title = null;
 	private JSONObject jO = new JSONObject();
 	//private JSONObject mMap = new JSONObject();	
-	private JSONObject mFav = new JSONObject();	
+	private JSONArray mFav= new JSONArray();
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -119,7 +119,7 @@ public class ProfileCurrentDealDetailActivity extends RoboActivity {
 		downFile();
 		loadFile();
 		Log.d("fav",Integer.toString(mFav.length()));
-		if(mFav.has(jO.getJSONObject("_id").getString("$oid"))){
+		if(has(mFav,jO)){
 			notify_source.setEnabled(false);
 			notify_source.setText("已收藏");
 			Log.d("fav-has",mFav.toString());
@@ -131,16 +131,13 @@ public class ProfileCurrentDealDetailActivity extends RoboActivity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				try {
-					mFav.put(jO.getJSONObject("_id").getString("$oid"), jO.toString());
+					mFav.put(jO);
 					notify_source.setEnabled(false);
 					notify_source.setText("已收藏");
-					downFile(mFav);
+					downFile(mFav);					
 					 Log.d("fav",Integer.toString(mFav.length()));
 					 Log.d("fav",mFav.toString());
 					
-				} catch (JSONException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -150,7 +147,18 @@ public class ProfileCurrentDealDetailActivity extends RoboActivity {
 	}
 
 
-	public void downFile(JSONObject response) throws IOException{
+	private boolean has(JSONArray jAr, JSONObject jOb) throws JSONException {
+		// TODO Auto-generated method stub
+		for(int i=0 ;i<jAr.length();i++){
+			if(jOb.getJSONObject("_id").getString("$oid").
+					equals(jAr.getJSONObject(i).getJSONObject("_id").getString("$oid"))){
+				return true;
+				}
+		}
+		return false;
+	}
+
+	public void downFile(JSONArray response) throws IOException{
 		FileOutputStream outStream=ProfileCurrentDealDetailActivity.this.openFileOutput("favorite.txt",MODE_PRIVATE);
 		outStream.write(response.toString().getBytes());
 		outStream.close();
@@ -160,23 +168,27 @@ public class ProfileCurrentDealDetailActivity extends RoboActivity {
 	public void downFile() throws IOException{
 		FileOutputStream outStream=ProfileCurrentDealDetailActivity.this.openFileOutput("favorite.txt",MODE_APPEND);
 		outStream.write(new JSONArray().toString().getBytes());
+		Log.d("fav","create done");
 		outStream.close();
 	}
 	
 	public void loadFile() throws IOException, JSONException{
 		FileInputStream inStream=ProfileCurrentDealDetailActivity.this.openFileInput("favorite.txt");
 		ByteArrayOutputStream stream=new ByteArrayOutputStream();
-        byte[] buffer=new byte[10240];
+        byte[] buffer=new byte[1024];
         int length=-1;
-
+        Log.d("fav","read done0"); 
         while((length=inStream.read(buffer))!=-1)   {
             stream.write(buffer,0,length);
         }
-        
-        mFav = new JSONObject(stream.toString());
-                
         stream.close();
         inStream.close();
+        //Log.d("fav",stream.toString()); 
+        
+        mFav = new JSONArray(stream.toString());
+        
+        Log.d("fav","read done");        
+        
         
 	}
 
