@@ -22,7 +22,6 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -87,6 +86,7 @@ public class ProfileHistoryDealActivity extends RoboActivity {
 				
 				try {
 					intent.putExtra("title","信息详情");
+					intent.putExtra("position",position);
 					intent.putExtra("data",mFav.getJSONObject(position).toString() );
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
@@ -139,9 +139,10 @@ public class ProfileHistoryDealActivity extends RoboActivity {
 				Date datetime = new Date(dt);
 				sdf1.setTimeZone(TimeZone.getTimeZone("GMT"));
 				String crawlTime = sdf1.format(datetime);
-				String time = getTime(crawlTime);
+				//String time = getTime(crawlTime);
+				
 				mAdapter.add(new String[]{mFav.getJSONObject(i).getString("from")+" -> " + mFav.getJSONObject(i).getString("to"),
-	        		time});
+						crawlTime});
 	        		//+DateFormat.getDateFormat(GoodResultActivity.this).format(new Date(jArray.getJSONObject(i).getLong("$date"))));
 	        }
 			mAdapter.notifyDataSetChanged();
@@ -152,42 +153,42 @@ public class ProfileHistoryDealActivity extends RoboActivity {
 		
 	}
 	
-	private String getTime(String crawlTime) {
-		// TODO Auto-generated method stub
-		//yyyy-MM-dd HH:mm:ss
-				long nt = System.currentTimeMillis();
-				Date nowtime = new Date(nt);
-				sdf1.setTimeZone(TimeZone.getTimeZone("GMT+8"));
-				String curTime = sdf1.format(nowtime);
-				int yearC = Integer.valueOf(curTime.substring(0, 4));
-				int monthC = Integer.valueOf(curTime.substring(5, 7));
-				int dayC = Integer.valueOf(curTime.substring(8, 10));
-				int hourC = Integer.valueOf(curTime.substring(11, 13));
-				int minC = Integer.valueOf(curTime.substring(14, 16));
-				Log.d("time=cur",curTime);
-				Log.d("time",crawlTime);
-						
-				int yearT = Integer.valueOf(crawlTime.substring(0, 4));
-				int monthT = Integer.valueOf(crawlTime.substring(5, 7));
-				int dayT = Integer.valueOf(crawlTime.substring(8, 10));
-				int hourT = Integer.valueOf(crawlTime.substring(11, 13));
-				int minT = Integer.valueOf(crawlTime.substring(14, 16));
-				//int secT = Integer.valueOf(crawlTime.substring(8, 10));
-				
-				if(yearT != yearC || monthT!= monthC){
-					return crawlTime;
-				}else if(dayT != dayC){
-					if(dayC - dayT > 1){return crawlTime;}
-					else return "昨天";
-				}else if(hourC!=hourT){
-					if(hourC - hourT ==1 && minC< minT){
-					return  60+minC-minT+"分钟之前";
-				}
-					else return hourC-hourT-1+"小时之前";
-				}else if (minC-minT>1){
-					return minC-minT-1+"分钟之前";
-				}else return "刚刚";
-	}
+//	private String getTime(String crawlTime) {
+//		// TODO Auto-generated method stub
+//		//yyyy-MM-dd HH:mm:ss
+//				long nt = System.currentTimeMillis();
+//				Date nowtime = new Date(nt);
+//				sdf1.setTimeZone(TimeZone.getTimeZone("GMT+8"));
+//				String curTime = sdf1.format(nowtime);
+//				int yearC = Integer.valueOf(curTime.substring(0, 4));
+//				int monthC = Integer.valueOf(curTime.substring(5, 7));
+//				int dayC = Integer.valueOf(curTime.substring(8, 10));
+//				int hourC = Integer.valueOf(curTime.substring(11, 13));
+//				int minC = Integer.valueOf(curTime.substring(14, 16));
+//				Log.d("time=cur",curTime);
+//				Log.d("time",crawlTime);
+//						
+//				int yearT = Integer.valueOf(crawlTime.substring(0, 4));
+//				int monthT = Integer.valueOf(crawlTime.substring(5, 7));
+//				int dayT = Integer.valueOf(crawlTime.substring(8, 10));
+//				int hourT = Integer.valueOf(crawlTime.substring(11, 13));
+//				int minT = Integer.valueOf(crawlTime.substring(14, 16));
+//				//int secT = Integer.valueOf(crawlTime.substring(8, 10));
+//				
+//				if(yearT != yearC || monthT!= monthC){
+//					return crawlTime;
+//				}else if(dayT != dayC){
+//					if(dayC - dayT > 1){return crawlTime;}
+//					else return "昨天";
+//				}else if(hourC!=hourT){
+//					if(hourC - hourT ==1 && minC< minT){
+//					return  60+minC-minT+"分钟之前";
+//				}
+//					else return hourC-hourT-1+"小时之前";
+//				}else if (minC-minT>1){
+//					return minC-minT-1+"分钟之前";
+//				}else return "刚刚";
+//	}
 
 	public void loadFile() throws IOException, JSONException{
 		FileInputStream inStream=ProfileHistoryDealActivity.this.openFileInput("favorite.txt");

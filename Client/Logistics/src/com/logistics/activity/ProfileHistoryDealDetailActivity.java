@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Date;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -44,8 +45,9 @@ public class ProfileHistoryDealDetailActivity extends RoboActivity {
 	private Button quit_favorite;
 	
 	private String title = null;
+	private int position = 0;
 	private JSONObject jO = new JSONObject();
-	private JSONObject mFav = new JSONObject();	
+	private JSONArray mFav = new JSONArray();	
 	
 
 	@Override
@@ -64,6 +66,7 @@ public class ProfileHistoryDealDetailActivity extends RoboActivity {
 		Bundle extras = getIntent().getExtras();
 		if(extras != null){
 			title = extras.getString("title");
+			position = extras.getInt("position");
 			jO = new JSONObject(extras.getString("data"));
 			return true;
 		}else{
@@ -116,10 +119,18 @@ public class ProfileHistoryDealDetailActivity extends RoboActivity {
 				// TODO Auto-generated method stub
 				try {
 					loadFile();
-					if(getExtras()&&mFav.has(jO.getJSONObject("_id").getString("$oid"))){
-						mFav.remove(jO.getJSONObject("_id").getString("$oid"));
+					JSONArray tmp = new JSONArray();  
+					if(getExtras()){
+						int len = mFav.length();
+						for(int i=0;i<len;i++){
+							if (i != position) 
+					        {
+								tmp.put(mFav.get(i));
+					        }
+						}
+						
 					};
-					downFile(mFav);
+					downFile(tmp);
 					quit_favorite.setEnabled(false);
 					
 				} catch (IOException e) {
@@ -146,13 +157,13 @@ public class ProfileHistoryDealDetailActivity extends RoboActivity {
             stream.write(buffer,0,length);
         }
         
-        mFav = new JSONObject(stream.toString());
+        mFav = new JSONArray(stream.toString());
                 
         stream.close();
         inStream.close();
 	}
 	
-	public void downFile(JSONObject response) throws IOException{
+	public void downFile(JSONArray response) throws IOException{
 		FileOutputStream outStream=ProfileHistoryDealDetailActivity.this.openFileOutput("favorite.txt",MODE_PRIVATE);
 		outStream.write(response.toString().getBytes());
 		outStream.close();
