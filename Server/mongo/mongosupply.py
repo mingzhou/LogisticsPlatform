@@ -27,10 +27,7 @@ class MongoSupply(MongoDB):
         return self.find_descending(obj)
 
     def find_descending(self, obj = None, count = NUM_RETURN):
-        data = []
         order = [("date", DESCENDING), ("datetime", DESCENDING)]
         top = self.find(obj).sort(order).limit(count)
-        for item in top:
-            del item["description"]
-            data.append(item)
+        data = [item for item in top]
         return json.dumps(data, default = json_util.default)

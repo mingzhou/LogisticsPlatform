@@ -24,7 +24,7 @@ class Crawler():
     def crawl(self):
         count = 1
         while self.window > 0 and count < MAX_PAGE:
-            page = self.get(self.generate_url(count))
+            page = self.get(self.request(count))
             if page is None:
                 break
             self.uniform(page)
@@ -33,14 +33,11 @@ class Crawler():
                 len(self.data), self.HOST)
         return self.data
 
-    def generate_url(self, num_page):
-        return self.HOST + self.prefix + str(num_page) + self.suffix
-
-    def get(self, url):
+    def get(self, request):
         try:
-            response = urllib.request.urlopen(url, timeout = TIMEOUT)
+            response = urllib.request.urlopen(request, timeout = TIMEOUT)
         except urllib.error.URLError:
-            logging.warning("Failed to fetch: " + url)
+            logging.warning("Failed to fetch: " + request.full_url)
             return None
         page = response.read()
         try:
@@ -49,8 +46,26 @@ class Crawler():
             page = page.decode("gbk")
         return page
 
+    def request(self, num_page):
+        url = self.HOST + self.prefix + str(num_page) + self.suffix
+        return self.url2request(url)
+
+    def url2request(self, url):
+        return urllib.request.Request(url)
+
     def uniform(self, page):
         pass
+
+    def good(self, item):
+        keys = ["site", "url", "from", "to", "date", "deadline", "title", 
+        "type", "volume", "quality", "packing", "vehicle", "length", 
+        "attention", "fee", "contact", "others", "datetime"]
+        data = {}
+        for key in keys:
+            data[key] = ""
+        for key in item:
+            data[key] = item[key]
+        return data
 
     def lifetime(self, begin, end = LIFETIME):
         today = datetime.datetime.combine(
