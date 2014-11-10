@@ -17,9 +17,13 @@ import roboguice.inject.InjectView;
 import com.logistics.R;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.SpannableString;
 import android.text.format.DateFormat;
+import android.text.style.StyleSpan;
+import android.text.style.UnderlineSpan;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -84,7 +88,11 @@ public class GoodResultDetailActivity extends RoboActivity {
 		   goods_detail_info.setText("出发地："+jO.getString("from")+"\n"
 				   +"到达地："+jO.getString("to")+"\n"
 				   +"截止时间:"+deadlineTime+"\n");
-		   source_detail_info.setText("来源："+jO.getString("site")+"\n");
+		   SpannableString siteString = new SpannableString("来源："+jO.getString("site"));
+		   siteString.setSpan(new UnderlineSpan(), 3, siteString.length(), 0);
+		   siteString.setSpan(new StyleSpan(Typeface.ITALIC), 3, siteString.length(), 0);
+		   source_detail_info.setText(siteString);
+		   
 		   source_detail_info.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View v) {
