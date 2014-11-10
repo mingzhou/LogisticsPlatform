@@ -2,20 +2,17 @@ package com.logistics.activity;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import org.apache.http.Header;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import roboguice.activity.RoboActivity;
 import roboguice.inject.ContentView;
 import roboguice.inject.InjectView;
-
 import com.logistics.R;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
-
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -51,6 +48,8 @@ public class ProfileChangePasswordActivity extends RoboActivity {
 	private SharedPreferences sharedPreferences;  
 	private SharedPreferences.Editor editor;  
 	
+	public final static int MODE_WORLD_READABLE = 1;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -58,6 +57,7 @@ public class ProfileChangePasswordActivity extends RoboActivity {
 		initComponent();
 	}
 
+	@SuppressLint("WorldReadableFiles")
 	private void initComponent() {
 		// TODO Auto-generated method stub
 		sharedPreferences = this.getSharedPreferences("user_info",MODE_WORLD_READABLE);  

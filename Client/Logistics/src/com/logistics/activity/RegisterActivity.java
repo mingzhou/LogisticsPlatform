@@ -3,20 +3,17 @@ package com.logistics.activity;
 import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import org.apache.http.Header;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import roboguice.activity.RoboActivity;
 import roboguice.inject.ContentView;
 import roboguice.inject.InjectView;
-
 import com.logistics.R;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
-
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -27,7 +24,6 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 @ContentView(R.layout.activity_register)
@@ -72,6 +68,7 @@ public class RegisterActivity extends RoboActivity {
 	}
 
 
+	@SuppressLint("WorldReadableFiles")
 	private void initComponent() {
 		roleAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, roleStrings);

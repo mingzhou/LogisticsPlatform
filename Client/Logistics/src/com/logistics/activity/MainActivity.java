@@ -3,25 +3,18 @@ package com.logistics.activity;
 import roboguice.activity.RoboActivity;
 import roboguice.inject.ContentView;
 import roboguice.inject.InjectView;
+import android.annotation.SuppressLint;
 import android.app.LocalActivityManager;
-import android.content.ActivityNotFoundException;
-import android.content.ComponentName;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.logistics.R;
 
 /**
@@ -62,6 +55,7 @@ public class MainActivity extends RoboActivity {
 		tabHost.setCurrentTab(0);
 	}
 	
+	@SuppressLint("InflateParams")
 	private TabSpec createTabSpec(TabHost tabHost, String tag,
         Resources res, int labelId, int iconId, Class<?> cls) {
 		TabSpec spec = tabHost.newTabSpec(tag);

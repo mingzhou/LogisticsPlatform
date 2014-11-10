@@ -18,7 +18,6 @@ import com.logistics.R;
 
 import android.content.Intent;
 import android.graphics.Typeface;
-import android.net.Uri;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.format.DateFormat;
@@ -99,9 +98,10 @@ public class GoodResultDetailActivity extends RoboActivity {
 					// TODO Auto-generated method stub
 					
 					try {
-						Intent it = new Intent(Intent.ACTION_VIEW, Uri.parse(jO.getString("url")));
-						it.setClassName("com.android.browser", "com.android.browser.BrowserActivity");  
-				        startActivity(it);
+						Intent it = new Intent();
+						it.setClass(GoodResultDetailActivity.this,WebDisplayActivity.class);
+						it.putExtra("data", jO.getString("url"));
+						startActivity(it);
 					} catch (JSONException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
