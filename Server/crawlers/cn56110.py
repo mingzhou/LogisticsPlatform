@@ -29,6 +29,6 @@ class Crawler56110(Crawler):
             item["from"] = s[ : pos].strip()
             item["to"] = s[pos + 3 : -4].strip()
             date = li[-1].text.strip().split('-')
-            item["date"], item["deadline"] = self.lifetime(date)
+            item["date"], item["deadline"] = self.lifetime(date, date)
             item["others"] = li[0].a.get("title")
             self.data.append(self.good(item))

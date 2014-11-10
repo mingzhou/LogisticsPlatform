@@ -5,7 +5,6 @@ import urllib.request
 from mongosupply import MongoSupply
 
 LIFETIME = 27
-MAX_PAGE = 47
 WINDOW_SIZE = 7
 TIMEOUT = 17
 
@@ -20,10 +19,11 @@ class Crawler():
         self.HOST = ""
         self.prefix = ""
         self.suffix = ""
+        self.MAX_PAGE = 47
 
     def crawl(self):
         count = 1
-        while self.window > 0 and count < MAX_PAGE:
+        while self.window > 0 and count < self.MAX_PAGE:
             page = self.get(self.request(count))
             if page is None:
                 break
@@ -68,22 +68,26 @@ class Crawler():
         return data
 
     def lifetime(self, begin, end = LIFETIME):
-        today = datetime.datetime.combine(
-                datetime.date.today(), datetime.time())
-        if len(begin) == 2:
-            begin.insert(0, today.year)
-        date = today.replace(int(begin[0]), int(begin[1]), int(begin[-1]))
-        if type(end) is int or len(end) < 2:
+        date = self.list2date(begin)
+        if type(end) is int or len(end) < 2:    # chinawutong ['长期货源']
             if type(end) is not int:
                 end = LIFETIME
             deadline = date + datetime.timedelta(end)
         else:
-            if len(end) == 2:
-                end.insert(0, today.year)
-            deadline = today.replace(int(end[0]), int(end[1]), int(end[-1]))
-            if deadline <= date:
-                deadline = date + datetime.timedelta(LIFETIME)
+            deadline = self.list2date(end)
+        if date > self.today():
+            date = self.today()
+        if deadline < date:
+            deadline = date + datetime.timedelta(LIFETIME)
         return date, deadline
+
+    def list2date(self, date):
+        today = self.today()
+        date = [int(x) for x in ([today.year] + date)[-3:]]
+        return today.replace(date[0], date[1], date[-1])
+
+    def today(self):
+        return datetime.datetime.combine(datetime.date.today(), datetime.time())
 
     def exist(self, obj):
         return self.database.find_one(obj) is not None

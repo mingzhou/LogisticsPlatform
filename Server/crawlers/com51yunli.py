@@ -7,6 +7,7 @@ class Crawler51yunli(Crawler):
         self.HOST = "http://www.51yunli.com"
         self.prefix = "/goods/0/0/"
         self.suffix = "/0"
+        self.MAX_PAGE = 7
 
     def uniform(self, page):
         soup = BeautifulSoup(page, "html.parser")   # lxml

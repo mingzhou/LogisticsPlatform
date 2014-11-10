@@ -25,4 +25,4 @@ class Crawler56888(Crawler):
             date = s[:pos].strip().split('-')
             deadline = s[pos+1:].strip().split('-')
             item["date"], item["deadline"] = self.lifetime(date, deadline)
-            self.data.append(item)
+            self.data.append(self.good(item))
