@@ -146,17 +146,18 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 		}
 		else if(jArray.length()>0){
 			try {
+				mAdapter.clear();
 				for (int i =0; i<jArray.length();i++){
 					long dt = jArray.getJSONObject(i).getJSONObject("datetime").getLong("$date");
 					Date datetime = new Date(dt);
 					sdf1.setTimeZone(TimeZone.getTimeZone("GMT"));
 					String crawlTime = sdf1.format(datetime);
 					String time = getTime(crawlTime);
-		        items.add(new String[]{jArray.getJSONObject(i).getString("from")+" -> " + jArray.getJSONObject(i).getString("to"),
+					mAdapter.add(new String[]{jArray.getJSONObject(i).getString("from")+" -> " + jArray.getJSONObject(i).getString("to"),
 		        		time});
 		        		//+DateFormat.getDateFormat(GoodResultActivity.this).format(new Date(jArray.getJSONObject(i).getLong("$date"))));
 		        }
-				mAdapter.notifyDataSetChanged();
+				
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -196,7 +197,9 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				//mAdapter.clear();
 				onRefresh();
+				
 				//items.clear();
 				
 			}});        
@@ -212,6 +215,7 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 	
 	private void onLoad2() {
 		mListView.stopLoadMore();
+		
 		//mListView.stopRefresh();
 		//mListView.setRefreshTime(SimpleDateFormat.getDateTimeInstance().format(new Date(System.currentTimeMillis())));
 		//mListView.setRefreshTime(DateFormat.getTimeFormat(this).format(new Date(System.currentTimeMillis())));
@@ -223,9 +227,10 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 			@Override
 			public void run() {
 				//start = ++refreshCnt;
-				items.clear();
+				//mAdapter.clear();
 				if(firsttime){
 					getHttpResponse1();
+					mAdapter.notifyDataSetChanged();
 					firsttime = false;
 				}else {
 				Log.d(TAG,"refresh begin");
@@ -243,8 +248,10 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 //				mAdapter = new ArrayAdapter<String>(MapActivity.this, android.R.layout.simple_expandable_list_item_1, items);
 //				mListView.setAdapter(mAdapter);
 				onLoad();
+				mListView.setSelection(0);
 			}
-		}, 750);
+		}, 2000);
+		
 	}
 
 	@Override
@@ -255,10 +262,12 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 				//items.clear();
 				if(firsttime){
 					getHttpResponse1();
+					mAdapter.notifyDataSetChanged();
 					firsttime = false;
 				}else {
 				try {
 					getHttpResponse2();
+					mAdapter.notifyDataSetChanged();
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -266,11 +275,11 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}}
-				mAdapter.notifyDataSetChanged();
+				//mAdapter.notifyDataSetChanged();
 				
 				onLoad2();
 			}
-		}, 1000);
+		}, 2000);
 	}
 	
 	public static boolean isInteger(String input){  
@@ -309,6 +318,7 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 					 	toast.show();
 
 					 	loadFile();
+					 	mAdapter.clear();
 				        Log.d(TAG+"nihao","read done");
 				        //Log.d(TAG+"nihao",jArray.toString());
 				        for (int i =0; i<jArray.length();i++){
@@ -321,7 +331,7 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 				        		time});
 				        		//+DateFormat.getDateFormat(GoodResultActivity.this).format(new Date(jArray.getJSONObject(i).getLong("$date"))));
 				        }
-				       
+				        				       
 				   	} catch (FileNotFoundException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -356,17 +366,18 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 					 	downFile(response);
 					 	//Log.d(TAG+"nihao","header num"+Integer.toString(headers.length));
 					 	loadFile();
+					 	mAdapter.clear();
 					 	for (int i =0; i<jArray.length();i++){
 							long dt = jArray.getJSONObject(i).getJSONObject("datetime").getLong("$date");
 							Date datetime = new Date(dt);
 							sdf1.setTimeZone(TimeZone.getTimeZone("GMT"));
 							String crawlTime = sdf1.format(datetime);
 							String time = getTime(crawlTime);
-				        items.add(new String[]{jArray.getJSONObject(i).getString("from")+" -> " + jArray.getJSONObject(i).getString("to"),
+							mAdapter.add(new String[]{jArray.getJSONObject(i).getString("from")+" -> " + jArray.getJSONObject(i).getString("to"),
 				        		time});
 				        		//+DateFormat.getDateFormat(GoodResultActivity.this).format(new Date(jArray.getJSONObject(i).getLong("$date"))));
 				        }
-				        
+					 	
 				   	} catch (FileNotFoundException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -415,7 +426,7 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 					sdf1.setTimeZone(TimeZone.getTimeZone("GMT"));
 					String crawlTime = sdf1.format(datetime);
 					String time = getTime(crawlTime);
-					items.add(new String[]{response.getJSONObject(i).getString("from")+" -> " + response.getJSONObject(i).getString("to"),
+					mAdapter.add(new String[]{response.getJSONObject(i).getString("from")+" -> " + response.getJSONObject(i).getString("to"),
 			        		time});
 					}
 					
@@ -510,9 +521,9 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 		int dayC = Integer.valueOf(curTime.substring(8, 10));
 		int hourC = Integer.valueOf(curTime.substring(11, 13));
 		int minC = Integer.valueOf(curTime.substring(14, 16));
-		Log.d("time=cur",curTime);
-		Log.d("time",crawlTime);
-				
+//		Log.d("time=cur",curTime);
+//		Log.d("time",crawlTime);
+//				
 		int yearT = Integer.valueOf(crawlTime.substring(0, 4));
 		int monthT = Integer.valueOf(crawlTime.substring(5, 7));
 		int dayT = Integer.valueOf(crawlTime.substring(8, 10));
