@@ -29,6 +29,8 @@ public class LoginActivity extends RoboActivity {
 			@Override
 			public void onClick(View v) {
 				startActivity(new Intent(LoginActivity.this, LoginDetailActivity.class));
+				finish();
+				onDestroy();
 			}
 		});
 		
@@ -36,6 +38,8 @@ public class LoginActivity extends RoboActivity {
 			@Override
 			public void onClick(View v) {
 				startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+				finish();
+				onDestroy();
 			}
 		});
 	}

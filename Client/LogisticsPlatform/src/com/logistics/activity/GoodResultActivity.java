@@ -1,31 +1,32 @@
 package com.logistics.activity;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import org.apache.http.Header;
+import java.util.Date;
+import java.util.TimeZone;
+
+import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import roboguice.activity.RoboActivity;
 import roboguice.inject.ContentView;
 import roboguice.inject.InjectView;
 
-import com.google.inject.Inject;
 import com.logistics.R;
-import com.logistics.utils.AsyncHttpHelper;
-import com.loopj.android.http.JsonHttpResponseHandler;
-import com.loopj.android.http.RequestParams;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 @ContentView(R.layout.activity_good_result)
 public class GoodResultActivity extends RoboActivity {
@@ -34,18 +35,24 @@ public class GoodResultActivity extends RoboActivity {
 	private TextView test;
 	
 	//private final String DUMMY = null;
-	
-	@Inject
-	private AsyncHttpHelper httpHelper;
-	
+		
 	@InjectView(R.id.return_btn)
 	private Button return_btn;
 	
 	@InjectView(R.id.list_goodresult)
 	private ListView listview;
+	private JSONArray jArray = new JSONArray();
+	private ArrayAdapter<String[]> mAdapter;
+	private ArrayList<String[]> items = new ArrayList<String[]>();
 	
-	private ArrayList<String> list;
-	
+	/** 准备第一个模板，从字符串中提取出日期数字  */  
+    private static String pat1 = "yyyy-MM-dd HH:mm:ss" ;    
+    /** 准备第二个模板，将提取后的日期数字变为指定的格式*/    
+    private static String pat2 = "yyyy年MM月dd日 HH:mm:ss" ;  
+	@SuppressLint("SimpleDateFormat")
+	private static SimpleDateFormat sdf1 = new SimpleDateFormat(pat1) ;           
+    @SuppressLint("SimpleDateFormat")
+	private static SimpleDateFormat sdf2 = new SimpleDateFormat(pat2) ; 
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -69,15 +76,27 @@ public class GoodResultActivity extends RoboActivity {
 		listview.setOnItemClickListener(new OnItemClickListener(){
 
 			@Override
-			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
-					long arg3) {
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
 				// TODO Auto-generated method stub
 				Intent intent = new Intent();
 				intent.setClass(GoodResultActivity.this,GoodResultDetailActivity.class);
+				
+				try {
+					intent.putExtra("title","信息详情");
+					intent.putExtra("data", jArray.getJSONObject(position).toString());
+					//Log.d(TAG+"data",jArray.getJSONObject(position).toString());
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				startActivity(intent);
 				onPause();
-				
-			}});
+			}
+			
+
+		});
+		
 		
 	}
 	
@@ -92,71 +111,84 @@ public class GoodResultActivity extends RoboActivity {
 				finish();
 				onDestroy();
 			}});
-		list = getData();
 		
-		listview.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1,list));
-		
-	}
-	
-	
-	
-	private ArrayList<String> getData() {
-		// TODO Auto-generated method stub
-		ArrayList<String> data = new ArrayList<String>();
-		data.add("测试数据1");
-        data.add("测试数据2");
-        data.add("测试数据3");
-        data.add("测试数据4");
-        data.add("测试数据5");
-        data.add("测试数据6");
-        data.add("测试数据7");
-        data.add("测试数据8");
-              
-         
-        return data;
-	}
+		mAdapter = new ArrayAdapter<String[]>(this, android.R.layout.simple_list_item_2, android.R.id.text1, items){
 
-
-
-	private void getHttpResponse(Bundle b){
-		
-		RequestParams rp = new RequestParams();
-		rp.put("dep", b.getString("key_dep"));
-		rp.put("des", b.getString("key_des"));
-		rp.put("typ", b.getString("key_typ"));
-		
-		JsonHttpResponseHandler jrh = new JsonHttpResponseHandler("UTF-8") {
 			@Override
-			public void onSuccess(JSONObject response) {
-					Toast.makeText(GoodResultActivity.this, response.toString(), Toast.LENGTH_LONG).show();
-					
-					try {
-						String[] items = {response.getString("车牌"),response.getString("电话")};
-						
-						listview.setAdapter(new ArrayAdapter<String>(	GoodResultActivity.this ,android.R.layout.simple_list_item_1,
-								items));
-						listview.setOnItemClickListener(null);
-					} catch (JSONException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					
-					
-					//test.setText("车牌"+chepai+"\n"+"电话"+dianhual;
-			}
-			@Override
-			public void onFailure(int statusCode, Header[] headers,
-					String responseBody, Throwable e) {
-				Toast.makeText(GoodResultActivity.this, statusCode + "\t" + responseBody, Toast.LENGTH_LONG).show();
-				test.setText(statusCode + "\t" + responseBody);
+			public View getView(int position, View convertView, ViewGroup parent) {
+				// TODO Auto-generated method stub
+				View view = super.getView(position, convertView, parent);
+				String[] entry = items.get(position);
+				TextView text1 = (TextView) view.findViewById(android.R.id.text1);
+			    TextView text2 = (TextView) view.findViewById(android.R.id.text2);
+			    text1.setText(entry[0]);
+			    text2.setText(entry[1]);
+				return view;
 			}
 		};
-		httpHelper.get("/json/", rp,jrh);
-		
+		listview.setAdapter(mAdapter);
+		Intent intent = getIntent(); 
+		String jS = intent.getStringExtra("query");
+		Log.d("nihao-js",jS);
+		try {
+			jArray = new JSONArray(jS);
+			for (int i =0; i<jArray.length();i++){
+				long dt = jArray.getJSONObject(i).getJSONObject("datetime").getLong("$date");
+				Date datetime = new Date(dt);
+				sdf1.setTimeZone(TimeZone.getTimeZone("GMT"));
+				String crawlTime = sdf1.format(datetime);
+				String time = getTime(crawlTime);
+	        items.add(new String[]{jArray.getJSONObject(i).getString("from")+" -> " + jArray.getJSONObject(i).getString("to"),
+	        		time});
+	        		//+DateFormat.getDateFormat(GoodResultActivity.this).format(new Date(jArray.getJSONObject(i).getLong("$date"))));
+	        }
+			mAdapter.notifyDataSetChanged();
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+				
 	}
 
-	private Bundle getBundle(){
-		Bundle bundle = this.getIntent().getExtras();
-		return bundle;
+
+
+	private String getTime(String crawlTime) {
+		// TODO Auto-generated method stub
+		//yyyy-MM-dd HH:mm:ss
+		long nt = System.currentTimeMillis();
+		Date nowtime = new Date(nt);
+		sdf1.setTimeZone(TimeZone.getTimeZone("GMT+8"));
+		String curTime = sdf1.format(nowtime);
+		int yearC = Integer.valueOf(curTime.substring(0, 4));
+		int monthC = Integer.valueOf(curTime.substring(5, 7));
+		int dayC = Integer.valueOf(curTime.substring(8, 10));
+		int hourC = Integer.valueOf(curTime.substring(11, 13));
+		int minC = Integer.valueOf(curTime.substring(14, 16));
+		Log.d("time=cur",curTime);
+		Log.d("time",crawlTime);
+				
+		int yearT = Integer.valueOf(crawlTime.substring(0, 4));
+		int monthT = Integer.valueOf(crawlTime.substring(5, 7));
+		int dayT = Integer.valueOf(crawlTime.substring(8, 10));
+		int hourT = Integer.valueOf(crawlTime.substring(11, 13));
+		int minT = Integer.valueOf(crawlTime.substring(14, 16));
+		//int secT = Integer.valueOf(crawlTime.substring(8, 10));
+		
+		if(yearT != yearC || monthT!= monthC){
+			return crawlTime;
+		}else if(dayT != dayC){
+			if(dayC - dayT > 1){return crawlTime;}
+			else return "昨天";
+		}else if(hourC!=hourT){
+			if(hourC - hourT ==1 && minC< minT){
+			return  60+minC-minT+"分钟之前";
+		}
+			else return hourC-hourT-1+"小时之前";
+		}else if (minC-minT>1){
+			return minC-minT-1+"分钟之前";
+		}else return "刚刚";
+		
 	}
+	
+	
 }
