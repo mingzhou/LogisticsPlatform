@@ -2,20 +2,17 @@ package com.logistics.activity;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import org.apache.http.Header;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import roboguice.activity.RoboActivity;
 import roboguice.inject.InjectView;
-
 import com.logistics.R;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
-
 import android.os.Bundle;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.text.Html;
@@ -24,7 +21,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -63,6 +59,7 @@ public class LoginDetailActivity extends RoboActivity {
 		
 	}
 
+	@SuppressLint("WorldReadableFiles")
 	private void initComponent() {
 		sharedPreferences = this.getSharedPreferences("user_info",MODE_WORLD_READABLE);
 		editor = sharedPreferences.edit();

@@ -19,7 +19,7 @@
         android:label="@string/app_name"
         android:theme="@android:style/Theme.Light.NoTitleBar" >
         <activity
-            android:name="com.logistics.activity.WelcomeActivity"
+            android:name=".activity.WelcomeActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,74 +28,79 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.logistics.activity.LoginActivity"
+            android:name=".activity.LoginActivity"
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name="com.logistics.activity.MainActivity"
+            android:name=".activity.MainActivity"
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name="com.logistics.activity.GoodActivity"
+            android:name=".activity.GoodActivity"
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name="com.logistics.activity.ProfileActivity"
+            android:name=".activity.ProfileActivity"
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name="com.logistics.activity.GoodResultActivity"
+            android:name=".activity.GoodResultActivity"
             android:label="@string/title_activity_good_result" >
         </activity>
         <activity
-            android:name="com.logistics.activity.MapActivity"
+            android:name=".activity.MapActivity"
             android:label="@string/title_activity_map" >
         </activity>
         <activity
-            android:name="com.logistics.activity.ProfileCurrentDealActivity"
+            android:name=".activity.ProfileCurrentDealActivity"
             android:label="@string/title_activity_profile_current_deal" >
         </activity>
         <activity
-            android:name="com.logistics.activity.ProfileHistoryDealActivity"
+            android:name=".activity.ProfileHistoryDealActivity"
             android:label="@string/title_activity_profile_history_deal" >
         </activity>
         <activity
-            android:name="com.logistics.activity.ProfileChangePasswordActivity"
+            android:name=".activity.ProfileChangePasswordActivity"
             android:label="@string/title_activity_profile_change_password" >
         </activity>
         <activity
-            android:name="com.logistics.activity.ProfileChangePhoneActivity"
+            android:name=".activity.ProfileChangePhoneActivity"
             android:label="@string/title_activity_profile_change_phone" >
         </activity>
         <activity
-            android:name="com.logistics.activity.GoodResultDetailActivity"
+            android:name=".activity.GoodResultDetailActivity"
             android:label="@string/title_activity_good_result_detail" >
         </activity>
         <activity
-            android:name="com.logistics.activity.ProfileCurrentDealDetailActivity"
+            android:name=".activity.ProfileCurrentDealDetailActivity"
             android:label="@string/title_activity_profile_current_deal_detail" >
         </activity>
         <activity
-            android:name="com.logistics.activity.ProfileHistoryDealDetailActivity"
+            android:name=".activity.ProfileHistoryDealDetailActivity"
             android:label="@string/title_activity_profile_history_deal_detail" >
         </activity>
         <activity
-            android:name="com.logistics.activity.RegisterActivity"
+            android:name=".activity.RegisterActivity"
             android:label="@string/title_activity_register" >
         </activity>
         <activity
-            android:name="com.logistics.activity.LoginDetailActivity"
+            android:name=".activity.LoginDetailActivity"
             android:label="@string/title_activity_login_detail" >
         </activity>
         <activity
-            android:name="com.logistics.activity.ForgetActivity"
+            android:name=".activity.ForgetActivity"
             android:label="@string/title_activity_forget" >
         </activity>
-        
-        <service android:name="com.logistics.service.PushAndPull" >
+
+        <service android:name=".service.PushAndPull" >
         </service>
-        <service android:name="com.logistics.service.NotifyCenter" >
+        <service android:name=".service.NotifyCenter" >
         </service>
+
+        <activity
+            android:name=".activity.WebDisplayActivity"
+            android:label="@string/title_activity_web_display" >
+        </activity>
     </application>
 
 </manifest>

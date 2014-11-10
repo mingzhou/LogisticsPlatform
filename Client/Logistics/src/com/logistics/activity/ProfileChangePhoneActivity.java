@@ -3,9 +3,8 @@ package com.logistics.activity;
 import roboguice.activity.RoboActivity;
 import roboguice.inject.ContentView;
 import roboguice.inject.InjectView;
-
 import com.logistics.R;
-
+import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Html;
@@ -13,7 +12,6 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 @ContentView(R.layout.activity_profile_change_phone)
 public class ProfileChangePhoneActivity extends RoboActivity {
@@ -34,7 +32,8 @@ public class ProfileChangePhoneActivity extends RoboActivity {
 	private Button return_btn;
 	
 	private SharedPreferences sharedPreferences;  
-	private SharedPreferences.Editor editor; 
+	//private SharedPreferences.Editor editor; 
+	public final static int MODE_WORLD_READABLE = 1;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -43,10 +42,11 @@ public class ProfileChangePhoneActivity extends RoboActivity {
 		initComponent();
 	}
 
+	@SuppressLint("WorldReadableFiles")
 	private void initComponent() {
 		// TODO Auto-generated method stub
 		sharedPreferences = this.getSharedPreferences("user_info",MODE_WORLD_READABLE);  
-        editor = sharedPreferences.edit();
+        //editor = sharedPreferences.edit();
 		//return 
         return_btn.setOnClickListener(new Button.OnClickListener(){
 

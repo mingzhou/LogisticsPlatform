@@ -3,6 +3,7 @@ package com.logistics.activity;
 import roboguice.activity.RoboActivity;
 import roboguice.inject.ContentView;
 import roboguice.inject.InjectView;
+import android.annotation.SuppressLint;
 import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
 import android.content.Intent;
@@ -18,7 +19,6 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.logistics.R;
 import com.logistics.service.PushAndPull;
 
@@ -61,6 +61,8 @@ public class ProfileActivity extends RoboActivity {
 	@InjectView(R.id.logout)
 	private Button logout;
 	
+	public final static int MODE_WORLD_READABLE = 1;
+	
 	private SharedPreferences sharedPreferences;  
 	private SharedPreferences.Editor editor;  
 	
@@ -68,9 +70,10 @@ public class ProfileActivity extends RoboActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         initComponent();
-}
+	}
 
 
+	@SuppressLint("WorldReadableFiles")
 	private void initComponent() {
 		// TODO Auto-generated method stub
 		sharedPreferences = this.getSharedPreferences("user_info",MODE_WORLD_READABLE);  
