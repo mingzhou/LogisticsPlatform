@@ -3,6 +3,7 @@ package com.logistics.activity;
 import roboguice.activity.RoboActivity;
 import roboguice.inject.ContentView;
 import roboguice.inject.InjectView;
+import android.annotation.SuppressLint;
 import android.app.LocalActivityManager;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -14,7 +15,6 @@ import android.widget.LinearLayout;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
 import android.widget.TextView;
-
 import com.logistics.R;
 
 /**
@@ -43,23 +43,21 @@ public class MainActivity extends RoboActivity {
 		
 		TabSpec spec = null;
 		
+		spec = createTabSpec(tabHost, MapActivity.TAG, res, R.string.map_title, R.drawable.ic_tab_more, MapActivity.class);
+		tabHost.addTab(spec);
+		
 		spec = createTabSpec(tabHost, GoodActivity.TAG, res, R.string.goods_title, R.drawable.ic_tab_worldclock, GoodActivity.class);
 		tabHost.addTab(spec);
 		
 		spec = createTabSpec(tabHost, ProfileActivity.TAG, res, R.string.profile_title, R.drawable.ic_tab_alarm, ProfileActivity.class);
 		tabHost.addTab(spec);
-		
-		spec = createTabSpec(tabHost, MapActivity.TAG, res, R.string.map_title, R.drawable.ic_tab_more, MapActivity.class);
-		tabHost.addTab(spec);
-		
-		spec = createTabSpec(tabHost, SettingsActivity.TAG, res, R.string.settings_title, R.drawable.ic_tab_timer, SettingsActivity.class);
-		tabHost.addTab(spec);
-		
+						
 		tabHost.setCurrentTab(0);
 	}
 	
+	@SuppressLint("InflateParams")
 	private TabSpec createTabSpec(TabHost tabHost, String tag,
-            Resources res, int labelId, int iconId, Class<?> cls) {
+        Resources res, int labelId, int iconId, Class<?> cls) {
 		TabSpec spec = tabHost.newTabSpec(tag);
 		String label = res.getString(labelId);
 		Drawable icon = res.getDrawable(iconId);
@@ -69,7 +67,7 @@ public class MainActivity extends RoboActivity {
 		((TextView) linearLayout.findViewById(R.id.tab_label)).setText(label);
 		spec.setIndicator(linearLayout);
 		spec.setContent(new Intent().setClass(this, cls));
-
+		
 		return spec;
 
 	}
@@ -85,4 +83,7 @@ public class MainActivity extends RoboActivity {
 		super.onPause();
 		mlam.dispatchPause(isFinishing());
 	}
+
+	
+	
 }

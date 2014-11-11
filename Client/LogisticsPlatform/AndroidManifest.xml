@@ -91,9 +91,15 @@
             android:name=".activity.ForgetActivity"
             android:label="@string/title_activity_forget" >
         </activity>
+
+        <service android:name=".service.PushAndPull" >
+        </service>
+        <service android:name=".service.NotifyCenter" >
+        </service>
+
         <activity
-            android:name="com.logistics.activity.SettingsActivity"
-            android:label="@string/title_activity_settings" >
+            android:name=".activity.WebDisplayActivity"
+            android:label="@string/title_activity_web_display" >
         </activity>
     </application>
 

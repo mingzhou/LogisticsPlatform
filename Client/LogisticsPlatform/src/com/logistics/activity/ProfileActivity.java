@@ -3,13 +3,24 @@ package com.logistics.activity;
 import roboguice.activity.RoboActivity;
 import roboguice.inject.ContentView;
 import roboguice.inject.InjectView;
+import android.annotation.SuppressLint;
+import android.content.ActivityNotFoundException;
+import android.content.ComponentName;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
-
+import android.widget.Toast;
 import com.logistics.R;
+import com.logistics.service.PushAndPull;
 
 /**
  * 个人中心
@@ -27,56 +38,52 @@ public class ProfileActivity extends RoboActivity {
 	@InjectView(R.id.phone)
 	private TextView phone;
 	
-	@InjectView(R.id.role_id)
-	private TextView role_id;
-	
-	@InjectView(R.id.cur_deal)
-	private Button cur_deal;
-	
-	@InjectView(R.id.his_deal)
-	private Button his_deal;
+//	@InjectView(R.id.role_id)
+//	private TextView role_id;
+		
+//	@InjectView(R.id.cur_deal)
+//	private Button cur_deal;
+//	
+//	@InjectView(R.id.his_deal)
+//	private Button his_deal;
 	
 	@InjectView(R.id.change_password)
 	private Button cha_pa;
 	
-	@InjectView(R.id.change_phone)
-	private Button cha_ph;
+	@InjectView(R.id.favorite)
+	private Button favorite;
 	
+	@InjectView(R.id.refreshtime)
+	private Spinner refreshtime;
+	private ArrayAdapter<String> refreshAdapter;
+	private String[] refreshStrings = { "1分钟", "5分钟", "30分钟", "不推送" };
+	
+	@InjectView(R.id.logout)
+	private Button logout;
+	
+	public final static int MODE_WORLD_READABLE = 1;
+	
+	private SharedPreferences sharedPreferences;  
+	private SharedPreferences.Editor editor;  
 	
 	protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         initComponent();
-}
+	}
 
 
+	@SuppressLint("WorldReadableFiles")
 	private void initComponent() {
 		// TODO Auto-generated method stub
-		//usr_name.setText("XXX");
-		//phone.setText("159-xxxx-xxxx");
-		//role_id.setText("Driver");
-		
-		cur_deal.setOnClickListener(new Button.OnClickListener(){
-
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Intent intent = new Intent();
-                intent.setClass(ProfileActivity.this,ProfileCurrentDealActivity.class);
-                startActivity(intent);
-                onPause();
-			}});
-		
-		his_deal.setOnClickListener(new Button.OnClickListener(){
-
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Intent intent = new Intent();
-                intent.setClass(ProfileActivity.this,ProfileHistoryDealActivity.class);
-                startActivity(intent);
-                onPause();
-			}});
+		sharedPreferences = this.getSharedPreferences("user_info",MODE_WORLD_READABLE);  
+        editor = sharedPreferences.edit();
+        String p = sharedPreferences.getString("phone", null);
+        String u = sharedPreferences.getString("usr_name", null);
+        int i = sharedPreferences.getInt("refresh", 0);
+		usr_name.setText(u);
+		phone.setText(p);
+	//	role_id.setText(i);
 		
 		cha_pa.setOnClickListener(new Button.OnClickListener(){
 
@@ -89,19 +96,106 @@ public class ProfileActivity extends RoboActivity {
                 onPause();
 			}});
 		
-		cha_ph.setOnClickListener(new Button.OnClickListener(){
+		favorite.setOnClickListener(new Button.OnClickListener(){
 
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Intent intent = new Intent();
-                intent.setClass(ProfileActivity.this,ProfileChangePhoneActivity.class);
+                intent.setClass(ProfileActivity.this,ProfileHistoryDealActivity.class);
                 startActivity(intent);
                 onPause();
+                //finish();
+                //onDestroy();
 			}});
 		
-		usr_name.setText("test");
+		refreshAdapter = new ArrayAdapter<String>(this,
+				android.R.layout.simple_spinner_item, refreshStrings);
+		refreshAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		refreshtime.setAdapter(refreshAdapter);
+		refreshtime.setSelection(i);
 		
+		switch (refreshtime.getSelectedItemPosition()){
+		case 0:
+			Intent startIntent0 = new Intent(ProfileActivity.this, PushAndPull.class); 
+			startIntent0.putExtra("refresh",1);
+			startService(startIntent0);  
+			break;  
+		case 1:
+			Intent startIntent1 = new Intent(ProfileActivity.this, PushAndPull.class); 
+			startIntent1.putExtra("refresh",5);
+			startService(startIntent1);
+			break;  
+		case 2:
+			Intent startIntent2 = new Intent(ProfileActivity.this, PushAndPull.class); 
+			startIntent2.putExtra("refresh",30);
+			startService(startIntent2); 
+			break;  
+		case 3:
+			Intent startIntent3 = new Intent(ProfileActivity.this, PushAndPull.class); 
+			stopService(startIntent3); 
+			break;  
+		default:
+			break;  
+		} 
+		
+		
+		logout.setOnClickListener(new Button.OnClickListener(){
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent();
+                intent.setClass(ProfileActivity.this,LoginActivity.class);
+                startActivity(intent);
+                Intent stopIntent = new Intent(ProfileActivity.this, PushAndPull.class);  
+                stopService(stopIntent); 
+
+                finish();
+                onDestroy();
+			}});
+				
 	}
+	
+	public boolean onKeyDown(int keyCode, KeyEvent event) {    
+        PackageManager pm = getPackageManager();    
+        ResolveInfo homeInfo =   
+            pm.resolveActivity(new Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_HOME), 0);   
+        if (keyCode == KeyEvent.KEYCODE_BACK) {  
+            ActivityInfo ai = homeInfo.activityInfo;    
+            Intent startIntent = new Intent(Intent.ACTION_MAIN);    
+            startIntent.addCategory(Intent.CATEGORY_LAUNCHER);    
+            startIntent.setComponent(new ComponentName(ai.packageName, ai.name));    
+            startActivitySafely(startIntent);    
+            return true;    
+        } else    
+            return super.onKeyDown(keyCode, event);    
+    }  
+    private void startActivitySafely(Intent intent) {    
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);    
+        try {    
+            startActivity(intent);    
+        } catch (ActivityNotFoundException e) {    
+            Toast.makeText(this, "null",    
+                    Toast.LENGTH_SHORT).show();    
+        } catch (SecurityException e) {    
+            Toast.makeText(this, "null",    
+                    Toast.LENGTH_SHORT).show();     
+        }    
+    }
+
+
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		final int r_p = refreshtime.getSelectedItemPosition();
+		editor.putInt("refresh", r_p);
+		editor.commit();
+		
+		super.onDestroy();
+		
+		
+	}  
+	
 	
 }

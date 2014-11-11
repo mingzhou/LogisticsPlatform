@@ -12,13 +12,18 @@ import com.loopj.android.http.ResponseHandlerInterface;
  */
 @Singleton
 public class AsyncHttpHelper {
-	public AsyncHttpHelper() {
-		client = new AsyncHttpClient(80);
+	private AsyncHttpClient client;
+	
+	public  AsyncHttpHelper() {
+		//AsyncHttpClient client = new AsyncHttpClient(80);
 	}
 	
-	private final String BASE_URL = "http://219.223.168.14";
-
-	private AsyncHttpClient client;
+	private final String BASE_URL = "http://219.223.190.211";
+	
+	public AsyncHttpClient getClient(){
+		return client = new AsyncHttpClient(80);
+	}
+	
 	
 	public void get(String url, ResponseHandlerInterface responseHandler) {
 		client.get(getAbsoluteUrl(url), responseHandler);
