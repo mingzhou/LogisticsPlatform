@@ -98,6 +98,37 @@
 
                 </TableRow>
             	 -->
+            	 
+            	 <TableRow android:layout_width="match_parent" >
+           
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/questionforpassword"
+                            android:textSize="20sp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/question"
+                            android:textSize="20sp" />
+                </TableRow>
+                
+            	 <TableRow android:layout_width="match_parent" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/answerforpassword"
+                            android:textSize="20sp" />
+
+                        <EditText
+                            android:id="@+id/answer"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:inputType="textPersonName" />
+                </TableRow>
             	            	
             	<Button
             	    		android:id="@+id/register"

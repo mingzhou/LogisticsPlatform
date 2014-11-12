@@ -42,6 +42,9 @@ public class ForgetActivity extends RoboActivity {
 	@InjectView(R.id.usr_name)
 	private EditText usr_name;
 	
+	@InjectView(R.id.answer)
+	private EditText answer;
+	
 	@InjectView(R.id.submit)
 	private Button submit;
 	
@@ -90,12 +93,19 @@ public class ForgetActivity extends RoboActivity {
 		final String mPhone = phone.getText().toString();
 		final String mPassword = set_password.getText().toString();	
 		final String mUsrname = usr_name.getText().toString();
-		
+		final String mAnswer = answer.getText().toString();
+		final String iAnswer =  sharedPreferences.getString("answer", null);
 		boolean cancel = false;
 		View focusView = null;
 		if(TextUtils.isEmpty(mPassword)|| !isPasswordValid(mPassword)){
 			set_password.setError(Html.fromHtml("<font color=#E10979>密码太短，应大于4位</font>"));
 			focusView = set_password;
+			cancel = true;
+		}
+		
+		if(!mAnswer.equals(iAnswer)){
+			answer.setError(Html.fromHtml("<font color=#E10979>密保问题回答不正确</font>"));
+			focusView = answer;
 			cancel = true;
 		}
 		

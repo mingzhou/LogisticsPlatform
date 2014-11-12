@@ -86,7 +86,16 @@ public class GoodResultDetailActivity extends RoboActivity {
 		   String deadlineTime = DateFormat.getDateFormat(GoodResultDetailActivity.this).format(new Date(deadline));;
 		   goods_detail_info.setText("出发地："+jO.getString("from")+"\n"
 				   +"到达地："+jO.getString("to")+"\n"
-				   +"截止时间:"+deadlineTime+"\n");
+				   +"截止时间:"+deadlineTime+"\n"
+				   +"货物名称:"+jO.getString("title")+"\n"
+				   +"货物类型:"+jO.getString("type")+"\n"
+				   +"货物体积:"+jO.getString("volume")+"\n"
+				   +"货物质量:"+jO.getString("quality")+"\n"
+				   +"包装方式:"+jO.getString("packing")+"\n"
+				   +"货车类型:"+jO.getString("vehicle")+"\n"
+				   +"货车长度:"+jO.getString("length")+"\n"
+				   +"预计费用:"+jO.getString("fee")+"\n"
+				   +"备注:"+jO.getString("others")+"\n");
 		   SpannableString siteString = new SpannableString("来源："+jO.getString("site"));
 		   siteString.setSpan(new UnderlineSpan(), 3, siteString.length(), 0);
 		   siteString.setSpan(new StyleSpan(Typeface.ITALIC), 3, siteString.length(), 0);

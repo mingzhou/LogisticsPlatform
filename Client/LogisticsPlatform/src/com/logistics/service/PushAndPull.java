@@ -100,7 +100,7 @@ public class PushAndPull extends Service {
 		@Override
 		public void handleMessage(Message msg) {
 			// TODO Auto-generated method stub
-			if(msg.what!=0 && update_size > 0 ){
+			if(msg.what!=0&& update_size > 0  ){//
 				if(!isAppOnForeground()){
 				NotificationManager nm = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
 				Intent intent = new Intent(PushAndPull.this, MainActivity.class);
@@ -126,6 +126,7 @@ public class PushAndPull extends Service {
 				else{
 					Log.d(TAG+"nihao","test");
 					Intent intent = new Intent("com.example.communication.RECEIVER"); 
+					intent.putExtra("data",update_size);
 					sendBroadcast(intent); 
 				}
 			}			
@@ -148,7 +149,7 @@ public class PushAndPull extends Service {
 			// TODO Auto-generated method stub
 			while(!isStop){
 					try {
-						Thread.sleep(6000*n);
+						Thread.sleep(60000*n);
 						loadFile();
 						String jOS = jArray.getJSONObject(0).toString();
 						HttpPost httpRequest =new HttpPost(BASE_URL+"/latest");

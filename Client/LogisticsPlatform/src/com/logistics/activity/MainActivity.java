@@ -5,12 +5,14 @@ import roboguice.inject.ContentView;
 import roboguice.inject.InjectView;
 import android.annotation.SuppressLint;
 import android.app.LocalActivityManager;
+import android.app.TabActivity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Vibrator;
@@ -20,11 +22,14 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TabHost;
+import android.widget.TabWidget;
 import android.widget.TabHost.TabSpec;
 import android.widget.TextView;
 
 import com.logistics.R;
 import com.logistics.service.PushAndPull;
+
+import me.maxwin.view.BadgeView;
 
 /**
  * 主界面，可以添加不同的选项卡TabHost
@@ -46,12 +51,17 @@ public class MainActivity extends RoboActivity {
 	private MsgReceiver msgReceiver;  
 	//private Intent mIntent;  
 	
+	BadgeView badge7;
+	ImageView imageView;
+	
 	@SuppressLint("WorldReadableFiles")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		Resources res = getResources();
-
+			
+		
+		
 		mlam = new LocalActivityManager(this, true);
 		mlam.dispatchCreate(savedInstanceState);
 		sharedPreferences = this.getSharedPreferences("user_info",MODE_WORLD_READABLE);
@@ -98,6 +108,10 @@ public class MainActivity extends RoboActivity {
 		tabHost.addTab(spec);
 						
 		tabHost.setCurrentTab(0);
+		
+		View mView = tabHost.getTabWidget().getChildAt(0); 
+		imageView = (ImageView)mView.findViewById(R.id.tab_icon);
+		badge7 = new BadgeView(MainActivity.this, imageView);
 	}
 	
 	@SuppressLint("InflateParams")
@@ -112,11 +126,13 @@ public class MainActivity extends RoboActivity {
 		((TextView) linearLayout.findViewById(R.id.tab_label)).setText(label);
 		spec.setIndicator(linearLayout);
 		spec.setContent(new Intent().setClass(this, cls));
-		
+				
 		return spec;
 
 	}
 	
+	
+
 	@Override
 	protected void onResume() {
 		super.onResume();
@@ -136,14 +152,27 @@ public class MainActivity extends RoboActivity {
      * 
      */  
     public class MsgReceiver extends BroadcastReceiver{  
-       
+    		
 		@Override
 		public void onReceive(Context context, Intent intent) {
 			// TODO Auto-generated method stub
 			Log.d("foregroudn","broadcast came");
-//			View mView = tabHost.getTabWidget().getChildAt(0);
-//			ImageView imageView = (ImageView)mView.findViewById(R.drawable.ic_tab_more);
-//			imageView .setImageDrawable(getResources().getDrawable(R.drawable.ic_tab_worldclock));
+			int i = intent.getIntExtra("data", 0);
+			Log.d("foregroudn","we get num is "+i);			
+			
+			
+			if(i>10){
+			badge7.setText("10+");
+			badge7.show();}
+			else if(i>0){
+				badge7.setText(Integer.toString(i));
+				badge7.show();
+			}else{
+				badge7.hide();
+			}
+			
+			
+			//badge7.toggle();
 //			 Vibrator vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
 //			 vibrator.vibrate(2000);
 			
