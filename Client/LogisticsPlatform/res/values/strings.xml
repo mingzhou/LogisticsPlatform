@@ -141,5 +141,7 @@
     <string name="xlistview_footer_hint_ready">松开载入更多</string>
     <string name="refreshtime">推送时间</string>
     <string name="title_activity_web_display">网站信息</string>
-    
+    <string name="questionforpassword">密保问题： </string>
+    <string name="question">你的幸运数字是几？ </string>
+    <string name="answerforpassword">密保答案： </string>
 </resources>

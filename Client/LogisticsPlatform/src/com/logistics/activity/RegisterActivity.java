@@ -46,6 +46,9 @@ public class RegisterActivity extends RoboActivity {
 //	@InjectView(R.id.role_id)
 //	private Spinner role_id;
 	
+	@InjectView(R.id.answer)
+	private EditText answer;
+	
 	@InjectView(R.id.register)
 	private Button register;
 	
@@ -122,6 +125,7 @@ public class RegisterActivity extends RoboActivity {
 		final String mPhone = phone.getText().toString();
 		final String mPassword = password.getText().toString();	
 		final String mUsrname = usr_name.getText().toString();
+		final String mAnswer = answer.getText().toString();
 //		final String mRoleid = role_id.getSelectedItem().toString();
 //		final int i_p = role_id.getSelectedItemPosition();
 //		
@@ -145,6 +149,12 @@ public class RegisterActivity extends RoboActivity {
 			cancel = true;
 		}
 		
+		if(TextUtils.isEmpty(mAnswer)){
+			answer.setError(Html.fromHtml("<font color=#E10979>答案不能为空</font>"));
+			focusView = answer;
+			cancel = true;
+		}
+		
 		if (cancel) {
 			// There was an error; don't attempt login and focus the first
 			// form field with an error.
@@ -154,6 +164,7 @@ public class RegisterActivity extends RoboActivity {
 		tmp.put("phone", mPhone);
 		tmp.put("password", mPassword);
 		tmp.put("user", mUsrname);
+		tmp.put("answer", mAnswer);
 		//tmp.put("role", mRoleid);
 		Log.d("nihao",tmp.toString());
 		rp.put("data", tmp.toString());
@@ -176,6 +187,7 @@ public class RegisterActivity extends RoboActivity {
 				editor.putString("phone", mPhone);
 				editor.putString("password", mPassword);
 				editor.putString("usr_name", mUsrname);
+				editor.putString("answer", mAnswer);
 //				editor.putString("role_id", mRoleid);
 //				editor.putInt("role_id_p", i_p);
 				editor.commit();

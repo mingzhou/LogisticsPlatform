@@ -244,6 +244,10 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 //				mAdapter = new ArrayAdapter<String>(MapActivity.this, android.R.layout.simple_expandable_list_item_1, items);
 //				mListView.setAdapter(mAdapter);
 				onLoad();
+				Intent intent = new Intent("com.example.communication.RECEIVER"); 
+				intent.putExtra("data",0);
+				sendBroadcast(intent); 
+				Log.d("foregroudn","refresh send");
 				mListView.setSelection(0);//更新之后view所在的位置
 			}
 		}, 1000);
