@@ -60,6 +60,8 @@ public class MyData {
 	@DatabaseField
 	private String others;//备注
 	
+	private Boolean unread = true;//是否未读
+	
 	@DatabaseField(dataType = DataType.DATE_LONG)
 	private Date deadline;//发货时间
 	
@@ -236,6 +238,14 @@ public class MyData {
 				+ contact + ", others=" + others + ", deadline=" + deadline
 				+ ", date=" + date + ", datetime=" + datetime + ", toString()="
 				+ super.toString() + "]";
+	}
+
+	public Boolean getUnread() {
+		return unread;
+	}
+
+	public void setUnread(Boolean unread) {
+		this.unread = unread;
 	}
 
 	

@@ -19,7 +19,6 @@ import com.logistics.entity.MyData;
  * @author Mingzhou Zhuang (mingzhou.zhuang@gmail.com)
  * @modified Li.ZHuo
  */
-@ContextSingleton
 public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
 	private static final String DATABASE_NAME = "logistics.db";
@@ -31,12 +30,9 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 	private static final int DATABASE_VERSION = 1;
 	
 	private Dao<MyData, Integer> mydataDao;
-	
-	@Inject
-	private static Provider<Context> contextProvider;
-	
-	public DatabaseHelper() {
-		super(contextProvider.get(), DATABASE_NAME, null, DATABASE_VERSION);
+			
+	public DatabaseHelper(Context context) {
+		super(context, DATABASE_NAME, null, DATABASE_VERSION);
 	}
 	
 	/**

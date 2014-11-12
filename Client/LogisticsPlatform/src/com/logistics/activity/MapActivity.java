@@ -87,6 +87,8 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 	
 	private JSONArray jArray = new JSONArray();
 	
+	private Boolean isIn = true;
+	
 	
 	/** Called when the activity is first created. */
 	@Override
@@ -111,12 +113,6 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 		
 	private void initComponent() throws IOException, JSONException {
 		// TODO Auto-generated method stub
-//		Intent intent = new Intent(MapActivity.this, NotifyCenter.class);
-//		startService(intent);
-		
-//		Intent intent2 = new Intent(MapActivity.this, PushAndPull.class);
-//		startService(intent2);
-		
 		
 		mListView.setPullLoadEnable(true);
 		mAdapter = new ArrayAdapter<String[]>(this, android.R.layout.simple_list_item_2, android.R.id.text1, items){
@@ -172,7 +168,7 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 				// TODO Auto-generated method stub
 				Intent intent = new Intent();
 				intent.setClass(MapActivity.this,ProfileCurrentDealDetailActivity.class);
-				
+				isIn = false;
 				try {
 //					intent.putExtra("from", jArray.getJSONObject(position-1).getString("from"));
 //					intent.putExtra("to", jArray.getJSONObject(position-1).getString("to"));
@@ -248,9 +244,9 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 //				mAdapter = new ArrayAdapter<String>(MapActivity.this, android.R.layout.simple_expandable_list_item_1, items);
 //				mListView.setAdapter(mAdapter);
 				onLoad();
-				mListView.setSelection(0);
+				mListView.setSelection(0);//更新之后view所在的位置
 			}
-		}, 2000);
+		}, 1000);
 		
 	}
 
@@ -279,7 +275,7 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 				
 				onLoad2();
 			}
-		}, 2000);
+		}, 1000);
 	}
 	
 	public static boolean isInteger(String input){  
@@ -312,14 +308,19 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 						 	}
 						 	}
 					 	//updata_num = statusCode;
-					 	Toast toast = Toast.makeText(MapActivity.this, "更新 "+updata_num, Toast.LENGTH_SHORT);
+					 	if(updata_num==0){
+					 		Toast toast = Toast.makeText(MapActivity.this, "已经没有更新啦 ", Toast.LENGTH_SHORT);
+						 	toast.setGravity(0x00000030, 0, 55);
+						 	toast.show();
+						 	//loadFile();
+					 	}else{
+					 	Toast toast = Toast.makeText(MapActivity.this, "更新 "+updata_num+"货运信息", Toast.LENGTH_SHORT);
 					 	toast.setGravity(0x00000030, 0, 55);
-					 	
-					 	toast.show();
-
+					 	toast.show();}
 					 	loadFile();
 					 	mAdapter.clear();
 				        Log.d(TAG+"nihao","read done");
+					 	
 				        //Log.d(TAG+"nihao",jArray.toString());
 				        for (int i =0; i<jArray.length();i++){
 							long dt = jArray.getJSONObject(i).getJSONObject("datetime").getLong("$date");
@@ -545,6 +546,16 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 			return minC-minT-1+"分钟之前";
 		}else return "刚刚";
 		
+	}
+
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		Log.d("resume",isIn.toString());
+		if(isIn){
+		onRefresh();
+		}isIn =true;
 	}
 
 }

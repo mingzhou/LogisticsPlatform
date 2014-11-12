@@ -19,7 +19,6 @@ import org.json.JSONException;
 
 import com.logistics.R;
 import com.logistics.activity.MainActivity;
-
 import android.app.ActivityManager;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -101,7 +100,8 @@ public class PushAndPull extends Service {
 		@Override
 		public void handleMessage(Message msg) {
 			// TODO Auto-generated method stub
-			if(msg.what!=0 && update_size > 0 && !isAppOnForeground()){
+			if(msg.what!=0 && update_size > 0 ){
+				if(!isAppOnForeground()){
 				NotificationManager nm = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
 				Intent intent = new Intent(PushAndPull.this, MainActivity.class);
 				intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK);		
@@ -122,8 +122,13 @@ public class PushAndPull extends Service {
 				mBuilder.setContentIntent(contentIntent);
 //				final Notification notification = mBuilder.build();
 //				startForeground(1, notification);
-				nm.notify(1,mBuilder.build());
-			}   
+				nm.notify(1,mBuilder.build());}
+				else{
+					Log.d(TAG+"nihao","test");
+					Intent intent = new Intent("com.example.communication.RECEIVER"); 
+					sendBroadcast(intent); 
+				}
+			}			
 			super.handleMessage(msg);
 		}
         
@@ -143,7 +148,7 @@ public class PushAndPull extends Service {
 			// TODO Auto-generated method stub
 			while(!isStop){
 					try {
-						Thread.sleep(60000*n);
+						Thread.sleep(6000*n);
 						loadFile();
 						String jOS = jArray.getJSONObject(0).toString();
 						HttpPost httpRequest =new HttpPost(BASE_URL+"/latest");

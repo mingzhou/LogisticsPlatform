@@ -19,6 +19,7 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.logistics.R;
 import com.logistics.service.PushAndPull;
 
@@ -52,6 +53,9 @@ public class ProfileActivity extends RoboActivity {
 	
 	@InjectView(R.id.favorite)
 	private Button favorite;
+	
+	@InjectView(R.id.submit)
+	private Button submit;
 	
 	@InjectView(R.id.refreshtime)
 	private Spinner refreshtime;
@@ -115,29 +119,42 @@ public class ProfileActivity extends RoboActivity {
 		refreshtime.setAdapter(refreshAdapter);
 		refreshtime.setSelection(i);
 		
-		switch (refreshtime.getSelectedItemPosition()){
-		case 0:
-			Intent startIntent0 = new Intent(ProfileActivity.this, PushAndPull.class); 
-			startIntent0.putExtra("refresh",1);
-			startService(startIntent0);  
-			break;  
-		case 1:
-			Intent startIntent1 = new Intent(ProfileActivity.this, PushAndPull.class); 
-			startIntent1.putExtra("refresh",5);
-			startService(startIntent1);
-			break;  
-		case 2:
-			Intent startIntent2 = new Intent(ProfileActivity.this, PushAndPull.class); 
-			startIntent2.putExtra("refresh",30);
-			startService(startIntent2); 
-			break;  
-		case 3:
-			Intent startIntent3 = new Intent(ProfileActivity.this, PushAndPull.class); 
-			stopService(startIntent3); 
-			break;  
-		default:
-			break;  
-		} 
+		submit.setOnClickListener(new Button.OnClickListener(){
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				final int r_p = refreshtime.getSelectedItemPosition();
+				editor.putInt("refresh", r_p);
+				editor.commit();
+				Intent startIntent = new Intent(ProfileActivity.this, PushAndPull.class); 
+				stopService(startIntent);
+				switch (refreshtime.getSelectedItemPosition()){
+				default:
+					Intent startIntent0 = new Intent(ProfileActivity.this, PushAndPull.class); 
+					startIntent0.putExtra("refresh",1);
+					startService(startIntent0); 
+									 
+					break;  
+				case 1:
+					Intent startIntent1 = new Intent(ProfileActivity.this, PushAndPull.class); 
+					startIntent1.putExtra("refresh",5);
+					startService(startIntent1); 
+					break;  
+				case 2:
+					Intent startIntent2 = new Intent(ProfileActivity.this, PushAndPull.class); 
+					startIntent2.putExtra("refresh",30);
+					startService(startIntent2); 
+					break;  
+				case 3:
+					Intent startIntent3 = new Intent(ProfileActivity.this, PushAndPull.class); 
+					stopService(startIntent3); 
+					
+					break;  
+				} 
+			}});
+		
+		
 		
 		
 		logout.setOnClickListener(new Button.OnClickListener(){
