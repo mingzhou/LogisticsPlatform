@@ -9,6 +9,7 @@ import java.util.List;
 
 import org.apache.http.Header;
 import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
@@ -19,6 +20,7 @@ import org.json.JSONException;
 
 import com.logistics.R;
 import com.logistics.activity.MainActivity;
+
 import android.app.ActivityManager;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -157,22 +159,23 @@ public class PushAndPull extends Service {
 						params.add(new BasicNameValuePair("data",jOS));
 						httpRequest.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
 						HttpResponse httpResponse=new DefaultHttpClient().execute(httpRequest);
+						
+						if(httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK){
 						Header header = httpResponse.getLastHeader("new");
-						
-						 	Log.d(TAG+"nihao",header.toString());
-					
-						
+						Log.d(TAG+"nihao",header.toString());
 						update_size = Integer.parseInt(header.getValue());
+						Message msg1 = new Message();
+						msg1.what = 1;	
+						updateHandler.sendMessage(msg1);}
 //						String strResult = EntityUtils.toString(httpResponse.getEntity());
 //						String temp = URLDecoder.decode(strResult, "UTF_8");
 						//Log.v(TAG, "++++++++PushContent : "+ 	temp + "+++++++++");
 						
-						Message msg1 = new Message();
-						msg1.what = 1;	
-						updateHandler.sendMessage(msg1);
+						
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
+						
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();

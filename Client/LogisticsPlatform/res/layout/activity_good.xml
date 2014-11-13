@@ -165,6 +165,7 @@
                     android:text="@string/search"
                     android:textSize="20sp" >
                 </Button>
+                               
 
                 <ProgressBar
                     android:id="@+id/http_progress"
@@ -174,6 +175,18 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_weight="0.21"
                     android:visibility="gone" />
+                
+                 <GridView
+                     android:id="@+id/gridview"
+                     android:layout_width="wrap_content"
+                     android:layout_height="220dp"
+                     android:layout_marginTop="25dp"
+                     android:columnWidth="90dp"
+                     android:gravity="center"
+                     android:horizontalSpacing="10dp"
+                     android:numColumns="auto_fit"
+                     android:stretchMode="columnWidth"
+                     android:verticalSpacing="10dp" />
 
             </LinearLayout>
         
