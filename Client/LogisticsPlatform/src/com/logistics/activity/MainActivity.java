@@ -161,8 +161,8 @@ public class MainActivity extends RoboActivity {
 			Log.d("foregroudn","we get num is "+i);			
 			
 			
-			if(i>10){
-			badge7.setText("10+");
+			if(i>100){
+			badge7.setText("100+");
 			badge7.show();}
 			else if(i>0){
 				badge7.setText(Integer.toString(i));

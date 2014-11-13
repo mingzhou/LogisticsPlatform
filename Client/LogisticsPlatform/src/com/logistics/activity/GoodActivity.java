@@ -21,8 +21,14 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.GridView;
+import android.widget.ListAdapter;
 import android.widget.Toast;
 
 import com.logistics.R;
@@ -53,11 +59,11 @@ public class GoodActivity extends RoboActivity {
 	@InjectView(R.id.goods_searchButton)
 	private Button goods_searchButton;
     
-//    private ArrayAdapter<String> depAdapter;
+    private ArrayAdapter<String> depAdapter;
 //    private ArrayAdapter<String> desAdapter;
 //    private ArrayAdapter<String> typeAdapter;
 //    
-//    private String[] depStrings = { "Jiangsu", "Zhejiang", "Shanghai" };
+    private String[] depStrings = { "广东", "上海", "北京" ,"安徽","河南","山东","浙江","四川"};
 //    private String[] desStrings = { "Guangdong", "Henan", "Hunan", "Fujian" };
 //    private String[] typeStrings = { "food", "fruit" };
 	
@@ -68,6 +74,8 @@ public class GoodActivity extends RoboActivity {
 	private Handler mHandler;
 	
 	public static final String TAG = GoodActivity.class.getSimpleName();
+	
+	private Boolean isIt = true;
 	
 	protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -122,7 +130,45 @@ public class GoodActivity extends RoboActivity {
 					e.printStackTrace();
 				}
 				
-			}});        
+			}});   
+        GridView gridview = (GridView) findViewById(R.id.gridview);
+        depAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,depStrings);
+        gridview.setAdapter(depAdapter);
+
+        goods_Departure.setOnFocusChangeListener(new OnFocusChangeListener() {
+
+			@Override
+			public void onFocusChange(View v, boolean hasFocus) {
+				// TODO Auto-generated method stub
+				isIt = true;
+			}});
+        
+        goods_Destination.setOnFocusChangeListener(new OnFocusChangeListener() {
+
+			@Override
+			public void onFocusChange(View v, boolean hasFocus) {
+				// TODO Auto-generated method stub
+				isIt = false;
+			}});
+        
+        gridview.setOnItemClickListener(new OnItemClickListener() {
+			
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				// TODO Auto-generated method stub
+				Log.d("cursor-goods_Departure",isIt.toString());
+				Log.d("cursor-goods_Destination",isIt.toString());
+								
+				if(isIt){
+					goods_Departure.setText(depStrings[position]);
+					
+				}else{
+					goods_Destination.setText(depStrings[position]);
+				}
+			}
+		});
+        
         
 	}
 	
@@ -143,6 +189,7 @@ public class GoodActivity extends RoboActivity {
 				
 			}
 		}, 2500);
+				
 	}
 	
 	public void getHttpResponse() throws IOException, JSONException{

@@ -196,7 +196,7 @@ public class LoginDetailActivity extends RoboActivity {
 					editor.putBoolean("remember", mRemember.isChecked());
 					
 					editor.commit();
-					Toast.makeText(LoginDetailActivity.this, "登陆成功", Toast.LENGTH_LONG).show();
+					Toast.makeText(LoginDetailActivity.this, "登陆成功", Toast.LENGTH_SHORT).show();
 					showProgress(false);
 					startActivity(intent);
 					finish();
