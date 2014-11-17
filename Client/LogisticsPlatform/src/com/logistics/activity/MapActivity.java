@@ -612,7 +612,31 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 		Log.d("resume",isIn.toString());
 		if(isIn){
 		onRefresh();
-		}isIn =true;
+		}else{
+			try {
+				mAdapter.clear();
+				for (int i =0; i<jArray.length();i++){
+					long dt = jArray.getJSONObject(i).getJSONObject("datetime").getLong("$date");
+					Date datetime = new Date(dt);
+					sdf1.setTimeZone(TimeZone.getTimeZone("GMT"));
+					String crawlTime = sdf1.format(datetime);
+					String title = jArray.getJSONObject(i).getString("from")+" -> " + jArray.getJSONObject(i).getString("to");
+					String time = getTime(crawlTime);
+					Log.d("read",jObj.toString());
+					if(jObj.has(jArray.getJSONObject(i).getJSONObject("_id").getString("$oid"))){
+						title = title+"( 已读)";
+					}
+					mAdapter.add(new String[]{title,time});
+					
+		        		//+DateFormat.getDateFormat(GoodResultActivity.this).format(new Date(jArray.getJSONObject(i).getLong("$date"))));
+		        }
+				
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		isIn =true;
 	}
 
 }
