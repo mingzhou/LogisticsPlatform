@@ -34,9 +34,9 @@ import android.widget.TextView;
 @ContentView(R.layout.activity_profile_history_deal)
 public class ProfileHistoryDealActivity extends RoboActivity {
 
-	@InjectView(R.id.history_deal)
-	private TextView history_deal;
-	
+//	@InjectView(R.id.history_deal)
+//	private TextView history_deal;
+//	
 	@InjectView(R.id.return_btn)
 	private Button return_btn;
 	
@@ -86,8 +86,8 @@ public class ProfileHistoryDealActivity extends RoboActivity {
 				
 				try {
 					intent.putExtra("title","信息详情");
-					intent.putExtra("position",position);
-					intent.putExtra("data",mFav.getJSONObject(position).toString() );
+					intent.putExtra("position",mFav.length()-position-1);
+					intent.putExtra("data",mFav.getJSONObject(mFav.length()-position-1).toString() );
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -134,7 +134,7 @@ public class ProfileHistoryDealActivity extends RoboActivity {
 		listview.setAdapter(mAdapter);
 		try {
 			
-			for (int i =0; i<mFav.length();i++){
+			for (int i =mFav.length()-1; i>=0;i--){
 				long dt = mFav.getJSONObject(i).getJSONObject("datetime").getLong("$date");
 				Date datetime = new Date(dt);
 				sdf1.setTimeZone(TimeZone.getTimeZone("GMT"));
@@ -212,4 +212,34 @@ public class ProfileHistoryDealActivity extends RoboActivity {
 		outStream.write(new JSONArray().toString().getBytes());
 		outStream.close();
 	}
+
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		try {
+			loadFile();
+			mAdapter.clear();
+			for (int i =mFav.length()-1; i>=0;i--){
+				long dt = mFav.getJSONObject(i).getJSONObject("datetime").getLong("$date");
+				Date datetime = new Date(dt);
+				sdf1.setTimeZone(TimeZone.getTimeZone("GMT"));
+				String crawlTime = sdf1.format(datetime);
+				//String time = getTime(crawlTime);
+				
+				mAdapter.add(new String[]{mFav.getJSONObject(i).getString("from")+" -> " + mFav.getJSONObject(i).getString("to"),
+						crawlTime});
+	        		//+DateFormat.getDateFormat(GoodResultActivity.this).format(new Date(jArray.getJSONObject(i).getLong("$date"))));
+	        }
+			mAdapter.notifyDataSetChanged();			
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	
 }

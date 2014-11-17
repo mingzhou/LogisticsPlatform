@@ -89,6 +89,7 @@
     <string name="goods_title">找货 </string>
     <string name="map_title">货运</string>
     <string name="profile_title">我的</string>
+    <string name="rss_title">订阅</string>
     <string name="departure">出发地</string>
     <string name="destination">目的地</string>
     <string name="goods_type">货物类型</string>
@@ -141,7 +142,11 @@
     <string name="xlistview_footer_hint_ready">松开载入更多</string>
     <string name="refreshtime">推送时间</string>
     <string name="title_activity_web_display">网站信息</string>
+    <string name="title_activity_rss">订阅</string>
     <string name="questionforpassword">密保问题： </string>
     <string name="question">你的幸运数字是几？ </string>
     <string name="answerforpassword">密保答案： </string>
+    <string name="cities">城市</string>
+    <string name="add_city">+</string>
+    <string name="delete_city">删除城市</string>
 </resources>

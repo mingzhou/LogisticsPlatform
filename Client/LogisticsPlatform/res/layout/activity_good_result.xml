@@ -87,11 +87,11 @@
 		    android:layout_below="@+id/title_layout"
 		    android:orientation="vertical" >
 
-			<TextView
+	<!--  		<TextView
 				android:id="@+id/result_show"
 				android:text="@string/result_show"
 				android:layout_width="fill_parent"
-				android:layout_height="30dip"/>
+				android:layout_height="30dip"/> -->
 			<ListView
 				android:id="@+id/list_goodresult"
 				android:layout_width="fill_parent" 
