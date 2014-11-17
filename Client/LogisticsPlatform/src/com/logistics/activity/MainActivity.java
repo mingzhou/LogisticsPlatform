@@ -5,24 +5,20 @@ import roboguice.inject.ContentView;
 import roboguice.inject.InjectView;
 import android.annotation.SuppressLint;
 import android.app.LocalActivityManager;
-import android.app.TabActivity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.os.Vibrator;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TabHost;
-import android.widget.TabWidget;
 import android.widget.TabHost.TabSpec;
 import android.widget.TextView;
 
@@ -102,6 +98,9 @@ public class MainActivity extends RoboActivity {
 		tabHost.addTab(spec);
 		
 		spec = createTabSpec(tabHost, GoodActivity.TAG, res, R.string.goods_title, R.drawable.ic_tab_worldclock, GoodActivity.class);
+		tabHost.addTab(spec);
+		
+		spec = createTabSpec(tabHost, RSSActivity.TAG, res, R.string.rss_title, R.drawable.ic_tab_timer, RSSActivity.class);
 		tabHost.addTab(spec);
 		
 		spec = createTabSpec(tabHost, ProfileActivity.TAG, res, R.string.profile_title, R.drawable.ic_tab_alarm, ProfileActivity.class);

@@ -31,8 +31,8 @@ import android.widget.TextView;
 @ContentView(R.layout.activity_good_result)
 public class GoodResultActivity extends RoboActivity {
 
-	@InjectView(R.id.result_show)
-	private TextView test;
+//	@InjectView(R.id.result_show)
+//	private TextView test;
 	
 	//private final String DUMMY = null;
 		

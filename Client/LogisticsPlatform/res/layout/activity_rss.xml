@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+* Copyright (C) 2013 FMSoft (http://www.fmsoft.cn)
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*      http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+-->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center_horizontal"
+    android:background="@drawable/add_alarm_bg"
+    >
+
+ 
+
+    <RelativeLayout
+        android:id="@+id/title_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/title_tool_bar_title"
+        >        
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_activity_rss"
+        style="@style/titleTextStyle" />
+        
+    </RelativeLayout>
+
+    
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" 
+            android:layout_marginTop="50dip">
+
+                <TableLayout
+                    android:id="@+id/rss_top"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="10dp" >
+
+                    <TableRow android:layout_width="fill_parent" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="fill_parent"
+                            android:text="@string/cities"
+                            android:textSize="20sp" />
+                        <EditText android:id="@+id/cities"
+                            android:layout_width="200dp"
+                            android:layout_height="fill_parent"
+                            android:inputType="text"
+                            android:textSize="20sp"/>
+                        <Button
+                            android:id="@+id/add_btn"
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/add_city"
+                            android:textSize="20sp"/>
+<!-- 
+                        <Spinner
+                            android:id="@+id/goods_departure"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content" />
+-->
+                    </TableRow>
+                    
+                </TableLayout>
+                         
+               
+                 <GridView
+                     android:id="@+id/gridview"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_marginTop="25dp"
+                     android:columnWidth="90dp"
+                     android:gravity="center"
+                     android:horizontalSpacing="10dp"
+                     android:numColumns="auto_fit"
+                     android:stretchMode="columnWidth"
+                     android:verticalSpacing="10dp" />
+
+            </LinearLayout>
+        
+       <Button android:id="@+id/del_btn"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="@string/delete_city"
+               android:layout_marginTop="400dip"
+               android:layout_marginLeft="100dip"
+               android:visibility="invisible"
+               android:textSize="20sp"/> 
+   
+        
+</RelativeLayout>

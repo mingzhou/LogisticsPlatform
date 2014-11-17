@@ -87,11 +87,11 @@
             android:layout_below="@+id/title_layout"
              android:orientation="vertical"
             >
-        	<TextView
+        <!--	<TextView
 				android:id="@+id/history_deal"
 				android:text="@string/history_deal"
 				android:layout_width="fill_parent"
-				android:layout_height="30dip"/>
+				android:layout_height="30dip"/> -->
 			<ListView
 				android:id="@+id/list_historydeal"
 				android:layout_width="fill_parent" 

@@ -28,7 +28,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
-import android.widget.ListAdapter;
 import android.widget.Toast;
 
 import com.logistics.R;
@@ -38,7 +37,7 @@ import com.loopj.android.http.RequestParams;
 
 @ContentView(R.layout.activity_good)
 public class GoodActivity extends RoboActivity {
-	public static final String TAG1 = GoodActivity.class.getSimpleName();
+	
 	private final String BASE_URL = "http://219.223.190.211";
 	private AsyncHttpClient httpHelper = new AsyncHttpClient(80);
 	//private AsyncHttpHelper httpHelper = new AsyncHttpHelper();
