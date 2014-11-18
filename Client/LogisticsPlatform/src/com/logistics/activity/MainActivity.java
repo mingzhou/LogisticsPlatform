@@ -86,7 +86,22 @@ public class MainActivity extends RoboActivity {
 			break;  
 		case 3:
 			Intent startIntent3 = new Intent(MainActivity.this, PushAndPull.class); 
-			stopService(startIntent3); 
+			startIntent3.putExtra("refresh",60);
+			startService(startIntent3); 
+			break;
+		case 4:
+			Intent startIntent4 = new Intent(MainActivity.this, PushAndPull.class); 
+			startIntent4.putExtra("refresh",120);
+			startService(startIntent4); 
+			break;
+		case 5:
+			Intent startIntent5 = new Intent(MainActivity.this, PushAndPull.class); 
+			startIntent5.putExtra("refresh",360);
+			startService(startIntent5); 
+			break;
+		case 6:
+			Intent startIntent6 = new Intent(MainActivity.this, PushAndPull.class); 
+			stopService(startIntent6); 					
 			break;  
 		} 
 

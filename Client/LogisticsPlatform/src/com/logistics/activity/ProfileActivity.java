@@ -60,7 +60,7 @@ public class ProfileActivity extends RoboActivity {
 	@InjectView(R.id.refreshtime)
 	private Spinner refreshtime;
 	private ArrayAdapter<String> refreshAdapter;
-	private String[] refreshStrings = { "1分钟", "5分钟", "30分钟", "不推送" };
+	private String[] refreshStrings = { "1分钟", "5分钟", "30分钟", "1小时","2小时","6小时","不推送" };
 	
 	@InjectView(R.id.logout)
 	private Button logout;
@@ -148,8 +148,22 @@ public class ProfileActivity extends RoboActivity {
 					break;  
 				case 3:
 					Intent startIntent3 = new Intent(ProfileActivity.this, PushAndPull.class); 
-					stopService(startIntent3); 
-					
+					startIntent3.putExtra("refresh",60);
+					startService(startIntent3); 
+					break;
+				case 4:
+					Intent startIntent4 = new Intent(ProfileActivity.this, PushAndPull.class); 
+					startIntent4.putExtra("refresh",120);
+					startService(startIntent4); 
+					break;
+				case 5:
+					Intent startIntent5 = new Intent(ProfileActivity.this, PushAndPull.class); 
+					startIntent5.putExtra("refresh",360);
+					startService(startIntent5); 
+					break;
+				case 6:
+					Intent startIntent6 = new Intent(ProfileActivity.this, PushAndPull.class); 
+					stopService(startIntent6); 					
 					break;  
 				} 
 			}});
