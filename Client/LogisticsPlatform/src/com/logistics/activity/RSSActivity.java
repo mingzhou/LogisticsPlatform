@@ -1,8 +1,14 @@
 package com.logistics.activity;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
+
+import org.apache.http.Header;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import android.annotation.SuppressLint;
 import android.content.ActivityNotFoundException;
@@ -28,6 +34,8 @@ import android.widget.AdapterView.OnItemClickListener;
 
 import com.logistics.R;
 import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 
 import roboguice.activity.RoboActivity;
 import roboguice.inject.ContentView;
@@ -58,6 +66,8 @@ public class RSSActivity extends RoboActivity {
 	
 	private SharedPreferences sharedPreferences;  
 	private SharedPreferences.Editor editor; 
+	
+	private Intent intent = new Intent();
 	 
 	 
 	protected void onCreate(Bundle savedInstanceState) {
@@ -108,10 +118,19 @@ public class RSSActivity extends RoboActivity {
 					int position, long id) {
 				// TODO Auto-generated method stub
 				if(!isLongClick){
-				Intent intent = new Intent();
-				intent.setClass(RSSActivity.this,GoodResultActivity.class);
-				intent.putExtra("query", "");
-				startActivity(intent);}
+							
+				
+				try {
+					getHttpResponse(position);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				}
 			}
 		});
 		
@@ -186,9 +205,42 @@ public class RSSActivity extends RoboActivity {
 		editor.commit();
 		
 		super.onDestroy();
-		
-		
-	}  
+	}
+    
+    public void getHttpResponse(int position) throws IOException, JSONException{
+		RequestParams rp = new RequestParams();
+		String mTo = items.get(position);
+		String mFrom = items.get(position);	
+		JSONObject tmp = new JSONObject();
+		tmp.put("to", mTo);
+		tmp.put("from", mFrom);
+		Log.d("nihao",tmp.toString());
+		rp.put("data", tmp.toString());
+		JsonHttpResponseHandler jrh = new JsonHttpResponseHandler("UTF-8") {
+			@Override
+			public void onSuccess(int statusCode, Header[] headers,
+					JSONArray response) {
+					//Toast.makeText(MapActivity.this, response.toString(), Toast.LENGTH_LONG).show();
+				
+				intent.setClass(RSSActivity.this,GoodResultActivity.class);
+				intent.putExtra("query", response.toString());
+				Log.d("nihao",response.toString());
+				startActivity(intent);
+			}
+			
+			@Override
+			public void onFailure(int statusCode, Header[] headers,
+					String responseBody, Throwable e) {
+				Toast.makeText(RSSActivity.this, statusCode + "\t" + responseBody, Toast.LENGTH_LONG).show();
+				intent.setClass(RSSActivity.this,GoodResultActivity.class);
+				intent.putExtra("query", "");
+				//Log.d("nihao",response.toString());
+				startActivity(intent);
+			}
+						
+		};
+		httpHelper.post(BASE_URL+"/citytop",rp, jrh);
+	}
 	
 
 }
