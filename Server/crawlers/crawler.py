@@ -6,7 +6,7 @@ from mongosupply import MongoSupply
 
 LIFETIME = 27
 WINDOW_SIZE = 7
-TIMEOUT = 17
+TIMEOUT = 77
 
 logging.basicConfig(filename = "crawler.log", filemode = "a", 
         format = '%(asctime)s %(levelname)s: %(message)s', level = logging.INFO)

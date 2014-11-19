@@ -19,9 +19,14 @@ class MongoSupply(MongoDB):
         obj = {"_id": {"$lt": ObjectId(obj_id)}}
         return self.find_descending(obj)
 
-    def newer(self, obj_id):
-        obj = {"_id": {"$gt": ObjectId(obj_id)}}
-        return self.find(obj)
+    def newer(self, obj_id, obj = {}):
+        obj.update({"_id": {"$gt": ObjectId(obj_id)}})
+        new = self.find(obj)
+        if new is not None:
+            new = new.count()
+        else:
+            new = 0
+        return new
 
     def query(self, obj):
         return self.find_descending(obj)
