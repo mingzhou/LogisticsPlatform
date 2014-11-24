@@ -183,6 +183,9 @@ public class GoodResultActivity extends RoboActivity {
 			if(hourC - hourT ==1 && minC< minT){
 			return  60+minC-minT+"分钟之前";
 		}
+			if(hourC - hourT ==1 && minC>= minT){
+				return "1小时之前";
+			}
 			else return hourC-hourT-1+"小时之前";
 		}else if (minC-minT>1){
 			return minC-minT-1+"分钟之前";

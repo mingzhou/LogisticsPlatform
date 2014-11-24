@@ -122,11 +122,16 @@ public class PushAndPull extends Service {
 					    .setLights(0xff00ff00, 1000, 2000)
 					    ;
 				mBuilder.setContentIntent(contentIntent);
+				
 //				final Notification notification = mBuilder.build();
 //				startForeground(1, notification);
-				nm.notify(1,mBuilder.build());}
+				nm.notify(1,mBuilder.build());
+				Intent bintent = new Intent("com.example.communication.RECEIVER"); 
+				bintent.putExtra("data",update_size);
+				Log.d(TAG+"nihao",Integer.toString(update_size));
+				sendBroadcast(bintent); }
 				else{
-					Log.d(TAG+"nihao","test");
+					//Log.d(TAG+"nihao","test");
 					Intent intent = new Intent("com.example.communication.RECEIVER"); 
 					intent.putExtra("data",update_size);
 					sendBroadcast(intent); 
