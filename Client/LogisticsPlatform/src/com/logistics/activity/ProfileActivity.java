@@ -21,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.logistics.R;
+import com.logistics.service.NotifyCenter;
 import com.logistics.service.PushAndPull;
 
 /**
@@ -181,7 +182,8 @@ public class ProfileActivity extends RoboActivity {
                 startActivity(intent);
                 Intent stopIntent = new Intent(ProfileActivity.this, PushAndPull.class);  
                 stopService(stopIntent); 
-
+                Intent stopIntent1 = new Intent(ProfileActivity.this, NotifyCenter.class);  
+                stopService(stopIntent1); 
                 finish();
                 onDestroy();
 			}});

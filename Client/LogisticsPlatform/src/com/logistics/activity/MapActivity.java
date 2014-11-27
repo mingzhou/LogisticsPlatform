@@ -87,7 +87,7 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 	private Handler mHandler;
 	
 	private JSONArray jArray = new JSONArray();
-	private JSONObject jObj = new JSONObject();
+	private JSONObject jObj = new JSONObject();//read.txt
 	
 	private Boolean isIn = true;
 	

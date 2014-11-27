@@ -23,6 +23,7 @@ import android.widget.TabHost.TabSpec;
 import android.widget.TextView;
 
 import com.logistics.R;
+import com.logistics.service.NotifyCenter;
 import com.logistics.service.PushAndPull;
 
 import me.maxwin.view.BadgeView;
@@ -50,6 +51,9 @@ public class MainActivity extends RoboActivity {
 	BadgeView badge7;
 	ImageView imageView;
 	
+	BadgeView badge6;
+	ImageView imageView1;
+	
 	@SuppressLint("WorldReadableFiles")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +71,9 @@ public class MainActivity extends RoboActivity {
         IntentFilter intentFilter = new IntentFilter();  
         intentFilter.addAction("com.example.communication.RECEIVER");  
         registerReceiver(msgReceiver, intentFilter);  
+        
+        Intent startRSS = new Intent(MainActivity.this, NotifyCenter.class); 
+        startService(startRSS);
 		
 		switch (i){
 		default:
@@ -126,6 +133,11 @@ public class MainActivity extends RoboActivity {
 		View mView = tabHost.getTabWidget().getChildAt(0); 
 		imageView = (ImageView)mView.findViewById(R.id.tab_icon);
 		badge7 = new BadgeView(MainActivity.this, imageView);
+		
+		View mView1 = tabHost.getTabWidget().getChildAt(2); 
+		imageView1 = (ImageView)mView1.findViewById(R.id.tab_icon);
+		badge6 = new BadgeView(MainActivity.this, imageView1);
+		
 	}
 	
 	@SuppressLint("InflateParams")

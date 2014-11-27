@@ -101,6 +101,9 @@
         <service android:name=".service.PushAndPull" >
         </service>
         
+        <service android:name=".service.NotifyCenter" >
+        </service>
+        
         <activity
             android:name=".activity.WebDisplayActivity"
             android:label="@string/title_activity_web_display" >
@@ -108,6 +111,10 @@
         
         <receiver android:name="MsgReceiver" >
         </receiver>
+        
+        <receiver android:name="RSSReceiver" >
+        </receiver>
+        
     </application>
 
 </manifest>
