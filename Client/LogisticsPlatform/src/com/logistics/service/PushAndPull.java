@@ -84,8 +84,8 @@ public class PushAndPull extends Service {
 		Log.d(TAG, "refreshtime "+refreshtime);
 		updateHandler = new UpdateHandler();		
 		updateThread m1 = new updateThread(refreshtime);
-        new Thread(m1).start();
-		
+		new Thread(m1).start();
+        
 		activityManager = (ActivityManager) this.getSystemService(Context.ACTIVITY_SERVICE); 
         packageName = this.getPackageName();
         
@@ -102,7 +102,7 @@ public class PushAndPull extends Service {
 		@Override
 		public void handleMessage(Message msg) {
 			// TODO Auto-generated method stub
-			if(msg.what!=0&& update_size > 0  ){//
+			if(msg.what!=0&& update_size > 0 &&msg.arg1==0 ){//
 				if(!isAppOnForeground()){
 				NotificationManager nm = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
 				Intent intent = new Intent(PushAndPull.this, MainActivity.class);
@@ -136,10 +136,15 @@ public class PushAndPull extends Service {
 					intent.putExtra("data",update_size);
 					sendBroadcast(intent); 
 				}
-			}			
+			}else if(msg.what!=0&& update_size > 0 &&msg.arg1!=0 ){
+				Intent intent = new Intent("com.example.communication.RECEIVER"); 
+				intent.putExtra("data",update_size);
+				sendBroadcast(intent);
+			}
+			
 			super.handleMessage(msg);
 		}
-        
+		        
 	}
 	
 	class updateThread implements Runnable {
@@ -154,9 +159,11 @@ public class PushAndPull extends Service {
 		@Override
 		public void run() {
 			// TODO Auto-generated method stub
+			int tmp = n;
 			while(!isStop){
+				
 					try {
-						Thread.sleep(60000*n);
+						Thread.sleep(60000);
 						loadFile();
 						String jOS = jArray.getJSONObject(0).toString();
 						HttpPost httpRequest =new HttpPost(BASE_URL+"/latest");
@@ -164,14 +171,20 @@ public class PushAndPull extends Service {
 						params.add(new BasicNameValuePair("data",jOS));
 						httpRequest.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
 						HttpResponse httpResponse=new DefaultHttpClient().execute(httpRequest);
-						
 						if(httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK){
 						Header header = httpResponse.getLastHeader("new");
 						Log.d(TAG+"nihao",header.toString());
 						update_size = Integer.parseInt(header.getValue());
+						tmp--;
+												
 						Message msg1 = new Message();
-						msg1.what = 1;	
-						updateHandler.sendMessage(msg1);}
+						msg1.what = 1;
+						msg1.arg1 = tmp;					
+						updateHandler.sendMessage(msg1);
+						if(tmp==0){
+							tmp = n;
+						}
+						}
 //						String strResult = EntityUtils.toString(httpResponse.getEntity());
 //						String temp = URLDecoder.decode(strResult, "UTF_8");
 						//Log.v(TAG, "++++++++PushContent : "+ 	temp + "+++++++++");

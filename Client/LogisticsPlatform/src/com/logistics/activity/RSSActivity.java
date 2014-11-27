@@ -1,5 +1,8 @@
 package com.logistics.activity;
 
+import java.io.ByteArrayOutputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -12,8 +15,11 @@ import org.json.JSONObject;
 
 import android.annotation.SuppressLint;
 import android.content.ActivityNotFoundException;
+import android.content.BroadcastReceiver;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
@@ -28,7 +34,7 @@ import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.GridView;
+import android.widget.ListView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
@@ -46,7 +52,7 @@ public class RSSActivity extends RoboActivity {
 	public static final String TAG = RSSActivity.class.getSimpleName();
 	public final static int MODE_WORLD_READABLE = 1;
 	
-	private final String BASE_URL = "http://219.223.190.211";
+	private final String BASE_URL = "http://219.223.190.211:8000";
 	private AsyncHttpClient httpHelper = new AsyncHttpClient(80);
 	
 	@InjectView(R.id.cities)
@@ -61,6 +67,7 @@ public class RSSActivity extends RoboActivity {
 	private ArrayAdapter<String> citiesAdapter;
 	 //private String[] citiesStrings ={} ;
 	private ArrayList<String> items = new ArrayList<String>();
+	private ArrayList<String> city = new ArrayList<String>();
 	
 	private boolean isLongClick = false;
 	
@@ -68,27 +75,48 @@ public class RSSActivity extends RoboActivity {
 	private SharedPreferences.Editor editor; 
 	
 	private Intent intent = new Intent();
-	 
+	
+	private JSONObject jObj = new JSONObject();//city.txt
+	private ArrayList <String>update_size =  new ArrayList<String>();
+	
+	private RSSReceiver rssReceiver;
 	 
 	protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rss);
-        initComponent();
+        try {
+			initComponent();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 }
 
 
 
 	@SuppressLint({ "WorldReadableFiles", "NewApi" })
-	private void initComponent() {
+	private void initComponent() throws IOException, JSONException {
 		// TODO Auto-generated method stub
 		sharedPreferences = this.getSharedPreferences("user_info",MODE_WORLD_READABLE);  
         editor = sharedPreferences.edit();  
         
+        downFile();
+        loadCityFile();
+        
+        rssReceiver = new RSSReceiver();  
+        IntentFilter intentFilter = new IntentFilter();  
+        intentFilter.addAction("com.example.communication.RSSRECEIVER");  
+        registerReceiver(rssReceiver, intentFilter); 
+        
         Set<String> set = sharedPreferences.getStringSet("cities", null);
         if(set != null)
-        {items = new ArrayList<String>(set);}        
+        {items = new ArrayList<String>(set);
+        city = new ArrayList<String>(set);}        
         
-		GridView gridview = (GridView) findViewById(R.id.gridview);
+        ListView gridview = (ListView) findViewById(R.id.list_rsscities);
 		citiesAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,items);
         gridview.setAdapter(citiesAdapter);
 		
@@ -98,12 +126,19 @@ public class RSSActivity extends RoboActivity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				String newcity = mCities.getText().toString();
-				if(!newcity.endsWith(" ")&&!newcity.isEmpty())
-				{
+				if(!newcity.endsWith(" ")&&!newcity.isEmpty()&&citiesAdapter.getPosition(newcity)==-1)
+				{					
 					citiesAdapter.add(newcity);
+					city.add(newcity);
 					citiesAdapter.notifyDataSetChanged();
+					try {
+						jObj.put(newcity, "");
+					} catch (JSONException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					Set<String> set = new HashSet<String>();
-					set.addAll(items);
+					set.addAll(city);
 					editor.putStringSet("cities", set);
 					editor.commit();
 				}
@@ -118,10 +153,21 @@ public class RSSActivity extends RoboActivity {
 					int position, long id) {
 				// TODO Auto-generated method stub
 				if(!isLongClick){
-							
-				
 				try {
+					String tmp = citiesAdapter.getItem(position);
+					
+					if(tmp.endsWith(">")){
+						int i = tmp.indexOf("<");
+						String ntmp = tmp.substring(0, i);
+						citiesAdapter.remove(tmp);
+						citiesAdapter.insert(ntmp, position);
+						//citiesAdapter.getItem(position).replace(tmp, ntmp);
+					}
+					citiesAdapter.notifyDataSetChanged();
 					getHttpResponse(position);
+					
+					
+					
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -151,6 +197,14 @@ public class RSSActivity extends RoboActivity {
 							// TODO Auto-generated method stub
 							del_btn.setVisibility(View.GONE);
 							isLongClick = false;  
+							jObj.remove(city.get(position));
+							try {
+								downCityFile(jObj);
+							} catch (IOException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+							city.remove(position);
 							items.remove(position);
 							Set<String> set = new HashSet<String>();
 							set.addAll(items);
@@ -207,24 +261,48 @@ public class RSSActivity extends RoboActivity {
 		super.onDestroy();
 	}
     
-    public void getHttpResponse(int position) throws IOException, JSONException{
+    @SuppressLint("NewApi")
+	public void getHttpResponse(int position) throws IOException, JSONException{
 		RequestParams rp = new RequestParams();
-		String mTo = items.get(position);
-		String mFrom = items.get(position);	
+		
+		Set<String> set = sharedPreferences.getStringSet("cities", null);
+        if(set != null)
+        {city = new ArrayList<String>(set);}  
+		String mTo = city.get(position);
+		final String mFrom = city.get(position);
+		String mItem = "";
+		if(!jObj.isNull(mFrom))
+		{
+			mItem = jObj.getString(mFrom);
+		}
+			
 		JSONObject tmp = new JSONObject();
 		tmp.put("to", mTo);
 		tmp.put("from", mFrom);
-		Log.d("nihao",tmp.toString());
+		tmp.put("id", mItem);
+		Log.d("nihao-RSS",tmp.toString());
 		rp.put("data", tmp.toString());
+		
 		JsonHttpResponseHandler jrh = new JsonHttpResponseHandler("UTF-8") {
 			@Override
 			public void onSuccess(int statusCode, Header[] headers,
 					JSONArray response) {
 					//Toast.makeText(MapActivity.this, response.toString(), Toast.LENGTH_LONG).show();
 				
+				try {
+					jObj.put(mFrom, response.getJSONObject(0).getJSONObject("_id").getString("$oid"));
+					Log.d("nihao-RSS",jObj.toString());
+					downCityFile(jObj);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				intent.setClass(RSSActivity.this,GoodResultActivity.class);
 				intent.putExtra("query", response.toString());
-				Log.d("nihao",response.toString());
+				//Log.d("nihao-RSS",response.toString());
 				startActivity(intent);
 			}
 			
@@ -242,5 +320,74 @@ public class RSSActivity extends RoboActivity {
 		httpHelper.post(BASE_URL+"/citytop",rp, jrh);
 	}
 	
+    public void loadCityFile() throws IOException, JSONException{
+		FileInputStream inStream=RSSActivity.this.openFileInput("city.txt");
+		ByteArrayOutputStream stream=new ByteArrayOutputStream();
+        byte[] buffer=new byte[10240];
+        int length=-1;
 
+        while((length=inStream.read(buffer))!=-1)   {
+            stream.write(buffer,0,length);
+        }
+        jObj = new JSONObject(stream.toString());
+        stream.close();
+        inStream.close();
+    }
+
+    public void downFile() throws IOException{
+		FileOutputStream outStream=RSSActivity.this.openFileOutput("city.txt",MODE_APPEND);
+		outStream.write(new JSONObject().toString().getBytes());
+		outStream.close();
+	}
+    
+    public void downCityFile(JSONObject response) throws IOException{
+		FileOutputStream outStream=RSSActivity.this.openFileOutput("city.txt",MODE_PRIVATE);
+		outStream.write(response.toString().getBytes());
+		outStream.close();
+		 Log.d(TAG,"write done");
+	}
+    
+    
+    
+    @Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		citiesAdapter.notifyDataSetChanged();
+	}
+
+
+
+	public class RSSReceiver extends BroadcastReceiver{  
+		
+		@SuppressLint("NewApi")
+		@Override
+		public void onReceive(Context context, Intent intent) {
+			// TODO Auto-generated method stub
+//			Log.d("foregroudn","broadcast came");
+			
+			update_size = intent.getStringArrayListExtra("data");
+			
+			if(update_size.size()>0){
+								
+				Set<String> set = sharedPreferences.getStringSet("cities", null);
+		        if(set != null){
+		        	city = new ArrayList<String>(set);
+		        }
+				citiesAdapter.clear();
+				
+				Log.d("rss-tmp",city.toString());
+				//Log.d("rss-items",items.toString());
+				for(int i=0;i<update_size.size();i++){
+					if(Integer.parseInt(update_size.get(i))!=0){
+						citiesAdapter.add(city.get(i)+"<"+update_size.get(i)+">");
+					}else{
+						citiesAdapter.add(city.get(i));
+					}
+				}
+				citiesAdapter.notifyDataSetChanged();
+			 }
+		}  
+          
+    }
 }
