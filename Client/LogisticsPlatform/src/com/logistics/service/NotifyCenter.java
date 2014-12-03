@@ -38,7 +38,7 @@ import android.util.Log;
 public class NotifyCenter extends Service {
 	
 	public static final String TAG = "NotifyCenter";
-	private final String BASE_URL = "http://219.223.190.211:8000";
+	private final String BASE_URL = "http://219.223.190.211";
 	
 	private ActivityManager activityManager; 
     private String packageName;
@@ -50,7 +50,8 @@ public class NotifyCenter extends Service {
     private UpdateHandler updateHandler;
     //private AsyncHttpClient httpHelper = new AsyncHttpClient(80);
     Uri soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);    
-    private ArrayList<String>update_size =  new ArrayList<String>();
+    private ArrayList<String> update_size =  new ArrayList<String>();
+    private JSONObject jUS = new JSONObject();
    
     //private int update_size;
     
@@ -112,9 +113,10 @@ public class NotifyCenter extends Service {
 		@Override
 		public void handleMessage(Message msg) {
 			// TODO Auto-generated method stub
-			if(msg.what!=0&&update_size.size()>0){//
+			if(msg.what!=0){//
 					Intent intent = new Intent("com.example.communication.RSSRECEIVER"); 
-					intent.putExtra("data",update_size);
+					intent.putExtra("data",jUS.toString());
+					Log.d(TAG+"nihao",jUS.toString());
 					sendBroadcast(intent);
 			}			
 			super.handleMessage(msg);
@@ -139,7 +141,10 @@ public class NotifyCenter extends Service {
 				        if(set != null)
 				        {items = new ArrayList<String>(set);}  
 						int len = items.size();
-						update_size =  new ArrayList<String>();
+						Log.d(TAG+"nihao",Integer.toString(len));
+						Log.d(TAG+"nihao",jObj.toString());
+						//update_size =  new ArrayList<String>();
+						jUS = new JSONObject();
 						if(len!=0){
 						for(int i =0;i<len;i++){
 						JSONObject jTmp = new JSONObject();
@@ -157,10 +162,11 @@ public class NotifyCenter extends Service {
 						if(httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK){
 						Header header = httpResponse.getLastHeader("new");
 						Log.d(TAG+"nihao",header.toString());
-						update_size.add(header.getValue());
+						//update_size.add(header.getValue());
+						jUS.put(items.get(i), header.getValue());}}}
 						Message msg1 = new Message();
 						msg1.what = 1;	
-						updateHandler.sendMessage(msg1);}}}
+						updateHandler.sendMessage(msg1);
 //						String strResult = EntityUtils.toString(httpResponse.getEntity());
 //						String temp = URLDecoder.decode(strResult, "UTF_8");
 						//Log.v(TAG, "++++++++PushContent : "+ 	temp + "+++++++++");

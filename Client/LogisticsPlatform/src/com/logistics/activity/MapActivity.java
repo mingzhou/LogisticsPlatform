@@ -59,7 +59,7 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 	public static final int MODE_PRIVATE = 0;
 	public final static int MODE_WORLD_READABLE = 1; 
 	public static final int MODE_APPEND = 32768;
-	private final String BASE_URL = "http://219.223.190.211:8000";
+	private final String BASE_URL = "http://219.223.190.211";
 	
 	public boolean firsttime = false;
 	

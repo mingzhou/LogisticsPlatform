@@ -6,9 +6,19 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
+import me.maxwin.view.BadgeView;
+
 import org.apache.http.Header;
+import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.protocol.HTTP;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -24,17 +34,21 @@ import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemLongClickListener;
-import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
@@ -52,7 +66,7 @@ public class RSSActivity extends RoboActivity {
 	public static final String TAG = RSSActivity.class.getSimpleName();
 	public final static int MODE_WORLD_READABLE = 1;
 	
-	private final String BASE_URL = "http://219.223.190.211:8000";
+	private final String BASE_URL = "http://219.223.190.211";
 	private AsyncHttpClient httpHelper = new AsyncHttpClient(80);
 	
 	@InjectView(R.id.cities)
@@ -64,10 +78,11 @@ public class RSSActivity extends RoboActivity {
 	@InjectView(R.id.del_btn)
 	private Button del_btn;
 	
-	private ArrayAdapter<String> citiesAdapter;
-	 //private String[] citiesStrings ={} ;
-	private ArrayList<String> items = new ArrayList<String>();
+	private BadgeAdapter cityListAdapter;
+	//private ArrayAdapter<String> mAdapter;
 	private ArrayList<String> city = new ArrayList<String>();
+	//private static ArrayList<String> update_size =  new ArrayList<String>();
+	private static JSONObject jUS = new JSONObject();	
 	
 	private boolean isLongClick = false;
 	
@@ -77,8 +92,7 @@ public class RSSActivity extends RoboActivity {
 	private Intent intent = new Intent();
 	
 	private JSONObject jObj = new JSONObject();//city.txt
-	private ArrayList <String>update_size =  new ArrayList<String>();
-	
+		
 	private RSSReceiver rssReceiver;
 	 
 	protected void onCreate(Bundle savedInstanceState) {
@@ -87,10 +101,8 @@ public class RSSActivity extends RoboActivity {
         try {
 			initComponent();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 }
@@ -113,12 +125,34 @@ public class RSSActivity extends RoboActivity {
         
         Set<String> set = sharedPreferences.getStringSet("cities", null);
         if(set != null)
-        {items = new ArrayList<String>(set);
-        city = new ArrayList<String>(set);}        
+        {
+        	city = new ArrayList<String>(set);
+        	int len = city.size();
+			jUS = new JSONObject();
+			if(len!=0){
+			for(int i =0;i<len;i++){
+			JSONObject jTmp = new JSONObject();
+			jTmp.put("to", city.get(i));
+			jTmp.put("from", city.get(i));
+			jTmp.put("id", jObj.getString(city.get(i)));
+			String jOS = jTmp.toString();
+			Log.d("notify",jOS);
+			HttpPost httpRequest =new HttpPost(BASE_URL+"/citytop");
+			List<BasicNameValuePair> params=new ArrayList<BasicNameValuePair>();	
+			params.add(new BasicNameValuePair("data",jOS));
+			httpRequest.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
+			HttpResponse httpResponse=new DefaultHttpClient().execute(httpRequest);
+			
+			if(httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK){
+			Header header = httpResponse.getLastHeader("new");
+			Log.d(TAG+"nihao",header.toString());
+			//update_size.add(header.getValue());
+			jUS.put(city.get(i), header.getValue());}}}
+        }        
         
         ListView gridview = (ListView) findViewById(R.id.list_rsscities);
-		citiesAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,items);
-        gridview.setAdapter(citiesAdapter);
+        cityListAdapter = new BadgeAdapter(city,this);
+        gridview.setAdapter(cityListAdapter);
 		
 		mAddBtn.setOnClickListener(new Button.OnClickListener(){
 
@@ -126,14 +160,20 @@ public class RSSActivity extends RoboActivity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				String newcity = mCities.getText().toString();
-				if(!newcity.endsWith(" ")&&!newcity.isEmpty()&&citiesAdapter.getPosition(newcity)==-1)
+				if(!newcity.endsWith(" ")&&!newcity.isEmpty())
 				{					
-					citiesAdapter.add(newcity);
 					city.add(newcity);
-					citiesAdapter.notifyDataSetChanged();
+					cityListAdapter.city = city;
+					cityListAdapter.notifyDataSetChanged();
+					
 					try {
 						jObj.put(newcity, "");
+						jUS.put(newcity, "0");
+						downCityFile(jObj);
 					} catch (JSONException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
@@ -142,7 +182,7 @@ public class RSSActivity extends RoboActivity {
 					editor.putStringSet("cities", set);
 					editor.commit();
 				}
-				Log.d("rss",items.toString());
+				
 			}});   
 		
 		
@@ -154,19 +194,9 @@ public class RSSActivity extends RoboActivity {
 				// TODO Auto-generated method stub
 				if(!isLongClick){
 				try {
-					String tmp = citiesAdapter.getItem(position);
 					
-					if(tmp.endsWith(">")){
-						int i = tmp.indexOf("<");
-						String ntmp = tmp.substring(0, i);
-						citiesAdapter.remove(tmp);
-						citiesAdapter.insert(ntmp, position);
-						//citiesAdapter.getItem(position).replace(tmp, ntmp);
-					}
-					citiesAdapter.notifyDataSetChanged();
 					getHttpResponse(position);
-					
-					
+									
 					
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
@@ -198,6 +228,7 @@ public class RSSActivity extends RoboActivity {
 							del_btn.setVisibility(View.GONE);
 							isLongClick = false;  
 							jObj.remove(city.get(position));
+							jUS.remove(city.get(position));
 							try {
 								downCityFile(jObj);
 							} catch (IOException e) {
@@ -205,12 +236,12 @@ public class RSSActivity extends RoboActivity {
 								e.printStackTrace();
 							}
 							city.remove(position);
-							items.remove(position);
+							//update_size.remove(position);
 							Set<String> set = new HashSet<String>();
-							set.addAll(items);
+							set.addAll(city);
 							editor.putStringSet("cities", set);
 							editor.commit();
-							citiesAdapter.notifyDataSetChanged();
+							cityListAdapter.notifyDataSetChanged();
 						}});
 					
 					//isLongClick = false;
@@ -254,7 +285,7 @@ public class RSSActivity extends RoboActivity {
 	protected void onDestroy() {
 		// TODO Auto-generated method stub
     	Set<String> set = new HashSet<String>();
-		set.addAll(items);
+		set.addAll(city);
 		editor.putStringSet("cities", set);
 		editor.commit();
 		
@@ -291,6 +322,7 @@ public class RSSActivity extends RoboActivity {
 				
 				try {
 					jObj.put(mFrom, response.getJSONObject(0).getJSONObject("_id").getString("$oid"));
+					jUS.put(mFrom, "0");
 					Log.d("nihao-RSS",jObj.toString());
 					downCityFile(jObj);
 				} catch (IOException e) {
@@ -353,7 +385,7 @@ public class RSSActivity extends RoboActivity {
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
-		citiesAdapter.notifyDataSetChanged();
+		cityListAdapter.notifyDataSetChanged();
 	}
 
 
@@ -366,28 +398,103 @@ public class RSSActivity extends RoboActivity {
 			// TODO Auto-generated method stub
 //			Log.d("foregroudn","broadcast came");
 			
-			update_size = intent.getStringArrayListExtra("data");
-			
-			if(update_size.size()>0){
-								
-				Set<String> set = sharedPreferences.getStringSet("cities", null);
-		        if(set != null){
-		        	city = new ArrayList<String>(set);
-		        }
-				citiesAdapter.clear();
+			//update_size = intent.getStringArrayListExtra("data");
+			Bundle extras = intent.getExtras();
+			if(extras != null){
+			try {
+				jUS = new JSONObject(extras.getString("data"));
+				Log.d(TAG+"nihao",jUS.toString());
 				
-				Log.d("rss-tmp",city.toString());
-				//Log.d("rss-items",items.toString());
-				for(int i=0;i<update_size.size();i++){
-					if(Integer.parseInt(update_size.get(i))!=0){
-						citiesAdapter.add(city.get(i)+"<"+update_size.get(i)+">");
-					}else{
-						citiesAdapter.add(city.get(i));
-					}
-				}
-				citiesAdapter.notifyDataSetChanged();
-			 }
+				cityListAdapter.notifyDataSetChanged();
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			};}
+			
+//			if(update_size.size()>0){
+//								
+//				Set<String> set = sharedPreferences.getStringSet("cities", null);
+//		        if(set != null){
+//		        	city = new ArrayList<String>(set);
+//		        }
+//		       				
+//				cityListAdapter.notifyDataSetChanged();
+//			 }
 		}  
           
     }
+	
+		
+	private static class BadgeAdapter extends BaseAdapter {
+        private LayoutInflater mInflater;
+        private Context mContext;
+        private ArrayList<String> city;
+                
+        private static final int droidGreen = Color.parseColor("#A4C639");
+        
+        public BadgeAdapter(ArrayList<String> arraylist0,Context context) {
+            super();
+        	mInflater = LayoutInflater.from(context);
+            mContext = context;
+            this.city = arraylist0;
+            //this.number = arraylist1;            
+        }
+
+        public int getCount() {
+            return city.size();
+        }
+
+        public Object getItem(int position) {
+        	if (position < getCount()) {
+        		return city.get(position);
+        		//number.get(position);
+        	}
+        	return null;
+        }
+        
+        public long getItemId(int position) {
+            return position;
+        }
+
+        public View getView(int position, View convertView, ViewGroup parent) {
+            ViewHolder holder;
+
+            if (convertView == null) {
+                convertView = mInflater.inflate(android.R.layout.simple_list_item_2, null);
+                holder = new ViewHolder();
+                holder.text = (TextView) convertView.findViewById(android.R.id.text1);
+                holder.badge = new BadgeView(mContext, holder.text);
+                holder.badge.setBadgeBackgroundColor(droidGreen);
+                holder.badge.setTextColor(Color.BLACK);
+                convertView.setTag(holder);
+            } else {
+                holder = (ViewHolder) convertView.getTag();
+            }
+
+            holder.text.setText(city.get(position));
+            
+            try {
+            	String city_num = jUS.get(city.get(position)).toString();
+            	holder.badge.setText(city_num);
+            	holder.badge.show();
+            	if(Integer.parseInt(city_num)==0){
+                	holder.badge.hide();
+                }            	
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+            
+            
+            
+            return convertView;
+        }
+
+        static class ViewHolder {
+            TextView text;
+            BadgeView badge;
+        }
+    }
+	
+	
 }
