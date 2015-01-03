@@ -149,4 +149,5 @@
     <string name="cities">城市</string>
     <string name="add_city">+</string>
     <string name="delete_city">删除城市</string>
+    <string name="pushlist">推送记录</string>
 </resources>

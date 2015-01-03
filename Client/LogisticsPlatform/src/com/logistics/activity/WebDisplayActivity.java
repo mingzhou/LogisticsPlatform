@@ -53,7 +53,11 @@ public class WebDisplayActivity extends RoboActivity {
 	
 		if(getExtras()){
 			mWebView = (WebView) findViewById(R.id.webview);
+			//mWebView.setInitialScale(100);
 			mWebView.getSettings().setJavaScriptEnabled(true);
+			//mWebView.getSettings().setBuiltInZoomControls(true); 
+			mWebView.getSettings().setUseWideViewPort(true);
+			mWebView.getSettings().setLoadWithOverviewMode(true); 
 			mWebView.loadUrl(urlString);
 		}else{
 			Log.d("nihao","erro");

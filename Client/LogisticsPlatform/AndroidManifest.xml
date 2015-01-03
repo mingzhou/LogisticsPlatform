@@ -12,7 +12,9 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
+	<uses-permission android:name="android.permission.WAKE_LOCK" />
+	
+    
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -114,6 +116,10 @@
         
         <receiver android:name="RSSReceiver" >
         </receiver>
+        <activity
+            android:name=".activity.ProfilePushlistActivity"
+            android:label="@string/title_activity_web_display" >
+        </activity>
         
     </application>
 

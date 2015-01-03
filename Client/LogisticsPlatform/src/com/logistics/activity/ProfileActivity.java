@@ -55,6 +55,9 @@ public class ProfileActivity extends RoboActivity {
 	@InjectView(R.id.favorite)
 	private Button favorite;
 	
+	@InjectView(R.id.pushlist)
+	private Button pushlist;
+	
 	@InjectView(R.id.submit)
 	private Button submit;
 	
@@ -108,6 +111,19 @@ public class ProfileActivity extends RoboActivity {
 				// TODO Auto-generated method stub
 				Intent intent = new Intent();
                 intent.setClass(ProfileActivity.this,ProfileHistoryDealActivity.class);
+                startActivity(intent);
+                onPause();
+                //finish();
+                //onDestroy();
+			}});
+		
+		pushlist.setOnClickListener(new Button.OnClickListener(){
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent();
+                intent.setClass(ProfileActivity.this,ProfilePushlistActivity.class);
                 startActivity(intent);
                 onPause();
                 //finish();
