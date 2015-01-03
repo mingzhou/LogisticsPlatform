@@ -114,6 +114,10 @@
         
         <receiver android:name="RSSReceiver" >
         </receiver>
+        <activity
+            android:name=".activity.ProfilePushlistActivity"
+            android:label="@string/title_activity_web_display" >
+        </activity>
         
     </application>
 

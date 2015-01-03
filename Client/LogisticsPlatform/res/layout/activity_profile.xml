@@ -149,6 +149,14 @@
                             android:layout_height="wrap_content"
                             android:text="@string/myfavorite"
                             android:textSize="20sp" />
+            	
+            	<Button
+            	    		android:id="@+id/pushlist"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/pushlist"
+                            android:textSize="20sp" />
+            	
             	<TableRow android:layout_width="match_parent"
             	   		  android:layout_height="wrap_content" >
 
