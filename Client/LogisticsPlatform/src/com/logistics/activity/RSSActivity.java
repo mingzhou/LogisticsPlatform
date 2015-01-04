@@ -160,7 +160,7 @@ public class RSSActivity extends RoboActivity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				String newcity = mCities.getText().toString();
-				if(!newcity.endsWith(" ")&&!newcity.isEmpty())
+				if(!newcity.endsWith(" ")&&!newcity.isEmpty()&&!city.contains(newcity))
 				{					
 					city.add(newcity);
 					cityListAdapter.city = city;
