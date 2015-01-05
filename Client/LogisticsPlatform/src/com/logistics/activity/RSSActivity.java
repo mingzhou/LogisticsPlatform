@@ -296,9 +296,10 @@ public class RSSActivity extends RoboActivity {
 	public void getHttpResponse(int position) throws IOException, JSONException{
 		RequestParams rp = new RequestParams();
 		
-		Set<String> set = sharedPreferences.getStringSet("cities", null);
-        if(set != null)
-        {city = new ArrayList<String>(set);}  
+//		Set<String> set = sharedPreferences.getStringSet("cities", null);
+//        if(set != null)
+//        {city = new ArrayList<String>(set);}  
+        
 		String mTo = city.get(position);
 		final String mFrom = city.get(position);
 		String mItem = "";

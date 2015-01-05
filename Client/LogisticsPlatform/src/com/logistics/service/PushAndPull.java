@@ -10,6 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -22,8 +23,10 @@ import org.apache.http.protocol.HTTP;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import com.logistics.R;
 import com.logistics.activity.MainActivity;
+
 import android.annotation.SuppressLint;
 import android.app.ActivityManager;
 import android.app.NotificationManager;
@@ -69,11 +72,16 @@ public class PushAndPull extends Service {
 		return null;
 	}
 
+//	@SuppressLint("Wakelock")
 	@Override
 	public void onCreate() {
 		// TODO Auto-generated method stub
 		super.onCreate();
 		Log.d(TAG, "onCreate() executed");
+//		PowerManager powerManager = (PowerManager) getSystemService(POWER_SERVICE);
+//		WakeLock wakeLock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK,
+//		        "MyWakelockTag");
+//		wakeLock.acquire();
 		try {
 			downFile();
 		} catch (IOException e) {

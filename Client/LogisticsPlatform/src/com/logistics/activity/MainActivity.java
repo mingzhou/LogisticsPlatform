@@ -13,6 +13,8 @@ import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.PowerManager;
+import android.os.PowerManager.WakeLock;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -54,7 +56,7 @@ public class MainActivity extends RoboActivity {
 	BadgeView badge6;
 	ImageView imageView1;
 	
-	@SuppressLint("WorldReadableFiles")
+	@SuppressLint({ "WorldReadableFiles", "Wakelock" })
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -75,6 +77,11 @@ public class MainActivity extends RoboActivity {
         Intent startRSS = new Intent(MainActivity.this, NotifyCenter.class); 
         startService(startRSS);
 		
+        WakeLock wakeLock=((PowerManager)getSystemService(Context.POWER_SERVICE)).newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "wakelock");
+        if(wakeLock!=null)
+        {
+            wakeLock.acquire();//这句执行后，手机将不会休眠，直到执行wakeLock.release();方法
+        }
 		switch (i){
 		default:
 			Intent startIntent0 = new Intent(MainActivity.this, PushAndPull.class); 
@@ -108,7 +115,11 @@ public class MainActivity extends RoboActivity {
 			break;
 		case 6:
 			Intent startIntent6 = new Intent(MainActivity.this, PushAndPull.class); 
-			stopService(startIntent6); 					
+			stopService(startIntent6); 	
+			  if(wakeLock!=null)
+		        {
+		            wakeLock.release();
+		        }
 			break;  
 		} 
 
