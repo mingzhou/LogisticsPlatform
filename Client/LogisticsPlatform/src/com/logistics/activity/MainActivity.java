@@ -15,6 +15,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
+import android.os.Vibrator;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -204,14 +205,15 @@ public class MainActivity extends RoboActivity {
 			else if(i>0){
 				badge7.setText(Integer.toString(i));
 				badge7.show();
+				Vibrator vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
+				 vibrator.vibrate(2000);
 			}else{
 				badge7.hide();
 			}
 			
 			
 			//badge7.toggle();
-//			 Vibrator vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
-//			 vibrator.vibrate(2000);
+			 
 			
 		}  
           
