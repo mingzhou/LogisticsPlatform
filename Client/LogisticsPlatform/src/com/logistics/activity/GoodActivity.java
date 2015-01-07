@@ -62,7 +62,7 @@ public class GoodActivity extends RoboActivity {
 //    private ArrayAdapter<String> desAdapter;
 //    private ArrayAdapter<String> typeAdapter;
 //    
-    private String[] depStrings = { "广东", "上海", "北京" ,"安徽","河南","山东","浙江","四川"};
+    private String[] depStrings = { "广东", "上海", "北京" ,"安徽","河南","山东","浙江","四川","辽宁","山西","陕西","江苏","浙江","广西"};
 //    private String[] desStrings = { "Guangdong", "Henan", "Hunan", "Fujian" };
 //    private String[] typeStrings = { "food", "fruit" };
 	
