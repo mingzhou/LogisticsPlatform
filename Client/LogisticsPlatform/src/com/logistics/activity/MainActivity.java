@@ -196,6 +196,7 @@ public class MainActivity extends RoboActivity {
 			// TODO Auto-generated method stub
 			Log.d("foregroudn","broadcast came");
 			int i = intent.getIntExtra("data", 0);
+			boolean back = intent.getBooleanExtra("background", true);
 			Log.d("foregroudn","we get num is "+i);			
 			
 			
@@ -205,8 +206,9 @@ public class MainActivity extends RoboActivity {
 			else if(i>0){
 				badge7.setText(Integer.toString(i));
 				badge7.show();
+				if(!back){
 				Vibrator vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
-				 vibrator.vibrate(2000);
+				vibrator.vibrate(2000);}
 			}else{
 				badge7.hide();
 			}
@@ -216,6 +218,8 @@ public class MainActivity extends RoboActivity {
 			 
 			
 		}  
+		
+		
           
     }  
 
