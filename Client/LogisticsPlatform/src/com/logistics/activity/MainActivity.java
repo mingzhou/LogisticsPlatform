@@ -208,7 +208,7 @@ public class MainActivity extends RoboActivity {
 				badge7.show();
 				if(!back){
 				Vibrator vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
-				vibrator.vibrate(2000);}
+				vibrator.vibrate(800);}
 			}else{
 				badge7.hide();
 			}
