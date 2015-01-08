@@ -198,17 +198,21 @@ public class MainActivity extends RoboActivity {
 			int i = intent.getIntExtra("data", 0);
 			boolean back = intent.getBooleanExtra("background", true);
 			Log.d("foregroudn","we get num is "+i);			
+			Log.d("foregroudn","we get num is "+back);	
 			
 			
 			if(i>100){
 			badge7.setText("100+");
-			badge7.show();}
+			badge7.show();
+			if(!back){
+				Vibrator vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
+				vibrator.vibrate(1000);}}
 			else if(i>0){
 				badge7.setText(Integer.toString(i));
 				badge7.show();
 				if(!back){
 				Vibrator vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
-				vibrator.vibrate(800);}
+				vibrator.vibrate(1000);}
 			}else{
 				badge7.hide();
 			}
