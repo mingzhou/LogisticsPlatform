@@ -11,7 +11,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
 
 public class HttpHelper {
-	private static final String SERVER_URI = "http://219.223.190.211";
+	private static final String SERVER_URI = "http://219.223.189.234";
 	//private static final String FILE_TXT = "1.txt";
 	//private static final String FILE_TXT = "1.txt";
 	private HttpClient client;

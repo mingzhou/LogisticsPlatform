@@ -26,7 +26,7 @@ import android.widget.Toast;
 
 @ContentView(R.layout.activity_profile_change_password)
 public class ProfileChangePasswordActivity extends RoboActivity {
-	private final String BASE_URL = "http://219.223.190.211";
+	private final String BASE_URL = "http://219.223.189.234";
 	private AsyncHttpClient httpHelper = new AsyncHttpClient(80);
 	
 

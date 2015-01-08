@@ -2,12 +2,15 @@ package com.logistics.activity;
 
 import roboguice.activity.RoboActivity;
 import roboguice.inject.InjectView;
+
 import com.logistics.R;
+
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.Button;
 
 public class WebDisplayActivity extends RoboActivity {
@@ -54,6 +57,19 @@ public class WebDisplayActivity extends RoboActivity {
 		if(getExtras()){
 			mWebView = (WebView) findViewById(R.id.webview);
 			//mWebView.setInitialScale(100);
+			mWebView.setWebViewClient(new WebViewClient() {
+
+				@Override
+
+				public boolean shouldOverrideUrlLoading(WebView view, String url) {
+
+				view.loadUrl(url);
+
+				return false;
+
+				}
+
+				});
 			mWebView.getSettings().setJavaScriptEnabled(true);
 			//mWebView.getSettings().setBuiltInZoomControls(true); 
 			mWebView.getSettings().setUseWideViewPort(true);

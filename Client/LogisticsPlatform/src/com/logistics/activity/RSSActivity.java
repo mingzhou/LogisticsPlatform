@@ -66,7 +66,7 @@ public class RSSActivity extends RoboActivity {
 	public static final String TAG = RSSActivity.class.getSimpleName();
 	public final static int MODE_WORLD_READABLE = 1;
 	
-	private final String BASE_URL = "http://219.223.190.211";
+	private final String BASE_URL = "http://219.223.189.234";
 	private AsyncHttpClient httpHelper = new AsyncHttpClient(80);
 	
 	@InjectView(R.id.cities)
