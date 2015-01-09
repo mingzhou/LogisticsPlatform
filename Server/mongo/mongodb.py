@@ -1,17 +1,17 @@
-import pymongo
+from pymongo import MongoClient, ReadPreference
 
 class MongoDB():
     DB_HOST = "spider"
     DATABASE = "demo"
     COLLECTION = "NIL"
-    
+
     def __init__(self):
-        client = pymongo.MongoClient(self.DB_HOST)
+        client = MongoClient(self.DB_HOST, read_preference = ReadPreference.SECONDARY)
         database = client[self.DATABASE]
         self.collection = database[self.COLLECTION]
 
     def insert(self, data):
-        self.collection.insert(data) 
+        self.collection.insert(data)
 
     def find(self, obj):
         return self.collection.find(obj)

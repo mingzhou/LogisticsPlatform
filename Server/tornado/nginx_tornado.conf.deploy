@@ -1,0 +1,50 @@
+upstream tornadoes {
+    server hercules11:8000;
+    server hercules11:8080;
+    server hercules11:10080;
+    server hercules11:18080;
+    server hercules21:8000;
+    server hercules21:8080;
+    server hercules21:10080;
+    server hercules21:18080;
+}
+
+upstream users {
+    server user:8000;
+    server user:8080;
+    server user:10080;
+    server user:18080;
+}
+
+server {
+    listen 80;
+    server_name localhost;
+
+    location / {
+        root   /usr/share/nginx/html;
+        index  index.html index.htm;
+    }
+
+    error_page   500 502 503 504  /50x.html;
+    location = /50x.html {
+        root   /usr/share/nginx/html;
+    }
+
+    location ~ \/(citytop|latest|previous|query)$ {
+        proxy_pass_header Server;
+        proxy_set_header Host $http_host;
+        proxy_redirect off;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Scheme $scheme;
+        proxy_pass http://tornadoes;
+    }
+
+    location ~ \/(login|reset|signup)$ {
+        proxy_pass_header Server;
+        proxy_set_header Host $http_host;
+        proxy_redirect off;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Scheme $scheme;
+        proxy_pass http://users;
+    }
+}
