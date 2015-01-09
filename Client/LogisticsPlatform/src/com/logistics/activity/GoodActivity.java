@@ -38,7 +38,7 @@ import com.loopj.android.http.RequestParams;
 @ContentView(R.layout.activity_good)
 public class GoodActivity extends RoboActivity {
 	
-	private final String BASE_URL = "http://219.223.190.211";
+	private final String BASE_URL = "http://219.223.189.234";
 	private AsyncHttpClient httpHelper = new AsyncHttpClient(80);
 	//private AsyncHttpHelper httpHelper = new AsyncHttpHelper();
 	@InjectView(R.id.goods_departure)

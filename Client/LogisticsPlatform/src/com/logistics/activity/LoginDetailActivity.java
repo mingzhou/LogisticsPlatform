@@ -25,7 +25,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class LoginDetailActivity extends RoboActivity {
-	private final String BASE_URL = "http://219.223.190.211";
+	private final String BASE_URL = "http://219.223.189.234";
 	private AsyncHttpClient httpHelper = new AsyncHttpClient(80);
 	
 	@InjectView(R.id.phone)

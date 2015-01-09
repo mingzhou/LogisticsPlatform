@@ -49,7 +49,7 @@ import android.util.Log;
 public class PushAndPull extends Service {
 	
 	public static final String TAG = "PushAndPull";
-	private final String BASE_URL = "http://219.223.190.211";
+	private final String BASE_URL = "http://219.223.189.234";
 	
 	private ActivityManager activityManager; 
     private String packageName;
