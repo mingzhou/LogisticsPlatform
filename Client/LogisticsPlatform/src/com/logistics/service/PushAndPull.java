@@ -189,8 +189,9 @@ public class PushAndPull extends Service {
 				}
 			}else if(msg.what!=0&& update_size > 0 &&msg.arg1!=0 ){
 				Intent intent = new Intent("com.example.communication.RECEIVER"); 
+				if(isAppOnForeground()){
 				intent.putExtra("data",update_size);
-				intent.putExtra("background", false);
+				intent.putExtra("background", false);}
 				sendBroadcast(intent);
 			}
 			
