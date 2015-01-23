@@ -1,0 +1,209 @@
+-- Merging decision tree log ---
+manifest
+ADDED from AndroidManifest.xml:2:1
+	xmlns:android
+		ADDED from AndroidManifest.xml:2:11
+	package
+		ADDED from AndroidManifest.xml:3:5
+		INJECTED from AndroidManifest.xml:0:0
+		INJECTED from AndroidManifest.xml:0:0
+	android:versionName
+		ADDED from AndroidManifest.xml:5:5
+	android:versionCode
+		ADDED from AndroidManifest.xml:4:5
+		INJECTED from AndroidManifest.xml:0:0
+		INJECTED from AndroidManifest.xml:0:0
+uses-sdk
+ADDED from AndroidManifest.xml:7:5
+	android:targetSdkVersion
+		ADDED from AndroidManifest.xml:9:9
+		INJECTED from AndroidManifest.xml:0:0
+		INJECTED from AndroidManifest.xml:0:0
+	android:minSdkVersion
+		ADDED from AndroidManifest.xml:8:9
+		INJECTED from AndroidManifest.xml:0:0
+		INJECTED from AndroidManifest.xml:0:0
+uses-permission#android.permission.VIBRATE
+ADDED from AndroidManifest.xml:12:5
+	android:name
+		ADDED from AndroidManifest.xml:12:22
+uses-permission#android.permission.INTERNET
+ADDED from AndroidManifest.xml:13:5
+	android:name
+		ADDED from AndroidManifest.xml:13:22
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from AndroidManifest.xml:14:5
+	android:name
+		ADDED from AndroidManifest.xml:14:22
+uses-permission#android.permission.WAKE_LOCK
+ADDED from AndroidManifest.xml:15:2
+	android:name
+		ADDED from AndroidManifest.xml:15:19
+application
+ADDED from AndroidManifest.xml:18:5
+	android:label
+		ADDED from AndroidManifest.xml:21:9
+	android:allowBackup
+		ADDED from AndroidManifest.xml:19:9
+	android:icon
+		ADDED from AndroidManifest.xml:20:9
+	android:theme
+		ADDED from AndroidManifest.xml:22:9
+activity#com.logistics.activity.WelcomeActivity
+ADDED from AndroidManifest.xml:23:9
+	android:label
+		ADDED from AndroidManifest.xml:25:13
+	android:name
+		ADDED from AndroidManifest.xml:24:13
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from AndroidManifest.xml:26:13
+action#android.intent.action.MAIN
+ADDED from AndroidManifest.xml:27:17
+	android:name
+		ADDED from AndroidManifest.xml:27:25
+category#android.intent.category.LAUNCHER
+ADDED from AndroidManifest.xml:29:17
+	android:name
+		ADDED from AndroidManifest.xml:29:27
+activity#com.logistics.activity.LoginActivity
+ADDED from AndroidManifest.xml:32:9
+	android:label
+		ADDED from AndroidManifest.xml:34:13
+	android:name
+		ADDED from AndroidManifest.xml:33:13
+activity#com.logistics.activity.MainActivity
+ADDED from AndroidManifest.xml:36:9
+	android:label
+		ADDED from AndroidManifest.xml:38:13
+	android:name
+		ADDED from AndroidManifest.xml:37:13
+activity#com.logistics.activity.GoodActivity
+ADDED from AndroidManifest.xml:41:9
+	android:label
+		ADDED from AndroidManifest.xml:43:13
+	android:name
+		ADDED from AndroidManifest.xml:42:13
+activity#com.logistics.activity.ProfileActivity
+ADDED from AndroidManifest.xml:45:9
+	android:label
+		ADDED from AndroidManifest.xml:47:13
+	android:name
+		ADDED from AndroidManifest.xml:46:13
+activity#com.logistics.activity.GoodResultActivity
+ADDED from AndroidManifest.xml:49:9
+	android:label
+		ADDED from AndroidManifest.xml:51:13
+	android:name
+		ADDED from AndroidManifest.xml:50:13
+activity#com.logistics.activity.MapActivity
+ADDED from AndroidManifest.xml:53:9
+	android:label
+		ADDED from AndroidManifest.xml:55:13
+	android:name
+		ADDED from AndroidManifest.xml:54:13
+activity#com.logistics.activity.ProfileCurrentDealActivity
+ADDED from AndroidManifest.xml:57:9
+	android:label
+		ADDED from AndroidManifest.xml:59:13
+	android:name
+		ADDED from AndroidManifest.xml:58:13
+activity#com.logistics.activity.ProfileHistoryDealActivity
+ADDED from AndroidManifest.xml:61:9
+	android:label
+		ADDED from AndroidManifest.xml:63:13
+	android:name
+		ADDED from AndroidManifest.xml:62:13
+activity#com.logistics.activity.ProfileChangePasswordActivity
+ADDED from AndroidManifest.xml:65:9
+	android:label
+		ADDED from AndroidManifest.xml:67:13
+	android:name
+		ADDED from AndroidManifest.xml:66:13
+activity#com.logistics.activity.ProfileChangePhoneActivity
+ADDED from AndroidManifest.xml:69:9
+	android:label
+		ADDED from AndroidManifest.xml:71:13
+	android:name
+		ADDED from AndroidManifest.xml:70:13
+activity#com.logistics.activity.GoodResultDetailActivity
+ADDED from AndroidManifest.xml:73:9
+	android:label
+		ADDED from AndroidManifest.xml:75:13
+	android:name
+		ADDED from AndroidManifest.xml:74:13
+activity#com.logistics.activity.ProfileCurrentDealDetailActivity
+ADDED from AndroidManifest.xml:77:9
+	android:label
+		ADDED from AndroidManifest.xml:79:13
+	android:name
+		ADDED from AndroidManifest.xml:78:13
+activity#com.logistics.activity.ProfileHistoryDealDetailActivity
+ADDED from AndroidManifest.xml:81:9
+	android:label
+		ADDED from AndroidManifest.xml:83:13
+	android:name
+		ADDED from AndroidManifest.xml:82:13
+activity#com.logistics.activity.RegisterActivity
+ADDED from AndroidManifest.xml:85:9
+	android:label
+		ADDED from AndroidManifest.xml:87:13
+	android:name
+		ADDED from AndroidManifest.xml:86:13
+activity#com.logistics.activity.LoginDetailActivity
+ADDED from AndroidManifest.xml:89:9
+	android:label
+		ADDED from AndroidManifest.xml:91:13
+	android:name
+		ADDED from AndroidManifest.xml:90:13
+activity#com.logistics.activity.ForgetActivity
+ADDED from AndroidManifest.xml:93:9
+	android:label
+		ADDED from AndroidManifest.xml:95:13
+	android:name
+		ADDED from AndroidManifest.xml:94:13
+activity#com.logistics.activity.RSSActivity
+ADDED from AndroidManifest.xml:98:9
+	android:label
+		ADDED from AndroidManifest.xml:100:13
+	android:name
+		ADDED from AndroidManifest.xml:99:13
+service#com.logistics.service.PushAndPull
+ADDED from AndroidManifest.xml:103:9
+	android:name
+		ADDED from AndroidManifest.xml:103:18
+service#com.logistics.service.NotifyCenter
+ADDED from AndroidManifest.xml:106:9
+	android:name
+		ADDED from AndroidManifest.xml:106:18
+activity#com.logistics.activity.WebDisplayActivity
+ADDED from AndroidManifest.xml:109:9
+	android:label
+		ADDED from AndroidManifest.xml:111:13
+	android:name
+		ADDED from AndroidManifest.xml:110:13
+receiver#com.logistics.MsgReceiver
+ADDED from AndroidManifest.xml:114:9
+	android:name
+		ADDED from AndroidManifest.xml:114:19
+receiver#com.logistics.RSSReceiver
+ADDED from AndroidManifest.xml:117:9
+	android:name
+		ADDED from AndroidManifest.xml:117:19
+activity#com.logistics.activity.ProfilePushlistActivity
+ADDED from AndroidManifest.xml:119:9
+	android:label
+		ADDED from AndroidManifest.xml:121:13
+	android:name
+		ADDED from AndroidManifest.xml:120:13
+activity#com.logistics.activity.TruckActivity
+ADDED from AndroidManifest.xml:123:9
+	android:label
+		ADDED from AndroidManifest.xml:125:13
+	android:name
+		ADDED from AndroidManifest.xml:124:13
+activity#com.logistics.activity.ProfileTruckDealDetailActivity
+ADDED from AndroidManifest.xml:127:9
+	android:label
+		ADDED from AndroidManifest.xml:129:13
+	android:name
+		ADDED from AndroidManifest.xml:128:13
