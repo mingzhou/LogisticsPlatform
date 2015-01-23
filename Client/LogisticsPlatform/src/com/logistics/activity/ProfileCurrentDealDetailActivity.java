@@ -72,6 +72,7 @@ public class ProfileCurrentDealDetailActivity extends RoboActivity {
 		if(extras != null){
 			title = extras.getString("title");
 			jO = new JSONObject(extras.getString("data"));
+			Log.d("truck",jO.toString());
 			return true;
 		}else{
 			return false;
@@ -90,10 +91,10 @@ public class ProfileCurrentDealDetailActivity extends RoboActivity {
 				   +"到达地："+jO.getString("to")+"\n"
 				   +"截止时间:"+deadlineTime+"\n"
 				   +"货物名称:"+jO.getString("title")+"\n"
-				   +"货物类型:"+jO.getString("type")+"\n"
-				   +"货物体积:"+jO.getString("volume")+"\n"
+				   //+"货物类型:"+jO.getString("type")+"\n"
+				   //+"货物体积:"+jO.getString("volume")+"\n"
 				   +"货物质量:"+jO.getString("quality")+"\n"
-				   +"包装方式:"+jO.getString("packing")+"\n"
+				   //+"包装方式:"+jO.getString("packing")+"\n"
 				   +"货车类型:"+jO.getString("vehicle")+"\n"
 				   +"货车长度:"+jO.getString("length")+"\n"
 				   +"预计费用:"+jO.getString("fee")+"\n"

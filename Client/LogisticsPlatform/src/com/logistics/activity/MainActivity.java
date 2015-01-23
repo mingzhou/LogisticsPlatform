@@ -131,6 +131,9 @@ public class MainActivity extends RoboActivity {
 		spec = createTabSpec(tabHost, MapActivity.TAG, res, R.string.map_title, R.drawable.ic_tab_more, MapActivity.class);
 		tabHost.addTab(spec);
 		
+		spec = createTabSpec(tabHost, TruckActivity.TAG, res, R.string.title_activity_truck, R.drawable.ic_tab_stopwatch, TruckActivity.class);
+		tabHost.addTab(spec);
+		
 		spec = createTabSpec(tabHost, GoodActivity.TAG, res, R.string.goods_title, R.drawable.ic_tab_worldclock, GoodActivity.class);
 		tabHost.addTab(spec);
 		
@@ -205,14 +208,16 @@ public class MainActivity extends RoboActivity {
 			badge7.setText("100+");
 			badge7.show();
 			if(!back){
-				Vibrator vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
-				vibrator.vibrate(1000);}}
+				//Vibrator vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
+				//vibrator.vibrate(1000);
+				}}
 			else if(i>0){
 				badge7.setText(Integer.toString(i));
 				badge7.show();
 				if(!back){
-				Vibrator vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
-				vibrator.vibrate(1000);}
+				//Vibrator vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
+				//vibrator.vibrate(1000);
+				}
 			}else{
 				badge7.hide();
 			}

@@ -150,4 +150,6 @@
     <string name="add_city">+</string>
     <string name="delete_city">删除城市</string>
     <string name="pushlist">推送记录</string>
+    <string name="title_activity_truck">车源</string>
+    <string name="title_activity_profile_pushlist">推送历史</string>
 </resources>

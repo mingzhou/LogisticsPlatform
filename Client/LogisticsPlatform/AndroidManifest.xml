@@ -118,7 +118,11 @@
         </receiver>
         <activity
             android:name=".activity.ProfilePushlistActivity"
-            android:label="@string/title_activity_web_display" >
+            android:label="@string/title_activity_profile_pushlist" >
+        </activity>
+        <activity
+            android:name=".activity.TruckActivity"
+            android:label="@string/title_activity_truck" >
         </activity>
         
     </application>
