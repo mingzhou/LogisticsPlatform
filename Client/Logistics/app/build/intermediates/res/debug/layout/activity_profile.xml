@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+* Copyright (C) 2013 FMSoft (http://www.fmsoft.cn)
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*      http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+-->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center_horizontal"
+    android:background="@drawable/add_alarm_bg"
+    >
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:contentDescription="@string/content_description"
+        android:src="@drawable/map_clock"
+        android:layout_marginBottom="@dimen/world_bottom_padding"
+        android:layout_alignParentBottom="true"
+        />
+
+    <RelativeLayout
+        android:id="@+id/title_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/title_tool_bar_title"
+        >
+         
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                 android:text="@string/profile_title"
+                style="@style/titleTextStyle"
+                />
+       
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/title_layout"
+        >
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical">
+        	<TableLayout
+                    android:id="@+id/profile_top"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="10dp" >
+            	<TableRow android:layout_width="match_parent" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/usr_name"
+                            android:textSize="20sp" />
+
+                        <TextView
+                            android:id="@+id/usr_name"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:textSize="20sp" />
+                </TableRow>
+                
+            	<TableRow android:layout_width="match_parent" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/phone"
+                            android:textSize="20sp" />
+
+                        <TextView
+                            android:id="@+id/phone"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:textSize="20sp" />
+                </TableRow>
+            <!--      
+            	<TableRow android:layout_width="match_parent" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/role_id"
+                            android:textSize="20sp" />
+
+                        <TextView
+                            android:id="@+id/role_id"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:textSize="20sp" />
+                </TableRow>
+            	-->
+            	<TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/seperator"
+                            android:textSize="20sp" />
+            	<!--  
+            	<Button
+            	    		android:id="@+id/cur_deal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/cur_deal"
+                            android:textSize="20sp" />
+            	<Button
+            	    		android:id="@+id/his_deal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/his_deal"
+                            android:textSize="20sp" />
+            	<TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/seperator"
+                            android:textSize="20sp" />	
+                -->
+            	<Button
+            	    		android:id="@+id/change_password"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/change_password"
+                            android:textSize="20sp" />
+            	
+            	<Button
+            	    		android:id="@+id/favorite"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/myfavorite"
+                            android:textSize="20sp" />
+            	
+            	<Button
+            	    		android:id="@+id/pushlist"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/pushlist"
+                            android:textSize="20sp" />
+            	
+            	<TableRow android:layout_width="match_parent"
+            	   		  android:layout_height="wrap_content" >
+
+            		<TextView
+            		    android:layout_width="wrap_content"
+            		    android:layout_height="wrap_content"
+            		    android:text="@string/refreshtime"
+            		    android:layout_gravity="center_vertical"
+            		    android:textSize="20sp" />
+
+                        <Spinner 
+            	    		android:id="@+id/refreshtime"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+            	    />
+                        <Button
+            	    		android:id="@+id/submit"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/submit"
+                            android:textSize="20sp" />
+                </TableRow>
+            	
+            	
+            	
+      <!--       	<Button
+            	    		android:id="@+id/change_phone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/change_phone"
+                            android:textSize="20sp" />  -->
+            	<TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/seperator"
+                            android:textSize="20sp" />
+            	
+            	<Button
+            	    		android:id="@+id/logout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/logout"
+                            android:textSize="20sp" />
+            	
+            	
+        	</TableLayout>
+        </LinearLayout>
+    </ScrollView>
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/bg_shadow_clock"
+            />
+</RelativeLayout>
+<!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/Logistics/app/src/main/res/layout/activity_profile.xml -->

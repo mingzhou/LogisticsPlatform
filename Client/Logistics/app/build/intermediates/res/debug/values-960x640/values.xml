@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/Logistics/app/src/main/res/values-960x640/dimens.xml -->
+    <eat-comment/>
+    <dimen name="alarm_padding_top">30dip</dimen>
+    <dimen name="world_bottom_padding">50dip</dimen>
+</resources>

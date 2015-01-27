@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/Logistics/app/src/main/res/values-zh-rCN/strings_i18n.xml -->
+    <eat-comment/>
+    <string-array name="share_contents">
+        <item>我正在使用最好的 iOS 风格——<ns1:g>%1$s</ns1:g>。这款应用具有丰富的功能和简洁的用户体验，现推荐给您。在软件市场上搜索“<ns1:g>%2$s</ns1:g>”或者点击http://m.espier.org 可免费下载并安装。</item>
+    </string-array>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/Logistics/app/src/main/res/values-zh-rCN/strings.xml -->
+    <eat-comment/>
+    <string name="add_alarm">添加闹钟</string>
+    <string name="alarm">闹钟</string>
+    <string msgid="4942914605480888820" name="alarm_alert_dismiss_text">"取消"</string>
+    <string msgid="1774416052207651584" name="alarm_alert_snooze_text">"小睡"</string>
+    <string name="alarm_notify_snooze_label"> (小憩)</string>
+    <string name="alarm_notify_snooze_text">触摸取消报警</string>
+    <string msgid="4891014685945904766" name="alarm_notify_text">"暂停或关闭闹钟。"</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/Logistics/app/src/main/res/values-zh-rCN/strings_i18n.xml -->
+    <eat-comment/>
+    <string name="am">上午</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/Logistics/app/src/main/res/values-zh-rCN/strings.xml -->
+    <eat-comment/>
+    <string name="am_text">上午</string>
+    <string name="app_name">载什么</string>
+    <string name="cancel">取消</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/Logistics/app/src/main/res/values-zh-rCN/strings_i18n.xml -->
+    <eat-comment/>
+    <string name="cancel_button">取消</string>
+    <string name="check_update">检查新版本</string>
+    <string name="check_update_desc"/>
+    <string name="check_update_noupdate">没有新版本，请稍后再来。</string>
+    <string name="check_update_timeout">检查超时！</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/Logistics/app/src/main/res/values-zh-rCN/strings.xml -->
+    <eat-comment/>
+    <string name="continues">继续</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/Logistics/app/src/main/res/values-zh-rCN/strings_i18n.xml -->
+    <eat-comment/>
+    <string name="copyright_description">© 2013 飞漫软件</string>
+    <string name="copyright_name">版权</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/Logistics/app/src/main/res/values-zh-rCN/strings.xml -->
+    <eat-comment/>
+    <string msgid="971998564991636532" name="day_concat">", "</string>
+    <string name="default_alarm">默认</string>
+    <string msgid="5590025289805630372" name="default_label">"闹钟"</string>
+    <string name="delete">删除</string>
+    <string name="dialog_message">计时结束!</string>
+    <string name="downlaoding">正在下载！</string>
+    <string name="download">下载</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/Logistics/app/src/main/res/values-zh-rCN/strings_i18n.xml -->
+    <eat-comment/>
+    <string name="download_espier_launcher">立即下载</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/Logistics/app/src/main/res/values-zh-rCN/strings.xml -->
+    <eat-comment/>
+    <string name="download_finish">下载完成！</string>
+    <string name="edit">编辑</string>
+    <string msgid="1058994798884544691" name="every_day">"每天"</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/Logistics/app/src/main/res/values-zh-rCN/strings_i18n.xml -->
+    <eat-comment/>
+    <string name="feedback_description"/>
+    <string name="feedback_name">评论此软件</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/Logistics/app/src/main/res/values-zh-rCN/strings.xml -->
+    <eat-comment/>
+    <string name="finish">完成</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/Logistics/app/src/main/res/values-zh-rCN/strings_i18n.xml -->
+    <eat-comment/>
+    <string name="fix_button">确定</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/Logistics/app/src/main/res/values-zh-rCN/strings.xml -->
+    <eat-comment/>
+    <string name="friday">每周五</string>
+    <string name="hour">小时</string>
+    <string name="iphone_dlg_btn_cancel_str">取 消</string>
+    <string name="iphone_dlg_btn_ok_str">确 定</string>
+    <string name="label">标签</string>
+    <string name="lap">计次</string>
+    <string name="lap_prefix">"计次 "</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/Logistics/app/src/main/res/values-zh-rCN/strings_i18n.xml -->
+    <eat-comment/>
+    <string name="launcher_ad_msg">这是一个专门针对领航桌面的插件软件包。领航桌面是一款流行的第三方免费 Android 桌面软件。要使用该插件，请首先下载并安装领航桌面。</string>
+    <string name="local_wallpaper">系统壁纸</string>
+    <string name="menu_about">关于</string>
+    <string name="menu_wallpaper_online">在线图库</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/Logistics/app/src/main/res/values-zh-rCN/strings.xml -->
+    <eat-comment/>
+    <string name="message">想体验一把iphone4S？使用领航桌面，多种手势操作，流畅滑动，让你的手机一秒钟变Iphone！</string>
+    <string name="minutes">分钟</string>
+    <string name="monday">每周一</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/Logistics/app/src/main/res/values-zh-rCN/strings_i18n.xml -->
+    <eat-comment/>
+    <string name="more_espier_apps">更多领航应用</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/Logistics/app/src/main/res/values-zh-rCN/strings.xml -->
+    <eat-comment/>
+    <string name="net_message">您没有网络链接！</string>
+    <string msgid="54104287800571769" name="never">"一律不"</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/Logistics/app/src/main/res/values-zh-rCN/strings_i18n.xml -->
+    <eat-comment/>
+    <string name="no_network_connect">没有可用的网络连接，请设置好您的网络后再试！</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/Logistics/app/src/main/res/values-zh-rCN/strings.xml -->
+    <eat-comment/>
+    <string name="no_sdcard">当前sd卡不可用</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/Logistics/app/src/main/res/values-zh-rCN/strings_i18n.xml -->
+    <eat-comment/>
+    <string name="no_service">无服务</string>
+    <string name="no_sim_card">无 SIM 卡</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/Logistics/app/src/main/res/values-zh-rCN/strings.xml -->
+    <eat-comment/>
+    <string name="no_world_clock">无世界时钟</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/Logistics/app/src/main/res/values-zh-rCN/strings_i18n.xml -->
+    <eat-comment/>
+    <string name="ok">确定</string>
+    <string name="ok_button">确定</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/Logistics/app/src/main/res/values-zh-rCN/strings.xml -->
+    <eat-comment/>
+    <string name="operator_ch_mobile">中国移动</string>
+    <string name="operator_ch_telecom">中国电信</string>
+    <string name="operator_ch_unicom">中国联通</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/Logistics/app/src/main/res/values-zh-rCN/strings_i18n.xml -->
+    <eat-comment/>
+    <string name="pm">下午</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/Logistics/app/src/main/res/values-zh-rCN/strings.xml -->
+    <eat-comment/>
+    <string name="pm_text">下午</string>
+    <string name="promot_download_error_msg">下载失败，请检查网络连接或存储卡</string>
+    <string name="promot_download_error_title">错误</string>
+    <string name="register">注册</string>
+    <string name="repeat">重复</string>
+    <string name="reset">复位</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/Logistics/app/src/main/res/values-zh-rCN/strings_i18n.xml -->
+    <eat-comment/>
+    <string name="return_button">返回</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/Logistics/app/src/main/res/values-zh-rCN/strings.xml -->
+    <eat-comment/>
+    <string name="returns">返回</string>
+    <string name="save">存储</string>
+    <string name="search_title">搜索城市以添加到世界时钟上。</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/Logistics/app/src/main/res/values-zh-rCN/strings_i18n.xml -->
+    <eat-comment/>
+    <string name="select_widget">小部件选择</string>
+    <string name="share_description"/>
+    <string name="share_name">分享给朋友</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/Logistics/app/src/main/res/values-zh-rCN/strings.xml -->
+    <eat-comment/>
+    <string name="snooze">小睡</string>
+    <string name="sound">声音</string>
+    <string name="start">启动</string>
+    <string name="staturday">每周六</string>
+    <string name="stop">暂停</string>
+    <string name="stopwatch">秒表</string>
+    <string name="sunday">每周日</string>
+    <string name="thursday">每周四</string>
+    <string name="time_over">计时结束时，启用</string>
+    <string name="time_zone_name">北京</string>
+    <string name="time_zone_name_id">Beijing</string>
+    <string name="timer">计时器</string>
+    <string name="timezone">Asia/Shanghai</string>
+    <string name="title">标签</string>
+    <string name="today">今天</string>
+    <string name="tomorrow">明天</string>
+    <string name="tuesday">每周二</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/Logistics/app/src/main/res/values-zh-rCN/strings_i18n.xml -->
+    <eat-comment/>
+    <string name="version_name">版本</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/Logistics/app/src/main/res/values-zh-rCN/strings.xml -->
+    <eat-comment/>
+    <string name="wendesday">每周三</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/Logistics/app/src/main/res/values-zh-rCN/strings_i18n.xml -->
+    <eat-comment/>
+    <string name="widget">小部件</string>
+    <string name="widget_desc1">请选择“4×1”或者“5×1”的小部件。\n对锁屏插件，点击锁屏上的日期区域即可显示小部件。\n对通知插件，小部件将显示在通知页顶部。</string>
+    <string name="widget_desc2">请选择“4×1”或者“5×1”的小部件。\n该小部件将替换领航桌面任务栏左侧的快捷工具栏。</string>
+    <string name="widget_prompt">小部件大小不合适，请重新选择。</string>
+    <string name="widget_taskbar">任务栏小部件</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/Logistics/app/src/main/res/values-zh-rCN/strings.xml -->
+    <eat-comment/>
+    <string name="world_clock">世界时钟</string>
+    <string name="yesterday">昨天</string>
+</resources>

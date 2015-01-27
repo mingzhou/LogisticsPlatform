@@ -1,0 +1,9 @@
+C:\Users\lizhuo\Documents\GitHub\LogisticsPlatform\Client\Logistics\app\build\intermediates\classes\debug
+C:\Users\lizhuo\Documents\GitHub\LogisticsPlatform\Client\Logistics\app\build\intermediates\pre-dexed\debug\javax.inject-1-2755762cb52e563cae8239c1da0209cda63f5e51.jar
+C:\Users\lizhuo\Documents\GitHub\LogisticsPlatform\Client\Logistics\app\build\intermediates\pre-dexed\debug\jsr305-2.0.1-ede1301c15203dff7f354b9aaa4539dd0404f7ee.jar
+C:\Users\lizhuo\Documents\GitHub\LogisticsPlatform\Client\Logistics\app\build\intermediates\pre-dexed\debug\android-async-http-1.4.4-c853e96f30bb1d6a3d4a3bb05a3ae1888c9c4e46.jar
+C:\Users\lizhuo\Documents\GitHub\LogisticsPlatform\Client\Logistics\app\build\intermediates\pre-dexed\debug\ormlite-android-4.47-c34e33b48deb87ab8c436f6b5db01e0929b63bda.jar
+C:\Users\lizhuo\Documents\GitHub\LogisticsPlatform\Client\Logistics\app\build\intermediates\pre-dexed\debug\roboguice-2.0-b7304a371abc30dd680cbbce942e6b823453696d.jar
+C:\Users\lizhuo\Documents\GitHub\LogisticsPlatform\Client\Logistics\app\build\intermediates\pre-dexed\debug\ormlite-core-4.47-bde86d258b957cbf96bcf8273946de4a8f80b773.jar
+C:\Users\lizhuo\Documents\GitHub\LogisticsPlatform\Client\Logistics\app\build\intermediates\pre-dexed\debug\guice-3.0-no_aop-34245459793e3d4951239d52a7fd08b78c9ffbae.jar
+C:\Users\lizhuo\Documents\GitHub\LogisticsPlatform\Client\Logistics\app\build\intermediates\pre-dexed\debug\support-v4-19.1.0-8a436d0beafdc8d8012732dd780fc4d45cc08a75.jar
