@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+* Copyright (C) 2013 FMSoft (http://www.fmsoft.cn)
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*      http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+-->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#eeeeee"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
+    <RelativeLayout
+        android:id="@+id/title_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="52dip"
+        android:background="@drawable/ic_tabs_bg"
+        >
+        <Button
+            android:id="@+id/return_btn"
+            android:layout_width="50dip"
+            android:layout_height="25dip"
+            android:layout_centerVertical="true"
+            android:textColor="#ffffff"
+            android:text="@string/button_return"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="5dip"
+            android:background="@drawable/ic_button_return"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/login"
+            android:textSize="18dip"
+            style="@style/titleTextStyle"
+            />
+
+    </RelativeLayout>
+
+    <ProgressBar
+        android:id="@+id/login_progress"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="0dp"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone"/>
+
+	<TableLayout
+                    android:id="@+id/profile_top"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/title_layout"
+                    android:layout_marginLeft="15dip"
+                    android:layout_marginRight="15dip"
+                    android:layout_marginTop="24dip" >
+            	<TableRow android:layout_width="280dip"
+                    android:background="#ffffff">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:text="@string/phone"
+                            android:textSize="20sp" />
+
+                        <EditText
+                            android:id="@+id/phone"
+                            android:layout_width="150dp"
+                            android:layout_height="45dip"
+                            android:ems="10"
+                            android:background="@null"
+                            android:inputType="phone" />
+
+                </TableRow>
+                
+            	<TableRow android:layout_width="200dip"
+            	    android:layout_marginTop="3dp"
+                    android:background="#ffffff" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="38dip"
+                            android:text="@string/password"
+                            android:textSize="20sp" />
+
+                        <EditText
+                            android:id="@+id/password"
+                            android:layout_width="150dp"
+                            android:layout_height="45dip"
+                            android:ems="10"
+                            android:background="@null"
+                            android:inputType="textWebPassword"/>
+                </TableRow>
+     </TableLayout>
+    
+	<CheckBox
+         android:id="@+id/rememberpassword"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_below="@id/profile_top"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="20dp"
+        android:gravity="center"
+         android:checked="false"
+         android:text="@string/rememberpassword"
+        android:textSize="20dip"
+         android:layout_marginTop="5dp" />
+    <TextView
+        android:id="@+id/forget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/profile_top"
+        android:text="@string/forget"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="45dp"
+        android:gravity="center"
+        android:textSize="21dip"
+        android:layout_marginTop="15dp"
+        />
+    
+     <Button
+         android:id="@+id/login"
+         android:layout_width="133dip"
+         android:layout_height="48dip"
+         android:layout_below="@id/profile_top"
+         android:layout_alignParentLeft="true"
+         android:layout_marginLeft="20dp"
+         android:gravity="center"
+	     android:padding="5dp"
+	     android:layout_marginTop="80dp"
+	     android:background="@drawable/ic_button_88"
+	     android:textSize="24sp"
+	     android:textColor="@android:color/white"
+         android:text="@string/login" />
+
+     <Button
+         android:id="@+id/register"
+         android:layout_width="133dip"
+         android:layout_height="48dip"
+         android:layout_below="@id/profile_top"
+         android:layout_alignParentRight="true"
+         android:layout_marginRight="20dp"
+         android:gravity="center"
+         android:layout_marginTop="80dp"
+	     android:padding="5dp"
+	     android:background="@drawable/ic_button_88"
+	     android:textSize="24sp"
+	     android:textColor="@android:color/white"
+	     android:text="@string/register" />
+
+    <ImageButton
+        android:id="@+id/qq_login"
+        android:layout_width="130dip"
+        android:layout_height="45dip"
+        android:layout_marginTop="10dip"
+        android:gravity="center"
+        android:padding="5dp"
+        android:src="@drawable/ic_button_qq"
+        android:layout_below="@+id/login"
+        android:layout_alignRight="@+id/login"
+        android:layout_alignEnd="@+id/login" />
+
+    <ImageButton
+        android:id="@+id/weixin_login"
+        android:layout_width="130dip"
+        android:layout_height="45dip"
+
+        android:gravity="center"
+        android:padding="5dp"
+        android:src="@drawable/ic_button_weixin"
+        android:layout_alignTop="@+id/qq_login"
+        android:layout_alignLeft="@+id/register"
+        android:layout_alignStart="@+id/register" />
+
+    <ImageButton
+        android:id="@+id/weibo_login"
+        android:layout_width="130dip"
+        android:layout_height="45dip"
+        android:layout_marginTop="5dip"
+        android:gravity="center"
+        android:padding="5dp"
+        android:src="@drawable/ic_button_weibo"
+        android:layout_below="@+id/qq_login"
+        android:layout_alignLeft="@+id/qq_login"
+        android:layout_alignStart="@+id/qq_login" />
+
+     
+
+</RelativeLayout>
