@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/values/roboguice.xml -->
+    <eat-comment/>
+    <string-array name="roboguice_modules">
+        <item>com.logistics.module.LogisticsModule</item>
+    </string-array>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/values/strings_i18n.xml -->
+    <eat-comment/>
+    <string-array name="share_contents">
+        <item>I am using the best iOS-style <ns1:g>%1$s</ns1:g>. It has a very nice UI/UE and reach features with smooth speed. You can search <ns1:g>%2$s</ns1:g> in Google Play or click http://m.espier.org to download and install it freely.</item>
+    </string-array>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/values/bools.xml -->
+    <eat-comment/>
+    <bool name="is_check_update">true</bool>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/values/colors.xml -->
+    <eat-comment/>
+    <color name="app_list_text">#f8f8f8</color>
+    <color name="app_list_toolbar_bk">#EAEAEA</color>
+    <color name="app_list_toolbar_text">#272727</color>
+    <color name="black">#ff000000</color>
+    <color name="divider_item_background">#ECECEC</color>
+    <color name="geolocation_permissions_prompt_background">#ffdddddd</color>
+    <color name="gesture_color">#ff0563c1</color>
+    <color name="gray_background">#ececec</color>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/values/ios_settings_config.xml -->
+    <eat-comment/>
+    <color name="ios_navigation_bar_text_color">#ffffffff</color>
+    <color name="ios_navigation_bar_text_shadow_color">#ff364457</color>
+    <color name="ios_navigation_bar_title_color">#ffffffff</color>
+    <color name="ios_navigation_bar_title_shadow_color">#ff000000</color>
+    <color name="ios_setting_label_color">#ff000000</color>
+    <color name="ios_setting_text_edit_color">#ff385487</color>
+    <color name="ios_setting_text_hint_color">#ff4c566c</color>
+    <color name="ios_setting_text_shadow_color">#ffffffff</color>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/values/colors.xml -->
+    <eat-comment/>
+    <color name="iphone_gray">#ff666666</color>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/values/iphone_lock_password.xml -->
+    <eat-comment/>
+    <color name="lock_password_display_bk_color">#FFEBEBEB</color>
+    <color name="lock_password_display_input_color">#FF000000</color>
+    <color name="lock_password_focus_color">#8012F0F8</color>
+    <color name="lock_password_framework_color">#656971</color>
+    <color name="lock_password_grid_color">#656971</color>
+    <color name="lock_password_number_color">#FFE4E4E4</color>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/values/colors.xml -->
+    <eat-comment/>
+    <color name="new_status_bar_shadow_color">#7f000000</color>
+    <color name="password_edit">#ff000000</color>
+    <color name="password_text">#ffffffff</color>
+    <color name="preferenceblue">#385487</color>
+    <color name="preferencegray">#4d576b</color>
+    <color name="search_hint">#ffb4b3b4</color>
+    <color name="ssl_text_label">#ffffffff</color>
+    <color name="ssl_text_value">#ffffffff</color>
+    <color name="text_disable">#ffa0a0a0</color>
+    <color name="text_normal">#ffffffff</color>
+    <color name="text_press">#ffa0a0a0</color>
+    <color name="titlebar_text_highlight">#ffccdded</color>
+    <color name="transparent">#00000000</color>
+    <color name="uncertain_gesture_color">#ff848484</color>
+    <color name="username_edit">#ff000000</color>
+    <color name="username_text">#ffffffff</color>
+    <color name="white">#ffffffff</color>
+    <color name="world_item_tody">#56565b</color>
+    <declare-styleable name="CompoundButton"><attr name="android:button"/></declare-styleable>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/values/dimens.xml -->
+    <eat-comment/>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="alarm_padding_top">30dip</dimen>
+    <dimen name="am_pm_text_size">20dp</dimen>
+    <dimen name="clock_margin">50dip</dimen>
+    <dimen name="data_text_size_1">22dp</dimen>
+    <dimen name="data_text_size_2">25dp</dimen>
+    <dimen name="espier_browser_promot_msg_height">200dip</dimen>
+    <dimen name="half_status_bar_height">12dip</dimen>
+    <dimen name="icon_paddingTop">10dip</dimen>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/values/ios_settings_config.xml -->
+    <eat-comment/>
+    <dimen name="ios_activity_reture_btn_title_size">13sp</dimen>
+    <dimen name="ios_activity_title_size">20sp</dimen>
+    <dimen name="ios_container_descliption_size">15sp</dimen>
+    <dimen name="ios_container_header_size">16sp</dimen>
+    <dimen name="ios_list_line_body_text_size">24sp</dimen>
+    <dimen name="ios_list_line_header_text_size">17sp</dimen>
+    <dimen name="ios_setting_line_custom_margin_left">20dip</dimen>
+    <dimen name="ios_setting_line_custom_margin_right">20dip</dimen>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/values/dimens.xml -->
+    <eat-comment/>
+    <dimen name="iphone_dlg_promot_btn_size">10sp</dimen>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/values/ios_settings_config.xml -->
+    <eat-comment/>
+    <dimen name="setting_line_drawable_padding">3dip</dimen>
+    <dimen name="setting_line_footer_margin_right">5dip</dimen>
+    <dimen name="setting_line_header_margin_left">5dip</dimen>
+    <dimen name="setting_line_padding_h">10dip</dimen>
+    <dimen name="setting_line_padding_v">8dip</dimen>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/values/dimens.xml -->
+    <eat-comment/>
+    <dimen name="status_bar_height">25dip</dimen>
+    <dimen name="world_bottom_padding">50dip</dimen>
+    <dimen name="world_time_text_size">16sp</dimen>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/values/colors.xml -->
+    <eat-comment/>
+    <drawable name="search_clear_default_icon">#00000000</drawable>
+    <drawable name="suggestion_background_default">#FFFFFF</drawable>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/values/styles.xml -->
+    <eat-comment/>
+    <drawable name="translucent_background">#00ffffff</drawable>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/values/iphone_lock_password.xml -->
+    <eat-comment/>
+    <integer name="CELL_KEY_BACK">10</integer>
+    <integer name="CELL_NOTINPUT">-1</integer>
+    <integer name="CELL_NUMBER_0">0</integer>
+    <integer name="CELL_NUMBER_1">1</integer>
+    <integer name="CELL_NUMBER_2">2</integer>
+    <integer name="CELL_NUMBER_3">3</integer>
+    <integer name="CELL_NUMBER_4">4</integer>
+    <integer name="CELL_NUMBER_5">5</integer>
+    <integer name="CELL_NUMBER_6">6</integer>
+    <integer name="CELL_NUMBER_7">7</integer>
+    <integer name="CELL_NUMBER_8">8</integer>
+    <integer name="CELL_NUMBER_9">9</integer>
+    <integer name="lock_password_back_aspect">150</integer>
+    <integer name="lock_password_back_item_scale">70</integer>
+    <integer name="lock_password_back_scale">90</integer>
+    <integer name="lock_password_back_width">400</integer>
+    <integer name="lock_password_base">100</integer>
+    <integer name="lock_password_display_number_scale">40</integer>
+    <integer name="lock_password_display_scale">70</integer>
+    <integer name="lock_password_framework_width">200</integer>
+    <integer name="lock_password_grid_width">200</integer>
+    <integer name="lock_password_number_scale">50</integer>
+    <integer name="lock_password_round_radius_rx">1000</integer>
+    <integer name="lock_password_round_radius_ry">1000</integer>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="action_settings">Settings</string>
+    <string name="add_alarm">Add Alarm</string>
+    <string name="add_city">添加</string>
+    <string name="alarm">Alarm</string>
+    <string name="alarm_alert_dismiss_text">Dismiss</string>
+    <string name="alarm_alert_snooze_text">Caulk Off</string>
+    <string name="alarm_notify_snooze_label"> (snoozed)</string>
+    <string name="alarm_notify_snooze_text">Alarm set for Touch to cancel.</string>
+    <string name="alarm_notify_text">Snooze or dismiss alarm.</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/values/strings_i18n.xml -->
+    <eat-comment/>
+    <string name="am">AM</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="am_text">AM</string>
+    <string name="answerforpassword">密保答案： </string>
+    <string name="app_name">载什么</string>
+    <string name="button_return">返回</string>
+    <string name="cancel">取消</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/values/strings_i18n.xml -->
+    <eat-comment/>
+    <string name="cancel_button">Cancel</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="change_password">更换密码</string>
+    <string name="change_phone">更换手机号</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/values/strings_i18n.xml -->
+    <eat-comment/>
+    <string name="check_update">Check for new version</string>
+    <string name="check_update_desc"/>
+    <string name="check_update_noupdate">There is no new version, please check later.</string>
+    <string name="check_update_timeout">Checking Timeout!</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="cities">订阅城市</string>
+    <string name="confirm">确认:</string>
+    <string name="content_description">the background of world clock </string>
+    <string name="continues">continue</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/values/strings_i18n.xml -->
+    <eat-comment/>
+    <string name="copyright_description">© 2013 FMSoft</string>
+    <string name="copyright_name">Copyright</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="cur_deal">当前交易</string>
+    <string name="cur_deal_detail">当前交易详情</string>
+    <string name="current_deal">当前交易</string>
+    <string name="day_concat">", "</string>
+    <string name="default_alarm">Default</string>
+    <string name="default_label">Alarm</string>
+    <string name="delete">Delete</string>
+    <string name="delete_city">删除城市</string>
+    <string name="departure">出发地：</string>
+    <string name="destination">到达地：</string>
+    <string name="dialog_message">Timer Done</string>
+    <string name="downlaoding">Is being downloaded</string>
+    <string name="download">Download</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/values/strings_i18n.xml -->
+    <eat-comment/>
+    <string name="download_espier_launcher">Download</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="download_finish">Download the complete </string>
+    <string name="edit">Edit</string>
+    <string name="error_invalid_password">密码应大于4位</string>
+    <string name="every_day">every day</string>
+    <string name="favorite">收藏</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/values/strings_i18n.xml -->
+    <eat-comment/>
+    <string name="feedback_description"/>
+    <string name="feedback_name">Comment on this software</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="finish">Done</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/values/strings_i18n.xml -->
+    <eat-comment/>
+    <string name="fix_button">OK</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="forget">忘记密码</string>
+    <string name="friday">Every Friday</string>
+    <string name="goods_search_detail">货运信息详情</string>
+    <string name="goods_title">查找 </string>
+    <string name="goods_type">货物类型</string>
+    <string name="goods_weight">货物重量</string>
+    <string name="hint_your_address">您的地址</string>
+    <string name="hint_your_dep">请输入出发地</string>
+    <string name="hint_your_des">请输入到达地</string>
+    <string name="his_deal">历史交易</string>
+    <string name="his_deal_detail">历史交易详情</string>
+    <string name="history_deal">历史交易</string>
+    <string name="hour">hours</string>
+    <string name="iphone_dlg_btn_cancel_str">Cancel</string>
+    <string name="iphone_dlg_btn_ok_str">Confirm</string>
+    <string name="label">Label</string>
+    <string name="lap">Lap</string>
+    <string name="lap_prefix">"lap "</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/values/strings_i18n.xml -->
+    <eat-comment/>
+    <string name="launcher_ad_msg">This is a plugin package dedicated to Espier Launcher, which is a free and popular Android 3rd-party launcher. To use this plugin, please download and install Espier Launcher first.</string>
+    <string name="local_wallpaper">Local Wallpapers</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="login">登录</string>
+    <string name="logout">注销</string>
+    <string name="map_title">货源</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/values/strings_i18n.xml -->
+    <eat-comment/>
+    <string name="menu_about">About</string>
+    <string name="menu_wallpaper_online">Online Gallery</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="message">Do you want to experience a iphone4S?Please use the Espier Launcher,and a variety of gestures,smooth sliding,A second make your phone change to iphone!</string>
+    <string name="minutes">mins</string>
+    <string name="monday">Every Monday</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/values/strings_i18n.xml -->
+    <eat-comment/>
+    <string name="more_espier_apps">More Espier Apps</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="myfavorite">我的收藏</string>
+    <string name="net_message">You have no network links ！</string>
+    <string name="never">Never</string>
+    <string name="new_password">新密码:</string>
+    <string name="new_phone">新手机号:</string>
+    <string name="no_data">No data</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/values/strings_i18n.xml -->
+    <eat-comment/>
+    <string name="no_network_connect">No available network connection, please setup your network and try again!</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="no_sdcard">The current sd card, not with </string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/values/strings_i18n.xml -->
+    <eat-comment/>
+    <string name="no_service">No Service</string>
+    <string name="no_sim_card">No SIM Card</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="no_world_clock">No world clock</string>
+    <string name="notify_source">确认</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/values/strings_i18n.xml -->
+    <eat-comment/>
+    <string name="ok">OK</string>
+    <string name="ok_button">OK</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="old_password">旧密码:</string>
+    <string name="old_phone">旧手机号:</string>
+    <string name="operator_ch_mobile">CMCC</string>
+    <string name="operator_ch_telecom">CTCC</string>
+    <string name="operator_ch_unicom">CUCC</string>
+    <string name="password">密码:</string>
+    <string name="phone">手机号码:</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/values/strings_i18n.xml -->
+    <eat-comment/>
+    <string name="pm">PM</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="pm_text">PM</string>
+    <string name="profile_title">我的</string>
+    <string name="promot_download_error_msg">Download failed, please check network connection or SD card</string>
+    <string name="promot_download_error_title">Error</string>
+    <string name="pushlist">推送记录</string>
+    <string name="question">你的幸运数字是几？ </string>
+    <string name="questionforpassword">密保问题： </string>
+    <string name="quit_favorite">取消收藏</string>
+    <string name="refreshtime">推送时间</string>
+    <string name="register">注册</string>
+    <string name="rememberpassword">记住密码</string>
+    <string name="repeat">Repeat</string>
+    <string name="reset">Reset</string>
+    <string name="result_show">结果显示</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/values/strings_i18n.xml -->
+    <eat-comment/>
+    <string name="return_button">Back</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="returns">Back</string>
+    <string name="role_id">身份:</string>
+    <string name="rss_title">订阅</string>
+    <string name="save">Save</string>
+    <string name="search">查询</string>
+    <string name="search_title">Search for a city to add to world clock.</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/values/strings_i18n.xml -->
+    <eat-comment/>
+    <string name="select_widget">Select Widget</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="seperator">===========================</string>
+    <string name="set_password">设置密码:</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/values/strings_i18n.xml -->
+    <eat-comment/>
+    <string name="share_description"/>
+    <string name="share_name">Share with friends</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="snooze">Snooze</string>
+    <string name="sound">Sound</string>
+    <string name="start">Start</string>
+    <string name="staturday">Every Saturday</string>
+    <string name="stop">Stop</string>
+    <string name="stopwatch">Stopwatch</string>
+    <string name="submit">提交</string>
+    <string name="submit_order">确认</string>
+    <string name="sunday">Every Sunday</string>
+    <string name="thursday">Every Thursday</string>
+    <string name="time_over">When Timer Ends</string>
+    <string name="time_zone_name">Beijing</string>
+    <string name="time_zone_name_id">Beijing</string>
+    <string name="timer">Timer</string>
+    <string name="timezone">Asia/Shanghai</string>
+    <string name="title">Label</string>
+    <string name="title_activity_forget">ForgetActivity</string>
+    <string name="title_activity_good_result">货运结果</string>
+    <string name="title_activity_good_result_detail">GoodResultDetailActivity</string>
+    <string name="title_activity_login_detail">LoginDetailActivity</string>
+    <string name="title_activity_map">货运信息</string>
+    <string name="title_activity_profile_change_password">ProfileChangePasswordActivity</string>
+    <string name="title_activity_profile_change_phone">ProfileChangePhoneActivity</string>
+    <string name="title_activity_profile_current_deal">ProfileCurrentDealActivity</string>
+    <string name="title_activity_profile_current_deal_detail">ProfileCurrentDealDetailActivity</string>
+    <string name="title_activity_profile_history_deal">ProfileHistoryDealActivity</string>
+    <string name="title_activity_profile_history_deal_detail">ProfileHistoryDealDetailActivity</string>
+    <string name="title_activity_profile_pushlist">推送历史</string>
+    <string name="title_activity_register">RegisterActivity</string>
+    <string name="title_activity_rss">订阅</string>
+    <string name="title_activity_truck">车源</string>
+    <string name="title_activity_web_display">网站信息</string>
+    <string name="today">Today</string>
+    <string name="tomorrow">Tomorrow</string>
+    <string name="tuesday">Every TuesDay</string>
+    <string name="usr_name">用户名:</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/values/strings_i18n.xml -->
+    <eat-comment/>
+    <string name="version_name">Version</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="welcome">Welcome</string>
+    <string name="wendesday">Every Wendesday</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/values/strings_i18n.xml -->
+    <eat-comment/>
+    <string name="widget">Widget</string>
+    <string name="widget_desc1">Please select a "4x1" or "5x1" widget. \n\nFor Espier Screen Locker plugin, please slide the date area on the lock screen to show the widget.\n\nFor Espier Notifications plugin, the widget will be showed at the top of the notification page.</string>
+    <string name="widget_desc2">Please select a "4*1" or "5*1" widget. \n\nThe widgets will replace the express toolbar on the taskbar. </string>
+    <string name="widget_prompt">The widget has incorrect size. Please select another one.</string>
+    <string name="widget_taskbar">Widget on Taskbar</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="world_clock">World Clock</string>
+    <string name="xlistview_footer_hint_normal">查看更多</string>
+    <string name="xlistview_footer_hint_ready">松开载入更多</string>
+    <string name="xlistview_header_hint_loading">正在加载…</string>
+    <string name="xlistview_header_hint_normal">下拉刷新</string>
+    <string name="xlistview_header_hint_ready">松开刷新数据</string>
+    <string name="xlistview_header_last_numb">更新数目：</string>
+    <string name="xlistview_header_last_time">上次更新时间：</string>
+    <string name="yesterday">Yesterday</string>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/values/styles.xml -->
+    <eat-comment/>
+    <style name="AppBaseTheme" parent="android:Theme.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+    <style mce_bogus="1" name="IPhoneAlertDialogWindowAnim" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/fade_in_overshoot</item>
+    </style>
+    <style name="IPhoneDialog" parent="@android:Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@drawable/translucent_background</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+    <style name="WorkspaceIcon">
+
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">middle</item>
+        <item name="android:shadowColor">#FF000000</item>
+        <item name="android:shadowDx">0.0</item>
+        <item name="android:shadowDy">1.5</item>
+        <item name="android:shadowRadius">0.5</item>
+        <item name="android:textColor">#FFFFFFFF</item>
+
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+
+        <item name="android:paddingLeft">0dip</item>
+        <item name="android:paddingRight">0dip</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="WorkspaceIcon.Portrait">
+        <item name="android:drawablePadding">0dip</item>
+        <item name="android:paddingTop">@dimen/icon_paddingTop</item>
+        <item name="android:layout_marginLeft">2dip</item>
+        <item name="android:layout_marginRight">2dip</item>
+        <item name="android:layout_marginTop">0dip</item>
+        <item name="android:layout_marginBottom">0dip</item>
+    </style>
+    <style name="alarm_alert" parent="android:Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+    <style name="alarm_list_left_column">
+        <item name="android:layout_width">68dip</item>
+        <item name="android:layout_height">68dip</item>
+    </style>
+    <style name="button_style">
+        <item name="android:textColor">@color/ios_navigation_bar_title_color</item>
+        <item name="android:shadowRadius">1</item>
+        <item name="android:shadowDy">-2</item>
+        <item name="android:shadowColor">@color/ios_navigation_bar_title_shadow_color</item>
+     </style>
+    <style name="clock">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+    </style>
+    <style name="custom_dialog" parent="@android:style/Theme.Dialog">
+    <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
+    </style>
+    <style name="rotation_load_dialog" parent="@style/custom_dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+    <style name="titleTextStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/ios_navigation_bar_title_color</item>
+        <item name="android:textSize">@dimen/ios_activity_title_size</item>
+        <item name="android:shadowRadius">1</item>
+        <item name="android:shadowDy">-2</item>
+        <item name="android:shadowColor">@color/ios_navigation_bar_title_shadow_color</item>
+    </style>
+    <style name="title_btn_style">
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/ios_navigation_bar_title_color</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:background">@drawable/ioslike_right_btn</item>
+        <item name="android:shadowRadius">1</item>
+        <item name="android:shadowDy">-2</item>
+        <item name="android:shadowColor">@color/ios_navigation_bar_title_shadow_color</item>
+        <item name="android:paddingLeft">10dip</item>
+        <item name="android:paddingRight">10dip</item>
+    </style>
+    <style name="world_item_style">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:shadowRadius">1</item>
+        <item name="android:shadowDy">2</item>
+        <item name="android:shadowColor">@color/ios_navigation_bar_title_color</item>
+     </style>
+    <style name="world_item_style_1">
+        <item name="android:textColor">@color/world_item_tody</item>
+        <item name="android:shadowRadius">1</item>
+        <item name="android:shadowDy">2</item>
+        <item name="android:shadowColor">@color/ios_navigation_bar_title_color</item>
+     </style>
+</resources>

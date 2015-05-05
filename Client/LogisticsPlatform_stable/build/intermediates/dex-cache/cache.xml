@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\lizhuo\Documents\GitHub\LogisticsPlatform\Client\LogisticsPlatform_stable\app\libs\android-async-http-1.4.4.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="3bae85a076241828810bf8fbcc12e5891d5fc34c">
+        <dex dex="C:\Users\lizhuo\Documents\GitHub\LogisticsPlatform\Client\LogisticsPlatform_stable\app\build\intermediates\pre-dexed\debug\android-async-http-1.4.4-b42822e967111eff33da93d388cd4cafa9f1c4f5.jar" />
+    </item>
+    <item
+        jar="C:\Users\lizhuo\Documents\GitHub\LogisticsPlatform\Client\LogisticsPlatform_stable\app\libs\javax.inject-1.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="6975da39a7040257bd51d21a231b76c915872d38">
+        <dex dex="C:\Users\lizhuo\Documents\GitHub\LogisticsPlatform\Client\LogisticsPlatform_stable\app\build\intermediates\pre-dexed\debug\javax.inject-1-6a9ffb1f7b171fb794d945f1ce99db4b7d86582c.jar" />
+    </item>
+    <item
+        jar="C:\Users\lizhuo\Documents\GitHub\LogisticsPlatform\Client\LogisticsPlatform_stable\app\libs\roboguice-2.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="727ccb8f376109d0b5c44abca6f791dccc5c5dbc">
+        <dex dex="C:\Users\lizhuo\Documents\GitHub\LogisticsPlatform\Client\LogisticsPlatform_stable\app\build\intermediates\pre-dexed\debug\roboguice-2.0-88aae723f2b383691a58ba1f559425ece86db9bf.jar" />
+    </item>
+    <item
+        jar="C:\Users\lizhuo\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-v4\19.1.0\support-v4-19.1.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="85f201b380937e61a9dce6ca90ccf6872abbfb67">
+        <dex dex="C:\Users\lizhuo\Documents\GitHub\LogisticsPlatform\Client\LogisticsPlatform_stable\app\build\intermediates\pre-dexed\debug\support-v4-19.1.0-8a436d0beafdc8d8012732dd780fc4d45cc08a75.jar" />
+    </item>
+    <item
+        jar="C:\Users\lizhuo\Documents\GitHub\LogisticsPlatform\Client\LogisticsPlatform_stable\app\libs\jsr305-2.0.1.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="516c03b21d50a644d538de0f0369c620989cd8f0">
+        <dex dex="C:\Users\lizhuo\Documents\GitHub\LogisticsPlatform\Client\LogisticsPlatform_stable\app\build\intermediates\pre-dexed\debug\jsr305-2.0.1-012200b9cff47b7cf402f5d55fdbfee1513f8e0f.jar" />
+    </item>
+    <item
+        jar="C:\Users\lizhuo\Documents\GitHub\LogisticsPlatform\Client\LogisticsPlatform_stable\app\libs\guice-3.0-no_aop.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="28586dc97c525501329d9a242fc3402041e3572d">
+        <dex dex="C:\Users\lizhuo\Documents\GitHub\LogisticsPlatform\Client\LogisticsPlatform_stable\app\build\intermediates\pre-dexed\debug\guice-3.0-no_aop-a2779bc00f98373901bf06435c809e5ec3df0664.jar" />
+    </item>
+    <item
+        jar="C:\Users\lizhuo\Documents\GitHub\LogisticsPlatform\Client\LogisticsPlatform_stable\app\libs\ormlite-core-4.47.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="e11abddd1e9c2053a92133fa83f78f7bedb820a9">
+        <dex dex="C:\Users\lizhuo\Documents\GitHub\LogisticsPlatform\Client\LogisticsPlatform_stable\app\build\intermediates\pre-dexed\debug\ormlite-core-4.47-2c225ce7fbce71b52295883b5ef392dc9289aae1.jar" />
+    </item>
+    <item
+        jar="C:\Users\lizhuo\Documents\GitHub\LogisticsPlatform\Client\LogisticsPlatform_stable\app\libs\ormlite-android-4.47.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="c72f9ed54d8a8bab3fbf56da2b358308a67899a4">
+        <dex dex="C:\Users\lizhuo\Documents\GitHub\LogisticsPlatform\Client\LogisticsPlatform_stable\app\build\intermediates\pre-dexed\debug\ormlite-android-4.47-ef885b8b4ebf5093edd1fc779be6154a3d18db1f.jar" />
+    </item>
+
+</items>

@@ -181,10 +181,10 @@ public class LoginDetailActivity extends RoboActivity {
 					//Toast.makeText(LoginDetailActivity.this, response.toString(), Toast.LENGTH_LONG).show();
 					int state_num =4;
 				 	for(int i=0;i<headers.length;i++){
-					 	Log.d("nihao",headers[i].toString());
+					 	Log.d("nihao-login",headers[i].toString());
 					 	if(isInteger(headers[i].getValue().toString())){
 					 		state_num = Integer.parseInt(headers[i].getValue());
-					 		Log.d("nihao",headers[i].getValue());
+					 		Log.d("nihao-login",headers[i].getValue());
 					 	}
 					 	}
 				 	if(state_num ==0){
