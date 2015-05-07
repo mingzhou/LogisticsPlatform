@@ -131,7 +131,7 @@ public class ProfileActivity extends RoboActivity {
 			}});
 		
 		refreshAdapter = new ArrayAdapter<String>(this,
-				android.R.layout.simple_spinner_item, refreshStrings);
+                R.layout.spinner_outline, refreshStrings);//android.R.layout.simple_spinner_item
 		refreshAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		refreshtime.setAdapter(refreshAdapter);
 		refreshtime.setSelection(i);

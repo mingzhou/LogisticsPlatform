@@ -20,19 +20,49 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/add_alarm_bg"
+    android:background="#eeeeee"
     android:gravity="center_horizontal"
     android:orientation="vertical" >
-    
+
+    <RelativeLayout
+        android:id="@+id/title_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="52dip"
+        android:background="@drawable/ic_tabs_bg"
+        >
+        <Button
+            android:id="@+id/return_btn"
+            android:layout_width="50dip"
+            android:layout_height="25dip"
+            android:layout_centerVertical="true"
+            android:textColor="#ffffff"
+            android:text="@string/button_return"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="5dip"
+            android:background="@drawable/ic_button_return"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/register"
+            android:textSize="18dip"
+            style="@style/titleTextStyle"
+            />
+
+    </RelativeLayout>
     
      <TableLayout
                     android:id="@+id/profile_top"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginTop="10dp" >
-            	<TableRow android:layout_width="match_parent" >
+                    android:layout_below="@id/title_layout"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="24dp" >
+            	<TableRow android:layout_width="match_parent"
+                    android:background="#ffffff"
+                    >
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -43,13 +73,16 @@
                         <EditText
                             android:id="@+id/phone"
                             android:layout_width="150dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="45dip"
                             android:ems="10"
+                            android:background="@null"
                             android:inputType="phone" />
 
                 </TableRow>
                 
-            	<TableRow android:layout_width="match_parent" >
+            	<TableRow android:layout_width="match_parent"
+                    android:layout_marginTop="2dp"
+                    android:background="#ffffff">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -60,12 +93,36 @@
                         <EditText
                             android:id="@+id/password"
                             android:layout_width="150dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="45dip"
                             android:ems="10"
+                            android:background="@null"
                             android:inputType="textWebPassword"/>
                 </TableRow>
+
+         <TableRow android:layout_width="match_parent"
+             android:layout_marginTop="2dp"
+             android:background="#ffffff"
+             >
+
+             <TextView
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:text="@string/psw_confirm"
+                 android:textSize="20sp" />
+
+             <EditText
+                 android:id="@+id/psw_confirm"
+                 android:layout_width="150dp"
+                 android:layout_height="45dip"
+                 android:ems="10"
+                 android:background="@null"
+                 android:inputType="textWebPassword" />
+         </TableRow>
                 
-            	<TableRow android:layout_width="match_parent" >
+            	<TableRow android:layout_width="match_parent"
+                    android:layout_marginTop="2dp"
+                    android:background="#ffffff"
+                    >
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -76,8 +133,9 @@
                         <EditText
                             android:id="@+id/usr_name"
                             android:layout_width="150dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="45dip"
                             android:ems="10"
+                            android:background="@null"
                             android:inputType="textPersonName" />
                 </TableRow>
               <!--   
@@ -99,22 +157,29 @@
                 </TableRow>
             	 -->
             	 
-            	 <TableRow android:layout_width="match_parent" >
+            	 <TableRow android:layout_width="match_parent"
+                     android:layout_marginTop="20dp"
+                     android:background="#ffffff"
+                     >
            
 
                         <TextView
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="45dip"
+                            android:gravity="center"
                             android:text="@string/questionforpassword"
                             android:textSize="20sp" />
                         <TextView
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="45dip"
+                            android:gravity="center"
                             android:text="@string/question"
                             android:textSize="20sp" />
                 </TableRow>
                 
-            	 <TableRow android:layout_width="match_parent" >
+            	 <TableRow android:layout_width="match_parent"
+                     android:layout_marginTop="2dp"
+                     android:background="#ffffff">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -125,18 +190,21 @@
                         <EditText
                             android:id="@+id/answer"
                             android:layout_width="150dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="45dip"
                             android:ems="10"
+                            android:background="@null"
                             android:inputType="textPersonName" />
                 </TableRow>
             	            	
             	<Button
             	    		android:id="@+id/register"
-                            android:layout_width="wrap_content"
                             android:text="@string/register"
-                            android:layout_height="0dip"
+                            android:layout_height="45dip"
+                            android:layout_marginTop="5dp"
+                            android:background="#ff9700"
                     		android:layout_gravity="center_horizontal"
                     		android:layout_weight="1"
+                            android:textColor="#ffffff"
                             android:textSize="20sp" />
             <!--
             	<Button
@@ -151,13 +219,6 @@
             	
         	</TableLayout>
 
-     <ImageView
-         android:id="@+id/welcome_image"
-         android:layout_width="fill_parent"
-         android:layout_height="wrap_content"
-         android:layout_alignParentBottom="true"
-         android:layout_alignParentLeft="true"
-         android:layout_marginBottom="14dp"
-         android:src="@drawable/map_clock" />
+
 
 </RelativeLayout><!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/layout/activity_register.xml -->

@@ -153,7 +153,7 @@
     <eat-comment/>
     <string name="am_text">AM</string>
     <string name="answerforpassword">密保答案： </string>
-    <string name="app_name">载什么</string>
+    <string name="app_name">哪找货</string>
     <string name="button_return">返回</string>
     <string name="cancel">取消</string>
     <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/values/strings_i18n.xml -->
@@ -161,8 +161,8 @@
     <string name="cancel_button">Cancel</string>
     <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/values/strings.xml -->
     <eat-comment/>
-    <string name="change_password">更换密码</string>
-    <string name="change_phone">更换手机号</string>
+    <string name="change_password">修改密码</string>
+    <string name="change_phone">修改手机号</string>
     <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/values/strings_i18n.xml -->
     <eat-comment/>
     <string name="check_update">Check for new version</string>
@@ -172,7 +172,8 @@
     <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="cities">订阅城市</string>
-    <string name="confirm">确认:</string>
+    <string name="confirm">确    认:</string>
+    <string name="confirm1">确认</string>
     <string name="content_description">the background of world clock </string>
     <string name="continues">continue</string>
     <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/values/strings_i18n.xml -->
@@ -191,6 +192,22 @@
     <string name="delete_city">删除城市</string>
     <string name="departure">出发地：</string>
     <string name="destination">到达地：</string>
+    <string name="details">详情</string>
+    <string name="details_contact">联系方式：</string>
+    <string name="details_danger">注意事项：</string>
+    <string name="details_dead_t">截止时间：</string>
+    <string name="details_dep">出  发  地：</string>
+    <string name="details_des">到  达  地：</string>
+    <string name="details_fee">预计费用：</string>
+    <string name="details_len_v">货车长度：</string>
+    <string name="details_name">货物名称：</string>
+    <string name="details_note">        备注：</string>
+    <string name="details_pack">包装方式：</string>
+    <string name="details_pub_t">发布时间：</string>
+    <string name="details_type">货物类型：</string>
+    <string name="details_type_v">货车类型：</string>
+    <string name="details_vol">货物体积：</string>
+    <string name="details_wei">货物质量：</string>
     <string name="dialog_message">Timer Done</string>
     <string name="downlaoding">Is being downloaded</string>
     <string name="download">Download</string>
@@ -241,6 +258,7 @@
     <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="login">登录</string>
+    <string name="login_website">登录网站链接</string>
     <string name="logout">注销</string>
     <string name="map_title">货源</string>
     <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/values/strings_i18n.xml -->
@@ -299,11 +317,13 @@
     <string name="profile_title">我的</string>
     <string name="promot_download_error_msg">Download failed, please check network connection or SD card</string>
     <string name="promot_download_error_title">Error</string>
-    <string name="pushlist">推送记录</string>
+    <string name="psw_confirm">密码确认:</string>
+    <string name="pushlist">提醒消息</string>
+    <string name="pwd_find">密码找回</string>
     <string name="question">你的幸运数字是几？ </string>
     <string name="questionforpassword">密保问题： </string>
     <string name="quit_favorite">取消收藏</string>
-    <string name="refreshtime">推送时间</string>
+    <string name="refreshtime">提醒间隔</string>
     <string name="register">注册</string>
     <string name="rememberpassword">记住密码</string>
     <string name="repeat">Repeat</string>
@@ -326,7 +346,7 @@
     <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="seperator">===========================</string>
-    <string name="set_password">设置密码:</string>
+    <string name="set_password">密        码:</string>
     <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/values/strings_i18n.xml -->
     <eat-comment/>
     <string name="share_description"/>
@@ -368,7 +388,7 @@
     <string name="today">Today</string>
     <string name="tomorrow">Tomorrow</string>
     <string name="tuesday">Every TuesDay</string>
-    <string name="usr_name">用户名:</string>
+    <string name="usr_name">用  户  名:</string>
     <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/values/strings_i18n.xml -->
     <eat-comment/>
     <string name="version_name">Version</string>

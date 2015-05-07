@@ -38,6 +38,9 @@ public class ForgetActivity extends RoboActivity {
 	
 	@InjectView(R.id.set_password)
 	private EditText set_password;
+
+    @InjectView(R.id.psw_confirm)
+    private EditText psw_confirm;
 	
 	@InjectView(R.id.usr_name)
 	private EditText usr_name;

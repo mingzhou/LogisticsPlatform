@@ -168,12 +168,13 @@
         android:id="@+id/qq_login"
         android:layout_width="130dip"
         android:layout_height="45dip"
-
+        android:layout_marginTop="10dip"
         android:gravity="center"
         android:padding="5dp"
         android:src="@drawable/ic_button_qq"
         android:layout_below="@+id/login"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignRight="@+id/login"
+        android:layout_alignEnd="@+id/login" />
 
     <ImageButton
         android:id="@+id/weixin_login"
@@ -183,19 +184,21 @@
         android:gravity="center"
         android:padding="5dp"
         android:src="@drawable/ic_button_weixin"
-        android:layout_below="@+id/qq_login"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignTop="@+id/qq_login"
+        android:layout_alignLeft="@+id/register"
+        android:layout_alignStart="@+id/register" />
 
     <ImageButton
         android:id="@+id/weibo_login"
         android:layout_width="130dip"
         android:layout_height="45dip"
-        
+        android:layout_marginTop="5dip"
         android:gravity="center"
         android:padding="5dp"
         android:src="@drawable/ic_button_weibo"
-        android:layout_below="@+id/weixin_login"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/qq_login"
+        android:layout_alignLeft="@+id/qq_login"
+        android:layout_alignStart="@+id/qq_login" />
 
      
 

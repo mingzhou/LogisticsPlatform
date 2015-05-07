@@ -200,6 +200,7 @@
             	    		android:id="@+id/register"
                             android:text="@string/register"
                             android:layout_height="45dip"
+                            android:layout_marginTop="5dp"
                             android:background="#ff9700"
                     		android:layout_gravity="center_horizontal"
                     		android:layout_weight="1"

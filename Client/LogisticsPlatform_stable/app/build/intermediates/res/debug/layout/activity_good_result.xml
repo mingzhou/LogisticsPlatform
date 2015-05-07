@@ -22,63 +22,30 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:gravity="center_horizontal"
-    android:background="@drawable/add_alarm_bg"
+    android:background="#eeeeee"
     >
 
-    <ImageView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:contentDescription="@string/goods_title"
-        android:src="@drawable/map_clock"
-        android:layout_marginBottom="@dimen/world_bottom_padding"
-        android:layout_alignParentBottom="true"
-        />
+
 
     <RelativeLayout
         android:id="@+id/title_layout"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/title_tool_bar_title"
+        android:layout_height="52dip"
+        android:background="@drawable/ic_tabs_bg"
         >
          <Button
             android:id="@+id/return_btn"
-            android:layout_width="50dip"
-            android:layout_height="30dip"
-            android:text="@string/returns"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="5dip"
-            android:background="@drawable/ic_button_1"
-            style="@style/button_style"
+             android:layout_width="50dip"
+             android:layout_height="25dip"
+             android:layout_centerVertical="true"
+             android:textColor="#ffffff"
+             android:text="@string/button_return"
+             android:layout_alignParentLeft="true"
+             android:layout_marginLeft="5dip"
+             android:background="@drawable/ic_button_return"
             />
 
-            <!-- <Button
-            android:id="@+id/edit_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/edit"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="5dip"
-            android:textColor="#FFFFFF"
-            android:background="@drawable/ic_button_3"
-            /> -->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                 android:text="@string/goods_title"
-                style="@style/titleTextStyle"
-                />
-        <Button
-            android:id="@+id/add_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:textColor="@android:color/white"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="5dip"
-            android:background="@drawable/ic_button_add"
-            />
     </RelativeLayout>
 
 		<LinearLayout
@@ -87,11 +54,16 @@
 		    android:layout_below="@+id/title_layout"
 		    android:orientation="vertical" >
 
-	<!--  		<TextView
+	  		<TextView
 				android:id="@+id/result_show"
 				android:text="@string/result_show"
+                android:paddingLeft="25dip"
+                android:textColor="#202b3f"
+                android:textSize="14dip"
+                android:gravity="center_vertical"
 				android:layout_width="fill_parent"
-				android:layout_height="30dip"/> -->
+				android:layout_height="45dip"/>
+
 			<ListView
 				android:id="@+id/list_goodresult"
 				android:layout_width="fill_parent" 
@@ -105,11 +77,5 @@
                		android:text="@string/no_data"/>
 		</LinearLayout>
 
-        <!--  <ImageView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:background="@drawable/bg_shadow_clock"
-            />-->
 </RelativeLayout>
 <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/layout/activity_good_result.xml -->

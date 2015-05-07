@@ -55,152 +55,131 @@
                     android:id="@+id/profile_top"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginTop="10dp" >
-            	<TableRow android:layout_width="match_parent" >
+                    android:layout_marginLeft="15dip"
+                    android:layout_marginRight="15dip"
+                    android:layout_marginTop="24dip" >
+            	<TableRow android:layout_width="match_parent"
+                    android:background="#ffffff">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/usr_name"
+                            android:textColor="#455369"
+                            android:gravity="center"
                             android:textSize="20sp" />
 
                         <TextView
                             android:id="@+id/usr_name"
-                            android:layout_width="150dp"
-                            android:layout_height="wrap_content"
+                            android:layout_width="150dip"
+                            android:layout_height="45dip"
+                            android:gravity="center"
                             android:textSize="20sp" />
                 </TableRow>
                 
-            	<TableRow android:layout_width="match_parent" >
+            	<TableRow android:layout_width="match_parent"
+                    android:background="#ffffff"
+                    android:layout_marginTop="2dp"
+                    >
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:textColor="#455369"
                             android:text="@string/phone"
                             android:textSize="20sp" />
 
                         <TextView
                             android:id="@+id/phone"
+                            android:gravity="center"
                             android:layout_width="150dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="45dip"
                             android:textSize="20sp" />
                 </TableRow>
-            <!--      
-            	<TableRow android:layout_width="match_parent" >
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/role_id"
-                            android:textSize="20sp" />
+                <Button
+                    android:id="@+id/favorite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="45dip"
+                    android:layout_marginTop="10dip"
+                    android:textColor="#455369"
+                    android:background="#ffffff"
+                    android:text="@string/myfavorite"
+                    android:textSize="20sp" />
 
-                        <TextView
-                            android:id="@+id/role_id"
-                            android:layout_width="150dp"
-                            android:layout_height="wrap_content"
-                            android:textSize="20sp" />
-                </TableRow>
-            	-->
-            	<TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/seperator"
-                            android:textSize="20sp" />
-            	<!--  
-            	<Button
-            	    		android:id="@+id/cur_deal"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/cur_deal"
-                            android:textSize="20sp" />
-            	<Button
-            	    		android:id="@+id/his_deal"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/his_deal"
-                            android:textSize="20sp" />
-            	<TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/seperator"
-                            android:textSize="20sp" />	
-                -->
-            	<Button
-            	    		android:id="@+id/change_password"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/change_password"
-                            android:textSize="20sp" />
-            	
-            	<Button
-            	    		android:id="@+id/favorite"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/myfavorite"
-                            android:textSize="20sp" />
-            	
+
             	<Button
             	    		android:id="@+id/pushlist"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                    android:layout_marginTop="10dip"
+                    android:background="#ffffff"
+                    android:textColor="#455369"
+                            android:layout_height="45dip"
                             android:text="@string/pushlist"
                             android:textSize="20sp" />
             	
             	<TableRow android:layout_width="match_parent"
-            	   		  android:layout_height="wrap_content" >
+            	   		  android:layout_height="45dip"
+                    android:layout_marginTop="2dip"
+                    android:background="#ffffff"
+                    >
 
             		<TextView
             		    android:layout_width="wrap_content"
-            		    android:layout_height="wrap_content"
+            		    android:layout_height="45dip"
             		    android:text="@string/refreshtime"
-            		    android:layout_gravity="center_vertical"
+                        android:textColor="#455369"
+                        android:gravity="center_vertical"
             		    android:textSize="20sp" />
 
                         <Spinner 
             	    		android:id="@+id/refreshtime"
+                            android:layout_marginLeft="3dip"
                             android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_height="40dip"
+                            android:textColor="#455369"
+                            android:background="@drawable/spinner_bg"
             	    />
                         <Button
             	    		android:id="@+id/submit"
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_width="45dip"
+                            android:layout_height="30dip"
+                            android:layout_marginLeft="3dip"
+                            android:layout_gravity="center_vertical"
                             android:text="@string/submit"
+                            android:background="#ff9700"
+                            android:textColor="#ffffff"
                             android:textSize="20sp" />
                 </TableRow>
             	
             	
-            	
-      <!--       	<Button
-            	    		android:id="@+id/change_phone"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/change_phone"
-                            android:textSize="20sp" />  -->
-            	<TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/seperator"
-                            android:textSize="20sp" />
-            	
-            	<Button
+                <Button
+                    android:id="@+id/change_password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="45dip"
+                    android:layout_marginTop="10dip"
+                    android:background="#ffffff"
+                    android:textColor="#455369"
+                    android:text="@string/change_password"
+                    android:textSize="20sp" />
+
+                <Button
             	    		android:id="@+id/logout"
+                    android:layout_marginTop="20dip"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="45dip"
+                            android:background="#ff9700"
                             android:text="@string/logout"
+
+                    android:textColor="#ffffff"
                             android:textSize="20sp" />
             	
             	
         	</TableLayout>
         </LinearLayout>
     </ScrollView>
-    <ImageView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="@drawable/bg_shadow_clock"
-        />
+
 
 </RelativeLayout>
