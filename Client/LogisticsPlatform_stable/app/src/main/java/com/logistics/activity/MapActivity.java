@@ -50,6 +50,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
+import android.graphics.Color;
 
 @SuppressLint("WorldReadableFiles")
 @ContentView(R.layout.activity_map)
@@ -127,7 +128,7 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 				TextView text1 = (TextView) view.findViewById(android.R.id.text1);
 			    TextView text2 = (TextView) view.findViewById(android.R.id.text2);
 			    text1.setText(entry[0]);
-			    text2.setText(entry[1]);
+                text2.setText(entry[1]);
 				return view;
 			}
 		};
@@ -155,13 +156,15 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 					String time = getTime(crawlTime);
 					Log.d("read",jObj.toString());
 					if(jObj.has(jArray.getJSONObject(i).getJSONObject("_id").getString("$oid"))){
-						title = title+"( 已读)";
+						title = title+"(已读)";
+
 					}
+
 					mAdapter.add(new String[]{title,time});
 					
 		        		//+DateFormat.getDateFormat(GoodResultActivity.this).format(new Date(jArray.getJSONObject(i).getLong("$date"))));
 		        }
-				
+                //mAdapter.notifyDataSetChanged();
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -350,14 +353,14 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 							String title = jArray.getJSONObject(i).getString("from")+" -> " + jArray.getJSONObject(i).getString("to");
 							
 							Log.d("read",jObj.toString());
-							if(jObj.has(jArray.getJSONObject(i).getJSONObject("_id").getString("$oid"))){
-								title = title+" (已读)";
-							}
+//							if(jObj.has(jArray.getJSONObject(i).getJSONObject("_id").getString("$oid"))){
+//								title = title+" (已读)";
+//							}
 							mAdapter.add(new String[]{title,time});
 														
 				        		//+DateFormat.getDateFormat(GoodResultActivity.this).format(new Date(jArray.getJSONObject(i).getLong("$date"))));
 				        }
-				        				       
+                    // mAdapter.notifyDataSetChanged();
 				   	} catch (FileNotFoundException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -455,14 +458,14 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 					String title = response.getJSONObject(i).getString("from")+" -> " + response.getJSONObject(i).getString("to");
 					
 					Log.d("read",jObj.toString());
-					if(jObj.has(response.getJSONObject(i).getJSONObject("_id").getString("$oid"))){
-						title = title+" (已读)";
-					}
+//					if(jObj.has(response.getJSONObject(i).getJSONObject("_id").getString("$oid"))){
+//						title = title+" (已读)";
+//					}
 					mAdapter.add(new String[]{title,time});
 					
 					
 					}
-					
+                   // mAdapter.notifyDataSetChanged();
 			        Log.d(TAG,"update read done");
 			       				        
 			   	} catch (JSONException e) {
@@ -626,14 +629,14 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 					String title = jArray.getJSONObject(i).getString("from")+" -> " + jArray.getJSONObject(i).getString("to");
 					String time = getTime(crawlTime);
 					Log.d("read",jObj.toString());
-					if(jObj.has(jArray.getJSONObject(i).getJSONObject("_id").getString("$oid"))){
-						title = title+"( 已读)";
-					}
+//					if(jObj.has(jArray.getJSONObject(i).getJSONObject("_id").getString("$oid"))){
+//						title = title+"( 已读)";
+//					}
 					mAdapter.add(new String[]{title,time});
 					
 		        		//+DateFormat.getDateFormat(GoodResultActivity.this).format(new Date(jArray.getJSONObject(i).getLong("$date"))));
 		        }
-				
+                //mAdapter.notifyDataSetChanged();
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

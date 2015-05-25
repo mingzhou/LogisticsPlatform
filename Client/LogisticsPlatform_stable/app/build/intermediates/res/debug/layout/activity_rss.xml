@@ -77,7 +77,7 @@
                         <Button
                             android:id="@+id/add_btn"
                             android:layout_width="62dip"
-                            android:layout_height="48dip"
+                            android:layout_height="43dip"
                             android:text="@string/add_city"
                             android:textColor="#fefefe"
                             android:layout_margin="5dip"
@@ -104,7 +104,7 @@
         
        <Button android:id="@+id/del_btn"
                android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
+               android:layout_height="48dip"
                android:text="@string/delete_city"
                android:layout_marginTop="400dip"
                android:layout_marginLeft="100dip"
