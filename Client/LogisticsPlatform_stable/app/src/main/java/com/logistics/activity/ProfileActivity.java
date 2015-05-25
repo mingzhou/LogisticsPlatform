@@ -194,7 +194,7 @@ public class ProfileActivity extends RoboActivity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Intent intent = new Intent();
-                intent.setClass(ProfileActivity.this,LoginActivity.class);
+                intent.setClass(ProfileActivity.this,LoginDetailActivity.class);
                 startActivity(intent);
                 Intent stopIntent = new Intent(ProfileActivity.this, PushAndPull.class);  
                 stopService(stopIntent); 

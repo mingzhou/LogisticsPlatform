@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+* Copyright (C) 2013 FMSoft (http://www.fmsoft.cn)
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*      http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+-->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center_horizontal"
+    android:background="#eeeeee"
+    >
+
+
+
+    <RelativeLayout
+        android:id="@+id/title_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="52dip"
+        android:background="@drawable/ic_tabs_bg"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_activity_rss"
+            android:textSize="18dip"
+            style="@style/titleTextStyle" />
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="50dip">
+
+        <TableLayout
+            android:id="@+id/rss_top"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dip"
+            android:layout_marginRight="16dip"
+            android:layout_marginTop="24dip" >
+
+            <TableRow android:layout_width="fill_parent" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:text="@string/cities"
+                    android:gravity="center"
+                    android:textSize="14dip" />
+                <EditText android:id="@+id/cities"
+                    android:layout_width="150dip"
+                    android:layout_height="48dip"
+                    android:inputType="text"
+                    android:hint="@string/hint_your_address"
+                    android:layout_margin="5dip"
+                    android:textColor="#d3d6d8"
+                    android:textSize="14dip"/>
+                <Button
+                    android:id="@+id/add_btn"
+                    android:layout_width="62dip"
+                    android:layout_height="43dip"
+                    android:text="@string/add_city"
+                    android:textColor="#fefefe"
+                    android:layout_margin="5dip"
+                    android:background="#ff9700"
+                    android:textSize="16dip"/>
+                <!--
+                                        <Spinner
+                                            android:id="@+id/goods_departure"
+                                            android:layout_width="150dp"
+                                            android:layout_height="wrap_content" />
+                -->
+            </TableRow>
+
+        </TableLayout>
+
+
+        <ListView
+            android:id="@+id/list_rsscities"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            />
+
+    </LinearLayout>
+
+    <Button android:id="@+id/del_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="48dip"
+        android:text="@string/delete_city"
+        android:layout_marginTop="400dip"
+        android:layout_marginLeft="100dip"
+        android:visibility="invisible"
+        android:textSize="20sp"/>
+
+
+</RelativeLayout>
+<!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/layout/activity_rssfragment.xml -->
