@@ -50,6 +50,9 @@ public class ForgetActivity extends RoboActivity {
 	
 	@InjectView(R.id.submit)
 	private Button submit;
+
+    @InjectView(R.id.return_btn)
+    private Button return_btn;
 	
 	private SharedPreferences sharedPreferences;  
 	private SharedPreferences.Editor editor;  
@@ -63,7 +66,19 @@ public class ForgetActivity extends RoboActivity {
 
 	private void initComponent() {
 		sharedPreferences = this.getSharedPreferences("user_info",MODE_WORLD_READABLE);  
-        editor = sharedPreferences.edit();  
+        editor = sharedPreferences.edit();
+
+        return_btn.setOnClickListener(new Button.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                Intent intent = new Intent();
+                intent.setClass(ForgetActivity.this,LoginDetailActivity.class);
+                startActivity(intent);
+                finish();
+                onDestroy();
+            }});
 		
 		// TODO Auto-generated method stub
 		submit.setOnClickListener(new Button.OnClickListener(){

@@ -89,6 +89,7 @@ public class ProfileActivity extends RoboActivity {
         String p = sharedPreferences.getString("phone", null);
         String u = sharedPreferences.getString("usr_name", null);
         int i = sharedPreferences.getInt("refresh", 0);
+        //Boolean s = sharedPreferences.getBoolean("state",false);
 		usr_name.setText(u);
 		phone.setText(p);
 	//	role_id.setText(i);
@@ -193,13 +194,15 @@ public class ProfileActivity extends RoboActivity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+                editor.putBoolean("state",false);
+                editor.commit();
 				Intent intent = new Intent();
                 intent.setClass(ProfileActivity.this,LoginDetailActivity.class);
                 startActivity(intent);
                 Intent stopIntent = new Intent(ProfileActivity.this, PushAndPull.class);  
                 stopService(stopIntent); 
                 Intent stopIntent1 = new Intent(ProfileActivity.this, NotifyCenter.class);  
-                stopService(stopIntent1); 
+                stopService(stopIntent1);
                 finish();
                 onDestroy();
 			}});

@@ -52,8 +52,8 @@ public class RegisterActivity extends RoboActivity {
 	@InjectView(R.id.register)
 	private Button register;
 	
-//	@InjectView(R.id.test)
-//	private Button test;
+	@InjectView(R.id.return_btn)
+	private Button return_btn;
 	
 	private ArrayAdapter<String> roleAdapter;
 	private String[] roleStrings = { "司机", "货主"};
@@ -80,7 +80,19 @@ public class RegisterActivity extends RoboActivity {
 		//role_id.setAdapter(roleAdapter);
 		
 		sharedPreferences = this.getSharedPreferences("user_info",MODE_WORLD_READABLE);  
-        editor = sharedPreferences.edit();  
+        editor = sharedPreferences.edit();
+
+        return_btn.setOnClickListener(new Button.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                Intent intent = new Intent();
+                intent.setClass(RegisterActivity.this,LoginDetailActivity.class);
+                startActivity(intent);
+                finish();
+                onDestroy();
+            }});
               
                
 		// TODO Auto-generated method stub

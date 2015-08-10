@@ -193,8 +193,8 @@ public class GoodActivity extends RoboActivity {
 	
 	public void getHttpResponse() throws IOException, JSONException{
 		RequestParams rp = new RequestParams();
-		String mTo = goods_Destination.getText().toString();
-		String mFrom = goods_Departure.getText().toString();	
+		final String mTo = goods_Destination.getText().toString();
+		final String mFrom = goods_Departure.getText().toString();
 		JSONObject tmp = new JSONObject();
 		tmp.put("to", mTo);
 		tmp.put("from", mFrom);
@@ -205,9 +205,10 @@ public class GoodActivity extends RoboActivity {
 			public void onSuccess(int statusCode, Header[] headers,
 					JSONArray response) {
 					//Toast.makeText(MapActivity.this, response.toString(), Toast.LENGTH_LONG).show();
-				
+				String desdep = mFrom + "->" +mTo;
 				intent.setClass(GoodActivity.this,GoodResultActivity.class);
 				intent.putExtra("query", response.toString());
+                intent.putExtra("desdep",desdep);
 				//Log.d("nihao",response.toString());
 				showProgress(false);
 				startActivity(intent);

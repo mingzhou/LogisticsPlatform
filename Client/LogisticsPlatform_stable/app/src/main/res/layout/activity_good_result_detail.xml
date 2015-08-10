@@ -448,7 +448,8 @@
                 android:background="#ffffff"
                 >
 
-                <TableRow android:layout_width="match_parent"
+                <TableRow android:id="@+id/beizhu"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#ffffff"
                     android:layout_marginTop="2dip"
@@ -456,7 +457,7 @@
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="40dip"
+                        android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="@string/details_note"
                         android:textColor="#425569"
@@ -467,7 +468,7 @@
                         android:layout_width="200dip"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:gravity="center_vertical"
+
                         android:textColor="#797f8e"
                         android:textSize="16dip"
                         />
@@ -479,7 +480,8 @@
                     android:id="@+id/submit"
                     android:text="@string/login_website"
                     android:layout_height="45dip"
-                    android:layout_marginTop="5dp"
+                    android:layout_below="@id/beizhu"
+                    android:layout_marginTop="10dp"
                     android:background="#ff9700"
                     android:layout_gravity="center_horizontal"
                     android:layout_weight="1"

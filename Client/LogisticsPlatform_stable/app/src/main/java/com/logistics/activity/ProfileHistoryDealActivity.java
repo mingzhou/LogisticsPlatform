@@ -20,6 +20,7 @@ import com.logistics.R;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.View;
@@ -127,22 +128,24 @@ public class ProfileHistoryDealActivity extends RoboActivity {
 				TextView text1 = (TextView) view.findViewById(android.R.id.text1);
 			    TextView text2 = (TextView) view.findViewById(android.R.id.text2);
 			    text1.setText(entry[0]);
+                text1.setTextColor(Color.parseColor("#44566d"));
 			    text2.setText(entry[1]);
+                text2.setTextColor(Color.parseColor("#818ea7"));
 				return view;
 			}
 		};
 		listview.setAdapter(mAdapter);
 		try {
-			
+			//mAdapter.clear();
 			for (int i =mFav.length()-1; i>=0;i--){
 				long dt = mFav.getJSONObject(i).getJSONObject("datetime").getLong("$date");
 				Date datetime = new Date(dt);
 				sdf1.setTimeZone(TimeZone.getTimeZone("GMT"));
 				String crawlTime = sdf1.format(datetime);
-				//String time = getTime(crawlTime);
+				String time = "更新时间:"+crawlTime;
 				
 				mAdapter.add(new String[]{mFav.getJSONObject(i).getString("from")+" -> " + mFav.getJSONObject(i).getString("to"),
-						crawlTime});
+						time});
 	        		//+DateFormat.getDateFormat(GoodResultActivity.this).format(new Date(jArray.getJSONObject(i).getLong("$date"))));
 	        }
 			mAdapter.notifyDataSetChanged();
@@ -225,10 +228,10 @@ public class ProfileHistoryDealActivity extends RoboActivity {
 				Date datetime = new Date(dt);
 				sdf1.setTimeZone(TimeZone.getTimeZone("GMT"));
 				String crawlTime = sdf1.format(datetime);
-				//String time = getTime(crawlTime);
+                String time = "更新时间:"+crawlTime;
 				
 				mAdapter.add(new String[]{mFav.getJSONObject(i).getString("from")+" -> " + mFav.getJSONObject(i).getString("to"),
-						crawlTime});
+                        time});
 	        		//+DateFormat.getDateFormat(GoodResultActivity.this).format(new Date(jArray.getJSONObject(i).getLong("$date"))));
 	        }
 			mAdapter.notifyDataSetChanged();			

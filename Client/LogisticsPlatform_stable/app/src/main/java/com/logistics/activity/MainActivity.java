@@ -44,7 +44,7 @@ public class MainActivity extends RoboActivity {
 	private TabHost tabHost;
 	
 	private LocalActivityManager mlam;
-	
+
 	public final static int MODE_WORLD_READABLE = 1;
 	private SharedPreferences sharedPreferences;  
 	
@@ -56,33 +56,37 @@ public class MainActivity extends RoboActivity {
 	
 	BadgeView badge6;
 	ImageView imageView1;
+    ImageView imageView2;
+    ImageView imageView3;
 	
 	@SuppressLint({ "WorldReadableFiles", "Wakelock" })
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		Resources res = getResources();
-			
-		
+
 		
 		mlam = new LocalActivityManager(this, true);
 		mlam.dispatchCreate(savedInstanceState);
 		sharedPreferences = this.getSharedPreferences("user_info",MODE_WORLD_READABLE);
 		int i = sharedPreferences.getInt("refresh", 0);
+        Boolean beIn = sharedPreferences.getBoolean("state", false);
 		
 		msgReceiver = new MsgReceiver();  
         IntentFilter intentFilter = new IntentFilter();  
         intentFilter.addAction("com.example.communication.RECEIVER");  
         registerReceiver(msgReceiver, intentFilter);  
         
-        Intent startRSS = new Intent(MainActivity.this, NotifyCenter.class); 
+        Intent startRSS = new Intent(MainActivity.this, NotifyCenter.class);
         startService(startRSS);
-		
+
         WakeLock wakeLock=((PowerManager)getSystemService(Context.POWER_SERVICE)).newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "wakelock");
         if(wakeLock!=null)
         {
             wakeLock.acquire();//这句执行后，手机将不会休眠，直到执行wakeLock.release();方法
         }
+
+        if(beIn){
 		switch (i){
 		default:
 			Intent startIntent0 = new Intent(MainActivity.this, PushAndPull.class); 
@@ -122,38 +126,140 @@ public class MainActivity extends RoboActivity {
 		            wakeLock.release();
 		        }
 			break;  
-		} 
+		}}
+
+
 
 		tabHost.setup(mlam);
 		
 		TabSpec spec = null;
 		
-		spec = createTabSpec(tabHost, MapActivity.TAG, res, R.string.map_title, R.drawable.ic_source, MapActivity.class);
+		spec = createTabSpec(tabHost, MapActivity.TAG, res, R.string.map_title, R.drawable.ic_source_selected, MapActivity.class);
 		tabHost.addTab(spec);
 		
 //		spec = createTabSpec(tabHost, TruckActivity.TAG, res, R.string.title_activity_truck, R.drawable.ic_tab_stopwatch, TruckActivity.class);
 //		tabHost.addTab(spec);
+        if(beIn == false){
+            spec = createTabSpec(tabHost, RSSActivity.TAG, res, R.string.rss_title, R.drawable.ic_rss_unselected, LoginDetailActivity.class);
+            tabHost.addTab(spec);
 
-        spec = createTabSpec(tabHost, RSSActivity.TAG, res, R.string.rss_title, R.drawable.ic_rss, RSSActivity.class);
+            spec = createTabSpec(tabHost, GoodActivity.TAG, res, R.string.goods_title, R.drawable.ic_search_unselected, LoginDetailActivity.class);
+            tabHost.addTab(spec);
+
+            spec = createTabSpec(tabHost, ProfileActivity.TAG, res, R.string.profile_title, R.drawable.ic_mine_unselected, LoginDetailActivity.class);
+            tabHost.addTab(spec);
+        }
+        else{
+        spec = createTabSpec(tabHost, RSSActivity.TAG, res, R.string.rss_title, R.drawable.ic_rss_unselected, RSSActivity.class);
         tabHost.addTab(spec);
 
-		spec = createTabSpec(tabHost, GoodActivity.TAG, res, R.string.goods_title, R.drawable.ic_search, GoodActivity.class);
+		spec = createTabSpec(tabHost, GoodActivity.TAG, res, R.string.goods_title, R.drawable.ic_search_unselected, GoodActivity.class);
 		tabHost.addTab(spec);
 		
-		spec = createTabSpec(tabHost, ProfileActivity.TAG, res, R.string.profile_title, R.drawable.ic_mine, ProfileActivity.class);
+		spec = createTabSpec(tabHost, ProfileActivity.TAG, res, R.string.profile_title, R.drawable.ic_mine_unselected, ProfileActivity.class);
 		tabHost.addTab(spec);
-						
-		tabHost.setCurrentTab(0);
-		
+        }
+
+
+
+        tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener(){
+            @Override
+            public void onTabChanged(String tabId) {
+
+                if(MapActivity.TAG.equals(tabId)) {
+                    //destroy earth
+                    View mView = tabHost.getTabWidget().getChildAt(0);
+                    imageView = (ImageView)mView.findViewById(R.id.tab_icon);
+                    imageView.setImageResource(R.drawable.ic_source_selected);
+
+                    View mView1 = tabHost.getTabWidget().getChildAt(1);
+                    imageView1 = (ImageView)mView1.findViewById(R.id.tab_icon);
+                    imageView1.setImageResource(R.drawable.ic_rss_unselected);
+
+                    View mView2 = tabHost.getTabWidget().getChildAt(2);
+                    imageView2 = (ImageView)mView2.findViewById(R.id.tab_icon);
+                    imageView2.setImageResource(R.drawable.ic_search_unselected);
+
+                    View mView3 = tabHost.getTabWidget().getChildAt(3);
+                    imageView3 = (ImageView)mView3.findViewById(R.id.tab_icon);
+                    imageView3.setImageResource(R.drawable.ic_mine_unselected);
+
+                   // badge7.hide();
+                }
+                if(RSSActivity.TAG.equals(tabId)) {
+                    //destroy mars
+                    View mView = tabHost.getTabWidget().getChildAt(0);
+                    imageView = (ImageView)mView.findViewById(R.id.tab_icon);
+                    imageView.setImageResource(R.drawable.ic_source_unselected);
+
+                    View mView1 = tabHost.getTabWidget().getChildAt(1);
+                    imageView1 = (ImageView)mView1.findViewById(R.id.tab_icon);
+                    imageView1.setImageResource(R.drawable.ic_rss_selected);
+
+                    View mView2 = tabHost.getTabWidget().getChildAt(2);
+                    imageView2 = (ImageView)mView2.findViewById(R.id.tab_icon);
+                    imageView2.setImageResource(R.drawable.ic_search_unselected);
+
+                    View mView3 = tabHost.getTabWidget().getChildAt(3);
+                    imageView3 = (ImageView)mView3.findViewById(R.id.tab_icon);
+                    imageView3.setImageResource(R.drawable.ic_mine_unselected);
+                }
+                if(GoodActivity.TAG.equals(tabId)){
+                    View mView = tabHost.getTabWidget().getChildAt(0);
+                    imageView = (ImageView)mView.findViewById(R.id.tab_icon);
+                    imageView.setImageResource(R.drawable.ic_source_unselected);
+
+                    View mView1 = tabHost.getTabWidget().getChildAt(1);
+                    imageView1 = (ImageView)mView1.findViewById(R.id.tab_icon);
+                    imageView1.setImageResource(R.drawable.ic_rss_unselected);
+
+                    View mView2 = tabHost.getTabWidget().getChildAt(2);
+                    imageView2 = (ImageView)mView2.findViewById(R.id.tab_icon);
+                    imageView2.setImageResource(R.drawable.ic_search_selected);
+
+                    View mView3 = tabHost.getTabWidget().getChildAt(3);
+                    imageView3 = (ImageView)mView3.findViewById(R.id.tab_icon);
+                    imageView3.setImageResource(R.drawable.ic_mine_unselected);
+                }
+                if(ProfileActivity.TAG.equals(tabId)){
+                    View mView = tabHost.getTabWidget().getChildAt(0);
+                    imageView = (ImageView)mView.findViewById(R.id.tab_icon);
+                    imageView.setImageResource(R.drawable.ic_source_unselected);
+
+                    View mView1 = tabHost.getTabWidget().getChildAt(1);
+                    imageView1 = (ImageView)mView1.findViewById(R.id.tab_icon);
+                    imageView1.setImageResource(R.drawable.ic_rss_unselected);
+
+                    View mView2 = tabHost.getTabWidget().getChildAt(2);
+                    imageView2 = (ImageView)mView2.findViewById(R.id.tab_icon);
+                    imageView2.setImageResource(R.drawable.ic_search_unselected);
+
+                    View mView3 = tabHost.getTabWidget().getChildAt(3);
+                    imageView3 = (ImageView)mView3.findViewById(R.id.tab_icon);
+                    imageView3.setImageResource(R.drawable.ic_mine_selected);
+                }
+
+            }});
+        tabHost.setCurrentTab(0);
+        tabHost.getTabWidget().getChildAt(0).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tabHost.setCurrentTab(1);
+                tabHost.setCurrentTab(0);
+            }
+        });
+
 		View mView = tabHost.getTabWidget().getChildAt(0); 
 		imageView = (ImageView)mView.findViewById(R.id.tab_icon);
 		badge7 = new BadgeView(MainActivity.this, imageView);
 		
-		View mView1 = tabHost.getTabWidget().getChildAt(2); 
+		View mView1 = tabHost.getTabWidget().getChildAt(1);
 		imageView1 = (ImageView)mView1.findViewById(R.id.tab_icon);
 		badge6 = new BadgeView(MainActivity.this, imageView1);
 		
 	}
+
+
 	
 	@SuppressLint("InflateParams")
 	private TabSpec createTabSpec(TabHost tabHost, String tag,
@@ -171,20 +277,105 @@ public class MainActivity extends RoboActivity {
 		return spec;
 
 	}
-	
-	
+
+
 
 	@Override
 	protected void onResume() {
 		super.onResume();
 		mlam.dispatchResume();
+//        if(tabHost.getCurrentTab()==0){
+//            badge7.hide();
+//        }
+        int i = sharedPreferences.getInt("refresh", 0);
+        Boolean beIn = sharedPreferences.getBoolean("state", false);
+        if(beIn){
+            switch (i){
+                default:
+                    Intent startIntent0 = new Intent(MainActivity.this, PushAndPull.class);
+                    startIntent0.putExtra("refresh",1);
+                    startService(startIntent0);
+                    break;
+                case 1:
+                    Intent startIntent1 = new Intent(MainActivity.this, PushAndPull.class);
+                    startIntent1.putExtra("refresh",5);
+                    startService(startIntent1);
+                    break;
+                case 2:
+                    Intent startIntent2 = new Intent(MainActivity.this, PushAndPull.class);
+                    startIntent2.putExtra("refresh",30);
+                    startService(startIntent2);
+                    break;
+                case 3:
+                    Intent startIntent3 = new Intent(MainActivity.this, PushAndPull.class);
+                    startIntent3.putExtra("refresh",60);
+                    startService(startIntent3);
+                    break;
+                case 4:
+                    Intent startIntent4 = new Intent(MainActivity.this, PushAndPull.class);
+                    startIntent4.putExtra("refresh",120);
+                    startService(startIntent4);
+                    break;
+                case 5:
+                    Intent startIntent5 = new Intent(MainActivity.this, PushAndPull.class);
+                    startIntent5.putExtra("refresh",360);
+                    startService(startIntent5);
+                    break;
+                case 6:
+                    Intent startIntent6 = new Intent(MainActivity.this, PushAndPull.class);
+                    stopService(startIntent6);
+                    break;
+            }}
+
 	}
 	
 	@Override
 	protected void onPause() {
 		super.onPause();
 		mlam.dispatchPause(isFinishing());
-		
+
+//        if(tabHost.getCurrentTab()==0){
+//            badge7.hide();
+//        }
+        int i = sharedPreferences.getInt("refresh", 0);
+        Boolean beIn = sharedPreferences.getBoolean("state", false);
+        if(beIn){
+            switch (i){
+                default:
+                    Intent startIntent0 = new Intent(MainActivity.this, PushAndPull.class);
+                    startIntent0.putExtra("refresh",1);
+                    startService(startIntent0);
+                    break;
+                case 1:
+                    Intent startIntent1 = new Intent(MainActivity.this, PushAndPull.class);
+                    startIntent1.putExtra("refresh",5);
+                    startService(startIntent1);
+                    break;
+                case 2:
+                    Intent startIntent2 = new Intent(MainActivity.this, PushAndPull.class);
+                    startIntent2.putExtra("refresh",30);
+                    startService(startIntent2);
+                    break;
+                case 3:
+                    Intent startIntent3 = new Intent(MainActivity.this, PushAndPull.class);
+                    startIntent3.putExtra("refresh",60);
+                    startService(startIntent3);
+                    break;
+                case 4:
+                    Intent startIntent4 = new Intent(MainActivity.this, PushAndPull.class);
+                    startIntent4.putExtra("refresh",120);
+                    startService(startIntent4);
+                    break;
+                case 5:
+                    Intent startIntent5 = new Intent(MainActivity.this, PushAndPull.class);
+                    startIntent5.putExtra("refresh",360);
+                    startService(startIntent5);
+                    break;
+                case 6:
+                    Intent startIntent6 = new Intent(MainActivity.this, PushAndPull.class);
+                    stopService(startIntent6);
+                    break;
+            }}
 	}
 	
 	/** 

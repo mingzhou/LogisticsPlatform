@@ -8,6 +8,8 @@ import org.json.JSONObject;
 import roboguice.activity.RoboActivity;
 import roboguice.inject.InjectView;
 import com.logistics.R;
+import com.logistics.service.NotifyCenter;
+import com.logistics.service.PushAndPull;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -22,6 +24,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class LoginDetailActivity extends RoboActivity {
@@ -45,6 +48,12 @@ public class LoginDetailActivity extends RoboActivity {
 	
 	@InjectView(R.id.rememberpassword)
 	private CheckBox  mRemember;
+
+    @InjectView(R.id.forget)
+    private TextView forget;
+
+    @InjectView(R.id.return_btn)
+    private Button return_btn;
 	
 	public final static int MODE_PRIVATE = 0;
 	public final static int MODE_WORLD_READABLE = 1;
@@ -66,6 +75,7 @@ public class LoginDetailActivity extends RoboActivity {
 		final String phone_l = sharedPreferences.getString("phone", null);
 		final String pw_l = sharedPreferences.getString("password", null);
 		final Boolean checkState = sharedPreferences.getBoolean("remember", false);
+        final Boolean beIn = sharedPreferences.getBoolean("state", false);
 		
 		phone.setError(null);
 		password.setError(null);
@@ -103,11 +113,46 @@ public class LoginDetailActivity extends RoboActivity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Intent intent = new Intent();
-				intent.setClass(LoginDetailActivity.this,ForgetActivity.class);
+				intent.setClass(LoginDetailActivity.this,RegisterActivity.class);
 				startActivity(intent);
 				finish();
 				onDestroy();
 			}});
+
+        return_btn.setOnClickListener(new Button.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+               // Intent intent = new Intent();
+                //intent.setClass(LoginDetailActivity.this,ProfileActivity.class);
+                //startActivity(intent);
+                editor.putBoolean("state",false);
+                editor.commit();
+           //     Intent intent = new Intent();
+           //     intent.setClass(LoginDetailActivity.this,MapActivity.class);
+              //  startActivity(intent);
+                Intent stopIntent = new Intent(LoginDetailActivity.this, PushAndPull.class);
+                stopService(stopIntent);
+                Intent stopIntent1 = new Intent(LoginDetailActivity.this, NotifyCenter.class);
+                stopService(stopIntent1);
+                finish();
+                onDestroy();
+            }});
+
+        forget.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                Intent intent = new Intent();
+                intent.setClass(LoginDetailActivity.this, ForgetActivity.class);
+                startActivity(intent);
+                finish();
+                onDestroy();
+            }
+        });
+
 		if (checkState) {
 			mRemember.setChecked(true);
 			phone.setText(phone_l); 
@@ -194,7 +239,7 @@ public class LoginDetailActivity extends RoboActivity {
 					editor.putString("password", mPassword);
 					editor.putString("usr_name", response);
 					editor.putBoolean("remember", mRemember.isChecked());
-					
+                    editor.putBoolean("state",true);
 					editor.commit();
 					Toast.makeText(LoginDetailActivity.this, "登陆成功", Toast.LENGTH_SHORT).show();
 					showProgress(false);

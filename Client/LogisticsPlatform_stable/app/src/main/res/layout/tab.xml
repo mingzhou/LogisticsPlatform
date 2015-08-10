@@ -34,7 +34,7 @@
     android:id="@+id/tab_label"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:focusable="true"
+    android:focusable="false"
     android:textSize="10sp"
     android:textColor="@drawable/ic_tab_label"
     android:gravity="center" />

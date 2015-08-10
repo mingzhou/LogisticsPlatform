@@ -16,6 +16,7 @@ import com.logistics.R;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
@@ -31,8 +32,8 @@ import android.widget.TextView;
 @ContentView(R.layout.activity_good_result)
 public class GoodResultActivity extends RoboActivity {
 
-//	@InjectView(R.id.result_show)
-//	private TextView test;
+	@InjectView(R.id.result_show)
+	private TextView test;
 	
 	//private final String DUMMY = null;
 		
@@ -83,6 +84,7 @@ public class GoodResultActivity extends RoboActivity {
 				intent.setClass(GoodResultActivity.this,GoodResultDetailActivity.class);
 				
 				try {
+
 					intent.putExtra("title","信息详情");
 					intent.putExtra("data", jArray.getJSONObject(position).toString());
 					//Log.d(TAG+"data",jArray.getJSONObject(position).toString());
@@ -122,7 +124,9 @@ public class GoodResultActivity extends RoboActivity {
 				TextView text1 = (TextView) view.findViewById(android.R.id.text1);
 			    TextView text2 = (TextView) view.findViewById(android.R.id.text2);
 			    text1.setText(entry[0]);
+                text1.setTextColor(Color.parseColor("#44566d"));
 			    text2.setText(entry[1]);
+                text2.setTextColor(Color.parseColor("#818ea7"));
 				return view;
 			}
 		};
@@ -132,12 +136,14 @@ public class GoodResultActivity extends RoboActivity {
 		Log.d("nihao-js",jS);
 		try {
 			jArray = new JSONArray(jS);
+            test.setText(intent.getStringExtra("desdep"));
+            //test.setTextColor(Color.parseColor("#202b3f"));
 			for (int i =0; i<jArray.length();i++){
 				long dt = jArray.getJSONObject(i).getJSONObject("datetime").getLong("$date");
 				Date datetime = new Date(dt);
 				sdf1.setTimeZone(TimeZone.getTimeZone("GMT"));
 				String crawlTime = sdf1.format(datetime);
-				String time = getTime(crawlTime);
+				String time = "更新时间:"+getTime(crawlTime);
 	        items.add(new String[]{jArray.getJSONObject(i).getString("from")+" -> " + jArray.getJSONObject(i).getString("to"),
 	        		time});
 	        		//+DateFormat.getDateFormat(GoodResultActivity.this).format(new Date(jArray.getJSONObject(i).getLong("$date"))));

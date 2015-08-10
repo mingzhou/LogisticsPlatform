@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/values-hdpi/dimens.xml -->
+    <eat-comment/>
+    <dimen name="am_pm_text_size">20dp</dimen>
+    <dimen name="data_text_size_1">22dp</dimen>
+    <dimen name="data_text_size_2">25dp</dimen>
+</resources>

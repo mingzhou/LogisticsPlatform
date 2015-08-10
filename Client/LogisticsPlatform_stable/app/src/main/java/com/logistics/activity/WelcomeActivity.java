@@ -2,6 +2,7 @@ package com.logistics.activity;
 
 
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.GestureDetector;
@@ -24,6 +25,7 @@ public class WelcomeActivity extends Activity implements OnGestureListener {
 
     int curIndex = 0;
     int maxIndex = 3;
+    private SharedPreferences sharedPreferences;
 
     Animation leftInAnimation;
     Animation leftOutAnimation;
@@ -37,6 +39,11 @@ public class WelcomeActivity extends Activity implements OnGestureListener {
 
         viewFlipper = (ViewFlipper)findViewById(R.id.viewFlipper);
         detector = new GestureDetector(this);
+        sharedPreferences = this.getSharedPreferences("user_info",MODE_WORLD_READABLE);
+        Boolean beIn = sharedPreferences.getBoolean("state", false);
+        if(beIn){
+            startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
+        }
 
         //往viewFlipper添加View
         viewFlipper.addView(getImageView(R.drawable.intro1));

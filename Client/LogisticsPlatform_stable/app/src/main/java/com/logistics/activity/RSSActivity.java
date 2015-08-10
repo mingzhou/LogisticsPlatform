@@ -335,6 +335,8 @@ public class RSSActivity extends RoboActivity {
 				}
 				intent.setClass(RSSActivity.this,GoodResultActivity.class);
 				intent.putExtra("query", response.toString());
+
+                intent.putExtra("desdep",mFrom+" 最新信息");
 				//Log.d("nihao-RSS",response.toString());
 				startActivity(intent);
 			}

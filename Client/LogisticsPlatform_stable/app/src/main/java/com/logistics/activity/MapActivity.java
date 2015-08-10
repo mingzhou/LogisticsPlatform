@@ -128,8 +128,19 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 				TextView text1 = (TextView) view.findViewById(android.R.id.text1);
 			    TextView text2 = (TextView) view.findViewById(android.R.id.text2);
 			    text1.setText(entry[0]);
+                text1.setTextColor(Color.parseColor("#44576b"));
+                try {
+                    if(jObj.has(jArray.getJSONObject(position).getJSONObject("_id").getString("$oid"))){
+                        text1.setTextColor(Color.parseColor("#d7dada"));
+                    }else{
+                        text1.setTextColor(Color.parseColor("#44576b"));
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
                 text2.setText(entry[1]);
-				return view;
+                text2.setTextColor(Color.parseColor("#d7dada"));
+                return view;
 			}
 		};
 		mListView.setAdapter(mAdapter);
@@ -155,16 +166,16 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 					String title = jArray.getJSONObject(i).getString("from")+" -> " + jArray.getJSONObject(i).getString("to");
 					String time = getTime(crawlTime);
 					Log.d("read",jObj.toString());
-					if(jObj.has(jArray.getJSONObject(i).getJSONObject("_id").getString("$oid"))){
-						title = title+"(已读)";
-
-					}
+//					if(jObj.has(jArray.getJSONObject(i).getJSONObject("_id").getString("$oid"))){
+//						title = title+"(已读)";
+//
+//					}
 
 					mAdapter.add(new String[]{title,time});
 					
 		        		//+DateFormat.getDateFormat(GoodResultActivity.this).format(new Date(jArray.getJSONObject(i).getLong("$date"))));
 		        }
-                //mAdapter.notifyDataSetChanged();
+                mAdapter.notifyDataSetChanged();
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -615,6 +626,7 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
+
 		Log.d("resume",isIn.toString());
 		if(isIn){
 		onRefresh();
