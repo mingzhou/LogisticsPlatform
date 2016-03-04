@@ -24,6 +24,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -35,6 +36,7 @@ import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -77,6 +79,9 @@ public class RSSActivity extends RoboActivity {
 	
 	@InjectView(R.id.del_btn)
 	private Button del_btn;
+
+    @InjectView(R.id.cancel_btn)
+    private Button cancel_btn;
 	
 	private BadgeAdapter cityListAdapter;
 	//private ArrayAdapter<String> mAdapter;
@@ -109,7 +114,8 @@ public class RSSActivity extends RoboActivity {
 
 
 
-	@SuppressLint({ "WorldReadableFiles", "NewApi" })
+	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
+    @SuppressLint({ "WorldReadableFiles", "NewApi" })
 	private void initComponent() throws IOException, JSONException {
 		// TODO Auto-generated method stub
 		sharedPreferences = this.getSharedPreferences("user_info",MODE_WORLD_READABLE);  
@@ -217,15 +223,30 @@ public class RSSActivity extends RoboActivity {
 					final int position, long id) {
 				// TODO Auto-generated method stub
 				if(!isLongClick){
-					isLongClick = true;  
-					
-					del_btn.setVisibility(View.VISIBLE);
+					isLongClick = true;
+
+                    cancel_btn.setVisibility(View.VISIBLE);
+                    del_btn.setVisibility(View.VISIBLE);
+
+
+                    cancel_btn.setOnClickListener(new OnClickListener(){
+
+                        @Override
+                        public void onClick(View v) {
+                            // TODO Auto-generated method stub
+                            del_btn.setVisibility(View.GONE);
+                            cancel_btn.setVisibility(View.GONE);
+                            isLongClick = false;
+                        }});
+
+
 					del_btn.setOnClickListener(new OnClickListener(){
 
 						@Override
 						public void onClick(View v) {
 							// TODO Auto-generated method stub
 							del_btn.setVisibility(View.GONE);
+                            cancel_btn.setVisibility(View.GONE);
 							isLongClick = false;  
 							jObj.remove(city.get(position));
 							jUS.remove(city.get(position));
@@ -480,7 +501,7 @@ public class RSSActivity extends RoboActivity {
             	String city_num = jUS.get(city.get(position)).toString();
             	holder.badge.setText(city_num);
             	holder.badge.show();
-            	if(Integer.parseInt(city_num)==0){
+            	if(Integer.parseInt(city_num)<=1){
                 	holder.badge.hide();
                 }            	
 			} catch (JSONException e) {

@@ -6,6 +6,7 @@ import org.apache.http.Header;
 import org.json.JSONException;
 import org.json.JSONObject;
 import roboguice.activity.RoboActivity;
+import roboguice.inject.ContentView;
 import roboguice.inject.InjectView;
 import com.logistics.R;
 import com.logistics.service.NotifyCenter;
@@ -24,9 +25,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+@ContentView(R.layout.activity_login_detail)
 public class LoginDetailActivity extends RoboActivity {
 	private final String BASE_URL = "http://219.223.189.234";
 	private AsyncHttpClient httpHelper = new AsyncHttpClient(80);
@@ -54,6 +57,15 @@ public class LoginDetailActivity extends RoboActivity {
 
     @InjectView(R.id.return_btn)
     private Button return_btn;
+
+    @InjectView(R.id.weibo_login)
+    private ImageButton weibo_login;
+
+    @InjectView(R.id.weixin_login)
+    private ImageButton weixin_login;
+
+    @InjectView(R.id.qq_login)
+    private ImageButton qq_login;
 	
 	public final static int MODE_PRIVATE = 0;
 	public final static int MODE_WORLD_READABLE = 1;
@@ -138,6 +150,8 @@ public class LoginDetailActivity extends RoboActivity {
                 stopService(stopIntent1);
                 finish();
                 onDestroy();
+                System.exit(0);
+
             }});
 
         forget.setOnClickListener(new View.OnClickListener() {
@@ -150,8 +164,36 @@ public class LoginDetailActivity extends RoboActivity {
                 startActivity(intent);
                 finish();
                 onDestroy();
+
             }
         });
+        weibo_login.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+               // weibo_login.setVisibility(View.GONE);
+            }
+        });
+
+        qq_login.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                //qq_login.setVisibility(View.GONE);
+            }
+        });
+
+        weixin_login.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                //weixin_login.setVisibility(View.GONE);
+            }
+        });
+
 
 		if (checkState) {
 			mRemember.setChecked(true);

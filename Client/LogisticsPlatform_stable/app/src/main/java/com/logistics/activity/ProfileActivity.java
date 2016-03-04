@@ -147,6 +147,9 @@ public class ProfileActivity extends RoboActivity {
 				editor.commit();
 				Intent startIntent = new Intent(ProfileActivity.this, PushAndPull.class); 
 				stopService(startIntent);
+                Toast toast = Toast.makeText(ProfileActivity.this, "设置成功 ", Toast.LENGTH_SHORT);
+                toast.setGravity(0x00000030, 0, 55);
+                toast.show();
 				switch (refreshtime.getSelectedItemPosition()){
 				default:
 					Intent startIntent0 = new Intent(ProfileActivity.this, PushAndPull.class); 

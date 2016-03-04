@@ -133,5 +133,23 @@ public class WelcomeActivity extends Activity implements OnGestureListener {
         return false;
     }
 
-	
+    @Override
+    protected void onResume() {
+        super.onResume();
+        sharedPreferences = this.getSharedPreferences("user_info",MODE_WORLD_READABLE);
+        Boolean beIn = sharedPreferences.getBoolean("state", false);
+        if(beIn){
+            startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        sharedPreferences = this.getSharedPreferences("user_info",MODE_WORLD_READABLE);
+        Boolean beIn = sharedPreferences.getBoolean("state", false);
+        if(beIn){
+            startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
+        }
+    }
 }

@@ -341,7 +341,7 @@ public class MapActivity extends RoboActivity  implements IXListViewListener{
 						 	}
 						 	}
 					 	//updata_num = statusCode;
-					 	if(updata_num==0){
+					 	if(updata_num<=4){
 					 		Toast toast = Toast.makeText(MapActivity.this, "已经没有更新啦 ", Toast.LENGTH_SHORT);
 						 	toast.setGravity(0x00000030, 0, 55);
 						 	toast.show();

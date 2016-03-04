@@ -284,51 +284,52 @@ public class MainActivity extends RoboActivity {
 	protected void onResume() {
 		super.onResume();
 		mlam.dispatchResume();
+
 //        if(tabHost.getCurrentTab()==0){
 //            badge7.hide();
 //        }
-        int i = sharedPreferences.getInt("refresh", 0);
-        Boolean beIn = sharedPreferences.getBoolean("state", false);
-        if(beIn){
-            switch (i){
-                default:
-                    Intent startIntent0 = new Intent(MainActivity.this, PushAndPull.class);
-                    startIntent0.putExtra("refresh",1);
-                    startService(startIntent0);
-                    break;
-                case 1:
-                    Intent startIntent1 = new Intent(MainActivity.this, PushAndPull.class);
-                    startIntent1.putExtra("refresh",5);
-                    startService(startIntent1);
-                    break;
-                case 2:
-                    Intent startIntent2 = new Intent(MainActivity.this, PushAndPull.class);
-                    startIntent2.putExtra("refresh",30);
-                    startService(startIntent2);
-                    break;
-                case 3:
-                    Intent startIntent3 = new Intent(MainActivity.this, PushAndPull.class);
-                    startIntent3.putExtra("refresh",60);
-                    startService(startIntent3);
-                    break;
-                case 4:
-                    Intent startIntent4 = new Intent(MainActivity.this, PushAndPull.class);
-                    startIntent4.putExtra("refresh",120);
-                    startService(startIntent4);
-                    break;
-                case 5:
-                    Intent startIntent5 = new Intent(MainActivity.this, PushAndPull.class);
-                    startIntent5.putExtra("refresh",360);
-                    startService(startIntent5);
-                    break;
-                case 6:
-                    Intent startIntent6 = new Intent(MainActivity.this, PushAndPull.class);
-                    stopService(startIntent6);
-                    break;
-            }}
+//        int i = sharedPreferences.getInt("refresh", 0);
+//        Boolean beIn = sharedPreferences.getBoolean("state", false);
+//        if(beIn){
+//            switch (i){
+//                default:
+//                    Intent startIntent0 = new Intent(MainActivity.this, PushAndPull.class);
+//                    startIntent0.putExtra("refresh",1);
+//                    startService(startIntent0);
+//                    break;
+//                case 1:
+//                    Intent startIntent1 = new Intent(MainActivity.this, PushAndPull.class);
+//                    startIntent1.putExtra("refresh",5);
+//                    startService(startIntent1);
+//                    break;
+//                case 2:
+//                    Intent startIntent2 = new Intent(MainActivity.this, PushAndPull.class);
+//                    startIntent2.putExtra("refresh",30);
+//                    startService(startIntent2);
+//                    break;
+//                case 3:
+//                    Intent startIntent3 = new Intent(MainActivity.this, PushAndPull.class);
+//                    startIntent3.putExtra("refresh",60);
+//                    startService(startIntent3);
+//                    break;
+//                case 4:
+//                    Intent startIntent4 = new Intent(MainActivity.this, PushAndPull.class);
+//                    startIntent4.putExtra("refresh",120);
+//                    startService(startIntent4);
+//                    break;
+//                case 5:
+//                    Intent startIntent5 = new Intent(MainActivity.this, PushAndPull.class);
+//                    startIntent5.putExtra("refresh",360);
+//                    startService(startIntent5);
+//                    break;
+//                case 6:
+//                    Intent startIntent6 = new Intent(MainActivity.this, PushAndPull.class);
+//                    stopService(startIntent6);
+//                    break;
+//            }}
 
 	}
-	
+
 	@Override
 	protected void onPause() {
 		super.onPause();
@@ -337,45 +338,45 @@ public class MainActivity extends RoboActivity {
 //        if(tabHost.getCurrentTab()==0){
 //            badge7.hide();
 //        }
-        int i = sharedPreferences.getInt("refresh", 0);
-        Boolean beIn = sharedPreferences.getBoolean("state", false);
-        if(beIn){
-            switch (i){
-                default:
-                    Intent startIntent0 = new Intent(MainActivity.this, PushAndPull.class);
-                    startIntent0.putExtra("refresh",1);
-                    startService(startIntent0);
-                    break;
-                case 1:
-                    Intent startIntent1 = new Intent(MainActivity.this, PushAndPull.class);
-                    startIntent1.putExtra("refresh",5);
-                    startService(startIntent1);
-                    break;
-                case 2:
-                    Intent startIntent2 = new Intent(MainActivity.this, PushAndPull.class);
-                    startIntent2.putExtra("refresh",30);
-                    startService(startIntent2);
-                    break;
-                case 3:
-                    Intent startIntent3 = new Intent(MainActivity.this, PushAndPull.class);
-                    startIntent3.putExtra("refresh",60);
-                    startService(startIntent3);
-                    break;
-                case 4:
-                    Intent startIntent4 = new Intent(MainActivity.this, PushAndPull.class);
-                    startIntent4.putExtra("refresh",120);
-                    startService(startIntent4);
-                    break;
-                case 5:
-                    Intent startIntent5 = new Intent(MainActivity.this, PushAndPull.class);
-                    startIntent5.putExtra("refresh",360);
-                    startService(startIntent5);
-                    break;
-                case 6:
-                    Intent startIntent6 = new Intent(MainActivity.this, PushAndPull.class);
-                    stopService(startIntent6);
-                    break;
-            }}
+//        int i = sharedPreferences.getInt("refresh", 0);
+//        Boolean beIn = sharedPreferences.getBoolean("state", false);
+//        if(beIn){
+//            switch (i){
+//                default:
+//                    Intent startIntent0 = new Intent(MainActivity.this, PushAndPull.class);
+//                    startIntent0.putExtra("refresh",1);
+//                    startService(startIntent0);
+//                    break;
+//                case 1:
+//                    Intent startIntent1 = new Intent(MainActivity.this, PushAndPull.class);
+//                    startIntent1.putExtra("refresh",5);
+//                    startService(startIntent1);
+//                    break;
+//                case 2:
+//                    Intent startIntent2 = new Intent(MainActivity.this, PushAndPull.class);
+//                    startIntent2.putExtra("refresh",30);
+//                    startService(startIntent2);
+//                    break;
+//                case 3:
+//                    Intent startIntent3 = new Intent(MainActivity.this, PushAndPull.class);
+//                    startIntent3.putExtra("refresh",60);
+//                    startService(startIntent3);
+//                    break;
+//                case 4:
+//                    Intent startIntent4 = new Intent(MainActivity.this, PushAndPull.class);
+//                    startIntent4.putExtra("refresh",120);
+//                    startService(startIntent4);
+//                    break;
+//                case 5:
+//                    Intent startIntent5 = new Intent(MainActivity.this, PushAndPull.class);
+//                    startIntent5.putExtra("refresh",360);
+//                    startService(startIntent5);
+//                    break;
+//                case 6:
+//                    Intent startIntent6 = new Intent(MainActivity.this, PushAndPull.class);
+//                    stopService(startIntent6);
+//                    break;
+//            }}
 	}
 	
 	/** 
@@ -402,7 +403,7 @@ public class MainActivity extends RoboActivity {
 				//Vibrator vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
 				//vibrator.vibrate(1000);
 				}}
-			else if(i>0){
+			else if(i>4){
 				badge7.setText(Integer.toString(i));
 				badge7.show();
 				if(!back){

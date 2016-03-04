@@ -124,7 +124,7 @@ public class PushAndPull extends Service {
 		@Override
 		public void handleMessage(Message msg) {
 			// TODO Auto-generated method stub
-			if(msg.what!=0&& update_size > 0 &&msg.arg1==0 ){//
+			if(msg.what!=0&& update_size > 2 &&msg.arg1==0 ){//
 				if(!isAppOnForeground()){
 				NotificationManager nm = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
 				Intent intent = new Intent(PushAndPull.this, MainActivity.class);

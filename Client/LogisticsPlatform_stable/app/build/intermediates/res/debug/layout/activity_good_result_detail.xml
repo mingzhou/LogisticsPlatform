@@ -88,19 +88,19 @@
             <RelativeLayout
                 android:id="@+id/title_detail"
                 android:layout_width="fill_parent"
-                android:layout_height="52dip"
+                android:layout_height="68dip"
                 android:background="#eeeeee"
                 >
                 <TextView
                     android:id="@+id/title_dep"
-                    android:layout_width="wrap_content"
+                    android:layout_width="75dip"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:gravity="center"
                     android:textColor="#202b3f"
                     android:text="@null"
                     android:textSize="18dip"
-                    android:layout_marginLeft="35dip"
+                    android:layout_marginLeft="15dip"
 
                     />
 
@@ -116,7 +116,7 @@
 
                 <TextView
                     android:id="@+id/title_des"
-                    android:layout_width="wrap_content"
+                    android:layout_width="75dip"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:gravity="center"
@@ -167,7 +167,7 @@
                         android:layout_centerVertical="true"
                         android:gravity="center"
                         android:layout_width="65dp"
-                        android:layout_height="40dip"
+                        android:layout_height="60dip"
                         android:textColor="#797f8e"
                         android:textSize="16dip"
                         />
@@ -184,7 +184,7 @@
                         android:layout_centerVertical="true"
                         android:gravity="center"
                         android:layout_width="65dp"
-                        android:layout_height="40dip"
+                        android:layout_height="60dip"
                         android:textColor="#797f8e"
                         android:textSize="16dip"
                         />

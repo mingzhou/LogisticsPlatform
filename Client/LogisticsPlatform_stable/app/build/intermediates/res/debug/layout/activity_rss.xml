@@ -109,8 +109,17 @@
                android:layout_marginTop="400dip"
                android:layout_marginLeft="100dip"
                android:visibility="invisible"
-               android:textSize="20sp"/> 
-   
-        
+               android:textSize="20sp"/>
+
+    <Button android:id="@+id/cancel_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="48dip"
+        android:text="@string/cancel"
+        android:layout_marginTop="300dip"
+        android:layout_marginLeft="100dip"
+        android:visibility="invisible"
+        android:textSize="20sp"/>
+
+
 </RelativeLayout>
 <!-- From: file:/C:/Users/lizhuo/Documents/GitHub/LogisticsPlatform/Client/LogisticsPlatform_stable/app/src/main/res/layout/activity_rss.xml -->

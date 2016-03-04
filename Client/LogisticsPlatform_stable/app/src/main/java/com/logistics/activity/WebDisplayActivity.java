@@ -71,7 +71,7 @@ public class WebDisplayActivity extends RoboActivity {
 
 				});
 			mWebView.getSettings().setJavaScriptEnabled(true);
-			//mWebView.getSettings().setBuiltInZoomControls(true); 
+			mWebView.getSettings().setBuiltInZoomControls(true);
 			mWebView.getSettings().setUseWideViewPort(true);
 			mWebView.getSettings().setLoadWithOverviewMode(true); 
 			mWebView.loadUrl(urlString);
