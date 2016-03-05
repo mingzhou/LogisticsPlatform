@@ -1,0 +1,10 @@
+path="/tmp"
+datebase="demo"
+backup="${path}/${datebase}"
+today=$(date -d "today" '+%Y-%m-%d')
+bak="${backup}.${today}.tar"
+mongodump -d ${datebase} -o ${path}
+tar -cPf ${bak} ${backup}
+scp ${bak} brilliant@zsm-app1:~/demobackup
+rm -rf ${backup}
+rm ${bak}

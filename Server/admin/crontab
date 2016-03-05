@@ -1,9 +1,9 @@
 # m h  dom mon dow   command
 # crawler is running all the time
-* * * * * python3 /home/brilliant/Documents/admin/LogisticsPlatform/Server/crawlers/crawler_runner.py
+* * * * * python3 /home/crawler/LogisticsPlatform/Server/crawlers/crawler_runner.py
 # backup the database on 00:00
-0 0 * * * mongodump -h spider:27017 -d demo -o /home/crawler
+0 0 * * * sh /home/crawler/LogisticsPlatform/Server/admin/backup
 # clean the invalid data on 00:07
-7 0 * * * python3 /home/brilliant/Documents/admin/LogisticsPlatform/Server/mongo/maintenance.py
+7 0 * * * python3 /home/crawler/LogisticsPlatform/Server/mongo/maintenance.py
 # kill the died crawler_runner caused by the crash site every 4 hours
 8 7 */4 * * ps -A | grep python3 | awk '{print $1}' | xargs kill
