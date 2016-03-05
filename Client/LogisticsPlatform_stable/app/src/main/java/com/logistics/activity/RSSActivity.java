@@ -14,10 +14,12 @@ import me.maxwin.view.BadgeView;
 import org.apache.http.Header;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
+import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.protocol.HTTP;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -70,6 +72,7 @@ public class RSSActivity extends RoboActivity {
 	
 	private final String BASE_URL = "http://219.223.189.234";
 	private AsyncHttpClient httpHelper = new AsyncHttpClient(80);
+
 	
 	@InjectView(R.id.cities)
 	private EditText mCities;
@@ -143,17 +146,24 @@ public class RSSActivity extends RoboActivity {
 			jTmp.put("id", jObj.getString(city.get(i)));
 			String jOS = jTmp.toString();
 			Log.d("notify",jOS);
+
+            try{HttpClient client = new DefaultHttpClient();
+            HttpConnectionParams.setConnectionTimeout(client.getParams(), 250);
+           HttpConnectionParams.setSoTimeout(client.getParams(), 250);
 			HttpPost httpRequest =new HttpPost(BASE_URL+"/citytop");
 			List<BasicNameValuePair> params=new ArrayList<BasicNameValuePair>();	
 			params.add(new BasicNameValuePair("data",jOS));
 			httpRequest.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
-			HttpResponse httpResponse=new DefaultHttpClient().execute(httpRequest);
+			HttpResponse httpResponse=client.execute(httpRequest);
 			
 			if(httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK){
 			Header header = httpResponse.getLastHeader("new");
 			Log.d(TAG+"nihao",header.toString());
 			//update_size.add(header.getValue());
-			jUS.put(city.get(i), header.getValue());}}}
+			jUS.put(city.get(i), header.getValue());}
+            else{jUS.put(city.get(i),0);}}catch (Exception e){jUS.put(city.get(i),0);}
+            }}
+
         }        
         
         ListView gridview = (ListView) findViewById(R.id.list_rsscities);
@@ -316,6 +326,7 @@ public class RSSActivity extends RoboActivity {
     @SuppressLint("NewApi")
 	public void getHttpResponse(int position) throws IOException, JSONException{
 		RequestParams rp = new RequestParams();
+        httpHelper.setTimeout(3000);
 		
 //		Set<String> set = sharedPreferences.getStringSet("cities", null);
 //        if(set != null)
@@ -365,7 +376,8 @@ public class RSSActivity extends RoboActivity {
 			@Override
 			public void onFailure(int statusCode, Header[] headers,
 					String responseBody, Throwable e) {
-				Toast.makeText(RSSActivity.this, statusCode + "\t" + responseBody, Toast.LENGTH_LONG).show();
+				//Toast.makeText(RSSActivity.this, statusCode + "\t" + responseBody, Toast.LENGTH_LONG).show();
+                Toast.makeText(RSSActivity.this, "没有该信息", Toast.LENGTH_LONG).show();
 				intent.setClass(RSSActivity.this,GoodResultActivity.class);
 				intent.putExtra("query", "");
 				//Log.d("nihao",response.toString());

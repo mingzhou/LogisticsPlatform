@@ -10,11 +10,15 @@ import java.util.Set;
 
 import org.apache.http.Header;
 import org.apache.http.HttpResponse;
+
 import org.apache.http.HttpStatus;
+import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.params.CoreConnectionPNames;
+import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.protocol.HTTP;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -153,39 +157,48 @@ public class NotifyCenter extends Service {
 						jTmp.put("id", jObj.getString(items.get(i)));
 						String jOS = jTmp.toString();
 						Log.d("notify",jOS);
-						HttpPost httpRequest =new HttpPost(BASE_URL+"/citytop");
+
+                       try{ HttpClient client = new DefaultHttpClient();
+                        HttpConnectionParams.setConnectionTimeout(client.getParams(), 1500);
+                        HttpConnectionParams.setSoTimeout(client.getParams(), 1500);
+                        HttpPost httpRequest =new HttpPost(BASE_URL+"/citytop");
 						List<BasicNameValuePair> params=new ArrayList<BasicNameValuePair>();	
 						params.add(new BasicNameValuePair("data",jOS));
 						httpRequest.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
-						HttpResponse httpResponse=new DefaultHttpClient().execute(httpRequest);
-						
+						HttpResponse httpResponse=client.execute(httpRequest);
+
 						if(httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK){
 						Header header = httpResponse.getLastHeader("new");
 						Log.d(TAG+"nihao",header.toString());
 						//update_size.add(header.getValue());
-						jUS.put(items.get(i), header.getValue());}}}
+						jUS.put(items.get(i), header.getValue());}
+                        else{jUS.put(items.get(i),0);}}catch (Exception e){jUS.put(items.get(i),0);}
+
+
+                       }}
 						Message msg1 = new Message();
 						msg1.what = 1;	
 						updateHandler.sendMessage(msg1);
 //						String strResult = EntityUtils.toString(httpResponse.getEntity());
 //						String temp = URLDecoder.decode(strResult, "UTF_8");
 						//Log.v(TAG, "++++++++PushContent : "+ 	temp + "+++++++++");
-						Thread.sleep(60000);
+
 						
-					} catch (InterruptedException e) {
+					}  catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
-						
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
+
 					} catch (JSONException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-						
-							
-			}		
+                try {
+                    Thread.sleep(60000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+            }
 		}	
 	}
 	
