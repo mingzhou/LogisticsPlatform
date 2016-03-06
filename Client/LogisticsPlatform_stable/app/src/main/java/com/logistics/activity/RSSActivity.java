@@ -85,6 +85,9 @@ public class RSSActivity extends RoboActivity {
 
     @InjectView(R.id.cancel_btn)
     private Button cancel_btn;
+
+    @InjectView(R.id.http_progress)
+    private View mProgressView;
 	
 	private BadgeAdapter cityListAdapter;
 	//private ArrayAdapter<String> mAdapter;
@@ -140,6 +143,7 @@ public class RSSActivity extends RoboActivity {
 			jUS = new JSONObject();
 			if(len!=0){
 			for(int i =0;i<len;i++){
+            jUS.put(city.get(i),0);
 			JSONObject jTmp = new JSONObject();
 			jTmp.put("to", city.get(i));
 			jTmp.put("from", city.get(i));
@@ -147,22 +151,23 @@ public class RSSActivity extends RoboActivity {
 			String jOS = jTmp.toString();
 			Log.d("notify",jOS);
 
-            try{HttpClient client = new DefaultHttpClient();
-            HttpConnectionParams.setConnectionTimeout(client.getParams(), 250);
-           HttpConnectionParams.setSoTimeout(client.getParams(), 250);
-			HttpPost httpRequest =new HttpPost(BASE_URL+"/citytop");
-			List<BasicNameValuePair> params=new ArrayList<BasicNameValuePair>();	
-			params.add(new BasicNameValuePair("data",jOS));
-			httpRequest.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
-			HttpResponse httpResponse=client.execute(httpRequest);
-			
-			if(httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK){
-			Header header = httpResponse.getLastHeader("new");
-			Log.d(TAG+"nihao",header.toString());
-			//update_size.add(header.getValue());
-			jUS.put(city.get(i), header.getValue());}
-            else{jUS.put(city.get(i),0);}}catch (Exception e){jUS.put(city.get(i),0);}
-            }}
+//            try{HttpClient client = new DefaultHttpClient();
+//            //HttpConnectionParams.setConnectionTimeout(client.getParams(), 250);
+//           HttpConnectionParams.setSoTimeout(client.getParams(), 120);
+//			HttpPost httpRequest =new HttpPost(BASE_URL+"/citytop");
+//			List<BasicNameValuePair> params=new ArrayList<BasicNameValuePair>();
+//			params.add(new BasicNameValuePair("data",jOS));
+//			httpRequest.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
+//			HttpResponse httpResponse=client.execute(httpRequest);
+//
+//			if(httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK){
+//			Header header = httpResponse.getLastHeader("new");
+//			Log.d(TAG+"nihao",header.toString());
+//			//update_size.add(header.getValue());
+//			jUS.put(city.get(i), header.getValue());}
+//            else{jUS.put(city.get(i),0);}}catch (Exception e){jUS.put(city.get(i),0);}
+            }
+            }
 
         }        
         
@@ -209,6 +214,8 @@ public class RSSActivity extends RoboActivity {
 					int position, long id) {
 				// TODO Auto-generated method stub
 				if(!isLongClick){
+
+                    showProgress(true);
 				try {
 					
 					getHttpResponse(position);
@@ -284,6 +291,10 @@ public class RSSActivity extends RoboActivity {
 		
 	}
 
+    public void showProgress(final boolean show){
+        mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
+    }
+
 	public boolean onKeyDown(int keyCode, KeyEvent event) {    
         PackageManager pm = getPackageManager();    
         ResolveInfo homeInfo =   
@@ -326,7 +337,7 @@ public class RSSActivity extends RoboActivity {
     @SuppressLint("NewApi")
 	public void getHttpResponse(int position) throws IOException, JSONException{
 		RequestParams rp = new RequestParams();
-        httpHelper.setTimeout(3000);
+        httpHelper.setTimeout(2500);
 		
 //		Set<String> set = sharedPreferences.getStringSet("cities", null);
 //        if(set != null)
@@ -370,6 +381,7 @@ public class RSSActivity extends RoboActivity {
 
                 intent.putExtra("desdep",mFrom+" 最新信息");
 				//Log.d("nihao-RSS",response.toString());
+                showProgress(false);
 				startActivity(intent);
 			}
 			
@@ -381,6 +393,7 @@ public class RSSActivity extends RoboActivity {
 				intent.setClass(RSSActivity.this,GoodResultActivity.class);
 				intent.putExtra("query", "");
 				//Log.d("nihao",response.toString());
+                showProgress(false);
 				startActivity(intent);
 			}
 						

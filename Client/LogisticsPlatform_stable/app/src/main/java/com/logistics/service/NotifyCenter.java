@@ -159,8 +159,8 @@ public class NotifyCenter extends Service {
 						Log.d("notify",jOS);
 
                        try{ HttpClient client = new DefaultHttpClient();
-                        HttpConnectionParams.setConnectionTimeout(client.getParams(), 1500);
-                        HttpConnectionParams.setSoTimeout(client.getParams(), 1500);
+                        //HttpConnectionParams.setConnectionTimeout(client.getParams(), 750);
+                        HttpConnectionParams.setSoTimeout(client.getParams(), 1000);
                         HttpPost httpRequest =new HttpPost(BASE_URL+"/citytop");
 						List<BasicNameValuePair> params=new ArrayList<BasicNameValuePair>();	
 						params.add(new BasicNameValuePair("data",jOS));

@@ -28,6 +28,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 @ContentView(R.layout.activity_good_result)
 public class GoodResultActivity extends RoboActivity {
@@ -138,6 +139,9 @@ public class GoodResultActivity extends RoboActivity {
 			jArray = new JSONArray(jS);
             test.setText(intent.getStringExtra("desdep"));
             //test.setTextColor(Color.parseColor("#202b3f"));
+            if(jArray.length()==0){
+                Toast.makeText(GoodResultActivity.this, "没有该信息", Toast.LENGTH_SHORT).show();
+            }
 			for (int i =0; i<jArray.length();i++){
 				long dt = jArray.getJSONObject(i).getJSONObject("datetime").getLong("$date");
 				Date datetime = new Date(dt);
